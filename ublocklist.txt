@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202121814
+! Version: 202202130613
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.12 18:14 UTC+8
+! Updated on 2022.02.13 06:13 UTC+8
 !
 !#if env_mobile
 www.google.*##:not(:matches-path(/^/search\?.*tbm=shop|^/shopping/)) a[href*="/aclk?"][data-al]:upward(2)
@@ -1423,16 +1423,15 @@ $script,domain=zdnet.fr,3p
 */wp-content/plugins/deadblocker/*$script,1p
 */wp-content/plugins/sociallocker-next-premium/$script,css
 */wp-content/plugins/wpsite-background-takeover*/js/wpsite_clickable.js$script
-*033107d$image,1p,domain=elitepvpers.com
-*30acc39$image,1p,domain=elitepvpers.com
-*74ee30a$image,1p,domain=elitepvpers.com
-*930129b$image,1p,domain=elitepvpers.com
+*04f697$image,1p,domain=elitepvpers.com
+*2f197b$image,1p,domain=elitepvpers.com
+*338d5c$image,1p,domain=elitepvpers.com
+*3d1087$image,1p,domain=elitepvpers.com
+*838c3d$image,1p,domain=elitepvpers.com
+*8a7653$image,1p,domain=elitepvpers.com
 *_ad_$media,domain=youtube.com,3p
-*b17d5c2$image,1p,domain=elitepvpers.com
 *banner$domain=beforeitsnews.com,image
 *banner$domain=sexwebvideo.*,frame
-*d5c21b0$image,1p,domain=elitepvpers.com
-*dab2c80$image,1p,domain=elitepvpers.com
 *expire=$media,redirect=noopmp3-0.1s,domain=viki.com
 *expires$media,redirect=noopmp3-0.1s,domain=kabeleins.de
 *expires$media,redirect=noopmp3-0.1s,domain=kabeleinsdoku.de
@@ -1510,6 +1509,7 @@ $script,domain=zdnet.fr,3p
 /^\w+://[\w.\-]+\.www\.logology\.co//$1p,script
 /^\w+://[\w.\-]+\.www\.woodbrass\.com//$1p,script
 /^http:\/\/img[a-z]+\.(?:buzz|xyz)\/(?!shrinker).*/$script,1p,domain=buzz|xyz
+/^https:\/\/((?!www)[a-z]{3,5}\.)?[-0-9a-z]{6,}\.(?:com|fun|guru|life|online|pw|site|space|top)\/\?o=[0-9a-z]{7}&u=[0-9a-z]{7}/$doc,match-case,domain=com|fun|guru|life|online|pw|site|space|top
 /^https:\/\/((?!www)[a-z]{3,5}\.)?[-0-9a-z]{6,}\.(?:com|fun|guru|life|online|pw|site|space|top)\/\?u=[0-9a-z]{7}&o=[0-9a-z]{7}/$doc,match-case,domain=com|fun|guru|life|online|pw|site|space|top
 /^https:\/\/([a-z]+\.)?sythe\.org\/[\w\W]{30,}/$image
 /^https:\/\/[0-9a-f]{10}\.[0-9a-f]{10}\.com\/[0-9a-f]{32}\.js$/$script,3p
@@ -1536,6 +1536,7 @@ $script,domain=zdnet.fr,3p
 /^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.css\?aHR0c[\/0-9a-zA-Z]{41,}=?=?$/$css,3p,match-case
 /^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.json$/$xhr,3p,match-case
 /^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.png\?aHR0c[\/0-9a-zA-Z]{41,}=?=?$/$image,3p,match-case
+/^https?:\/\/adserver[0-9a-z]{1,2}.sbs\/\?sdomain=/$doc,domain=sbs
 /^https?:\/\/adserveryo\d\.xyz\/\?/$doc,domain=xyz
 /^https?:\/\/js.*\/t\/[0-9]{3}\/[0-9]{3}\/[a-z0-9]{7,8}\.js/$script,3p,badfilter
 /^https?:\/\/s3\.us-east-1\.amazonaws\.com\/[0-9a-f]{50,}\/[0-9a-f]{10}$/$xhr,3p
@@ -2076,6 +2077,7 @@ $script,domain=zdnet.fr,3p
 4share.vn##+js(nano-stb)
 4share.vn##+js(nowoif)
 4shared.com##+js(acis, Math, zfgloaded)
+4stream.*,streambee.to##+js(nowoif)
 4tests.com##+js(set, adblock, false)
 4tube.com##+js(aopr, ExoLoader)
 4tube.com##+js(aopw, ads_priv)
@@ -3169,7 +3171,7 @@ $script,domain=zdnet.fr,3p
 @@||elcorreo.com^$ghide
 @@||eldia.com^$ghide
 @@||eldiariomontanes.es^$ghide
-@@||elitepvpers.com/cdn-cgi/images/trace/jschal/*js/transparent.gif?ray=$1p
+@@||elitepvpers.com/cdn-cgi/$image,1p
 @@||elnortedecastilla.es^$ghide
 @@||elrellano.com^$ghide
 @@||elsate.com/styles/elsate/template/*$script,1p
@@ -3563,6 +3565,7 @@ $script,domain=zdnet.fr,3p
 @@||googletagmanager.com/gtag/js$script,domain=rwarms.com
 @@||googletagmanager.com/gtag/js$script,domain=stardock.com
 @@||googletagmanager.com/gtag/js$xhr,domain=dropgalaxy.*|financemonk.net|techssting.com
+@@||googletagmanager.com/gtm.js$domain=www3.nissan.co.jp
 @@||googletagmanager.com/gtm.js$domain=youpouch.com
 @@||googletagmanager.com/gtm.js$script,3p,redirect-rule,domain=k2radio.com|kowb1290.com|koel.com|loudwire.com
 @@||googletagmanager.com/gtm.js$script,domain=beinsports.com
@@ -3920,6 +3923,8 @@ $script,domain=zdnet.fr,3p
 @@||imasdk.googleapis.com^$script,domain=uptostream.com
 @@||imasdk.googleapis.com^$script,domain=veedi.com|4j.com
 @@||imedikament.de^$ghide
+@@||img.ak.impact-ad.jp/sr/js/nissan_test_$script,domain=www3.nissan.co.jp
+@@||img.ak.impact-ad.jp/ut/$script,domain=www3.nissan.co.jp
 @@||img.echosting.cafe24.com/design$image,domain=jolse.com
 @@||imgdew.com/js/*$script,domain=imgdew.pw
 @@||imggram.org^$ghide
@@ -4547,6 +4552,7 @@ $script,domain=zdnet.fr,3p
 @@||pelismart.com^$ghide
 @@||pencurimovie.*^$ghide
 @@||penpaland.com^$ghide
+@@||penta.a.one.impact-ad.jp^$other,domain=www3.nissan.co.jp
 @@||perfops.net^$script,domain=cdnperf.com
 @@||performancegames.net^$ghide
 @@||perimeterx.net/api/v2/collector/ocaptcha$xhr
@@ -8386,6 +8392,7 @@ deltabit.co##+js(aopr, popjs)
 deltabit.co##+js(nano-sib)
 demae-can.com##+js(ra, data-trm-action|data-trm-category|data-trm-label, .trm_event, stay)
 demonoid.is##a[class][href^="/"][href$=".php"][target="_blank"]:upward(1)
+demonscripts.com##+js(acis, $, test)
 depedlps.*##+js(aeld, load, onload)
 depedlps.*##+js(aopr, encodeURIComponent)
 depo-program.blogspot.com##+js(acis, addEventListener, google_ad_client)
@@ -9073,24 +9080,21 @@ elitepvpers.com###aboveheader [src*=".gif"]
 elitepvpers.com##.cwcontent [src*=".gif"]
 elitepvpers.com##.cwcontent [target="_blank"]
 elitepvpers.com##.page > div > br + .cw1h,.page > div > .cwtitle1f
-elitepvpers.com##[href="https://proofcore.io/"]
 elitepvpers.com##[href="https://skyredirect1.com/"]
-elitepvpers.com##[href="https://www.aimexcheats.com/"]
 elitepvpers.com##[href="https://www.skycheats.com/"]
 elitepvpers.com##[href^="https://funpay.com/"]
 elitepvpers.com##[src^="https://f00f00.bar/"]
-elitepvpers.com##[style]:has-text(/Аdvertise/i) + a[href^="https://www.elitepvpers.com"]
+elitepvpers.com##[style*="font-size"]:has-text(/Ad/i) + a[rel]:has(img)
+elitepvpers.com##[style]:has-text(/Аdvertise/i) + div > a[href^="https://www.elitepvpers.com"]:has(img)
 elitepvpers.com##[target="_blank"] [src^="https://aimex.xyz/"]
 elitepvpers.com##a [src*="_global"]
 elitepvpers.com##a [src*="sky."][src*=".gif"]
-elitepvpers.com##a[href*="?utm_source=epvp1&utm_medium=banner&utm_campaign=epvp"]
-elitepvpers.com##a[href^="https://www.elitepvpers.com/"][rel*="ugc "] > img[scr="https://www.elitepvpers.com/"]
-elitepvpers.com##body > table > tbody > tr > td > div > [class]:has(img)
+elitepvpers.com##a[href*="utm_medium=banner&utm_campaign=epvp"]
+elitepvpers.com##body > table > tbody > tr > td > div > *:has(img)
 elitepvpers.com##div > .page > div > div[style]:has-text(/^Advertise/i) + a
 elitepvpers.com##div > .page > div[align="left"] [onclick*="window.open"] > img
 elitepvpers.com##div > .page > div[align="left"] [style*="cursor:"] > img
 elitepvpers.com##div > .page > div[style*="padding"] [onclick*="window.open"] > img
-elitepvpers.com##div[class] + div[style*="align"]:has(a):has(img)
 elitepvpers.com##p > [href^="https://playorigin.com/"]
 elitepvpers.com##span.smallfont[style="padding:0;"]
 elitepvpers.com#@#img[height="60"]
@@ -10185,6 +10189,7 @@ gainbtc.click##+js(aopr, adBlockDetected)
 gainbtc.click##+js(nosiif, visibility, 1000)
 gainbtc.click##._hide
 gainbtc.click##.panel-heading > center
+gainbtc.click##ins[class][style="display:inline-block;width:728px;height:90px;"]
 gainprofit.xyz##+js(aopr, app_vars.force_disable_adblock)
 gainprofit.xyz##+js(set, blurred, false)
 gal-dem.com##+js(aopr, dsanity_ad_block_vars)
@@ -13859,6 +13864,8 @@ mtsproducoes.*##+js(aopw, block_detected)
 mu2-mobi.*##+js(aopr, marker)
 muhendisimaaslari.com##.adsbygoogle
 mujeres-desnudas.com,putitas69.com##+js(aopr, ExoLoader.serve)
+multiclaim.net###wcfloatDiv4
+multiclaim.net##.home_banner
 multicoinads.com##.ads
 multics.eu##+js(acis, $, .test)
 multifaucet.org##+js(acis, String.fromCharCode, break;case)
@@ -16123,6 +16130,7 @@ rule34hentai.net##[href^="https://syndication.dynsrvtbg.com/splash.php"]
 rule34hentai.net##section[id$="left"] > .blockbody > script[type]:upward(2)
 rule34hentai.net##section[id$="main"] > .blockbody > .adsbyexoclick:upward(2)
 rule34porn.net##+js(acis, eval, replace)
+rule34porn.net##+js(aopr, decodeURI)
 rumahfilm.stream##+js(nowoif)
 rumahit.id##+js(acis, eval, ignielAdBlock)
 rumporn.com,stilltube.com###floaterRight
@@ -17593,6 +17601,9 @@ techadvisor.com##+js(nostif, .call(null))
 techalltimes.com##+js(aeld, load, nextFunction)
 techcentral.com.br##+js(aopw, adBlockDetected)
 techdracula.com##.adsbygoogle
+techgeek.digital##+js(aost, Math.random, /\st\.[a-zA-Z]*\s/)
+techgeek.digital##+js(nowoif)
+techgeek.digital##.espaciodos
 techhelpbd.com##+js(nano-sib, counter--)
 techhx.com##+js(set, google_jobrunner, true)
 techieway.blogspot.com##+js(acis, addEventListener, AdBlock)
@@ -18683,6 +18694,7 @@ urlcero.*##+js(nobab)
 urlcero.*##+js(nostif, checkAdblockUser, 1000)
 urlgalleries.net##+js(aopr, AaDetector)
 urlgalleries.net##+js(nobab)
+urlily.com##+js(acis, eval, replace)
 urlpay.net##+js(acis, String.fromCharCode, 'shift')
 urlpay.net##+js(nano-sib)
 urlpay.net##^script:has-text('shift')
@@ -19471,6 +19483,7 @@ wokesloth.com##+js(aopr, googletag)
 woman.excite.co.jp##+js(ra, data-woman-ex, a[href][data-woman-ex])
 womennaked.net##.hrcht6
 womenreality.com,paidsoftwarereviewz.blogspot.com##+js(nosiif, visibility, 1000)
+wondervelocity.com##+js(nano-sib)
 wonporn.com##+js(acis, document.querySelectorAll, popMagic)
 wonporn.com##td[style][width="360"]
 woodcraftsman.ru##+js(nosiif, visibility, 1000)
@@ -20376,6 +20389,7 @@ zxctunnel.com##.adsbygoogle
 ||adspaces.ero-advertising.com/adspace/*$script,redirect=noopjs,domain=pornsocket.com
 ||adsrt.*/sw.js$script,1p
 ||adsrt.com^$3p
+||adsrvr.org^$script,redirect=noop.js,domain=nissan.co.jp
 ||adstellar.icu^
 ||adsubon.com^$3p
 ||adswizz.com^$3p
@@ -20583,6 +20597,8 @@ zxctunnel.com##.adsbygoogle
 ||azurewebsites.net/chrmz8/index.html$doc
 ||b-time.site^$doc
 ||b38.info^$all
+||b90.yahoo.co.jp^$script,redirect=noop.js,domain=nissan.co.jp
+||b92.yahoo.co.jp/js/s_retargeting.js$script,redirect=noop.js,domain=nissan.co.jp
 ||babestube.com/bt*/bt.js
 ||backend.dna-delivery.com^$domain=france.tv|rt.com
 ||badana.me^
@@ -21298,7 +21314,7 @@ zxctunnel.com##.adsbygoogle
 ||elevisions.biz^$all
 ||elil.cc/reqa.js
 ||elitepaysites.com/photos/*.gif$image
-||elitepvpers.com/*/*.gif?$1p
+||elitepvpers.com/*/*?$image,1p
 ||elixx.*/popcash.js^
 ||elongi.org^$all
 ||em0n.com^$domain=grubstreet.com|twitchy.com
@@ -21424,6 +21440,7 @@ zxctunnel.com##.adsbygoogle
 ||findmydating.com^$all
 ||findthebestoffer.com^$doc
 ||findyour-realsex2.com^$all
+||firebasestorage.googleapis.com/v0/b/gosyndication.appspot.com^
 ||firefaucet.win/*.gif$image
 ||firmis-min.com^$all
 ||firstone.*^$csp=worker-src 'none';
@@ -21499,6 +21516,7 @@ zxctunnel.com##.adsbygoogle
 ||gabriellalovecats.com^
 ||gadsabs.com^$3p
 ||gahapule.pro^
+||gainbtc.click^$3p
 ||gainskins.com^$frame,domain=hltv.org
 ||gambar123.com^$script,image,domain=semprot.com|93.115.24.210
 ||game-dna.de^$csp=worker-src 'none'
@@ -21614,6 +21632,7 @@ zxctunnel.com##.adsbygoogle
 ||googleads.g.doubleclick.net/pagead/$xhr,redirect-rule=nooptext,domain=danshort.com
 ||googleads.g.doubleclick.net/pagead/$xhr,redirect=nooptext,domain=filmix.co
 ||googleads.g.doubleclick.net^$xhr,redirect-rule=nooptext,domain=weltwebcams.com
+||googleadservices.com/pagead/conversion.js$script,redirect=noop.js,domain=nissan.co.jp
 ||googleapis.com/discovery/$xhr,domain=extremereportbot.com
 ||googles.video^
 ||googlesyndication.com/$script,redirect=noopjs,domain=gidoroom.ru
@@ -21729,6 +21748,7 @@ zxctunnel.com##.adsbygoogle
 ||googletagmanager.com/gtm.js$script,redirect=noopjs,domain=homes.co.nz
 ||googletagmanager.com/gtm.js$script,redirect=noopjs,domain=kinoheld.de
 ||googletagmanager.com^$script,domain=foxnews.com,important
+||googletagmanager.com^$script,redirect-rule=noopjs,domain=gainbtc.click|multiclaim.net|proinfinity.fun
 ||googletagservices.com/tag/js/gpt.js$script,redirect=googletagservices.com/gpt.js
 ||googletagservices.com/tag/js/gpt.js$script,redirect=noopjs,domain=ladbible.com
 ||googletagservices.com/tag/js/gpt.js$script,redirect=noopjs,domain=playground.ru|radio-canada.ca|tvguide.com
@@ -21968,6 +21988,7 @@ zxctunnel.com##.adsbygoogle
 ||imgur.com^$image,domain=ckk.ai
 ||imgzong.*^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
 ||imgzong.*^$csp=script-src * 'unsafe-inline'
+||impact-ad.jp^$script,redirect=noop.js,domain=nissan.co.jp
 ||improveprivacy.me^$all
 ||include.canale.live^
 ||incorphishor.com^$all
@@ -22854,6 +22875,7 @@ zxctunnel.com##.adsbygoogle
 ||raw.githack.com/*/SpiderBlogging/main/antiadblock/$3p
 ||raw.githack.com/Raqmedia/adblock/$script,3p
 ||raw.githubusercontent.com/*/just-detect-adblock/*$3p,xhr,redirect-rule=nooptext
+||raw.githubusercontent.com/expertad^$3p
 ||rawcdn.githack.com/*/adbdetect.packed.js^$script
 ||rawgit.com/Pocketart/$script,3p
 ||rawgit.com/fahimraza/FK/master/ad-unblocker.js^$script
@@ -23515,6 +23537,7 @@ zxctunnel.com##.adsbygoogle
 ||umbemonop.info^
 ||unblocked.name/zpp/*$script,domain=unblocked.name
 ||unbrick.id^$3p
+||uncn.jp/uwt/$script,redirect=noop.js,domain=nissan.co.jp
 ||undefined^$script,redirect=noopjs
 ||unetbootin.net^$doc
 ||unetbootin.org^$doc
@@ -23798,6 +23821,7 @@ zxctunnel.com##.adsbygoogle
 ||yellowblue.io^
 ||yespornclips.com/sw.js$script,1p
 ||yimg.com/nn/lib/metro/g/sda/$domain=yahoo.com
+||yimg.jp/images/listing/tool/cv/$script,redirect=noop.js,domain=nissan.co.jp
 ||ynkiadthvkf.xyz^
 ||yoads.network^$3p
 ||yoat.xyz/xyz.js
