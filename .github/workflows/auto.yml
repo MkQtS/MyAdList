@@ -11,17 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
-      - name: Get current time
-        run: |
-          echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
-
-      - name: Generate titles and Combine source lists
+      - name: Combine source lists
         env:
-          ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
-          DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
-          AGHLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AGHTitle.txt
-          UBLOCK_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/uBoTitle.txt
           EASYLIST_NOHIDE: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
           EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy.txt
           ADGUARDCHINESE: https://filters.adtidy.org/extension/ublock/filters/224_optimized.txt
@@ -40,13 +31,8 @@ jobs:
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
         run: |
-          mkdir -p ./mod ./download
-          cd ./mod
-          curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ad0.txt
-          curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
-          curl -s $AGHLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > agh0.txt
-          curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
-          cd ../download
+          mkdir -p mod download
+          cd ./download
           curl -s $EASYLIST_NOHIDE | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > ad1.txt
           curl -s $EASYPRIVACY | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > ad2.txt
           curl -s $ADGUARDCHINESE | sed -e '/^!/d' -e '$G' > ad3.txt
@@ -70,19 +56,30 @@ jobs:
           cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt > ubocombined1.txt
           sed -n '/^!#if/,/^!#endif/p' ubocombined1.txt > uboif0.txt
           sed -e '/^!#if/,/^!#endif/d' ubocombined1.txt > ubocombined0.txt
-          sed -e 's/\r//g' -e '/^$/d' adcombined0.txt > adcombined.txt
-          sed -e 's/\r//g' -e '/^$/d' dnscombined0.txt > dnscombined.txt
-          sed -e 's/\r//g' -e '/^$/d' aghcombined0.txt > aghcombined.txt
+          sed 's/\r//g' adcombined0.txt > adcombined.txt
+          sed 's/\r//g' dnscombined0.txt > dnscombined.txt
+          sed 's/\r//g' aghcombined0.txt > aghcombined.txt
+          sed 's/\r//g' ubocombined0.txt > ubocombined.txt
           sed -e 's/\r//g' -e '/^$/d' uboif0.txt > ../mod/uboif.txt
-          sed -e 's/\r//g' -e '/^$/d' ubocombined0.txt > ubocombined.txt
           sort -u adcombined.txt > ../mod/adlist.txt
           sort -u dnscombined.txt > ../mod/dnslist.txt
           sort -u aghcombined.txt > ../mod/aghlist.txt
           sort -u ubocombined.txt > ../mod/ubolist.txt
 
-      - name: Combine titles and rules
+      - name: Generate titles and final lists
+        env:
+          ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
+          DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
+          AGHLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AGHTitle.txt
+          UBLOCK_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/uBoTitle.txt
         run: |
+          echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
           cd ./mod
+          curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ad0.txt
+          curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
+          curl -s $AGHLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > agh0.txt
+          curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
           cat ad0.txt adlist.txt > ../addonlist.txt
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat agh0.txt aghlist.txt > ../adguardhome.txt
