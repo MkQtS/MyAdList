@@ -11,6 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
+      - name: Get current time
+        run: |
+          echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
+
       - name: Combine source lists
         env:
           EASYLIST_NOHIDE: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
@@ -25,7 +30,7 @@ jobs:
           UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
           UBLOCK_BADWARE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt
           UBLOCK_PRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
-          UBLOCK_RESOURCE_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
+          UBLOCK_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
           UBLOCK_UNBREAK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
@@ -45,7 +50,7 @@ jobs:
           curl -s $UBLOCK_FILTERS | sed -e '/^![^#]/d' -e '/^!#include/d' -e '/^!$/d' -e '$G' > ubo1.txt
           curl -s $UBLOCK_BADWARE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo2.txt
           curl -s $UBLOCK_PRIVACY | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo3.txt
-          curl -s $UBLOCK_RESOURCE_ABUSE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo4.txt
+          curl -s $UBLOCK_ABUSE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo4.txt
           curl -s $UBLOCK_UNBREAK | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo5.txt
           curl -s $UBLOCK_2020 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo6.txt
           curl -s $UBLOCK_2021 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo7.txt
@@ -66,15 +71,13 @@ jobs:
           sort -u aghcombined.txt > ../mod/aghlist.txt
           sort -u ubocombined.txt > ../mod/ubolist.txt
 
-      - name: Generate titles and final lists
+      - name: Generate titles
         env:
           ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
           DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
           AGHLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AGHTitle.txt
           UBLOCK_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/uBoTitle.txt
         run: |
-          echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
           cd ./mod
           curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ad0.txt
           curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
