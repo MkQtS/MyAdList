@@ -66,10 +66,10 @@ jobs:
           sed 's/\r//g' aghcombined0.txt > aghcombined.txt
           sed 's/\r//g' ubocombined0.txt > ubocombined.txt
           sed -e 's/\r//g' -e '/^$/d' uboif0.txt > ../mod/uboif.txt
-          sort -u adcombined.txt > ../mod/adlist.txt
-          sort -u dnscombined.txt > ../mod/dnslist.txt
-          sort -u aghcombined.txt > ../mod/aghlist.txt
-          sort -u ubocombined.txt > ../mod/ubolist.txt
+          sort -u adcombined.txt | sed '$G' > ../mod/adlist.txt
+          sort -u dnscombined.txt | sed '$G' > ../mod/dnslist.txt
+          sort -u aghcombined.txt | sed '$G' > ../mod/aghlist.txt
+          sort -u ubocombined.txt | sed '$G' > ../mod/ubolist.txt
 
       - name: Generate titles
         env:
@@ -86,7 +86,7 @@ jobs:
           cat ad0.txt adlist.txt > ../addonlist.txt
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat agh0.txt aghlist.txt > ../adguardhome.txt
-          cat ubo0.txt uboif.txt ubolist.txt > ../ublocklist.txt
+          cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
           cd ..
           rm -rf ./download ./mod
 
