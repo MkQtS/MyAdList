@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202170137
+! Version: 202202170144
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.17 01:37 UTC+8
+! Updated on 2022.02.17 01:44 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -23677,6 +23677,7 @@ zxctunnel.com##.adsbygoogle
 ~streetinsider.com###ad_space:not([style^="position: absolute; left: -5000px"])
 ~video.tv-tokyo.co.jp###adspace:not([style^="position: absolute; left: -5000px"])
 
+!#if env_chromium
 haus-garten-test.de##+js(set, Object.keys, trueFunc)
 bafoeg-aktuell.de,bikerszene.de,deine-tierwelt.de,dhd24.com,donnerwetter.de,e-hausaufgaben.de,fremdwort.de,gartendialog.de,gartenlexikon.de,gewinnspiele.tv,gut-erklaert.de,haus-garten-test.de,iban-rechner.de,kindergeld.org,ksta.de,messen.de,moviejones.de,mz-web.de,naumburger-tageblatt.de,newsbreak24.de,nickles.de,oeffentlicher-dienst.info,rheinische-anzeigenblaetter.de,rundschau-online.de,torgranate.de,truckscout24.*,unsere-helden.com,weser-kurier.de,wieistmeineip.*##+js(nostif, .call(null), 10)
 lablue.*##+js(nostif, push, 500)
@@ -23697,6 +23698,8 @@ tf1.fr##+js(no-fetch-if, adsafeprotected)
 ||carsensor.net/usedcar/modules/clicklog_$xhr,1p,important,redirect=noop.txt
 @@||subaru.com/guides/*/libs/adobe/AppMeasurement.js$script,1p
 ||doubleclick.net/gampad/ads?*&output=xml_vmap$xhr,redirect=noopvmap-1.0,important,domain=tver.jp
+!#endif
+!#if env_firefox
 ||fastly.net^$image,important,domain=cbs.com,badfilter
 ||fastly.net^$script,important,domain=cbs.com,badfilter
 @@||hqq.*/sec/player/*$csp
@@ -23719,6 +23722,8 @@ bing.com##+js(nosiif, logQueue, 10000)
 @@||oklivetv.com^$xhr,script,css,1p
 @@?*=7417876c302ab06a36929e8$doc,1p
 qub.ca##.jss2
+!#endif
+!#if env_mobile
 www.google.*##:not(:matches-path(/^/search\?.*tbm=shop|^/shopping/)) a[href*="/aclk?"][data-al]:upward(2)
 quora.com##.top_slot
 xhamster.*##^script:has-text(popunder)
@@ -23799,6 +23804,7 @@ foreca.com##main > div > div > div > div[class]:matches-css(min-height:326px)
 foreca.com##main > div > div > div > div > div[class]:matches-css(min-height:326px)
 ||m.youtube.com/*/ad.js$script
 xhwide1.com##^script:has-text(popunder)
+!#endif
 !#if !env_mobile
 msn.com##[data-aop="stripe.store.navigation_stripenavigation"]:upward(2)
 !#endif
