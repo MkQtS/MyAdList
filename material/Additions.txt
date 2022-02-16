@@ -1,10 +1,9 @@
 ! 乘风视频规则 Modified
 ! Source: https://github.com/xinggsf/Adblock-Plus-Rule
-! LastCommit: 143ea74ec1e2d484d3aa26b0a666fc16bc4f5da6
+! LastCommit: 3d46301b041291d6d108bf27cbe3523a5873f059
 */letv-gug/$media,object-subrequest
 */preroll/$media,domain=91porn.com
 *_ad_$media,domain=youtube.com,3p
-@@||ark.letv.com/adx?adzone=
 @@||g.w.bilicdn1.com^$script,domain=bilibili.com
 @@||js.tv.itc.cn/gg.seed.js
 @@||log.mmstat.com^$script,domain=youku.com
@@ -20,7 +19,6 @@
 ||adxvip.com^
 ||aixifan.com/static/*/appGuide/
 ||alicdn.com^$image,domain=api.xiaomingming.org
-||andcanbere.fun^
 ||api.bilibili.com/x/web-show/res/loc?pf=$~script
 ||api.my.tv.sohu.com/wm/getads.do?
 ||apisgame.iqiyi.com^
@@ -49,15 +47,13 @@
 ||douyucdn.cn/adxdsp/$image
 ||envyindebted.com^
 ||fancyapi.com^
-||freychang.fun^
 ||g.huya.com^
 ||g.pptv.com/game/$subdocument
+||g1c5.com^
 ||geoparker.net^
 ||go.sohu.com^
 ||gstatic.com/shopping?
 ||gtimg.com/qqlive/
-||haitum.com/template/default/static/js/bottom.js$script
-||haitum.com/template/default/static/js/middle.js$script
 ||hdslb.com/bfs/sycp/creative_img/$image
 ||ieeod0.com^
 ||imall.cctv.com^$subdocument
@@ -107,8 +103,8 @@
 ||waust.at^
 ||web-player-tracker.biliapi.net^
 ||weizhenwx.com^
-||www.yatu.tv:88/image/*.gif^$image
-||www.yatu.tv:88/m/images/$image
+||www.yatu.tv/image/*.gif^$image
+||www.yatu.tv/m/images/$image
 ||xelements.cn^
 ||xixiqiu.com^
 ||xtgreat.com^
@@ -125,13 +121,9 @@ bilibili.com##.gg-floor-module,#slide_ad,a[href^="//cm.bilibili.com"]
 bilibili.com#@#+js(ra, target, a[target=_blank][href^="/"])
 cctv.com###bgAd_div
 cctv.com,ddrk.me,miguvideo.com##+js(aeld,dblclick,isImmediatePropagationStopped)
-dandanzan.top,nunuyy1.*##.gm-fp-body video:style(max-height:100% !important;height:100% !important)
+dandanzan.top,nunuyy1.*##.gm-fp-body video:style(max-height:100%!important)
 douyu.com,huya.com##a[href^="https://g.wan."]
 dyjihe2.com##.tempWrap
-haitum.com##.container:style(max-width:90%!important;width:90%!important)
-haitum.com##.dplayer-web-fullscreen-fix .float-box, .dplayer-web-fullscreen-fix header
-haitum.com##.left-content:style(width:77%!important)
-hmtv.me,imeiju.io##+js(acis,Object.defineProperty,location.href)
 huya.com###hy-ad,#hy-ab,#huya-ab
 imomoe.*###adl,#adr
 iqiyi.com##+js(aeld,dblclick,t.fullToggle)
@@ -151,15 +143,12 @@ qq.com##+js(no-fetch-if, trace.)
 qq.com##+js(no-xhr-if, trace.)
 qq.com##+js(set, Beacon.prototype.fail, null)
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan.top,nunuyy1.*##+js(set, RTCPeerConnection, undefined)
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan.top,nunuyy1.*##+js(set, webkitRTCPeerConnection, undefined)
+v.qq.com,bilibili.com,douyu.com,huya.com,le.com,mgtv.com,dandanzan.top,nunuyy1.*##+js(nowebrtc)
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
 v.youku.com##+js(aeld,dblclick,triggerEvent)
 www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
-www.douyu.com##+js(set, RTCPeerConnection.prototype.addStream, noopFunc)
-www.douyu.com##+js(set, webkitRTCPeerConnection.prototype.addStream, noopFunc)
 yatu.tv##.dplayer-web-fullscreen-fix #tburl,#loadtop,[id^=myas],#myds1,#daohang
-yatu.tv,yhdm5.com##+js(set,document.oncontextmenu,trueFunc)
+yatu.tv,yhdm15.com##+js(set,document.oncontextmenu,trueFunc)
 youtube.com##.masthead-ad-control, .ad-div, .pyv-afc-ads-container, #promotion-shelf
 youtube.com##ytd-video-masthead-ad-advertiser-info-renderer, ytm-promoted-sparkles-web-renderer, ytd-promoted-sparkles-web-renderer
 youtube.com,youtube-nocookie.com##+js(json-prune, [].playerResponse.adPlacements [].playerResponse.playerAds playerResponse.adPlacements playerResponse.playerAds adPlacements playerAds)
