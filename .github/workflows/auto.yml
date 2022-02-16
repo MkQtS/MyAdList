@@ -11,8 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
-      - name: Get current time
+      - name: Basic prepare
         run: |
+          mkdir -p mod download
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
 
@@ -36,7 +37,6 @@ jobs:
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
         run: |
-          mkdir -p mod download
           cd ./download
           curl -s $EASYLIST_NOHIDE | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > ad1.txt
           curl -s $EASYPRIVACY | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > ad2.txt
@@ -57,6 +57,7 @@ jobs:
           curl -s $UBLOCK_2022 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo8.txt
 
       - name: Arrange
+        run: |
           cd ./download
           cat ad1.txt ad2.txt ad3.txt ad4.txt ad5.txt | sed 's/\r//g' > ../mod/adcombined.txt
           cat agdns.txt pldns.txt dns2.txt | sed 's/\r//g' > ../mod/dnscombined.txt
