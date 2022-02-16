@@ -59,13 +59,21 @@ jobs:
           cat agdns.txt pldns.txt dns2.txt > dnscombined0.txt
           cat agdns.txt pldns.txt agh2.txt > aghcombined0.txt
           cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt > ubocombined1.txt
-          sed -n '/^!#if/,/^!#endif/p' ubocombined1.txt > uboif0.txt
-          sed -e '/^!#if/,/^!#endif/d' ubocombined1.txt > ubocombined0.txt
           sed 's/\r//g' adcombined0.txt > adcombined.txt
           sed 's/\r//g' dnscombined0.txt > dnscombined.txt
           sed 's/\r//g' aghcombined0.txt > aghcombined.txt
-          sed 's/\r//g' ubocombined0.txt > ubocombined.txt
-          sed -e 's/\r//g' -e '/^$/d' uboif0.txt > ../mod/uboif.txt
+          sed 's/\r//g' ubocombined1.txt > ubocombined0.txt
+          sed '/^!#if/,/^!#endif/d' ubocombined0.txt > ubocombined.txt
+          sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
+          sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrom0.txt
+          sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt > uboiffire0.txt
+          sed -n '/^!#if env_mobile/,/^!#endif/p' uboif0.txt > uboifmob0.txt
+          sed -e '/^!/d' -e '1i !#if env_chromium' -e '$a !#endif\n' uboifchrom0.txt > uboifchrome.txt
+          sed -e '/^!/d' -e '1i !#if env_firefox' -e '$a !#endif\n' uboiffire0.txt > uboiffire.txt
+          sed -e '/^!/d' -e '1i !#if env_mobile' -e '$a !#endif\n' uboifmob0.txt > uboifmob.txt
+          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
+          cat uboifchrom.txt uboiffire.txt uboifmob.txt uboifleft.txt > uboif.txt
+          sed -e '/^$/d' -e '$G' uboif > ../mod/uboiflist.txt
           sort -u adcombined.txt | sed '$G' > ../mod/adlist.txt
           sort -u dnscombined.txt | sed '$G' > ../mod/dnslist.txt
           sort -u aghcombined.txt | sed '$G' > ../mod/aghlist.txt
@@ -86,7 +94,7 @@ jobs:
           cat ad0.txt adlist.txt > ../addonlist.txt
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat agh0.txt aghlist.txt > ../adguardhome.txt
-          cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
+          cat ubo0.txt ubolist.txt uboiflist.txt > ../ublocklist.txt
           cd ..
           rm -rf ./download ./mod
 
@@ -97,7 +105,7 @@ jobs:
           git add --all
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/adguardhome.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
+          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/adguardhome.txt
+          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
