@@ -65,14 +65,14 @@ jobs:
           sed 's/\r//g' ubocombined1.txt > ubocombined0.txt
           sed '/^!#if/,/^!#endif/d' ubocombined0.txt > ubocombined.txt
           sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
-          sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrom0.txt
+          sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrome0.txt
           sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt > uboiffire0.txt
           sed -n '/^!#if env_mobile/,/^!#endif/p' uboif0.txt > uboifmob0.txt
-          sed -e '/^!/d' -e '1i !#if env_chromium' -e '$a !#endif\n' uboifchrom0.txt > uboifchrome.txt
+          sed -e '/^!/d' -e '1i !#if env_chromium' -e '$a !#endif\n' uboifchrome0.txt > uboifchrome.txt
           sed -e '/^!/d' -e '1i !#if env_firefox' -e '$a !#endif\n' uboiffire0.txt > uboiffire.txt
           sed -e '/^!/d' -e '1i !#if env_mobile' -e '$a !#endif\n' uboifmob0.txt > uboifmob.txt
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
-          cat uboifchrom.txt uboiffire.txt uboifmob.txt uboifleft.txt > uboif.txt
+          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt > uboif.txt
           sed -e '/^$/d' -e '$G' uboif > ../mod/uboiflist.txt
           sort -u adcombined.txt | sed '$G' > ../mod/adlist.txt
           sort -u dnscombined.txt | sed '$G' > ../mod/dnslist.txt
