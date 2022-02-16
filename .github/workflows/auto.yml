@@ -56,7 +56,7 @@ jobs:
           curl -s $UBLOCK_2021 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo7.txt
           curl -s $UBLOCK_2022 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo8.txt
 
-      - name: Arrange
+      - name: Arrange rules
         run: |
           cd ./download
           cat ad1.txt ad2.txt ad3.txt ad4.txt ad5.txt | sed 's/\r//g' > ../mod/adcombined.txt
@@ -95,17 +95,16 @@ jobs:
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat agh0.txt aghlist.txt > ../adguardhome.txt
           cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
-          cd ..
-          rm -rf ./download ./mod
 
       - name: Commit and Purge jsdelivr cache
         run: |
+          rm -rf download mod
           git config user.name "actions"
           git config user.email "action@github.com"
           git add --all
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
-          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
-          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/adguardhome.txt
-          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/adguardhome.txt
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
