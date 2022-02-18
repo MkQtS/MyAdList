@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202180616
+! Version: 202202181818
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.18 06:16 UTC+8
+! Updated on 2022.02.18 18:18 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -375,7 +375,6 @@ $script,domain=zdnet.fr,3p
 *$frame,denyallow=facebook.com|google.com|hcaptcha.com|youtube.com,domain=fc.lc|fcc.lc|fclcc.com|fc-lc.com|markipli.com
 *$frame,denyallow=facebook.com|google.com|hcaptcha.com|youtube.com|jungleofferwall.com,domain=dutchycorp.*
 *$frame,denyallow=facebook.com|google.com|youtube.com,domain=foxseotools.com
-*$frame,denyallow=google.com,domain=4cash.me
 *$frame,denyallow=google.com,domain=ashort1a.xyz|ashort1a-matik.tk|seg-ashort1a-ma.tk
 *$frame,denyallow=google.com,domain=bitmos.co.in
 *$frame,denyallow=google.com,domain=clk.ink
@@ -395,6 +394,7 @@ $script,domain=zdnet.fr,3p
 *$frame,denyallow=google.com|hcaptcha.com,domain=shurt.pw
 *$frame,denyallow=google.com|hcaptcha.com,domain=uii.io
 *$frame,denyallow=google.com|hcaptcha.com,domain=wordcounter.icu
+*$frame,denyallow=google.com|recaptcha.net,domain=4cash.me
 *$frame,domain=1ink.cc
 *$frame,domain=9ig.de,3p
 *$frame,domain=aztraffic.net
@@ -7623,6 +7623,7 @@ codesnail.com##+js(nostif, css_class.show)
 codesnail.com##.widget_custom_html
 codingnepalweb.com##.adsbygoogle:upward(1)
 codingshiksha.com##+js(nostif, css_class.show)
+coffeeapps.ir##+js(nowoif)
 coin-free.com##+js(aopw, _pop)
 coin-free.com,kienthucrangmieng.com,techmart4u.in##+js(nano-sib)
 coin.mg##+js(aopr, app_vars.force_disable_adblock)
@@ -7793,9 +7794,6 @@ cpomagazine.com##+js(aopr, advads_passive_groups)
 cpopchanelofficial.com##+js(nostif, check, 1)
 cpu-world.com##.adsbygoogle
 crackedgameservers.com##+js(set, adblock, false)
-crackedstream.*,crackstreams.*##+js(noeval-if, debugger)
-crackedstream.*,crackstreams.*##+js(nostif, debugger)
-crackedstream.*,crackstreams.*##+js(set, runAdblock, noopFunc)
 crackevil.com##+js(acis, mMcreateCookie)
 crackevil.com##.pop-ad-wrap
 cracking-dz.com##+js(aeld, load, 0x)
@@ -7803,9 +7801,12 @@ cracking.org##+js(acis, $, samAdBlockAction)
 crackle.com##.vjs-ad-break-marker-adjustment
 crackllc.com##.onp-sl-content:style(display: block !important;)
 crackllc.com##.onp-sl-social-locker
-crackstreams.*##+js(acis, Math, break;case $.)
+crackstreams.*##+js(acis, JSON.parse, break;case $.)
 crackstreams.*##+js(aopw, _pop)
+crackstreams.*##+js(noeval-if, debugger)
+crackstreams.*##+js(nostif, debugger)
 crackstreams.*##+js(nowebrtc)
+crackstreams.*##+js(set, runAdblock, noopFunc)
 crash-aerien.aero##+js(nobab)
 crazyblog.in##+js(acis, Math, break;case)
 crazyblog.in##+js(aopr, app_vars.force_disable_adblock)
@@ -12588,6 +12589,7 @@ live-sport24.com##+js(aopr, open)
 live-tv-channels.org##+js(aopr, adBlockDetected)
 live-tv-channels.org##.adsense-player
 live-tv-channels.org##.adsense-player-2
+live.crackstreams.*##.m-1.fw-bold.btn-danger.btn[data-openuri="|BTN_URL|"]
 live.dragaoconnect.net###yx-sli1
 live.dragaoconnect.net###yx-sli2
 live.dragaoconnect.net##+js(nosiif, 0x)
@@ -18163,6 +18165,7 @@ tweakers.net##+js(aopr, snowplow)
 tweakers.net##+js(aost, btoa, send)
 tweakers.net##+js(set, WebTrekkClickMap, noopFunc)
 tweakers.net##+js(set, tweakersConfig.wtConfig.scriptUrl, '')
+tweakers.net##.widebanner
 tweaktown.com##[id^="div-gpt-ad"]
 twinkybf.com##.happy-sidebar
 twinkybf.com##.happy-under-player
@@ -22593,6 +22596,7 @@ zxctunnel.com##.adsbygoogle
 ||protoolscrack.net^$doc
 ||protovid.com/preroll/$media,redirect=noopmp3-0.1s,domain=filmix.co
 ||psaiceex.net^
+||psauwush.net^
 ||pshtr.xyz^$all
 ||psixoglika.pro^$all
 ||ptookaih.net^$all
@@ -23802,7 +23806,6 @@ fandom.com##.ad-slot-wrapper
 @@||adcdn.goo.ne.jp/images/pix/2dwkwwau99.js$domain=news.goo.ne.jp
 @@||bwb101.goo.ne.jp/b.js$domain=news.goo.ne.jp
 @@||log000.goo.ne.jp/js/VLTraceDMD.js$domain=news.goo.ne.jp
-||imasdk.googleapis.com/js/sdkloader/ima3.js^$script,redirect-rule=noopjs,domain=sonyliv.com
 ||cxense.com/cx.js$script,redirect-rule=noop.js,domain=itmedia.co.jp
 hentaidude.com###ft-trig.ft-home, .vip-c
 hentaidude.com##.mobile-il:style(visibility: hidden !important; height: 1px !important)
@@ -23848,7 +23851,4 @@ news18.com##+js(aeld, scroll, getElementById)
 !#endif
 !#if !env_chromium
 @@||player.aniview.com/script/*/AVmanager.js$domain=inquirer.net
-!#endif
-!#if !env_mobile
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=sonyliv.com
 !#endif
