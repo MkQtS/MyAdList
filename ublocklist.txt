@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202190617
+! Version: 202202191817
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.19 06:17 UTC+8
+! Updated on 2022.02.19 18:17 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -302,6 +302,7 @@
 #div[align="center"]:not(:has(.btn))
 $popunder,domain=ah.pe
 $script,domain=zdnet.fr,3p
+&adspot_id=*&cost=0.$doc
 &atc=adterra&ad_id=$doc
 &td=redirect4u.com$all
 *##.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -858,7 +859,6 @@ $script,domain=zdnet.fr,3p
 *$script,domain=vidup.io,redirect-rule=noopjs
 *$script,domain=wyze.com,redirect-rule=noopjs
 *$script,domain=xsanime.com,3p,denyallow=chatango.com|cloudflare.com|disqus.com|disquscdn.com
-*$script,frame,3p,denyallow=cloudflare.com|cloudflare.net|dropbox.com|dropbox-dns.com|fastly.net|jsdelivr.net,domain=ytmp3.cc
 *$script,frame,3p,denyallow=google.com|gstatic.com|recaptcha.net|hcaptcha.com,domain=sukatu.ru
 *$script,frame,xhr,3p,domain=dewimg.*,denyallow=imgdew.com
 *$script,frame,xhr,3p,domain=imgtown.*,denyallow=imgtown.net
@@ -1314,7 +1314,7 @@ $script,domain=zdnet.fr,3p
 /adstream.$domain=~adstream.com|~adstream.com.ro
 /adu.php$frame
 /advertisement/*$badfilter
-/aff.php?dynamicpage=$doc
+/aff.php?*&_cbUrl=$doc
 /afon7.$script,1p
 /all-for-adsense/*
 /analytics/analytics.$~xhr,badfilter
@@ -1342,6 +1342,7 @@ $script,domain=zdnet.fr,3p
 /cfga/jquery.js?$image
 /check.php?t=*&rand=$image,1p
 /clc?aid=$all
+/click.php?data=$doc
 /click.php?key=*&cost=$doc
 /click?a=*&aff_click_id=$doc
 /code/script/back.php|
@@ -2430,8 +2431,6 @@ $script,domain=zdnet.fr,3p
 @@||blockadsnot.com/tabletop.min.js$script,domain=dropgalaxy.*|financemonk.net|techssting.com
 @@||blockergame.com^$ghide
 @@||blog.receivefreesms.co.uk^$ghide
-@@||blog.skk.moe/_next/data/*.json|$xhr,1p
-@@||blog.skk.moe/cdn-cgi/challenge-platform/$xhr,1p
 @@||blogdatecnologia.net^$ghide
 @@||bloggingguidance.com^$ghide
 @@||blogshinobijawi.blogspot.com^$ghide
@@ -2675,6 +2674,7 @@ $script,domain=zdnet.fr,3p
 @@||cloudflare.com/cdn-cgi/trace$xhr,domain=54647.io
 @@||cloudflare.com/cdn-cgi/trace$xhr,redirect-rule=noop.txt,domain=benchmarkuniverse.com
 @@||cloudfront.net/ad-navi/$css,image,domain=kinro.ntv.co.jp
+@@||cloudfront.net/publishers/dropgalaxycom.min.js$domain=dropgalaxy.com
 @@||cloudfront.net/wp-content/themes/visualdna-com/*$css,domain=visualdna.com
 @@||cloudstorageoptions.com^$ghide
 @@||club-opel.com^$ghide
@@ -2683,6 +2683,7 @@ $script,domain=zdnet.fr,3p
 @@||cmp.dmgmediaprivacy.co.uk^$domain=inews.co.uk
 @@||cmp.dmgmediaprivacy.co.uk^$frame,script,domain=metro.co.uk
 @@||cmp.macworld.com/get_site_data?$xhr,1p
+@@||cmp.uniconsent.com^$script,xhr,domain=dropgalaxy.com
 @@||cnn.com/.element/apps/cvp/3.0/cfg/spider/cnn/expansion/ad_policy.xml$xhr,domain=cnn.com
 @@||coachmag.co.uk^$ghide
 @@||cochesrc.com^$ghide
@@ -3108,6 +3109,7 @@ $script,domain=zdnet.fr,3p
 @@||freegamescasual.com^$ghide
 @@||freeiptv.life^$ghide
 @@||freephonenum.com^$ghide
+@@||freereceivesms.com/js/$script,1p
 @@||freetempsms.com^$ghide
 @@||freetutorialseu.com^$ghide
 @@||freetutorialsus.com^$ghide
@@ -3208,7 +3210,6 @@ $script,domain=zdnet.fr,3p
 @@||geoip.nekudo.com/api/*$xhr,domain=opentable.com
 @@||geoip.redirect-ads.com/?v=$frame,3p
 @@||geoip.redirect-ads.com/js/*$script,1p
-@@||geolocation-db.com/jsonp$script,domain=parts.hp.com
 @@||geonames.org/flags/x/ad.gif$image
 @@||gestyy.com^$ghide
 @@||get-click2.blogspot.com^$ghide
@@ -5386,7 +5387,6 @@ $script,domain=zdnet.fr,3p
 @@||youtube-ui.l.google.com^$frame
 @@||youtube.com/yts/jsbin/*$script,domain=breathecast.com|classicalite.com|crossmap.com|hallels.com|newseveryday.com|returnofkings.com
 @@||yt.upshrink.com/adex.js
-@@||ytmp3.eu^$ghide
 @@||yuinime.net^$ghide
 @@||yuudrive.me^$ghide
 @@||z.cdn.turner.com/analytics/cnnexpan/jsmd.min.js$script,domain=cnn.com
@@ -7408,8 +7408,8 @@ chiemgau24.de,rosenheim24.de,bgland24.de,innsalzach24.de,mangfall24.de,wasserbur
 chikiporn.com##.thumb--adv
 chillicams.net##+js(aopr, BetterJsPop)
 chillicams.net##+js(set, adblockcheck, false)
-chillx.top###youcantseeme
 chillx.top##+js(nowoif)
+chillx.top##+js(set, Count_Popup, undefined)
 chip.de##+js(damoh-defuser)
 chip.de##+js(json-prune, enabled, force_disabled)
 chip.de##.video-wrapper > div.video-js
@@ -9241,6 +9241,7 @@ fas.li##+js(aopr, blockAdBlock)
 faselhd.co##+js(aopr, require)
 faselhd.co##+js(popads-dummy)
 faselhd.top##+js(acis, JSON.parse, break;case $.)
+fashionunited.*##.adunitContainer:upward(3)
 fastcoin.ga##.justify-content-center.col-sm-12.row > .overflow > center > .slide.carousel
 fastcoin.ga##center > .justify-content-center.row
 fastcoin.ga##div[style="height: 90px;"]
@@ -16622,6 +16623,7 @@ skiplink.org##+js(aopr, app_vars.force_disable_adblock)
 skiplink.org##+js(nowoif)
 skiplink.org##+js(set, blurred, false)
 skiplink.org##.banner-inner
+skk.moe##+js(no-fetch-if, method:POST)
 skmedix.pl##+js(nosiif, visibility, 1000)
 skmedix.pl##.adsbygoogle:style(max-height: 1px !important;)
 skpb.live##+js(acis, atob, decodeURIComponent)
@@ -17235,6 +17237,7 @@ sunporno.com##+js(aeld, load, BetterPop)
 sunporno.com##+js(aopr, ExoLoader.addZone)
 sunporno.com##+js(aopr, SUN_XER)
 sunporno.com##+js(aopr, console.clear)
+sunporno.com##+js(aopr, exoNoExternalUI38djdkjDDJsio96)
 sunporno.com##+js(popads-dummy)
 sunporno.com##.atv
 sunporno.com##.flirt
@@ -18352,6 +18355,7 @@ uploadfiles.pw##+js(aopr, decodeURIComponent)
 uploadfiles.pw##+js(nano-stb)
 uploadfiles.pw,w4files.ws##+js(ra, onclick)
 uploadflix.org##+js(acis, JSON.parse, break;case $.)
+uploadflix.org##+js(nano-stb, seconds)
 uploadflix.org##^script:has-text(break;case $.)
 uploadfree.info###at-btn-download
 uploadhaven.com##+js(acis, globalThis, break;case)
@@ -18904,6 +18908,8 @@ vtube.to##+js(nowoif)
 vudeo.net##+js(acis, String.fromCharCode, /btoa|break/)
 vuiit.net##[id*="ScriptRoot"]
 vulture.com##+js(aeld, /^(?:click|mousedown)$/, latest!==)
+vumoo.cc##+js(ra, href, #clickfakeplayer)
+vumoo.vip##+js(aost, XMLHttpRequest, injectedScript)
 vupload.com##+js(nowebrtc)
 vupload.com##+js(nowoif)
 vvc.vc##+js(aopr, app_vars.force_disable_adblock)
@@ -19765,10 +19771,7 @@ ytdownload.net##+js(nowoif)
 ythub.cc##+js(nowoif, !dropbox)
 ythub.cc##.btn-ads
 ytmp3.*##+js(nowoif)
-ytmp3.cc##+js(acis, JSON.parse, [$.)
-ytmp3.cc##+js(acis, Math, [$.)
-ytmp3.cc##^script:has-text(window[$.)
-ytmp3.eu##+js(aopw, _pop)
+ytmp3.cc#@#+js(nowoif)
 ytmp3eu.com##+js(aopw, _pop)
 ytmp3x.com##+js(nowoif)
 yts.*##+js(acis, Math, break;case $.)
@@ -20093,7 +20096,7 @@ zxctunnel.com##.adsbygoogle
 ||adboomic.com^$3p
 ||adbox.lv^$script,redirect-rule=noop.js,domain=mail.ee
 ||adcheap.network^
-||adclixx.net^$script,3p,redirect-rule=nobab2.js
+||adclixx.net^$script,3p,redirect-rule=nobab2.js:10
 ||adconfigproxy.azurewebsites.net/Adurl$xhr
 ||adcryp.to^$3p
 ||add.pics^$3p,script
@@ -20115,7 +20118,7 @@ zxctunnel.com##.adsbygoogle
 ||admost.com^$script,important,domain=sahadan.com
 ||adn.porndig.com^
 ||adnesia.com^
-||adnetasia.com^$script,3p,redirect-rule=nobab2.js
+||adnetasia.com^$script,3p,redirect-rule=nobab2.js:10
 ||adnotbad.com^
 ||adnxs.com/*/sport1.js$script,redirect=noopjs,domain=sport1.de
 ||adnxs.com^$important,domain=bz-berlin.de|metal-hammer.de|musikexpress.de|rollingstone.de|stylebook.de
@@ -20175,7 +20178,7 @@ zxctunnel.com##.adsbygoogle
 ||adsyou.pro^$3p
 ||adtech.redventures.io/lib/*/bidbarrel-techrepublic-$script,important,redirect=noop.js,domain=techrepublic.com|zdnet.com
 ||adtr1.com^$all
-||adtrackers.net^$script,3p,redirect-rule=nobab2.js
+||adtrackers.net^$script,3p,redirect-rule=nobab2.js:10
 ||adturtle.biz^
 ||adultasianporn.com^$frame
 ||adulttdates.com^$all
@@ -20388,7 +20391,7 @@ zxctunnel.com##.adsbygoogle
 ||bainushe.com^$all
 ||bananamovies.net/*.php|$script,1p
 ||bananamovies.net/sw.js$script,1p
-||bannertrack.net^$script,3p,redirect-rule=nobab2.js
+||bannertrack.net^$script,3p,redirect-rule=nobab2.js:10
 ||baomay01.com^$3p
 ||baremetrics.com^$3p
 ||baremetrics.com^$badfilter
@@ -20491,7 +20494,6 @@ zxctunnel.com##.adsbygoogle
 ||blockadblock.com^$badfilter
 ||blockchain-ads.com^
 ||blockskipad.com^$all
-||blog.skk.moe^$xhr,1p
 ||blogfoster.com^$3p
 ||bloggerku.com^$3p
 ||bloggybro.com^$3p
@@ -21802,6 +21804,7 @@ zxctunnel.com##.adsbygoogle
 ||inpagepush.com^$important
 ||inside-out.xyz^$csp=worker-src 'none'
 ||inspirationhistorical.com^$all
+||instaflrt.com^$all
 ||instahookupxxx.com^$all
 ||install.convertmyvid.com^$all
 ||installcracks.com^$doc
@@ -22914,14 +22917,12 @@ zxctunnel.com##.adsbygoogle
 ||sideload.net^$doc
 ||simplebits.io/sh/ads/
 ||sinder8.com^$all
+||singlesgetmatched.com^$all
 ||sintelevisor.com/tv/asarasa.html$frame,1p
 ||sites.google.com/site/rvdmarcrailcatrain/home/tomber.js$script
 ||sites.google.com/view/hypixeldupemethod/*^$doc
 ||siteunblocked.info/zpp/*$script,domain=siteunblocked.info
 ||sixloamsob.com^
-||skk.moe/*&$1p
-||skk.moe/*.js?$image
-||skk.moe/*.png$xhr
 ||skyblockmods.com^$doc
 ||skytorrents.lol^$csp=script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.googletagmanager.com *.cloudflare.com
 ||slacker.com^*/getspot/?spotid=$media,redirect=noopmp3-0.1s
@@ -23070,6 +23071,7 @@ zxctunnel.com##.adsbygoogle
 ||sumologic.stv.tv^
 ||sunburgh.com^$3p
 ||sundhopen.site^$all
+||sunporno.com/*.php$script,1p
 ||super-ladies-now.life^$all
 ||superdatenow3.com^$doc
 ||superfolder.net^
@@ -23664,7 +23666,6 @@ zxctunnel.com##.adsbygoogle
 ||ytbgamer.space^$all
 ||ytmp3.*/ad/$frame
 ||ytmp3.cc/js/ad*$script,1p
-||ytmp3.eu/en45/pagead/js/adsbygoogle.js$xhr,1p,redirect-rule=noop.txt
 ||ytsubme.com/assets/adblock/
 ||yuktamedia.com^$3p
 ||yulunanews.name^
