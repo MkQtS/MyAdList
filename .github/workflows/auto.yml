@@ -96,7 +96,7 @@ jobs:
           cat agh0.txt aghlist.txt > ../adguardhome.txt
           cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
 
-      - name: Commit and Purge jsdelivr cache
+      - name: Commit and Purge jsDelivr
         run: |
           rm -rf download mod
           git config user.name "actions"
@@ -104,7 +104,4 @@ jobs:
           git add --all
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/adguardhome.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
