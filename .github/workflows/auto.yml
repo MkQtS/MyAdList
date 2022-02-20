@@ -85,7 +85,7 @@ jobs:
           sed -i '/^duonaolive.com##\*:not/d' adcombined.txt
           curl -s $FOP_PY > FOP.py
           python FOP.py
-          sed '1i\\n' adcombined.txt > ../mod/adlist.txt
+          mv adcombined.txt ../mod/adlist.txt
           cd ../mod
           sort -u dnscombined.txt > dnslist.txt
           sort -u aghcombined.txt > aghlist.txt
@@ -116,4 +116,4 @@ jobs:
           git add --all
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          #curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
