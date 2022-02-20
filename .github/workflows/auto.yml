@@ -61,13 +61,13 @@ jobs:
       - name: Combine rules
         run: |
           cd ./download
-          cat ad1.txt ad2.txt ad3.txt ad4.txt ad5.txt | sed 's/\r//g' > ../fop/adlist.txt
-          cat agdns.txt pldns.txt dns2.txt | sed 's/\r//g' > ../mod/dnslist.txt
-          cat agdns.txt pldns.txt agh2.txt | sed 's/\r//g' > ../mod/aghlist.txt
-          cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt | sed 's/\r//g' > ../ubo/ubocombined.txt
+          cat ad1.txt ad2.txt ad3.txt ad4.txt ad5.txt | sed 's/\r//g' > ../fop/adcombined.txt
+          cat agdns.txt pldns.txt dns2.txt | sed 's/\r//g' > ../mod/dnscombined.txt
+          cat agdns.txt pldns.txt agh2.txt | sed 's/\r//g' > ../mod/aghcombined.txt
+          cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt | sed 's/\r//g' > ../ubo/ubocombined0.txt
           cd ../ubo
-          sed '/^!#if/,/^!#endif/d' ubocombined.txt > ../mod/ubolist.txt
-          sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > uboif0.txt
+          sed '/^!#if/,/^!#endif/d' ubocombined0.txt > ../mod/ubocombined.txt
+          sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
           sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrome0.txt
           sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt > uboiffire0.txt
           sed -n '/^!#if env_mobile/,/^!#endif/p' uboif0.txt > uboifmob0.txt
@@ -77,15 +77,19 @@ jobs:
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
           cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt | sed '/^$/d' > ../mod/uboif.txt
 
-      - name: FOP
+      - name: Arrange rules
         env:
           FOP_PY: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
         run: |
           cd ./fop
-          sed -i '/^duonaolive.com##\*:not/d' adlist.txt
+          sed -i '/^duonaolive.com##\*:not/d' adcombined.txt
           curl -s $FOP_PY > FOP.py
           python FOP.py
-          mv adlist.txt ../mod/adlist.txt
+          sed '1G' adcombined.txt > ../mod/adlist.txt
+          cd ../mod
+          sort -u dnscombined.txt > dnslist.txt
+          sort -u aghcombined.txt > aghlist.txt
+          sort -u ubocombined.txt > ubolist.txt
 
       - name: Generate titles
         env:
@@ -106,7 +110,7 @@ jobs:
 
       - name: Commit and Purge jsDelivr
         run: |
-          rm -rf download ubo mod
+          rm -rf download ubo fop mod
           git config user.name "actions"
           git config user.email "action@github.com"
           git add --all
