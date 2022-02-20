@@ -15,7 +15,7 @@ jobs:
 
       - name: Basic prepare
         run: |
-          mkdir -p download ubo mod
+          mkdir -p download ubo fop mod
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
 
@@ -61,7 +61,7 @@ jobs:
       - name: Combine rules
         run: |
           cd ./download
-          cat ad1.txt ad2.txt ad3.txt ad4.txt ad5.txt | sed 's/\r//g' > ../mod/adlist.txt
+          cat ad1.txt ad2.txt ad3.txt ad4.txt ad5.txt | sed 's/\r//g' > ../fop/adlist.txt
           cat agdns.txt pldns.txt dns2.txt | sed 's/\r//g' > ../mod/dnslist.txt
           cat agdns.txt pldns.txt agh2.txt | sed 's/\r//g' > ../mod/aghlist.txt
           cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt | sed 's/\r//g' > ../ubo/ubocombined.txt
@@ -75,16 +75,17 @@ jobs:
           sed '/^!/d' uboiffire0.txt | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
           sed '/^!/d' uboifmob0.txt | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
-          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt | sed '/^$/d' > uboif.txt
+          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt | sed '/^$/d' > ../mod/uboif.txt
 
       - name: FOP
         env:
           FOP_PY: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
         run: |
-          cd ./mod
+          cd ./fop
           sed -i '/^duonaolive.com##\*:not/d' adlist.txt
           curl -s $FOP_PY > FOP.py
           python FOP.py
+          mv adlist ../mod/adlist.txt
 
       - name: Generate titles
         env:
@@ -101,7 +102,7 @@ jobs:
           cat ad0.txt adlist.txt > ../addonlist.txt
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat agh0.txt aghlist.txt > ../adguardhome.txt
-          cat ubo0.txt ubolist.txt ../ubo/uboif.txt > ../ublocklist.txt
+          cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
 
       - name: Commit and Purge jsDelivr
         run: |
