@@ -85,7 +85,7 @@ jobs:
           sed -i '/^duonaolive.com##\*:not/d' adcombined.txt
           curl -s $FOP_PY > FOP.py
           python FOP.py
-          sed '1i \n' adcombined.txt > ../mod/adlist.txt
+          sed '1i\\n' adcombined.txt > ../mod/adlist.txt
           cd ../mod
           sort -u dnscombined.txt > dnslist.txt
           sort -u aghcombined.txt > aghlist.txt
