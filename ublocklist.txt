@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202201826
+! Version: 202202210616
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.20 18:26 UTC+8
+! Updated on 2022.02.21 06:16 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -412,6 +412,7 @@ $script,domain=zdnet.fr,3p
 *$frame,domain=torrentproject2.*
 *$frame,domain=upbam.org
 *$frame,redirect-rule=noopframe,domain=desktophut.com
+*$frame,redirect-rule=noopframe,domain=dropgalaxy.com
 *$frame,redirect-rule=noopframe,domain=faucetcrypto.com
 *$frame,redirect-rule=noopframe,domain=getpaidstock.com
 *$frame,redirect-rule=noopframe,domain=work.ink
@@ -1054,6 +1055,7 @@ $script,domain=zdnet.fr,3p
 *$xhr,redirect-rule=nooptext,domain=costumbresmexico.com
 *$xhr,redirect-rule=nooptext,domain=ctrlv.*
 *$xhr,redirect-rule=nooptext,domain=desktophut.com
+*$xhr,redirect-rule=nooptext,domain=dropgalaxy.com
 *$xhr,redirect-rule=nooptext,domain=dynast.io
 *$xhr,redirect-rule=nooptext,domain=fr.de
 *$xhr,redirect-rule=nooptext,domain=freebinchecker.com
@@ -3409,6 +3411,7 @@ $script,domain=zdnet.fr,3p
 @@||grahaflasher.com^$ghide
 @@||graph.facebook.com^$xhr,domain=merriam-webster.com
 @@||gratisvps.net^$ghide
+@@||gs.statcounter.com/chart.php$script,domain=windowscentral.com
 @@||gsm-solution.com^$ghide
 @@||gsmfuturebd.com^$ghide
 @@||gstatic.com/*/adwords/partnerspublic/partners_public_*/partners/main.dart.js$script
@@ -4829,6 +4832,8 @@ $script,domain=zdnet.fr,3p
 @@||startrek.com^$ghide
 @@||startseite.to^$ghide
 @@||starvid.xyz^$ghide
+@@||statcounter.com/js//fusioncharts.charts.js$script,domain=windowscentral.com
+@@||statcounter.com/js/fusioncharts.js$script,domain=windowscentral.com
 @@||stateabbreviations.us^$ghide
 @@||static-olxeu.akamaized.net/static/olxbg/*/js/tracking/ninja.js$script,domain=olx.bg
 @@||static-ppp.portalcdn.com/$script,domain=pornhub.com
@@ -4932,7 +4937,6 @@ $script,domain=zdnet.fr,3p
 @@||tda.io^$xhr,domain=tagesanzeiger.ch
 @@||tdn.da-services.ch/libs/prebid$script,domain=tagesanzeiger.ch
 @@||tealium.cbsnews.com/*/prod/utag.js$script,1p
-@@||team-rec.jp^$domain=search-voi.0101.co.jp
 @@||techbii.com^$ghide
 @@||techdracula.com^$ghide
 @@||techmoviles.com^$ghide
@@ -5761,7 +5765,7 @@ allcalidad.*##+js(aopw, smrtSB)
 allcalidad.*##+js(ra, href, #clickfakeplayer)
 allcalidad.*##+js(set, btoa, null)
 allcalidad.*##.table-hover.table > tbody > tr:has-text(Descargar Premium)
-allcelebs.club,beginningmanga.com,chopris.com,comicsvalley.com,eshentai.tv,faptube.com,finding-camellia.com,finevids.xxx,gifcandy.net,hentaila.com,klmag.net,komisanwamanga.com,manhwaid.org,mdtaiwan.com,porn77.info,pornwatchers.com,seoul-station-druid.com,urgayporn.com,xculitos.com,xnxx.party,xsportshd.com##+js(acis, document.querySelectorAll, popMagic)
+allcelebs.club,beginningmanga.com,chopris.com,comicsvalley.com,eshentai.tv,faptube.com,finding-camellia.com,finevids.xxx,gifcandy.net,hentaila.com,javxxxporn.com,klmag.net,komisanwamanga.com,manhwaid.org,mdtaiwan.com,porn77.info,pornwatchers.com,seoul-station-druid.com,urgayporn.com,xculitos.com,xnxx.party,xsportshd.com##+js(acis, document.querySelectorAll, popMagic)
 allcryptoz.net##+js(set, blurred, false)
 allcryptoz.net,topcryptoz.net##+js(nano-sib, counter)
 allcryptoz.net,topcryptoz.net##.a
@@ -8538,6 +8542,7 @@ dropgalaxy.*,financemonk.net,techssting.com##[id^="aswift"]:style(display:none!i
 dropgalaxy.*,financemonk.net,techssting.com##[target="_blank"]:has-text(Download)
 dropgalaxy.*,financemonk.net,techssting.com##body > div[style^="position: fixed; display: block"]
 dropgalaxy.*,financemonk.net,techssting.com##iframe[id*="_mN_main_"]
+dropgalaxy.com##[id^="div-gpt-ad"]:remove()
 droplink.co##+js(aopr, app_vars.force_disable_adblock)
 droplink.co##+js(set, blurred, false)
 dropshipin.id##+js(acis, $, ads)
@@ -11101,6 +11106,7 @@ hqq.tv##+js(set, console.clear, undefined)
 hqtv.biz##+js(set, google_tag_data, noopFunc)
 htnovo.net##+js(nosiif, visibility, 1000)
 htnovo.net##.adsbygoogle
+https://github.com/uBlockOrigin/uAssets/issues/11321#issuecomment-1046231538
 hubblespacetelescope.blogspot.com#@#.vertical-ads
 hubdrive.*##+js(acis, Math.imul)
 hubdrive.*##+js(nowoif)
@@ -14516,6 +14522,7 @@ papalah.com##+js(aopw, adBlockDetected)
 paperzonevn.com##+js(acis, $, .test)
 paperzonevn.com##+js(aeld, visibilitychange)
 paperzonevn.com##+js(nostif, ads)
+papunika.com##+js(nostif, ai_)
 paraedu.id##.adsbygoogle
 paraphraser.io##.adsenbox
 paraphraser.io##body > .justify-content-center
@@ -21321,6 +21328,7 @@ zxctunnel.com##.adsbygoogle
 ||gainskins.com^$frame,domain=hltv.org
 ||gambar123.com^$script,image,domain=semprot.com|93.115.24.210
 ||game-dna.de^$csp=worker-src 'none'
+||game-hacks.online^$all
 ||game3rb.com/sw.js^$script,1p
 ||gameads.io^
 ||gamedock.io^$3p
@@ -21871,6 +21879,7 @@ zxctunnel.com##.adsbygoogle
 ||jsdelivr.net/*/levelmaxblock.js$script,3p
 ||jsdelivr.net/npm/datbpzjvws@latest/dist/script.min.js
 ||jsdelivr.net/npm/skx@*/optical.js
+||jsdelivr.net^*/fp.min.js$script,redirect-rule=fingerprint3.js:10
 ||jsfuel.com^
 ||jshosting.*^
 ||jsrdn.com^$badfilter
@@ -22781,6 +22790,7 @@ zxctunnel.com##.adsbygoogle
 ||s3.amazonaws.com/dmas-public/rubicon/bundle.js$script,domain=dailymotion.com
 ||s3.amazonaws.com/homad-global-configs.schneevonmorgen.com/hd-main.js$script,domain=autobild.de|cinema.de|computerbild.de|cdnapi.kaltura.com|focus.de|spieleaffe.de|sueddeutsche.de,redirect=hd-main.js
 ||s3blog.org^$3p
+||s4f.net^$all
 ||sadbutchi.work^
 ||saddlegirls.com/saddlegirls/ph/v/*_video.mp4$1p
 ||safebrowsdv.com^$3p
