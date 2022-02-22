@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202220616
+! Version: 202202221818
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.22 06:16 UTC+8
+! Updated on 2022.02.22 18:18 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1039,6 +1039,7 @@ $script,domain=zdnet.fr,3p
 *$xhr,frame,domain=sexvid.xxx
 *$xhr,redirect-rule=1x1.gif,domain=ign.com
 *$xhr,redirect-rule=noop.js,domain=beef1999.blogspot.com
+*$xhr,redirect-rule=noop.txt,domain=thingiverse.com
 *$xhr,redirect-rule=noop.txt,domain=tunein.com
 *$xhr,redirect-rule=noopjs,domain=audioblog.com|johnsonweld.com
 *$xhr,redirect-rule=noopjs,domain=onlinefreecourse.net
@@ -13735,7 +13736,6 @@ myflixertv.to##.modal-backdrop
 myfree-tivi.com###videoad
 myfreeblack.com##+js(aopw, mfbDetect)
 myfreecourses.com##.adsbygoogle
-myfreemp3cc.com##+js(aopr, AaDetector)
 mygoodstream.pw##+js(aopr, popjs.init)
 mygoodstream.pw##+js(popads.net)
 myhackingworld.com##+js(nostif, mdp)
@@ -14473,6 +14473,7 @@ paid4.link##+js(set, blurred, false)
 paid4.link##.banner-inner
 paid4.link##.blog-content
 paid4.link##.box > div[align="center"] > .card
+paidappstore.xyz##+js(no-xhr-if, googlesyndication)
 paidtomoney.com##+js(aopr, app_vars.force_disable_adblock)
 paidtomoney.com##+js(aopr, open)
 paidtomoney.com##+js(nosiif, visibility, 1000)
@@ -19449,7 +19450,7 @@ xmovies.*##+js(acis, Math, break;case $.)
 xmovies08.*##+js(acis, Math, zfgloaded)
 xmovies08.org##+js(aeld, , '0x)
 xmovies8.*###upgrade_pop
-xmovies8.*##+js(acis, Math, zfgloaded)
+xmovies8.*##+js(acis, JSON.parse, break;case $.)
 xmovies8.*##+js(aeld, /^(?:click|mousedown|mousemove|touchstart|touchend|touchmove)$/, system.popunder)
 xmovies8.*##+js(aopw, Fingerprint2)
 xmovies8.*##+js(set, check_adblock, true)
