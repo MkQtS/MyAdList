@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202230616
+! Version: 202202231818
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.23 06:16 UTC+8
+! Updated on 2022.02.23 18:18 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1250,6 +1250,7 @@ $script,domain=zdnet.fr,3p
 /\/[0-9a-zA-Z]{31,}\.gif/$image,1p,domain=elitepvpers.com
 /\/[0-9a-z]{5,9}\.js(\?[a-z]{3})?$/$script,domain=dewimg.*|imgtown.*|imgviu.*|mazpic.*|outletpic.*|picrok.*
 /\/[a-z]{4,}\/(?!holly7)[a-z]{3,6}\d\.\d\.\d{1,2}\.[0-9a-f]{32}\.js$/$script,1p,domain=555.porn|hclips.com|hdzog.com|hotmovs.com|imzog.com|javdaddy.com|porn555.com|pornforrelax.com|porngo.tube|pornj.com|pornl.com|pornq.com|porntop.com|privatehomeclips.com|puporn.com|see.xxx|shemalez.com|sss.xxx|thegay.*|tubepornclassic.com|tuberel.com|txxx.com|upornia.*|voyeurhit.com|vxxx.com
+/\/images\/\d{20,}\.gif$/$image,1p,domain=baliphim.com|lucaphim.com
 /\/n0cvd19n0fun\/(?:336x768-|dsw\d|s[a-z]_w3_).*/$image,1p,domain=69games.xxx
 /\/t\/[0-9]{3}\/[0-9]{3}\/a[0-9]{4,9}\.js$/$script
 /^\w+://[0-9a-z]{12}\.dataunlocker\.com//$1p,script
@@ -4020,6 +4021,7 @@ $script,domain=zdnet.fr,3p
 @@||mgkomik.com^$ghide
 @@||mhktricks.org^$ghide
 @@||micinehd.com^$ghide
+@@||micro.rubiconproject.com/prebid/dynamic/$script,domain=gamingbible.co.uk
 @@||microcat-america.superservice.com/content/microcat-dist/js/$script,1p
 @@||mikubox.com^$ghide
 @@||mimaletamusical.blogspot.com^$ghide
@@ -6475,6 +6477,7 @@ bagas31.info##+js(acis, atob, decodeURIComponent)
 bagas31.info##[href="javascript:void(0);"]
 baikin.net##+js(aopr, google_jobrunner)
 baixedetudo.net.br##+js(acis, JSON.parse, break;case $.)
+baliphim.com,khophimhd.net,lucaphim.com##+js(acis, JSON.parse, break;case $.)
 bananamovies.net##+js(acis, puShown, /doOpen|popundr/)
 bananamovies.net##+js(aopr, ExoLoader.serve)
 bananamovies.net##+js(nowoif)
@@ -6768,12 +6771,14 @@ birdurls.com##+js(acis, document.querySelectorAll, popMagic)
 birdurls.com##+js(aopr, AaDetector)
 birdurls.com##+js(aopr, absda)
 birdurls.com##+js(aopr, app_vars.force_disable_adblock)
+birdurls.com##+js(aopw, _pop)
 birdurls.com##+js(nosiif, visibility, 1000)
 birdurls.com##+js(nowoif)
 birdurls.com##+js(set, blurred, false)
 birdurls.com##.box-main center
 birdurls.com##.box-main p
 birdurls.com##[href^="https://padsbrown.com/"]
+birdurls.com##a[href^="///"][rel="nofollow norefferer noopener"][style="z-index: 77630650; position: fixed; inset: 1px 1px 3px; height: 99%; width: 98%;"]
 bisceglielive.it##+js(nostif, #rbm_block_active, 1000)
 bisceglielive.it##.mkt-300x250
 bisceglielive.it##.mkt-728x90
@@ -8194,6 +8199,7 @@ designmodo.com##.onp-sl-content:style(display: block !important;)
 designmodo.com##.onp-sl-social-locker
 designoptimal.com##.adsbygoogle
 designtagebuch.de###desig-widget-59
+designtagebuch.de##+js(set, SteadyWidgetSettings.adblockActive, false) 
 designtagebuch.de##.seitenende-wrapper
 designtagebuch.de##.zwischen-posts-wrapper
 designtagebuch.de##[id^="desig-"]:has-text(ANZEIGE)
@@ -9605,6 +9611,7 @@ forex-trnd.com##+js(nosiif, visibility, 1000)
 forex-trnd.com##+js(nowebrtc)
 forex-trnd.com##+js(set, blurred, false)
 forex-trnd.com##.banner-inner
+forexeen.us,health-and.me##+js(nano-sib, counter)
 forexforum.co##+js(acis, $, .test)
 forexlap.com###fixedban
 forexlap.com,forexmab.com,forex-articles.com,fx4vip.com##+js(nano-sib, , , 0)
@@ -10779,6 +10786,8 @@ hdzog.com##.content > div > .content-block + div[class]:not(.content-block)
 hdzog.com##.jwplayer > .afs_ads + span[class]
 hdzog.com##.video-page__banners
 hdzog.com##[target="_blank"][href=""]
+health-and.me##+js(acis, document.addEventListener, google_ad_client)
+health-and.me##^script:has-text(google_ad_client)
 healthdelay.com##+js(nosiif, visibility, 1000)
 healthelia.com##+js(nostif, google_jobrunner)
 healthline.com##[class*="css"]:matches-css-before(content:/ADVERTISEMENT/)
@@ -11433,6 +11442,7 @@ indirlinks.xyz##+js(aopw, _pop)
 indirlinks.xyz##div[style^="margin:0px 0px 0px 0px"]
 indoxx1.center#@#.lazy
 inews.co.uk##.thanks-3xsWr
+infinityblogger.in##+js(acis, eval, replace)
 influencersgonewild.com##+js(aost, Math.round, onload)
 influencersgonewild.com##.g1-advertisement-inside-grid:upward(li)
 infobel.ro##+js(aopr, adBlockDetected)
@@ -11978,6 +11988,7 @@ khatrimazafull.*##+js(aopr, absda)
 khatrimazafull.*##+js(aopw, _pop)
 khmer7.org##+js(acis, addEventListener, blocker)
 khmer7.org##+js(aopr, adcashMacros)
+khophimhd.net###fanback
 kickassanime.*##+js(set, ifmax, true)
 kickassanime.*##.ka-axx-wr
 kicker.de,myspass.de,spielaffe.de,tele5.de##+js(golem.de)
@@ -12742,6 +12753,7 @@ lowendbox.com##a[href][rel=noreferrer] > img[height="250"][width="300"]
 lowendbox.com##div.block:has([id^="bsa"])
 lowendbox.com##iframe
 ltc24.com##+js(nosiif, visibility, 1000)
+lucaphim.com##div[id^="ads_popup"]
 luccisan.com##+js(nostif, mdp)
 luccisan.com##.banner
 luccisan.com##[id*="ScriptRoot"]
@@ -15425,6 +15437,7 @@ projectfreetv.*##[href^="https://projectfreetv.network/high-speed-hd-streaming.h
 projectfreetv.one##+js(aeld, /^/, break;case $.)
 projectfreetv.one##+js(set, console.clear, undefined)
 projectfreetv.stream##+js(nostif, offsetHeight)
+projectfreetv2022.com##+js(acis, JSON.parse, break;case $.)
 projecto2.xyz##+js(aopr, app_vars.force_disable_adblock)
 projecto2.xyz##+js(aopr, open)
 projecto2.xyz##+js(set, blurred, false)
@@ -16176,6 +16189,9 @@ serverf4.org,streamm4u.club##+js(aopr, __Y)
 seselah.com##+js(aopw, adBlockDetected)
 settlersonlinemaps.com##+js(nostif, _0x)
 seuseriado.*##+js(acis, Math, break;case $.)
+sevenjournals.com###yuidea-generate:style(display: block !important;)
+sevenjournals.com###yuidea-snp:style(display: block !important;)
+sevenjournals.com###yuidea-wait1
 sevenjournals.com##+js(nobab)
 sexblogpussy.com##+js(set, adblock, false)
 sexblogpussy.com#@#a[href^="https://chaturbate.com/affiliates/"]
@@ -20217,7 +20233,6 @@ zxctunnel.com##.adsbygoogle
 ||airairgu.com^
 ||airartapt.site^$all
 ||airdrop-discord.ru^$all
-||aj1070.online^
 ||aj1110.online^$3p
 ||aj1603.online^
 ||aj2397.online^
