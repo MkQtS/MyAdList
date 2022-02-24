@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202240617
+! Version: 202202241818
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.24 06:17 UTC+8
+! Updated on 2022.02.24 18:18 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1641,6 +1641,7 @@ $script,domain=zdnet.fr,3p
 1340kbbr.com,gorgeradio.com,kduk.com,kedoam.com,kejoam.com,kelaam.com,khsn1230.com,kjmx.rocks,kloo.com,klooam.com,klykradio.com,kmed.com,kmnt.com,kool991.com,kpnw.com,kppk983.com,krktcountry.com,ktee.com,kwro.com,kxbxfm.com,thevalley.fm##+js(set, google_unique_id, 6)
 139.99.33.192##.adpop
 1412.rest##+js(acis, document.addEventListener, nextFunction)
+1412.rest##+js(no-fetch-if, method:HEAD)
 141tube.com##+js(acis, document.querySelectorAll, popMagic)
 144.126.138.140##+js(acis, eval, replace)
 144.126.138.140##+js(nowoif)
@@ -2294,6 +2295,7 @@ $script,domain=zdnet.fr,3p
 @@||api.permutive.com/*/batch/$xhr,domain=reuters.com
 @@||api.sbs.com.au/js/tracking/ondemand.js$script,1p
 @@||api.solvemedia.com^$script,frame
+@@||api.thingiverse.com/banner/*/pageAd$xhr,1p
 @@||api.unidadeditorial.es/sports/v1/events/*$xhr
 @@||api.useinsider.com^$domain=lenovo.com
 @@||apis.google.com/js/platform.js$script,domain=kitsunekko.net
@@ -13388,8 +13390,6 @@ mkvcage.*,pahe.*,psarips.*##+js(aopw, _pop)
 mkvcinema.*##+js(acis, RegExp, _0x)
 mkvcinema.*,mkvcinemas.*##[href="https://www.hostire.com"]
 mkvcinemas.*##+js(aost, Math.random, /\st\.[a-zA-Z]*\s/)
-mkvhouse.com##+js(acis, Math, break;case $.)
-mkvhouse.com##[href^="https://yts-mx.com/"]
 mlbstream.tv,nbastream.tv,nflstream.tv,nhlstream.tv##[href*="allsports4free.online/"]
 mlbstream.tv,nbastream.tv,nhlstream.tv##[href^="https://pl.allsports4free.club/"]
 mlbstreams.net###iframe_preview
@@ -13441,7 +13441,7 @@ mobitool.net##+js(acis, decodeURIComponent, ai_)
 modagamers.com##+js(acis, JSON.parse, atob)
 modagamers.com##+js(aopr, decodeURI)
 modagamers.com##+js(nano-stb)
-modagamers.com##+js(nostif, /mdp|deblocker/)
+modagamers.com##+js(nostif, showModal)
 modapk.link##+js(aopr, app_vars.force_disable_adblock)
 modapk.link##+js(set, blurred, false)
 modapkfile.com##+js(acis, String.fromCharCode, /btoa|break/)
@@ -19807,7 +19807,7 @@ ytmp3.*##+js(nowoif)
 ytmp3.cc#@#+js(nowoif)
 ytmp3eu.com##+js(aopw, _pop)
 ytmp3x.com##+js(nowoif)
-yts.*##+js(acis, Math, break;case $.)
+yts.*##+js(acis, JSON.parse, break;case $.)
 yts.*##+js(aeld, , _0x)
 yts.*##+js(aopr, runAdblock)
 yts.*##+js(aopw, _pop)
