@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202250617
+! Version: 202202251819
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.25 06:17 UTC+8
+! Updated on 2022.02.25 18:19 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -6552,11 +6552,17 @@ bdlive.*###AdDiv
 bdnewsx.com##+js(aopr, app_vars.force_disable_adblock)
 bdnewsx.com##+js(set, blurred, false)
 bdnewsx.com##.banner
+bdnewszh.com##+js(acis, JSON.parse, break;case $.)
+bdnewszh.com##.billboard-banner
+bdnewszh.com##.content-banner
+bdnewszh.com##.left-sticky-banner
+bdnewszh.com##.right-sticky-banner
 bdnewszh.com##.w-billboard-ads
 bdnewszh.com##.w-felt-side-ads
 bdnewszh.com##.w-footer-ads
 bdnewszh.com##.w-right-side-ads
 bdnewszh.com##.w-thumbnail-ads
+bdnewszh.com,hazmolive.stream##+js(aopw, _pop)
 bdotools.xyz##+js(nostif, (), 3000)
 bdsmporn.cc,cocoporn.net,dirtyporn.cc,faperplace.com,freeadultvideos.cc,freepornstream.cc,generalpornmovies.com,kinkyporn.cc,moviesxxx.cc,movstube.net,onlinefetishporn.cc,peetube.cc,pornonline.cc,porntube18.cc,streamextreme.cc,streamporn.cc,videoxxx.cc,watchporn.cc,x24.video,xxx24.vip,xxxonline.cc,xxxonlinefree.com,xxxopenload.com##+js(aopr, exoJsPop101)
 bdsmporn.cc,cocoporn.net,dirtyporn.cc,faperplace.com,freeadultvideos.cc,freepornstream.cc,generalpornmovies.com,kinkyporn.cc,moviesxxx.cc,movstube.net,onlinefetishporn.cc,peetube.cc,pornonline.cc,porntube18.cc,streamextreme.cc,streamporn.cc,videoxxx.cc,watchporn.cc,x24.video,xxxonline.cc,xxxonlinefree.com,xxxopenload.com##+js(acis, decodeURI, decodeURIComponent)
@@ -15564,7 +15570,7 @@ putlocker9.*##+js(acis, Math, break;case $.)
 putlocker9.*##+js(aopw, Fingerprint2)
 putlocker9.*##.pframe:has([href^="javascript: void(0);"])
 putlockerc.*##+js(nowoif)
-putlockers.*##+js(acis, Math, break;case $.)
+putlockers.*##+js(acis, JSON.parse, break;case $.)
 putlockers.cr##+js(nowoif, stream-4k)
 putlockers.cr##a[href^="/download-4k/"]
 putlockers.cr##a[href^="/stream-4k/"]
@@ -19340,6 +19346,7 @@ worldsex.com##+js(aopr, document.dispatchEvent)
 worldsex.com##.overlay
 worldsex.com##[href^="http://track.textpartners.com/api/campaign/"]
 worldsex.com##div.da-by
+worldtravelling.com##+js(nostif, ads)
 wouterplanet.com##+js(acis, setTimeout, 'visibility')
 wouterplanet.com##div.panel-primary.panel:nth-of-type(3)
 wowescape.com###adContainer
@@ -23822,6 +23829,7 @@ bing.com##+js(nosiif, logQueue, 10000)
 @@||adservice.google.*/adsid/integrator.js$script,domain=dropgalaxy.*|financemonk.net|techssting.com
 @@||oklivetv.com^$xhr,script,css,1p
 @@?*=7417876c302ab06a36929e8$doc,1p
+@@||googletagmanager.com/gtag/js$xhr,domain=streamingcommunity.*
 qub.ca##.jss2
 !#endif
 !#if env_mobile
@@ -23923,4 +23931,7 @@ news18.com##+js(aeld, scroll, getElementById)
 !#endif
 !#if !env_chromium
 @@||player.aniview.com/script/*/AVmanager.js$domain=inquirer.net
+!#endif
+!#if !env_firefox
+||googletagmanager.com^$xhr,domain=streamingcommunity.*,redirect-rule=noop.js
 !#endif
