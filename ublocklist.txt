@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202270616
+! Version: 202202271818
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.27 06:16 UTC+8
+! Updated on 2022.02.27 18:18 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1252,7 +1252,6 @@ $script,domain=zdnet.fr,3p
 /\/[0-9a-zA-Z]{31,}\.gif/$image,1p,domain=elitepvpers.com
 /\/[0-9a-z]{5,9}\.js(\?[a-z]{3})?$/$script,domain=dewimg.*|imgtown.*|imgviu.*|mazpic.*|outletpic.*|picrok.*
 /\/[a-z]{4,}\/(?!holly7)[a-z]{3,6}\d\.\d\.\d{1,2}\.[0-9a-f]{32}\.js$/$script,1p,domain=555.porn|hclips.com|hdzog.com|hotmovs.com|imzog.com|javdaddy.com|porn555.com|pornforrelax.com|porngo.tube|pornj.com|pornl.com|pornq.com|porntop.com|privatehomeclips.com|puporn.com|see.xxx|shemalez.com|sss.xxx|thegay.*|tubepornclassic.com|tuberel.com|txxx.com|upornia.*|voyeurhit.com|vxxx.com
-/\/images\/[0-9a-z]{8,9}.jpg/$image,3p,domain=techpowerup.com
 /\/images\/\d{20,}\.gif$/$image,1p,domain=baliphim.com|lucaphim.com
 /\/n0cvd19n0fun\/(?:336x768-|dsw\d|s[a-z]_w3_).*/$image,1p,domain=69games.xxx
 /\/t\/[0-9]{3}\/[0-9]{3}\/a[0-9]{4,9}\.js$/$script
@@ -1467,6 +1466,7 @@ $script,domain=zdnet.fr,3p
 /thermostat.js$script,domain=royle.com
 /tortoise.min.js$domain=boards.net|freeforums.net|proboards.com
 /tp/filter.php?pro=
+/tpucdn\.com\/review\/[a-zA-Z0-9\.\_\-]+[0-9]{9,10}/$image,3p,domain=techpowerup.com
 /track/click.php?c=*&zoneid=$doc
 /transparent-pixel.$badfilter
 /transparent.gif?ray=$badfilter
@@ -17485,16 +17485,16 @@ techperiod.com##.adsbygoogle
 techpowerup.com###viewport > a[href][target="_blank"][rel="nofollow"]
 techpowerup.com###viewport > div a[href][target]
 techpowerup.com##.sidebar-item a[data-height] img
-techpowerup.com##:not(:matches-path(/forums/)) #page > *:not(main) > :not([class^="sidebar-item"]):has(img)
-techpowerup.com##:not(:matches-path(/forums/)) [class]:has(label[class="navigation-toggle"]) + div + *:has(a[href^="/images/"]):has(img)
+techpowerup.com##:not(:matches-path(/forums/)) #page > *:not(main) > *:has(img)
+techpowerup.com##:not(:matches-path(/forums/)) #viewport > *:not([id]):not([class]) > div > *:not(section[class="site-hd__logo-wrapper"])
 techpowerup.com##:not(:matches-path(/forums/)) [class][target]:matches-css(background-image: /none/):not([class="contestbadge"])
-techpowerup.com##:not(:matches-path(/forums/)) [href^="/images/407/"]
+techpowerup.com##:not(:matches-path(/forums/)) [href^="/images/408/"]
 techpowerup.com##:not(:matches-path(/forums/)) [rel]:matches-css(position: /fixed/)
 techpowerup.com##:not(:matches-path(/forums/)) [src*="techpowerup.com"]:upward(a[href^="/"]):not([href^="http"])
 techpowerup.com##:not(:matches-path(/forums/)) [src]:matches-css(position: /fixed/)
-techpowerup.com##:not(:matches-path(/forums/)) a[href^="/images/"] > *:has(span:has(img[src*="tpucdn.com"]))
-techpowerup.com##:not(:matches-path(/forums/)) a[href^="/images/"]:has(span > span:has(img))
-techpowerup.com##:not(:matches-path(/forums/)) aside > div[class$="clearfix"] > span > a
+techpowerup.com##:not(:matches-path(/forums/)) a[href^="/images/"] > *:has(img[src*="tpucdn.com/review/"])
+techpowerup.com##:not(:matches-path(/forums/)) a[href^="/images/"] > figure:has(img)
+techpowerup.com##:not(:matches-path(/forums/)) main + [class]:has(.sidebar-time) > *:has(a[href^="/images/"]):has(img)
 techpowerup.com##[id][class] > div[class]:has(label) + [class]:has(a):has(img)
 techpowerup.com##[src*=".jpg"]:not([src^="https://tpucdn.com/forums/data/avatars/"][loading][class]):not([src^="/gpu-specs/images/b/"][alt][height][width]):upward([href*="."][href*="jpeg"]:not([href*="attach"])
 techpowerup.com##[src]:matches-css(margin-left:/12/)
@@ -21033,7 +21033,7 @@ zxctunnel.com##.adsbygoogle
 ||discorcd-nitro.$all
 ||discorclnitro.$all
 ||discord*.gift^$all,domain=~discord.gift
-||discord*.gifts^$all
+||discord*.gifts^$all,domain=~discord.gifts
 ||discord-app.net^$all
 ||discord-give.$all
 ||discord-nitro-gift.$all
