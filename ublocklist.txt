@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202202280616
+! Version: 202202281819
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.02.28 06:16 UTC+8
+! Updated on 2022.02.28 18:19 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1190,6 +1190,7 @@ $script,domain=zdnet.fr,3p
 *level=$media,domain=v.qq.com,redirect=noopmp3-0.1s
 *pre-roll$media,redirect=noopmp4-1s,domain=camwhores.tv,important
 *preRoll$xhr,domain=porngo.com
+*sdf./images/$image,domain=techpowerup.com
 -adblocker-detector/$badfilter
 -contrib-ads.$script,redirect=noopjs,domain=news18.com
 -google-analytics.$badfilter
@@ -1235,7 +1236,6 @@ $script,domain=zdnet.fr,3p
 /?wm=*&t=onclick|$doc
 /?{BV_SRCID}&$doc
 /[0-9a-f]{32}\/invoke\.js/$script,3p
-/[\.\-\_]{2}/$image,domain=techpowerup.com
 /\.com(\/[a-z]{2,4}){2}\.js$/$script,1p,domain=kekolangti.com|pikupalate.com
 /\.com\/(full)?ad[0-9a-z]+\.(?:gif|jpg)$/$image,1p,domain=palcomix.com
 /\.com\/[-_0-9a-zA-Z]{4,}\/[-\/_0-9a-zA-Z]{30,}$/$script,1p,domain=gu-global.com|uniqlo.com
@@ -1248,6 +1248,7 @@ $script,domain=zdnet.fr,3p
 /\/[0-9a-zA-Z]{31,}\.gif/$image,1p,domain=elitepvpers.com
 /\/[0-9a-z]{5,9}\.js(\?[a-z]{3})?$/$script,domain=dewimg.*|imgtown.*|imgviu.*|mazpic.*|outletpic.*|picrok.*
 /\/[a-z]{4,}\/(?!holly7)[a-z]{3,6}\d\.\d\.\d{1,2}\.[0-9a-f]{32}\.js$/$script,1p,domain=555.porn|hclips.com|hdzog.com|hotmovs.com|imzog.com|javdaddy.com|porn555.com|pornforrelax.com|porngo.tube|pornj.com|pornl.com|pornq.com|porntop.com|privatehomeclips.com|puporn.com|see.xxx|shemalez.com|sss.xxx|thegay.*|tubepornclassic.com|tuberel.com|txxx.com|upornia.*|voyeurhit.com|vxxx.com
+/\/images\/[0-9a-z]{12,16}\.jpg/$image,domain=techpowerup.com
 /\/images\/\d{20,}\.gif$/$image,1p,domain=baliphim.com|lucaphim.com
 /\/n0cvd19n0fun\/(?:336x768-|dsw\d|s[a-z]_w3_).*/$image,1p,domain=69games.xxx
 /\/t\/[0-9]{3}\/[0-9]{3}\/a[0-9]{4,9}\.js$/$script
@@ -2328,6 +2329,7 @@ $script,domain=zdnet.fr,3p
 @@||arthromed.de/fileadmin/*$image,1p
 @@||arthromed.de^$ghide
 @@||articlesmania.me^$ghide
+@@||artunnel57.com^$ghide
 @@||arubedo.*^$ghide
 @@||asadcdn.com/adlib/$css,domain=bild.de
 @@||asadcdn.com/adlib/libmodules/desktop/instream.$script,domain=bild.de
@@ -3821,6 +3823,7 @@ $script,domain=zdnet.fr,3p
 @@||kissasian.*^$ghide
 @@||kisshentai.tv^$ghide
 @@||kissjav.com^$ghide
+@@||kituweh.xyz^$ghide
 @@||kizzboy.com^$ghide
 @@||kollhong.com^$ghide
 @@||kolumbus.fi/cgi-bin/counter.cgi$image,1p
@@ -6218,6 +6221,7 @@ articlix.com##+js(aopr, open)
 articlix.com##+js(nano-sib)
 articlix.com##+js(nowoif)
 artribune.com##+js(aopw, KillAdBlock)
+artunnel57.com,kituweh.xyz##+js(nosiif, adb)
 ashemaletube.com###site-wrapper:style(padding-top: 0 !important;)
 ashemaletube.com##+js(aopr, open)
 ashemaletube.com##.ads-block-rightside
@@ -16116,7 +16120,6 @@ scubidu.eu###custom_html-15
 scubidu.eu###custom_html-16
 scubidu.eu##+js(aost, String.prototype.charCodeAt, ai_)
 scubidu.eu##.adsbygoogle
-sdf./images/$image,domain=techpowerup.com
 sdmy168.com,901209.com##+js(set, judge, noopFunc)
 sdw-net.me##+js(aeld, load, onload)
 se-ed.com##+js(aopr, adBlockDetected)
@@ -17466,16 +17469,16 @@ techperiod.com##.adsbygoogle
 techpowerup.com###viewport > a[href][target="_blank"][rel="nofollow"]
 techpowerup.com###viewport > div a[href][target]
 techpowerup.com##.sidebar-item a[data-height] img
-techpowerup.com##:not(:matches-path(/forums/)) #viewport > *:not(#notpage) [class]:matches-css-before(content:/ /) > *:not(section[class="site-hd__logo-wrapper"]):has(img)
-techpowerup.com##:not(:matches-path(/forums/)) [class][id]:not(#imagecontainer):matches-css-before(content:/ /) > *:not(main) > *:has(img)
+techpowerup.com##:not(:matches-path(/forums/)) #viewport > *:matches-css(display:/block/) [class]:matches-css-before(content:/ /) > *:not(section[class="site-hd__logo-wrapper"]):has(img[src*="techpowerup.com/"])
+techpowerup.com##:not(:matches-path(/forums/)) [class]:not(#imagecontainer):matches-css-before(content:/ /) > *:not(main) > *:has(img[src*="techpowerup.com/"])
 techpowerup.com##:not(:matches-path(/forums/)) [class][target]:matches-css(background-image: /none/):not([class="contestbadge"])
-techpowerup.com##:not(:matches-path(/forums/)) [href*="/images/917/"]
+techpowerup.com##:not(:matches-path(/forums/)) [href*="/forums/914/"]
 techpowerup.com##:not(:matches-path(/forums/)) [rel]:matches-css(position: /fixed/)
 techpowerup.com##:not(:matches-path(/forums/)) [src*="techpowerup.com"]:upward(a[href^="/"]):not([href^="http"])
 techpowerup.com##:not(:matches-path(/forums/)) [src]:matches-css(position: /fixed/)
-techpowerup.com##:not(:matches-path(/forums/)) a[href*="techpowerup.com/images/"] > *:has(img[src*="techpowerup.com/review"])
-techpowerup.com##:not(:matches-path(/forums/)) a[href*="techpowerup.com/images/"] > img[src*="techpowerup.com/review"]
-techpowerup.com##:not(:matches-path(/forums/)) main ~ [class]:has([class*="sidebar-"]) > *:has(a[href*="/images/"]):has(img)
+techpowerup.com##:not(:matches-path(/forums/)) a[href*="techpowerup.com"] > *:has(img[src*="techpowerup.com/review"])
+techpowerup.com##:not(:matches-path(/forums/)) a[href*="techpowerup.com"] > img[src*="techpowerup.com/review"]
+techpowerup.com##:not(:matches-path(/forums/)) main ~ [class]:has([class*="sidebar-"]) > *:has(a):has(img)
 techpowerup.com##[id][class] > div[class]:has(label) + [class]:has(a):has(img)
 techpowerup.com##[src*=".jpg"]:not([src^="https://tpucdn.com/forums/data/avatars/"][loading][class]):not([src^="/gpu-specs/images/b/"][alt][height][width]):upward([href*="."][href*="jpeg"]:not([href*="attach"])
 techpowerup.com##[src]:matches-css(margin-left:/12/)
