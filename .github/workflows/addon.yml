@@ -23,7 +23,7 @@ jobs:
       - name: Get source lists
         env:
           EASYLIST: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
-          ADGUARDCHINESE: https://filters.adtidy.org/extension/ublock/filters/224_optimized.txt
+          EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
           CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
           ADDITION_RULES: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/Additions.txt
           EASYPRIVACY_0: https://easylist-downloads.adblockplus.org/easyprivacy_nointernational.txt
@@ -34,7 +34,7 @@ jobs:
         run: |
           cd ./download
           curl -s $EASYLIST > rawad1.txt
-          curl -s $ADGUARDCHINESE > rawad2.txt
+          curl -s $EASYLISTCHINA > rawad2.txt
           curl -s $CJX_ANNOYANCE > rawad3.txt
           curl -s $ADDITION_RULES > rawad4.txt
           curl -s $EASYPRIVACY_0 > rawpri0.txt
@@ -66,7 +66,6 @@ jobs:
           cd ./fop
           curl -s $FOP_PY > FOP.py
           python FOP.py
-          mv ruleslist.txt ../comb/rules.txt
 
       - name: Add title
         env:
@@ -74,6 +73,7 @@ jobs:
         run: |
           cd ./comb
           curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > title.txt
+          mv ../fop/ruleslist.txt rules.txt
           cat title.txt rules.txt > ../addonlist.txt
 
       - name: Commit and Purge jsDelivr
