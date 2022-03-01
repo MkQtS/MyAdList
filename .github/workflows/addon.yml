@@ -82,8 +82,7 @@ jobs:
         run: |
           cd ./comb
           curl -s $CHECKSUM_SCRIPT > addChecksum.pl
-          perl addChecksum.pl addonlist.txt
-          mv addonlist.txt > ../addonlist.txt
+          perl addChecksum.pl addonlist.txt ../addonlist.txt
 
       - name: Commit and Purge jsDelivr
         run: |
