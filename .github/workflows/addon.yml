@@ -74,7 +74,16 @@ jobs:
           cd ./comb
           curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > title.txt
           mv ../fop/ruleslist.txt rules.txt
-          cat title.txt rules.txt > ../addonlist.txt
+          cat title.txt rules.txt > addonlist.txt
+
+      - name: Add checksum
+        env:
+          CHECKSUM_SCRIPT: https://raw.githubusercontent.com/easylist/listear/master/addChecksum.pl
+        run: |
+          cd ./comb
+          curl -s $CHECKSUM_SCRIPT > addChecksum.pl
+          perl addChecksum.pl addonlist.txt
+          mv addonlist.txt > ../addonlist.txt
 
       - name: Commit and Purge jsDelivr
         run: |
@@ -84,4 +93,4 @@ jobs:
           git add --all
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
