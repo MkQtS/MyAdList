@@ -1,0 +1,98 @@
+name: Combine lists
+
+on:
+  schedule:
+    - cron: 30 10 * * *
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  combine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Basic prepare
+        run: |
+          mkdir -p download ubo mod
+          echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
+
+      - name: Get source lists
+        env:
+          ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
+          PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
+          ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
+          ANTI_AD_EASYLIST: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-easylist.txt
+          UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
+          UBLOCK_BADWARE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt
+          UBLOCK_PRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
+          UBLOCK_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
+          UBLOCK_UNBREAK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
+          UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
+          UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
+          UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
+        run: |
+          cd ./download
+          curl -s $ADGUARD_DNS | sed -e '/^!/d' -e '$G' > agdns.txt
+          curl -s $PETER_LOWE | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > pldns.txt
+          curl -s $ANTI_AD_ADGUARD | sed -e '/^!/d' -e '$G' > dns2.txt
+          curl -s $ANTI_AD_EASYLIST | sed -e '/^!/d' -e '$G' > agh2.txt
+          curl -s $UBLOCK_FILTERS | sed -e '/^![^#]/d' -e '/^!#include/d' -e '/^!$/d' -e '$G' > ubo1.txt
+          curl -s $UBLOCK_BADWARE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo2.txt
+          curl -s $UBLOCK_PRIVACY | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo3.txt
+          curl -s $UBLOCK_ABUSE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo4.txt
+          curl -s $UBLOCK_UNBREAK | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo5.txt
+          curl -s $UBLOCK_2020 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo6.txt
+          curl -s $UBLOCK_2021 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo7.txt
+          curl -s $UBLOCK_2022 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo8.txt
+
+      - name: Combine rules
+        run: |
+          cd ./download
+          cat agdns.txt pldns.txt dns2.txt | sed 's/\r//g' > ../mod/dnscombined.txt
+          cat agdns.txt pldns.txt agh2.txt | sed 's/\r//g' > ../mod/aghcombined.txt
+          cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt | sed 's/\r//g' > ../ubo/ubocombined0.txt
+          cd ../ubo
+          sed '/^!#if/,/^!#endif/d' ubocombined0.txt > ../mod/ubocombined.txt
+          sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
+          sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrome0.txt
+          sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt > uboiffire0.txt
+          sed -n '/^!#if env_mobile/,/^!#endif/p' uboif0.txt > uboifmob0.txt
+          sed '/^!/d' uboifchrome0.txt | sed -e '1i !#if env_chromium' -e '$a !#endif\n' > uboifchrome.txt
+          sed '/^!/d' uboiffire0.txt | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
+          sed '/^!/d' uboifmob0.txt | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
+          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
+          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt | sed '/^$/d' > ../mod/uboif.txt
+          cd ../mod
+          sort -u dnscombined.txt > dnslist.txt
+          sort -u aghcombined.txt > aghlist.txt
+          sort -u ubocombined.txt > ubolist.txt
+
+      - name: Add titles
+        env:
+          DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
+          AGHLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AGHTitle.txt
+          UBLOCK_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/uBoTitle.txt
+        run: |
+          cd ./mod
+          curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
+          curl -s $AGHLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > agh0.txt
+          curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
+          cat dns0.txt dnslist.txt > ../dnsblock.txt
+          cat agh0.txt aghlist.txt > ../adguardhome.txt
+          cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
+
+      - name: Commit and Purge jsDelivr
+        run: |
+          rm -rf download ubo mod
+          git config user.name "actions"
+          git config user.email "action@github.com"
+          git add --all
+          git commit -m "Updated on ${{ env.MODIFY_TIME }}"
+          git push origin main
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/adguardhome.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
