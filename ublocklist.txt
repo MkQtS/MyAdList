@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202203010621
+! Version: 202203011111
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.03.01 06:21 UTC+8
+! Updated on 2022.03.01 11:11 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1236,6 +1236,7 @@ $script,domain=zdnet.fr,3p
 /?wm=*&t=onclick|$doc
 /?{BV_SRCID}&$doc
 /[0-9a-f]{32}\/invoke\.js/$script,3p
+/[\_\.\-][0-9a-z]{8,9}\.jpg/$image,1p,domain=techpowerup.com
 /\.com(\/[a-z]{2,4}){2}\.js$/$script,1p,domain=kekolangti.com|pikupalate.com
 /\.com\/(full)?ad[0-9a-z]+\.(?:gif|jpg)$/$image,1p,domain=palcomix.com
 /\.com\/[-_0-9a-zA-Z]{4,}\/[-\/_0-9a-zA-Z]{30,}$/$script,1p,domain=gu-global.com|uniqlo.com
@@ -1248,7 +1249,6 @@ $script,domain=zdnet.fr,3p
 /\/[0-9a-zA-Z]{31,}\.gif/$image,1p,domain=elitepvpers.com
 /\/[0-9a-z]{5,9}\.js(\?[a-z]{3})?$/$script,domain=dewimg.*|imgtown.*|imgviu.*|mazpic.*|outletpic.*|picrok.*
 /\/[a-z]{4,}\/(?!holly7)[a-z]{3,6}\d\.\d\.\d{1,2}\.[0-9a-f]{32}\.js$/$script,1p,domain=555.porn|hclips.com|hdzog.com|hotmovs.com|imzog.com|javdaddy.com|porn555.com|pornforrelax.com|porngo.tube|pornj.com|pornl.com|pornq.com|porntop.com|privatehomeclips.com|puporn.com|see.xxx|shemalez.com|sss.xxx|thegay.*|tubepornclassic.com|tuberel.com|txxx.com|upornia.*|voyeurhit.com|vxxx.com
-/\/images\/[0-9a-z]{8,9}\.jpg/$image,domain=techpowerup.com
 /\/n0cvd19n0fun\/(?:336x768-|dsw\d|s[a-z]_w3_).*/$image,1p,domain=69games.xxx
 /\/t\/[0-9]{3}\/[0-9]{3}\/a[0-9]{4,9}\.js$/$script
 /^\w+://[0-9a-z]{12}\.dataunlocker\.com//$1p,script
@@ -17446,14 +17446,16 @@ techperiod.com##.adsbygoogle
 techpowerup.com###viewport > a[href][target="_blank"][rel="nofollow"]
 techpowerup.com###viewport > div a[href][target]
 techpowerup.com##.sidebar-item a[data-height] img
+techpowerup.com##:not(:matches-path(/forums/)) *:matches-css(float:/right/):has(label[for="sidebar-check"]) > *:has(img):not(.adblock-tester)
 techpowerup.com##:not(:matches-path(/forums/)) [class][target]:matches-css(background-image: /none/):not([class="contestbadge"])
-techpowerup.com##:not(:matches-path(/forums/)) [href*="/forums/922/"]
+techpowerup.com##:not(:matches-path(/forums/)) [href*="/forums/925/"]
+techpowerup.com##:not(:matches-path(/forums/)) [id] > *:matches-css(display:/block/):has(a[href="/"][title="TechPowerUp"]) [class]:matches-css-before(content:/ /) > *:not(section[class="site-hd__logo-wrapper"]):has(img)
 techpowerup.com##:not(:matches-path(/forums/)) [rel]:matches-css(position: /fixed/)
 techpowerup.com##:not(:matches-path(/forums/)) [src*="techpowerup.com"]:upward(a[href^="/"]):not([href^="http"])
 techpowerup.com##:not(:matches-path(/forums/)) [src]:matches-css(position: /fixed/)
-techpowerup.com##:not(:matches-path(/forums/)) a[href*="/forums/"] img[src^="/review"]
-techpowerup.com##:not(:matches-path(/forums/)) body > [id] > *:matches-css(display:/block/):has(a[href="/"][title="TechPowerUp"]) [class]:matches-css-before(content:/ /) > *:not(section[class="site-hd__logo-wrapper"]):has(img)
-techpowerup.com##:not(:matches-path(/forums/)) main [class]:has(label[for="sidebar-check"]) > *:has(img):not(.adblock-tester)
+techpowerup.com##:not(:matches-path(/forums/)) a[href*="/forums/"] img[src*="/review"]
+techpowerup.com##:not(:matches-path(/forums/)) aside > article[class$="-"]:has(img)
+techpowerup.com##:not(:matches-path(/forums/)) span[class="site-hd__logo-wrapper"] > a:has(img)
 techpowerup.com##[id][class] > div[class]:has(label) + [class]:has(a):has(img)
 techpowerup.com##[src*=".jpg"]:not([src^="https://tpucdn.com/forums/data/avatars/"][loading][class]):not([src^="/gpu-specs/images/b/"][alt][height][width]):upward([href*="."][href*="jpeg"]:not([href*="attach"])
 techpowerup.com##[src]:matches-css(margin-left:/12/)
