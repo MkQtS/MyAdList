@@ -14,13 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Basic prepare
+      - name: Basic preparation
         run: |
-          mkdir -p download fop comb
+          mkdir -p download mod
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y.%m.%d %H:%M UTC+8")" >> $GITHUB_ENV
 
-      - name: Get source lists
+      - name: Get source files
         env:
           EASYLIST: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
           EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
@@ -31,6 +31,7 @@ jobs:
           EASYPRIVACY_2: https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_international.txt
           EASYPRIVACY_3: https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_thirdparty_international.txt
           EASYPRIVACY_4: https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_international.txt
+          FOP_SCRIPT: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
         run: |
           cd ./download
           curl -s $EASYLIST > rawad1.txt
@@ -42,8 +43,9 @@ jobs:
           curl -s $EASYPRIVACY_2 > rawpri2.txt
           curl -s $EASYPRIVACY_3 > rawpri3.txt
           curl -s $EASYPRIVACY_4 > rawpri4.txt
+          curl -s $FOP_SCRIPT > ../mod/FOP.py
 
-      - name: Combine rules
+      - name: Combine and arrange rules
         run: |
           cd ./download
           sed -e '/^\[Adblock/d' -e '$G' rawad1.txt > ad1.txt
@@ -57,39 +59,24 @@ jobs:
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri3.txt | sed '$G' > pri3.txt
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri4.txt | sed '$G' > pri4.txt
           cat pri0.txt pri1.txt pri2.txt pri3.txt pri4.txt | sed '/^!/d' > pricombined.txt
-          cat adcombined.txt pricombined.txt | sed 's/\r//g' > ../fop/ruleslist.txt
-
-      - name: Arrange rules
-        env:
-          FOP_PY: https://raw.githubusercontent.com/FiltersHeroes/ScriptsPlayground/master/scripts/FOP.py
-        run: |
-          cd ./fop
-          curl -s $FOP_PY > FOP.py
+          cat adcombined.txt pricombined.txt | sed 's/\r//g' > ../mod/rules.txt
+          cd ../mod
           python FOP.py
 
       - name: Add title
         env:
           ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
         run: |
-          cd ./comb
+          cd ./mod
           curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > title.txt
-          mv ../fop/ruleslist.txt rules.txt
-          cat title.txt rules.txt > addonlist.txt
-
-      - name: Add checksum
-        env:
-          CHECKSUM_SCRIPT: https://raw.githubusercontent.com/easylist/listear/master/addChecksum.pl
-        run: |
-          cd ./comb
-          curl -s $CHECKSUM_SCRIPT > addChecksum.pl
-          perl addChecksum.pl addonlist.txt ../addonlist.txt
+          cat title.txt rules.txt > ../addonlist.txt
 
       - name: Commit and Purge jsDelivr
         run: |
-          rm -rf download fop comb
+          rm -rf download mod
           git config user.name "actions"
           git config user.email "action@github.com"
-          git add --all
+          git add addonlist.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
