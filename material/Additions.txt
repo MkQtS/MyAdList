@@ -1,12 +1,13 @@
 ! 乘风视频规则 Modified
 ! Source: https://github.com/xinggsf/Adblock-Plus-Rule
-! LastCommit: 70e57faed5ef09a421ef70c0d0c7b131eb9844a9
+! LastCommit: 54965a1cf5f072d9d8143aedf9e2a4d462652e84
 */letv-gug/$media,object-subrequest
 */preroll/$media,domain=91porn.com
 *_ad_$media,domain=youtube.com,3p
 @@||g.w.bilicdn1.com^$script,domain=bilibili.com
 @@||js.tv.itc.cn/gg.seed.js
 @@||mmstat.com^$domain=youku.com
+@@||pstatp.com/obj/ad-tetris-site/file/$image,domain=player.kongbuya.com
 @@||tb.mgtv.com/sdk/*/ad-sdk.
 @@||union.bokecc.com/player
 @@||video.qq.com/fcgi-bin/
@@ -93,7 +94,7 @@
 ||stgowan.com^
 ||synacast.com^
 ||tencentmind.com^
-||toutiaoimg.com/origin/$image,domain=agefans.*|mgtv1.net|agemys.com
+||toutiaoimg.com/origin/$image,domain=mgtv1.net|agemys.com|subaibai.com
 ||trustedgatetocontent.com^
 ||tv.sohu.com/upload/csad/admaster/$image
 ||ulmdb.cn^
@@ -116,6 +117,7 @@
 ||yoyi.com.cn^
 ||zhiziyun.com^
 17173.com###vjs-ad-on-pause
+4kya.com###player_pause
 acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
 age.tv,agemys.com##+js(noeval-if, devtoolsDetector)
 bilibili.com##.ad-report, .ad-floor
@@ -123,9 +125,8 @@ bilibili.com##.gg-floor-module,#slide_ad,a[href^="//cm.bilibili.com"]
 bilibili.com#@#+js(ra, target, a[target=_blank][href^="/"])
 cctv.com###bgAd_div
 cctv.com,ddrk.me,miguvideo.com##+js(aeld,dblclick,isImmediatePropagationStopped)
-dandanzan.top,nunuyy1.*##.gm-fp-body video:style(max-height:100%!important)
+dandanzan10.top,nunuyy10.top##.gm-fp-body video:style(max-height:100%!important)
 douyu.com,huya.com##a[href^="https://g.wan."]
-dyjihe2.com##.tempWrap
 huya.com###hy-ad,#hy-ab,#huya-ab
 imomoe.*###adl,#adr
 iqiyi.com##+js(aeld,dblclick,t.fullToggle)
@@ -134,7 +135,7 @@ iqiyi.com##div[data-adzone],#block-V
 le.com##.min_pause_img
 le.com##+js(set, isAdLoaded, true)
 m.youku.com,v.youku.com##+js(nano-stb, r--,, 0.02)
-netflix.mom,netflixya.com,yanetflix.com##.tips-box
+netflix.mom,netflixya.com,yanetflix.com##.tips-box,#note.popup
 netflix.mom,netflixya.com,yanetflix.com##+js(aopw,document.onkeydown)
 new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
 pptv.com##.advView-two,#p-mark
@@ -145,9 +146,9 @@ qq.com##+js(no-fetch-if, trace.)
 qq.com##+js(no-xhr-if, trace.)
 qq.com##+js(set, Beacon.prototype.fail, null)
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan.top,nunuyy1.*##+js(set, mozRTCPeerConnection, undefined)
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan.top,nunuyy1.*##+js(set, RTCPeerConnection, undefined)
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan.top,nunuyy1.*##+js(set, webkitRTCPeerConnection, undefined)
+v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan10.top,nunuyy10.top##+js(set, mozRTCPeerConnection, undefined)
+v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan10.top,nunuyy10.top##+js(set, RTCPeerConnection, undefined)
+v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan10.top,nunuyy10.top##+js(set, webkitRTCPeerConnection, undefined)
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
 v.youku.com##+js(aeld,dblclick,triggerEvent)
 www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
