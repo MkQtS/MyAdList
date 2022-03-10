@@ -1,8 +1,8 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202203100638
+! Version: 202203101548
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.03.10 06:38 UTC+8
+! Updated on 2022.03.10 15:48 UTC+8
 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
@@ -1202,6 +1202,7 @@ $script,domain=zdnet.fr,3p
 .com/fr.js|$1p
 .com/nativeexternal/$frame,1p
 .com/v.js?v=3|$1p
+.gif$domain=shr.cash
 .html?cep=*&cost=0.$doc
 .net/ads/$badfilter
 .net/c/*?s1=$doc,domain=net
@@ -1313,6 +1314,8 @@ $script,domain=zdnet.fr,3p
 /adstream.$domain=~adstream.com|~adstream.com.ro
 /adu.php$frame
 /advertisement/*$badfilter
+/adw.$domain=~adw.be|~adw.olsztyn.pl|~adw.org|~adw.org.pl|~valadoc.org,badfilter
+/adw.$domain=~adw.be|~adw.olsztyn.pl|~adw.org|~adw.org.pl|~valadoc.org|~adw.amsterdam.nl
 /aff.php?*&_cbUrl=$doc
 /afon7.$script,1p
 /all-for-adsense/*
@@ -6008,7 +6011,11 @@ aniwatcher.com##.cjrm
 aniwatcher.com##[href^="https://www.binance.com/en/register"]
 annabelle.ch##+js(aopr, _sp_._networkListenerData)
 annuaire-bleu.net##+js(nostif, adblock, 1000)
+anoboy.*###popup_bawah
+anoboy.*###popup_box
 anoboy.*##+js(acis, addEventListener, google_ad_client)
+anoboy.*##[href^="http://click2go.me/"]
+anoboy.*##[href^="https://bit.ly/"]
 anoboy.*##div#judi2, #coloma, [href^="//kokipoker.net"]
 anomize.xyz##+js(nano-sib)
 anomize.xyz##+js(nosiif, visibility, 1000)
@@ -15315,6 +15322,7 @@ pornzog.com##.video-ntv-list
 port.hu##+js(aeld, DOMContentLoaded, offsetHeight)
 port.hu##+js(nostif, offsetHeight)
 portable4pc.com##+js(nosiif, visibility, 1000)
+portaliz.site##+js(no-xhr-if, adsbygoogle)
 portevergladeswebcam.com###partnerad1div
 positive-feedback.com##.ad-row-horizontal
 positive-feedback.com##.archive_ad_block
@@ -16447,6 +16455,8 @@ shortzzy.*##.btnlink
 shortzzy.*##.navbar-right.navbar-nav.nav
 shpl.xyz##+js(nowoif)
 shr.cash##+js(aopr, app_vars.force_disable_adblock)
+shr.cash##+js(aopr, open)
+shr.cash##.swal2-backdrop-show.swal2-center.swal2-container
 shrib.com##+js(nostif, adb, 6000)
 shrink-service.it##+js(aopr, WebAssembly)
 shrink-service.it##+js(aopr, open)
