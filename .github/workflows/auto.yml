@@ -82,6 +82,7 @@ jobs:
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
 
   combine:
+    needs: addonlist
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
