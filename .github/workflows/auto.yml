@@ -55,7 +55,7 @@ jobs:
           curl -s $EASYPRIVACY_3 > rawpri3.txt
           curl -s $EASYPRIVACY_4 > rawpri4.txt
           curl -s $FOP_SCRIPT > ../fop/FOP.py
-          curl -s $ADGUARD_DNS | sed -e '/^!/d' -e '$G' > dns1.txt
+          curl -s $ADGUARD_DNS | sed -e '/^[^|@]/d' -e '$G' > dns1.txt
           curl -s $ANTI_AD_ADGUARD | sed -e '/^!/d' -e '$G' > dns2.txt
           curl -s $PETER_LOWE | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > dns3.txt
           cd ../ubo
