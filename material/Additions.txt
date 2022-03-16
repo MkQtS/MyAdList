@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! Source: https://github.com/xinggsf/Adblock-Plus-Rule
-! LastCommit: 12578fe076ce0253b69b83bb695c1c1db8944bad
+! LastCommit: b07928433db7c223ac799a817ce7d4c64c708ac2
 */letv-gug/$media,object-subrequest
 */preroll/$media,domain=91porn.com
 *_ad_$media,domain=youtube.com,3p
@@ -10,7 +10,7 @@
 @@||pstatp.com/obj/ad-tetris-site/file/$image,domain=player.kongbuya.com
 @@||tb.mgtv.com/sdk/*/ad-sdk.
 @@||union.bokecc.com/player
-@@||video.qq.com/fcgi-bin/
+@@||union.video.qq.com/fcgi-bin/$script,domain=qq.com
 ||17173.com/batch_show?ads=
 ||17173.com/if/$script,subdocument
 ||91p20.space^
@@ -117,6 +117,11 @@
 ||youtube.com/ptracking?
 ||yoyi.com.cn^
 ||zhiziyun.com^
+|ws://p2p.$websocket
+|ws://tracker.$websocket
+|wss://$websocket,domain=dandanzan10.top|nunuyy10.top
+|wss://p2p.$websocket
+|wss://tracker.$websocket
 17173.com###vjs-ad-on-pause
 4kya.com###player_pause
 acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
@@ -141,15 +146,11 @@ netflix.mom,netflixya.com,yanetflix.com##+js(aopw,document.onkeydown)
 new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
 pptv.com##.advView-two,#p-mark
 qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap
-qq.com##+js(json-prune,ad,vinfo)
-qq.com##+js(nano-sib, \u5012\u8ba1\u65f6)
+qq.com##+js(json-prune,adList.item)
 qq.com##+js(no-fetch-if, trace.)
 qq.com##+js(no-xhr-if, trace.)
 qq.com##+js(set, Beacon.prototype.fail, null)
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan10.top,nunuyy10.top##+js(set, mozRTCPeerConnection, undefined)
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan10.top,nunuyy10.top##+js(set, RTCPeerConnection, undefined)
-v.qq.com,bilibili.com,huya.com,le.com,mgtv.com,dandanzan10.top,nunuyy10.top##+js(set, webkitRTCPeerConnection, undefined)
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
 v.youku.com##+js(aeld,dblclick,triggerEvent)
 www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
