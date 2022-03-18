@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! Source: https://github.com/xinggsf/Adblock-Plus-Rule
-! LastCommit: 84cee50a470602905ecf5a2711667c17813d6331
+! LastCommit: f58ea2a15711995bc57478fcedaf29d3886f82db
 */letv-gug/$media,object-subrequest
 */preroll/$media,domain=91porn.com
 *_ad_$media,domain=youtube.com,3p
@@ -73,14 +73,15 @@
 ||l.qq.com/livemsg?
 ||l.qq.com/lview?
 ||letvimg.com/*_gugwl/$image
-||letvimg.com^$object,object-subrequest
+||letvimg.com/$object,xhr
 ||litix.io^
 ||log1.17173.com^
-||mark.l.qq.com/fcgi-bin/get_video_mark_all?idlist=
+||mark.l.qq.com/fcgi-bin/get_video_mark_all?
 ||miaozhen.com^
 ||news.ssp.qq.com/app
 ||onenews.vip^
 ||osswc.pplive.cn/cccms/$image
+||p2p.$xhr,websocket,ping
 ||pub.funshion.com^
 ||qdwght.com^
 ||quickapp.cn^
@@ -118,11 +119,6 @@
 ||youtube.com/ptracking?
 ||yoyi.com.cn^
 ||zhiziyun.com^
-|ws://p2p.$websocket
-|ws://tracker.$websocket
-|wss://$websocket,domain=dandanzan10.top|nunuyy10.top
-|wss://p2p.$websocket
-|wss://tracker.$websocket
 17173.com###vjs-ad-on-pause
 4kya.com###player_pause
 acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
@@ -132,6 +128,9 @@ bilibili.com##.gg-floor-module,#slide_ad,a[href^="//cm.bilibili.com"]
 cctv.com###bgAd_div
 cctv.com,ddrk.me,miguvideo.com##+js(aeld,dblclick,isImmediatePropagationStopped)
 dandanzan10.top,nunuyy10.top##.gm-fp-body video:style(max-height:100%!important)
+dandanzan10.top,nunuyy10.top##+js(set,RTCPeerConnection,null)
+dandanzan10.top,nunuyy10.top##+js(set,webkitRTCPeerConnection,null)
+dandanzan10.top,nunuyy10.top#@#+js(nowebrtc)
 douyu.com,huya.com##a[href^="https://g.wan."]
 hanmidy.com,bimiacg4.net##+js(acis,Object.defineProperty,location.href)
 huya.com###hy-ad,#hy-ab,#huya-ab
@@ -145,7 +144,7 @@ m.youku.com,v.youku.com##+js(nano-stb, r--,, 0.02)
 netflix.mom,netflixya.com,yanetflix.com##.tips-box,#note.popup
 netflix.mom,netflixya.com,yanetflix.com##+js(aopw,document.onkeydown)
 new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
-pan.baidu.com,www.bilibili.com,v.qq.com##+js(aeld,ratechange)
+pan.baidu.com,www.bilibili.com,qq.com##+js(aeld,ratechange)
 pptv.com##.advView-two,#p-mark
 qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap
 qq.com##+js(json-prune,adList.item)
@@ -153,13 +152,11 @@ qq.com##+js(no-fetch-if, trace.)
 qq.com##+js(no-xhr-if, trace.)
 qq.com##+js(set, Beacon.prototype.fail, null)
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
-v.qq.com##+js(aeld,ratechange,context.dataset)
 v.qq.com#@#+js(set, Beacon.prototype.fail, null)
+v.qq.com,douyu.com,huya.com,yy.com,le.com##+js(nowebrtc)
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
 v.youku.com##+js(aeld,dblclick,triggerEvent)
 www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
-www.douyu.com##+js(set, RTCPeerConnection.prototype.addStream, noopFunc)
-www.douyu.com##+js(set, webkitRTCPeerConnection.prototype.addStream, noopFunc)
 www.ted.com##.gm-fp-body .justify-center.tracking-tightest
 yatu.tv##.dplayer-web-fullscreen-fix #tburl,#loadtop,[id^=myas],#myds1,#daohang
 yatu.tv,yhdm15.com##+js(set,document.oncontextmenu,trueFunc)
