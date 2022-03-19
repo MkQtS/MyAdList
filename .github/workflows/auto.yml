@@ -39,6 +39,7 @@ jobs:
           UBLOCK_PRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
           UBLOCK_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
           UBLOCK_UNBREAK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
+          UBLOCK_QUICK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
@@ -64,15 +65,16 @@ jobs:
           curl -s $UBLOCK_PRIVACY | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo3.txt
           curl -s $UBLOCK_ABUSE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo4.txt
           curl -s $UBLOCK_UNBREAK | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo5.txt
-          curl -s $UBLOCK_2020 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo6.txt
-          curl -s $UBLOCK_2021 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo7.txt
-          curl -s $UBLOCK_2022 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo8.txt
+          curl -s $UBLOCK_QUICK | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo6.txt
+          curl -s $UBLOCK_2020 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo7.txt
+          curl -s $UBLOCK_2021 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo8.txt
+          curl -s $UBLOCK_2022 | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo9.txt
 
       - name: Arrange addon rules
         run: |
           cd ./download
           sed -e '/^\[Adblock/d' -e '$G' rawad1.txt > ad1.txt
-          sed '$G' rawad2.txt > ad2.txt
+          sed -e '/^\[Adblock/d' -e '$G' rawad2.txt > ad2.txt
           sed -e '/^\[Adblock/d' -e '/^!#include/d' -e '$G' rawad3.txt > ad3.txt
           sed '$G' rawad4.txt > ad4.txt
           cat ad1.txt ad2.txt ad3.txt ad4.txt | sed '/^!/d' > adcombined.txt
@@ -87,12 +89,12 @@ jobs:
           python FOP.py
           mv addonrules.txt ../mod/addonrules.txt
 
-      - name: Combine rules
+      - name: Combine other rules
         run: |
           cd ./download
           cat dns1.txt dns2.txt dns3.txt | sed 's/\r//g' > ../mod/dnscombined.txt
           cd ../ubo
-          cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt | sed 's/\r//g' > ubocombined0.txt
+          cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt ubo9.txt | sed 's/\r//g' > ubocombined0.txt
           sed '/^!#if/,/^!#endif/d' ubocombined0.txt > ../mod/ubocombined.txt
           sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
           sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrome0.txt
@@ -107,7 +109,7 @@ jobs:
           sort -u dnscombined.txt > dnslist.txt
           sort -u ubocombined.txt > ubolist.txt
 
-      - name: Add title
+      - name: Add titles
         env:
           ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
           DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
@@ -132,3 +134,4 @@ jobs:
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+
