@@ -1,7 +1,7 @@
 ! 乘风视频规则 Modified
 ! Source: https://github.com/xinggsf/Adblock-Plus-Rule
-! LastCommit: a981b89b6a5954f6016095a1b997348699247483
-*/letv-gug/$media,object-subrequest
+! LastCommit: 5dd67d37de6d9cb46d1648ca11c0a0c5b55d115d
+*/letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,domain=youtube.com,3p
 @@||g.w.bilicdn1.com^$script,domain=bilibili.com
@@ -135,7 +135,6 @@ douyu.com##+js(set, RTCPeerConnection.prototype.addTrack, noopFunc)
 douyu.com,huya.com##a[href^="https://g.wan."]
 hanmidy.com,bimiacg4.net##+js(acis,Object.defineProperty,location.href)
 huya.com###hy-ad,#hy-ab,#huya-ab
-huya.com,yy.com,le.com##+js(nowebrtc)
 imomoe.*###adl,#adr
 iqiyi.com##+js(aeld,dblclick,t.fullToggle)
 iqiyi.com##+js(set, Object.prototype.parseXML, noopFunc)
@@ -153,6 +152,7 @@ qq.com##+js(json-prune,adList.item)
 qq.com##+js(no-fetch-if, trace.)
 qq.com##+js(no-xhr-if, trace.)
 qq.com##+js(set, Beacon.prototype.fail, null)
+qq.com,huya.com,yy.com,le.com##+js(nowebrtc)
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
 v.qq.com#@#+js(set, Beacon.prototype.fail, null)
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
