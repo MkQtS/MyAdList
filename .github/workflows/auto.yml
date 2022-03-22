@@ -84,13 +84,13 @@ jobs:
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri3.txt | sed '$G' > pri3.txt
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri4.txt | sed '$G' > pri4.txt
           cat pri0.txt pri1.txt pri2.txt pri3.txt pri4.txt | sed '/^!/d' > pricombined.txt
-          cat adcombined.txt pricombined.txt | sed 's/\r//g' > addonrules0.txt
-          sed -n '/^||/p' addonrules0.txt | sort -u | sed '$G' > redun_raw.txt
+          cat adcombined.txt pricombined.txt | sort -u | sed 's/\r//g' > addonrules0.txt
+          sed -n '/^||/p' addonrules0.txt | sed '$G' > redun_raw.txt
           sed -n '/\^$/p' redun_raw.txt | sed '$G' > redun0.txt
           sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check1.txt
           sed -n '/\^\$popup$/p' redun_raw.txt > redun_check2.txt
           sed -n '/\^\$popup,third-party$/p' redun_raw.txt > redun_check3.txt
-          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt > redun_check.txt
+          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt | sort -u > redun_check.txt
           diff addonrules0.txt redun_check.txt | grep -E '< .+' | sed 's/^..//g' > addonrules1.txt
           sed -e 's/\$third-party//g' -e '$G' redun_check1.txt > redun1.txt
           sed -e 's/\$popup//g' -e '$G' redun_check2.txt > redun2.txt
