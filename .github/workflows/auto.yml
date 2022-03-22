@@ -84,7 +84,7 @@ jobs:
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri3.txt | sed '$G' > pri3.txt
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri4.txt | sed '$G' > pri4.txt
           cat pri0.txt pri1.txt pri2.txt pri3.txt pri4.txt | sed '/^!/d' > pricombined.txt
-          cat adcombined.txt pricombined.txt | sort -u | sed 's/\r//g' > addonrules0.txt
+          cat adcombined.txt pricombined.txt | sed 's/\r//g' | sort -u > addonrules0.txt
           sed -n '/^||/p' addonrules0.txt | sed '$G' > redun_raw.txt
           sed -n '/\^$/p' redun_raw.txt | sed '$G' > redun0.txt
           sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check1.txt
