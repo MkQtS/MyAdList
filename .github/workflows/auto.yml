@@ -101,7 +101,7 @@ jobs:
           comm -12 redun_3p_1.txt redun_pop_1.txt > redun_3p_pop.txt
           sed -e 's/\^/\^\$third-party/g' -e '$G' redun_3p_only.txt > redun_part1.txt
           sed -e 's/\^/\^\$popup/g' -e '$G' edun_pop_only.txt > redun_part2.txt
-          sed -e 's/\^/\^\$popup,third-party/g' -e -e '$G' edun_3p_pop > redun_part3.txt
+          sed -e 's/\^/\^\$popup,third-party/g' -e -e '$G' redun_3p_pop > redun_part3.txt
           cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt > addonrules2.txt
           cat addonrules1.txt addonrules2.txt > ../fop/addonrules.txt
           cd ../fop
