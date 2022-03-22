@@ -85,16 +85,20 @@ jobs:
           sed -n '/^! Chinese/,/^! Croatian/p' rawpri4.txt | sed '$G' > pri4.txt
           cat pri0.txt pri1.txt pri2.txt pri3.txt pri4.txt | sed '/^!/d' > pricombined.txt
           cat adcombined.txt pricombined.txt | sed 's/\r//g' > addonrules0.txt
+
           sed -n '/^\|\|[\w-]+\^$/p' addonrules0.txt | sort -u | sed '$G' > redun0.txt
           sed -n '/^\|\|[\w-]+\^\$third-party$/p' addonrules0.txt | sed '$G' > redun1.txt
           sed -n '/^\|\|[\w-]+\^\$popup$/p' addonrules0.txt | sed '$G' > redun2.txt
           sed -n '/^\|\|[\w-]+\^\$popup,third-party$/p' addonrules0.txt | sed '$G' > redun3.txt
           cat redun1.txt redun3.txt | sed 's/\$\S+//g' | sort -u > redun_3p.txt
           cat redun2.txt redun3.txt | sed 's/\$\S+//g' | sort -u > redun_pop.txt
-          cat redun0.txt redun_pop.txt | sort | uniq -d > redun_temp_1.txt
-          cat redun_pop.txt redun_temp_1.txt | sort | uniq -u > redun_pop1.txt
-          cat redun0.txt redun_3p.txt | sort | uniq -d > redun_temp_2.txt
-          cat redun_3p.txt redun_temp_2.txt | sort | uniq -u > redun_3p1.txt
+
+          cat redun0.txt redun_3p.txt | sort | uniq -d > redun_temp_1.txt
+          cat redun_3p.txt redun_temp_1.txt | sort | uniq -u > redun_3p1.txt
+
+          cat redun0.txt redun_pop.txt | sort | uniq -d > redun_temp_2.txt
+          cat redun_pop.txt redun_temp_2.txt | sort | uniq -u > redun_pop1.txt
+
           cat redun_pop1.txt redun_3p1.txt | sort | uniq -d > redun_pop_3p.txt
           cat redun_pop1.txt redun_pop_3p.txt | sort | uniq -u > redun_pop2.txt
           cat redun_3p1.txt redun_pop_3p.txt | sort | uniq -u > redun_3p2.txt
@@ -103,7 +107,7 @@ jobs:
           sed 's/\^/\^\$popup/g' redun_pop2.txt > redun_part3.txt
           cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt > addonrules1.txt
           sed -e '/^\|\|[\w-]+\^$/d' -e '/^\|\|[\w-]+\^\$popup$/d' -e '/^\|\|[\w-]+\^\$third-party$/d' -e '/^\|\|[\w-]+\^\$popup,third-party$/d' addonrules0.txt > addonrules2.txt
-          cat addonrules1.txt addonrules2.txt | sed 's/\r//g' > ../fop/addonrules.txt
+          cat addonrules1.txt addonrules2.txt | sort -u > ../fop/addonrules.txt
           cd ../fop
           python FOP.py
           mv addonrules.txt ../mod/addonrules.txt
