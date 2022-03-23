@@ -154,15 +154,16 @@ jobs:
           sed '/^!/d' uboiffire0.txt | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
           sed '/^!/d' uboifmob0.txt | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
-          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt | sed '/^$/d' > uboif.txt
-          cat ubocombined1.txt uboif.txt > ../title/ubolist.txt
+          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifleft.txt > uboif.txt
+          cat ubocombined1.txt uboif.txt | sed '/^$/d' > ../title/ubolist.txt
 
-      - name: Add titles
+      - name: Add titles and Delete temp files
         run: |
           cd ./title
           cat addon0.txt addonrules.txt > ../addonlist.txt
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat ubo0.txt ubolist.txt > ../ublocklist.txt
+          cd ..
           rm -rf title addon fop dns ubo
 
       - name: Commit
