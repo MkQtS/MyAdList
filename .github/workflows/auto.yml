@@ -76,7 +76,8 @@ jobs:
           sed -e '/^\[Adblock/d' -e '$G' rawad1.txt > ad1.txt
           sed -e '/^\[Adblock/d' -e '$G' rawad2.txt > ad2.txt
           sed -e '/^\[Adblock/d' -e '/^!#include/d' -e '$G' rawad3.txt > ad3.txt
-          sed '$G' rawad4.txt > ad4.txt
+          sed -e '/+js/d' -e '$G' rawad4.txt > ad4.txt
+          sed -n '/+js/p' rawad4.txt > ../mod/addon1.txt
           cat ad1.txt ad2.txt ad3.txt ad4.txt | sed '/^!/d' > adcombined.txt
           sed -e '/^\[Adblock/d' -e '$G' rawpri0.txt > pri0.txt
           sed -n '/^!---------- Chinese/,/^!---------- Czech/p' rawpri1.txt | sed '$G' > pri1.txt
@@ -90,30 +91,44 @@ jobs:
           sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check1.txt
           sed -n '/\^\$popup$/p' redun_raw.txt > redun_check2.txt
           sed -n '/\^\$popup,third-party$/p' redun_raw.txt > redun_check3.txt
-          sed -n '/\^\$image$/p' redun_raw.txt > redun_check4.txt
-          sed -n '/\^\$script$/p' redun_raw.txt > redun_check5.txt
-          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt redun_check4.txt redun_check5.txt | sort -u > redun_check.txt
+          sed -n '/\^\$script$/p' redun_raw.txt > redun_check4.txt
+          sed -n '/\^\$script,third-party$/p' redun_raw.txt > redun_check5.txt
+          sed -n '/\^\$image$/p' redun_raw.txt > redun_check6.txt
+          sed -n '/\^\$image,third-party$/p' redun_raw.txt > redun_check7.txt
+          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt redun_check4.txt redun_check5.txt redun_check6.txt redun_check7.txt | sort -u > redun_check.txt
           diff addonrules0.txt redun_check.txt | grep -E '< .+' | sed 's/^..//g' > addonrules1.txt
           sed -e 's/\$third-party//g' -e '$G' redun_check1.txt > redun1.txt
           sed -e 's/\$popup//g' -e '$G' redun_check2.txt > redun2.txt
           sed -e 's/\$popup,third-party//g' -e '$G' redun_check3.txt > redun3.txt
-          cat redun1.txt redun3.txt | sort -u > redun_3p.txt
+          sed -e 's/\$script//g' -e '$G' redun_check4.txt > redun4.txt
+          sed -e 's/\$script,third-party//g' -e '$G' redun_check5.txt > redun5.txt
+          sed -e 's/\$image//g' -e '$G' redun_check6.txt > redun6.txt
+          sed -e 's/\$image,third-party//g' -e '$G' redun_check7.txt > redun7.txt
+          cat redun1.txt redun3.txt redun5.txt redun7.txt | sort -u > redun_3p.txt
           cat redun2.txt redun3.txt | sort -u > redun_pop.txt
-          sed -e 's/\$image//g' -e '$G' redun_check4.txt | sort -u > redun_image.txt
-          sed -e 's/\$script//g' -e '$G' redun_check5.txt | sort -u > redun_script.txt
+          cat redun4.txt redun5.txt | sort -u > redun_script.txt
+          cat redun6.txt redun7.txt | sort -u > redun_image.txt
           diff redun0.txt redun_3p.txt | grep -E '> .+' | sed 's/^..//g' > redun_3p_1.txt
           diff redun0.txt redun_pop.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_1.txt
-          diff redun_3p_1.txt redun_pop_1.txt | grep -E '< .+' | sed 's/^..//g' > redun_3p_only.txt
-          diff redun_3p_1.txt redun_pop_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_only.txt
+          diff redun0.txt redun_script.txt | grep -E '> .+' | sed 's/^..//g' > redun_script_1.txt
+          diff redun0.txt redun_image.txt | grep -E '> .+' | sed 's/^..//g' > redun_image_1.txt
           comm -12 redun_3p_1.txt redun_pop_1.txt > redun_3p_pop.txt
-          diff redun0.txt redun_image.txt | grep -E '> .+' | sed 's/^..//g' > redun_image_only.txt
-          diff redun0.txt redun_script.txt | grep -E '> .+' | sed 's/^..//g' > redun_script_only.txt
+          comm -12 redun_3p_1.txt redun_script_1.txt > redun_3p_script.txt
+          comm -12 redun_3p_1.txt redun_image_1.txt > redun_3p_image.txt
+          diff redun_3p_1.txt redun_pop_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_only.txt
+          diff redun_3p_1.txt redun_script_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_script_only.txt
+          diff redun_3p_1.txt redun_image_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_image_only.txt
+          cat redun_3p_1.txt redun_pop_1.txt redun_script_1.txt redun_image_1.txt | sort -u > redun_passed_all.txt
+          cat redun_pop_1.txt redun_script_1.txt redun_image_1.txt | sort -u > redun_passed_for3p.txt
+          diff redun_passed_for3p.txt redun_passed_all.txt | grep -E '> .+' | sed 's/^..//g' > redun_3p_only.txt
           sed -e 's/\^/\^\$third-party/g' -e '$G' redun_3p_only.txt > redun_part1.txt
           sed -e 's/\^/\^\$popup/g' -e '$G' redun_pop_only.txt > redun_part2.txt
           sed -e 's/\^/\^\$popup,third-party/g' -e '$G' redun_3p_pop.txt > redun_part3.txt
-          sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt > redun_part4.txt
-          sed -e 's/\^/\^\$script/g' -e '$G' redun_script_only.txt > redun_part5.txt
-          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt redun_part4.txt redun_part5.txt > addonrules2.txt
+          sed -e 's/\^/\^\$script/g' -e '$G' redun_script_only.txt > redun_part4.txt
+          sed -e 's/\^/\^\$script,third-party/g' -e '$G' redun_3p_script.txt > redun_part5.txt
+          sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt > redun_part6.txt
+          sed -e 's/\^/\^\$image,third-party/g' -e '$G' redun_3p_image.txt > redun_part7.txt
+          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt redun_part4.txt redun_part5.txt redun_part6.txt redun_part7.txt > addonrules2.txt
           cat addonrules1.txt addonrules2.txt > ../fop/addonrules.txt
           cd ../fop
           python FOP.py
@@ -149,7 +164,7 @@ jobs:
           curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > addon0.txt
           curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
           curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
-          cat addon0.txt addonrules.txt > ../addonlist.txt
+          cat addon0.txt addon1.txt addonrules.txt > ../addonlist.txt
           cat dns0.txt dnslist.txt > ../dnsblock.txt
           cat ubo0.txt ubolist.txt uboif.txt > ../ublocklist.txt
 
