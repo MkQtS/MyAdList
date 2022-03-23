@@ -143,7 +143,7 @@ jobs:
 
       - name: Combine uBlock lists
         run: |
-          cd ../ubo
+          cd ./ubo
           cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt ubo9.txt | sed 's/\r//g' > ubocombined0.txt
           sed '/^!#if/,/^!#endif/d' ubocombined0.txt | sort -u > ubocombined1.txt
           sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
