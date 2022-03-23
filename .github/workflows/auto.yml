@@ -90,22 +90,30 @@ jobs:
           sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check1.txt
           sed -n '/\^\$popup$/p' redun_raw.txt > redun_check2.txt
           sed -n '/\^\$popup,third-party$/p' redun_raw.txt > redun_check3.txt
-          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt | sort -u > redun_check.txt
+          sed -n '/\^\$image$/p' redun_raw.txt > redun_check4.txt
+          sed -n '/\^\$script$/p' redun_raw.txt > redun_check5.txt
+          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt redun_check4.txt redun_check5.txt | sort -u > redun_check.txt
           diff addonrules0.txt redun_check.txt | grep -E '< .+' | sed 's/^..//g' > addonrules1.txt
           sed -e 's/\$third-party//g' -e '$G' redun_check1.txt > redun1.txt
           sed -e 's/\$popup//g' -e '$G' redun_check2.txt > redun2.txt
           sed -e 's/\$popup,third-party//g' -e '$G' redun_check3.txt > redun3.txt
           cat redun1.txt redun3.txt | sort -u > redun_3p.txt
           cat redun2.txt redun3.txt | sort -u > redun_pop.txt
+          sed -e 's/\$image//g' -e '$G' redun_check4.txt | sort -u > redun_image.txt
+          sed -e 's/\$script//g' -e '$G' redun_check5.txt | sort -u > redun_script.txt
           diff redun0.txt redun_3p.txt | grep -E '> .+' | sed 's/^..//g' > redun_3p_1.txt
           diff redun0.txt redun_pop.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_1.txt
           diff redun_3p_1.txt redun_pop_1.txt | grep -E '< .+' | sed 's/^..//g' > redun_3p_only.txt
           diff redun_3p_1.txt redun_pop_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_only.txt
           comm -12 redun_3p_1.txt redun_pop_1.txt > redun_3p_pop.txt
+          diff redun0.txt redun_image.txt | grep -E '> .+' | sed 's/^..//g' > redun_image_only.txt
+          diff redun0.txt redun_script.txt | grep -E '> .+' | sed 's/^..//g' > redun_script_only.txt
           sed -e 's/\^/\^\$third-party/g' -e '$G' redun_3p_only.txt > redun_part1.txt
           sed -e 's/\^/\^\$popup/g' -e '$G' redun_pop_only.txt > redun_part2.txt
           sed -e 's/\^/\^\$popup,third-party/g' -e '$G' redun_3p_pop.txt > redun_part3.txt
-          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt > addonrules2.txt
+          sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt > redun_part4.txt
+          sed -e 's/\^/\^\$script/g' -e '$G' redun_script_only.txt > redun_part5.txt
+          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt redun_part4.txt redun_part5.txt > addonrules2.txt
           cat addonrules1.txt addonrules2.txt > ../fop/addonrules.txt
           cd ../fop
           python FOP.py
