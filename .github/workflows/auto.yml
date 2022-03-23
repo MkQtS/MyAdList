@@ -54,7 +54,7 @@ jobs:
           curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
           cd ../addon
           curl -s $EASYLIST | sed -e '/^\[Adblock/d' -e '$G' > ad1.txt
-          curl -s $EASYLISTCHINA | sed -e '/^\[Adblock/d' -e '$G' rawad2.txt > ad2.txt
+          curl -s $EASYLISTCHINA | sed -e '/^\[Adblock/d' -e '$G' > ad2.txt
           curl -s $CJX_ANNOYANCE | sed -e '/^\[Adblock/d' -e '/^!#include/d' -e '$G' > ad3.txt
           curl -s $ADDITION_RULES | sed '$G' > rawad4.txt
           curl -s $EASYPRIVACY_0 | sed -e '/^\[Adblock/d' -e '$G' > pri0.txt
