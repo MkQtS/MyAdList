@@ -67,7 +67,7 @@ jobs:
           cd ../dns
           curl -s $ADGUARD_DNS | sed -e '/^[^|@]/d' -e '$G' > dns1.txt
           curl -s $ANTI_AD_ADGUARD | sed -e '/^!/d' -e '$G' > dns2.txt
-          curl -s $PETER_LOWE | sed -e '/^!/d' -e '/^\[Adblock Plus/d' -e '$G' > dns3.txt
+          curl -s $PETER_LOWE | sed -e '/^!/d' -e '/^\[Adblock/d' -e '$G' > dns3.txt
           cd ../ubo
           curl -s $UBLOCK_FILTERS | sed -e '/^![^#]/d' -e '/^!#include/d' -e '/^!$/d' -e '$G' > ubo1.txt
           curl -s $UBLOCK_BADWARE | sed -e '/^![^#]/d' -e '/^!$/d' -e '$G' > ubo2.txt
@@ -133,13 +133,18 @@ jobs:
           cat addonrules1.txt addonrules2.txt > ../fop/addon_fop.txt
           cd ../fop
           python FOP.py
-          cat addon_fop.txt ../addon/addon_advanced.txt | sort -u > ../title/addonrules.txt
+          cat addon_fop.txt ../addon/addon_advanced.txt | sed '/^$/d' > ../title/addonrules.txt
 
       - name: Combine DNS lists
         run: |
           cd ./dns
-          cat dns1.txt dns2.txt dns3.txt | sed 's/\r//g' > dnscombined.txt
-          sort -u dnscombined.txt > ../title/dnslist.txt
+          cat dns1.txt dns2.txt dns3.txt | sed 's/\^|/\^/g' |sed 's/\r//g' > dnscombined.txt
+          sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' > except0.txt
+          sed 's/@@//g' except0.txt | sort -u > except1.txt
+          sed '/^@@/d' dnscombined.txt | sort -u > common0.txt
+          diff except1.txt common0.txt | grep -E '> .+' | sed 's/^..//g' > common.txt
+          sed 's/^/@@/g' except1.txt > except.txt
+          cat except.txt common.txt | sed '/^$/d' > ../title/dnslist.txt
 
       - name: Combine uBlock lists
         run: |
