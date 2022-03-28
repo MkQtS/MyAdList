@@ -83,11 +83,13 @@ jobs:
         run: |
           cd ./addon
           sed '/+js/d' rawad4.txt > ad4.txt
-          sed -n '/+js/p' rawad4.txt > addon_advanced.txt
+          sed -n '/+js/p' rawad4.txt > advanced.txt
           cat ad1.txt ad2.txt ad3.txt ad4.txt | sed 's/\r//g' > adcombined.txt
           cat pri0.txt pri1.txt pri2.txt pri3.txt pri4.txt | sed 's/\r//g' > pricombined.txt
           cat adcombined.txt pricombined.txt | sed '/^!/d' | sort -u > addonrules0.txt
-          sed -n '/^||/p' addonrules0.txt > redun_raw.txt
+          sed -n '/^##/p' addonrules0.txt > general_hide.txt
+          sed '/^##/d' addonrules0.txt > addonrules1.txt
+          sed -n '/^||/p' addonrules1.txt > redun_raw.txt
           sed -n '/\^$/p' redun_raw.txt > redun0.txt
           sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check1.txt
           sed -n '/\^\$popup$/p' redun_raw.txt > redun_check2.txt
@@ -97,7 +99,7 @@ jobs:
           sed -n '/\^\$image$/p' redun_raw.txt > redun_check6.txt
           sed -n '/\^\$image,third-party$/p' redun_raw.txt > redun_check7.txt
           cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt redun_check4.txt redun_check5.txt redun_check6.txt redun_check7.txt | sort -u > redun_check.txt
-          diff addonrules0.txt redun_check.txt | grep -E '< .+' | sed 's/^..//g' > addonrules1.txt
+          diff addonrules1.txt redun_check.txt | grep -E '< .+' | sed 's/^..//g' > addonrules2.txt
           sed 's/\$third-party//g' redun_check1.txt > redun1.txt
           sed 's/\$popup//g' redun_check2.txt > redun2.txt
           sed 's/\$popup,third-party//g' redun_check3.txt > redun3.txt
@@ -129,11 +131,11 @@ jobs:
           sed -e 's/\^/\^\$script,third-party/g' -e '$G' redun_3p_script.txt > redun_part5.txt
           sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt > redun_part6.txt
           sed -e 's/\^/\^\$image,third-party/g' -e '$G' redun_3p_image.txt > redun_part7.txt
-          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt redun_part4.txt redun_part5.txt redun_part6.txt redun_part7.txt > addonrules2.txt
-          cat addonrules1.txt addonrules2.txt > ../fop/addon_fop.txt
+          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt redun_part4.txt redun_part5.txt redun_part6.txt redun_part7.txt > addonrules3.txt
+          cat addonrules2.txt addonrules3.txt > ../fop/addon_fop.txt
           cd ../fop
           python FOP.py
-          cat addon_fop.txt ../addon/addon_advanced.txt | sed '/^$/d' > ../title/addonrules.txt
+          cat ../addon/general_hide.txt addon_fop.txt ../addon/advanced.txt | sed '/^$/d' > ../title/addonrules.txt
 
       - name: Combine DNS lists
         run: |
