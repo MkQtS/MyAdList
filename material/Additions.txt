@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! Source: https://github.com/xinggsf/Adblock-Plus-Rule
-! LastCommit: 117b25b186dfc7349f02027cc43c88a625062fe3
+! LastCommit: 27a57aa665a500cfb0ed7e3e287d233dbf470973
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,domain=youtube.com,3p
@@ -152,6 +152,8 @@ qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_vi
 qq.com##+js(json-prune,adList.item)
 qq.com##+js(no-fetch-if, trace.)
 qq.com##+js(no-xhr-if, trace.)
+qq.com##+js(nosiif,/^/,100)
+qq.com##+js(set, Beacon.prototype.bind, noopFunc)
 qq.com##+js(set, Beacon.prototype.fail, null)
 qq.com,huya.com,yy.com,le.com##+js(nowebrtc)
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
