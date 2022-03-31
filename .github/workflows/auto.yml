@@ -49,9 +49,9 @@ jobs:
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
         run: |
           cd ./title
-          curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "$G" > addon0.txt
-          curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "$G" > dns0.txt
-          curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "$G" > ubo0.txt
+          curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > addon0.txt
+          curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
+          curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
           cd ../addon
           curl -s $EASYLIST | sed -e '/^\[Adblock/d' -e '$G' > ad1.txt
           curl -s $EASYLISTCHINA | sed -e '/^\[Adblock/d' -e '$G' > ad2.txt
@@ -141,10 +141,10 @@ jobs:
       - name: Combine DNS lists
         run: |
           cd ./dns
-          cat dns1.txt dns2.txt dns3.txt | sed 's/\^|/\^/g' |sed 's/\r//g' > dnscombined.txt
+          cat dns1.txt dns2.txt dns3.txt | sed -e 's/\^|/\^/g' -e 's/\$important//g' -e 's/\r//g' > dnscombined.txt
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' > except0.txt
           sed 's/@@//g' except0.txt | sort -u > except1.txt
-          sed '/^@@/d' dnscombined.txt | sort -u > common0.txt
+          sed -e '/^@@/d' -e '/[^^]$/d' dnscombined.txt | sort -u > common0.txt
           diff except1.txt common0.txt | grep -E '> .+' | sed 's/^..//g' > common.txt
           sed 's/^/@@/g' except1.txt > except.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnslist.txt
