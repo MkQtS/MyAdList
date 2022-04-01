@@ -49,9 +49,9 @@ jobs:
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
         run: |
           cd ./title
-          curl -s $ADLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > addon0.txt
-          curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
-          curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
+          curl -s $ADLIST_TITLE > addon0.txt
+          curl -s $DNSLIST_TITLE > dns0.txt
+          curl -s $UBLOCK_TITLE > ubo0.txt
           cd ../addon
           curl -s $EASYLIST | sed -e '/^\[Adblock/d' -e '$G' > ad1.txt
           curl -s $EASYLISTCHINA | sed -e '/^\[Adblock/d' -e '$G' > ad2.txt
@@ -147,7 +147,7 @@ jobs:
           sed -e '/^@@/d' -e '/[^^]$/d' dnscombined.txt | sort -u > common0.txt
           diff except1.txt common0.txt | grep -E '> .+' | sed 's/^..//g' > common.txt
           sed 's/^/@@/g' except1.txt > except.txt
-          cat except.txt common.txt | sed '/^$/d' > ../title/dnslist.txt
+          cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
 
       - name: Combine uBlock lists
         run: |
@@ -165,20 +165,20 @@ jobs:
           sed '/^!/d' uboifnomob0.txt | sort -u | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
           cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt > uboif.txt
-          cat ubocombined1.txt uboif.txt | sed '/^$/d' > ../title/ubolist.txt
+          cat ubocombined1.txt uboif.txt | sed '/^$/d' > ../title/uborules.txt
 
-      - name: Generate final lists
+      - name: Create final lists
         run: |
           cd ./title
           addon_numcount=$(sed -n '$=' addonrules.txt)
-          dns_numcount=$(sed -n '$=' dnslist.txt)
-          ubo_numcount=$(sed -n '$=' ubolist.txt)
-          sed "s/NUMCOUNT/$addon_numcount/" addon0.txt > addontitle.txt
-          sed "s/NUMCOUNT/$dns_numcount/" dns0.txt > dnstitle.txt
-          sed "s/NUMCOUNT/$ubo_numcount/" ubo0.txt > ubotitle.txt
+          dns_numcount=$(sed -n '$=' dnsrules.txt)
+          ubo_numcount=$(sed -n '$=' uborules.txt)
+          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "s/NUMCOUNT/$addon_numcount/" addon0.txt > addontitle.txt
+          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "s/NUMCOUNT/$dns_numcount/" dns0.txt > dnstitle.txt
+          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "s/NUMCOUNT/$ubo_numcount/" ubo0.txt > ubotitle.txt
           cat addontitle.txt addonrules.txt > ../addonlist.txt
-          cat dnstitle.txt dnslist.txt > ../dnsblock.txt
-          cat ubotitle.txt ubolist.txt > ../ublocklist.txt
+          cat dnstitle.txt dnsrules.txt > ../dnsblock.txt
+          cat ubotitle.txt uborules.txt > ../ublocklist.txt
           cd ..
           rm -rf title addon fop dns ubo
 
@@ -192,6 +192,6 @@ jobs:
 
       - name: Purge jsDelivr
         run: |
-          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
-          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
-          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
