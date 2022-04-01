@@ -1,8 +1,9 @@
 ! Title: uBlock Official Filters Combined
 ! Expires: 2 days
-! Version: 202204010606
+! Version: 202204011827
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.04.01 06:06 UTC+8
+! Updated on 2022.04.01 18:27 UTC+8
+! Contains 24106 rules, updated on 2022.04.01 18:27 UTC+8
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
 ###Ad728x90:not([style^="position: absolute; left: -5000px"])
@@ -838,7 +839,7 @@ $script,domain=zdnet.fr,3p
 *$script,3p,domain=ukrainesmodels.com
 *$script,3p,domain=uproxy2.biz
 *$script,3p,domain=vidshare.tv,badfilter
-*$script,3p,domain=wcostream.com,denyallow=gstatic.com|bootstrapcdn.com|googleapis.com
+*$script,3p,domain=wcostream.com,denyallow=gstatic.com|bootstrapcdn.com|fastly.net|googleapis.com|jwpcdn.com
 *$script,3p,domain=webcric.com,denyallow=ucplayer.xyz|ucweb.live
 *$script,3p,domain=webmusic.*
 *$script,3p,domain=wotcheatmods.com,badfilter
@@ -7176,6 +7177,7 @@ buffstreamz.com##+js(nowebrtc)
 buffstreamz.com##a[href*="//my-sports.club"]
 bukadrive.com##+js(noeval-if, AdB)
 bullfrag.com##+js(acis, eval, replace)
+bunkr.is##+js(aeld, , exoJsPop101)
 buondua.com##.main-body > div > div[class]:not([class^="item"]):not([class^="article"]):has-text(/^Sponsored ads$/)
 buondua.com##.main-body div[class] > .adsbyexoclick:upward(1)
 buondua.com##.pagination + br + div[class]
@@ -9024,7 +9026,7 @@ embed.nana2play.com##.click_block
 embed.streamx.me##+js(noeval-if, debugger)
 embedsb.com,streamlare.com##+js(nosiif, 0x)
 embedstream.me###aff-click
-embedstream.me##+js(acis, Math, break;case $.)
+embedstream.me##+js(acis, JSON.parse, break;case $.)
 embedstream.me##+js(aopw, _pop)
 embedstream.me##+js(nowebrtc)
 embedstream.me##+js(nowoif)
@@ -10208,6 +10210,7 @@ gamingvital.com##+js(acis, decodeURIComponent, ai_)
 gaminplay.com##+js(acis, addEventListener, google_ad_client)
 gaminplay.com##+js(acis, mMcreateCookie)
 gaminplay.com##div.join-ads
+gaminplay.com,informaxonline.com##+js(no-xhr-if, googlesyndication)
 gamovideo.com###po-pimp
 gamovideo.com##+js(acis, onload)
 gamovideo.com##+js(aopr, open)
@@ -11608,9 +11611,10 @@ infocorp.io##+js(aopr, detectAdBlocker)
 infofuge.com##+js(nostif, disableDeveloperTools)
 infomaniakos.*##+js(set, btoa, null)
 information-portal.net##+js(nostif, nextFunction, 2000)
-informaxonline.com##+js(nano-sib)
-informaxonline.com##+js(no-xhr-if, mahimeta)
+informaxonline.com###wpsafe-generate:style(display: block !important)
+informaxonline.com###wpsafe-link:style(display: block !important)
 informaxonline.com##.idblog-topbanner-aftermenu
+informaxonline.com##[id^="wpsafe-wait"]
 informazionefiscale.it##+js(acis, document.createElement, admiral)
 informer.com##+js(aopr, adblock_added)
 informer.com##.screen_ad
@@ -12480,6 +12484,7 @@ leechpremium.link##.adsbygoogle
 leechpremium.link##.fade.modal-backdrop
 leechpremium.link##[id*="ScriptRoot"]
 leechpremium.link##body:style(overflow: auto !important;)
+leet365.cc##+js(acis, JSON.parse, break;case $.)
 lefturl.com##+js(acis, String.fromCharCode, /btoa|break/)
 lefturl.com##.ads
 legendaoficial.net##+js(acis, String.fromCharCode, 'shift')
@@ -21286,6 +21291,8 @@ zxctunnel.com##.adsbygoogle
 ||dizirun.co/img/1000x90.png
 ||dizirun.co/test*$script,1p
 ||djin.site^$all
+||dlscord*.$all
+||dlscrod*.$all
 ||dnbard.com^$doc
 ||dni-adops-proxy-prod-adopsmediaconverter.mercury.dnitv.com^$media
 ||dniadops-a.akamaihd.net/video-assets/$media,domain=dplay.fi
@@ -23486,7 +23493,7 @@ zxctunnel.com##.adsbygoogle
 ||tourism-services.online^$all
 ||tp1jcgl644jk.com^
 ||tplinkextender.net^
-||tpucdn.com/review/*12/images/*12-42-51*.jpg$image,domain=techpowerup.com
+||tpucdn.com/review/vdlaure*/images/*.jpg$image,domain=techpowerup.com
 ||tr.jianshu.com^
 ||tr.link/*/sweet.js$script,1p
 ||tr.link/js/sweets.js$script,1p
