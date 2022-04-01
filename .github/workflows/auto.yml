@@ -25,7 +25,7 @@ jobs:
           ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
           DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
           UBLOCK_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/uBoTitle.txt
-          EASYLIST: https://filters.adtidy.org/extension/ublock/filters/101_optimized.txt
+          EASYLIST: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
           EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
           CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
           ADDITION_RULES: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/Additions.txt
@@ -53,7 +53,7 @@ jobs:
           curl -s $DNSLIST_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > dns0.txt
           curl -s $UBLOCK_TITLE | sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" > ubo0.txt
           cd ../addon
-          curl -s $EASYLIST | sed -e '/^\[Adblock/d' -e '$G' > rawad1.txt
+          curl -s $EASYLIST | sed -e '/^\[Adblock/d' -e '$G' > ad1.txt
           curl -s $EASYLISTCHINA | sed -e '/^\[Adblock/d' -e '$G' > ad2.txt
           curl -s $CJX_ANNOYANCE | sed -e '/^\[Adblock/d' -e '/^!#include/d' -e '$G' > ad3.txt
           curl -s $ADDITION_RULES | sed '$G' > rawad4.txt
@@ -82,7 +82,6 @@ jobs:
       - name: Arrange addon rules
         run: |
           cd ./addon
-          sed -e '/##/d' -e '/#@#/d' -e '/#?#/d' rawad1.txt > ad1.txt
           sed '/+js/d' rawad4.txt > ad4.txt
           sed -n '/+js/p' rawad4.txt > advanced.txt
           cat ad1.txt ad2.txt ad3.txt ad4.txt | sed 's/\r//g' > adcombined.txt
@@ -168,12 +167,18 @@ jobs:
           cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt > uboif.txt
           cat ubocombined1.txt uboif.txt | sed '/^$/d' > ../title/ubolist.txt
 
-      - name: Add titles and Delete temp files
+      - name: Generate final lists
         run: |
           cd ./title
-          cat addon0.txt addonrules.txt > ../addonlist.txt
-          cat dns0.txt dnslist.txt > ../dnsblock.txt
-          cat ubo0.txt ubolist.txt > ../ublocklist.txt
+          addon_numcount=$(sed -n '$=' addonrules.txt)
+          dns_numcount=$(sed -n '$=' dnslist.txt)
+          ubo_numcount=$(sed -n '$=' ubolist.txt)
+          sed "s/NUMCOUNT/$addon_numcount/" addon0.txt > addontitle.txt
+          sed "s/NUMCOUNT/$dns_numcount/" dns0.txt > dnstitle.txt
+          sed "s/NUMCOUNT/$ubo_numcount/" ubo0.txt > ubotitle.txt
+          cat addontitle.txt addonrules.txt > ../addonlist.txt
+          cat dnstitle.txt dnslist.txt > ../dnsblock.txt
+          cat ubotitle.txt ubolist.txt > ../ublocklist.txt
           cd ..
           rm -rf title addon fop dns ubo
 
@@ -187,6 +192,6 @@ jobs:
 
       - name: Purge jsDelivr
         run: |
-          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
-          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
-          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
+          #curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
