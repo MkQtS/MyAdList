@@ -1,9 +1,10 @@
-! Title: uBlock Official Filters Combined
+! Title: uBlock Filters
 ! Expires: 2 days
-! Version: 202204011827
+! Version: 202204012045
 ! Homepage: https://github.com/MkQtS/MyAdList
-! Updated on 2022.04.01 18:27 UTC+8
-! Contains 24106 rules, updated on 2022.04.01 18:27 UTC+8
+! A combination of uBlock official filters
+! Contains 24114 rules, updated on 2022.04.01 20:45 UTC+8
+!
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
 ###Ad300x250:not([style^="position: absolute; left: -5000px"])
 ###Ad728x90:not([style^="position: absolute; left: -5000px"])
@@ -7176,6 +7177,7 @@ buffstreams.tv,tvply.me##+js(aopw, _pop)
 buffstreamz.com##+js(nowebrtc)
 buffstreamz.com##a[href*="//my-sports.club"]
 bukadrive.com##+js(noeval-if, AdB)
+bulbagarden.net##+js(set, setupSkin, noopFunc)
 bullfrag.com##+js(acis, eval, replace)
 bunkr.is##+js(aeld, , exoJsPop101)
 buondua.com##.main-body > div > div[class]:not([class^="item"]):not([class^="article"]):has-text(/^Sponsored ads$/)
@@ -9742,8 +9744,8 @@ forbes.com##.vestpocket
 forbes.com##[class^="fbs-ad"]
 forbes.it#@#.ad-row
 foreca.com##main > div > div > div[class]:matches-css(width:350px)
+forex-gold.net##+js(nano-sib, timeleft)
 forex-gold.net##.demand-supply
-forex-gold.net,world-trips.net##+js(nano-sib, timeleft)
 forex-trnd.com###link-view > [style*="width:300px"]
 forex-trnd.com##+js(acis, document.createElement, themoneytizer)
 forex-trnd.com##+js(aopr, app_vars.force_disable_adblock)
@@ -15570,8 +15572,8 @@ powerclicks.xyz##.blog-content
 powerthesaurus.org##+js(aopw, ad_abblock_ad)
 powforums.com##+js(nowoif)
 powforums.com##+js(set, adsBlocked, false)
-ppss.kr,ygosu.com,tgd.kr,inven.co.kr##[style*="%"][style*="width"][style*="relative"][style*="z-index"]:style(position: absolute; !important; left: 4000% !important)
-ppss.kr,ygosu.com,tgd.kr,inven.co.kr##body:style(overflow-x: hidden !important;)
+ppss.kr,ygosu.com,tgd.kr,inven.co.kr##[style*="text-align"][style*="relative"][style*="z-index"] > div > img:style(box-sizing: border-box; border: 50px white solid !important; height: 100px !important; width: 100px !important;)
+ppss.kr,ygosu.com,tgd.kr,inven.co.kr##[style*="text-align"][style*="relative"][style*="z-index"]:style(height: 100px !important; width: 100px !important;)
 practicequiz.com,reportscam.com,wapkiz.com##+js(aopw, adBlockDetected)
 practicetestgeeks.com##+js(nobab)
 prad.de##+js(aopr, googletag)
@@ -16319,6 +16321,10 @@ sdw-net.me##+js(aeld, load, onload)
 se-ed.com##+js(aopr, adBlockDetected)
 se-ed.com##[id^="banner"]
 search.brave.com##+js(no-fetch-if, body:browser)
+search.seznam.cz##[class]:not([style]):matches-css(background-image: /url.*svg/):matches-css(position: absolute):upward([data-dot-data])
+search.seznam.cz##[href*="adurl"]:upward(2)
+search.seznam.cz##[title*="adtext"]:upward(2)
+search.seznam.cz##[viewBox*="41"]:upward([data-dot-data])
 searchenginereports.net##+js(ra, class, [data-name*="|"], stay)
 searchenginereports.net##.ads_sack
 searchenginereports.net##[id^="adboxx"]
@@ -19555,6 +19561,7 @@ wordgames.com###skyscraper-container
 wordgames.com###skyscrapper-container
 work.ink##.desc:upward([class*="adb"])
 world-sms.org##.promoBlock
+world-trips.net##+js(nano-sib, timer)
 world4.eu##+js(aost, String.prototype.charCodeAt, ai_)
 world4ufree.*##+js(acis, Math, break;case $.)
 world4ufree.*##+js(aeld, , _0x)
@@ -21070,6 +21077,7 @@ zxctunnel.com##.adsbygoogle
 ||corriereobjects.it/rcs_anti-adblocker/$3p
 ||couchtuner.*/sw.js$script,1p
 ||count.candou.com^
+||coupang.com/?src*addtag=*&placementid&campaignid*&subid=*&impressionid&campaigntype*&subparam=$popup,3p
 ||couponex.space^$all
 ||coursecopy.com^
 ||cpa-optimizer.online^$all
@@ -23493,7 +23501,8 @@ zxctunnel.com##.adsbygoogle
 ||tourism-services.online^$all
 ||tp1jcgl644jk.com^
 ||tplinkextender.net^
-||tpucdn.com/review/vdlaure*/images/*.jpg$image,domain=techpowerup.com
+||tpucdn.com/review/*80/images/*81-4e2-51*.jpg$image,domain=techpowerup.com
+||tpucdn.com/review/xvdyaure*/images/*.jpg$image,domain=techpowerup.com
 ||tr.jianshu.com^
 ||tr.link/*/sweet.js$script,1p
 ||tr.link/js/sweets.js$script,1p
@@ -23971,8 +23980,8 @@ haus-garten-test.de##+js(set, Object.keys, trueFunc)
 ignboards.com##+js(acis, JSON.stringify)
 lablue.*##+js(nostif, push, 500)
 t-online.de##+js(acis, Number.isNaN)
-techpowerup.com##:not(:matches-path(/forums/)) body:has(a[href*="/login/"]) aside > div:not([class]):not([id]) > a[href^="/review/"] > span > img[src*="2-2-1"]:style(height: 1px !important; width: 1px !important; opacity: 0 !important; pointer-events: none !important;)
-techpowerup.com##:not(:matches-path(/forums/)) body:has(a[href*="/login/"]) iddv > a[href^="/review/"] > span > img:style(height: 1px !important; width: 1px !important; opacity: 0 !important; pointer-events: none !important;)
+techpowerup.com##:not(:matches-path(/forums/)) body:has(a[href*="/login/"]) aside > div:not([class]):not([id]) > a[href^="/review/"] > span > img[src^="https://tpucdn.com/review/"]:style(height: 1px !important; width: 1px !important; opacity: 0 !important; pointer-events: none !important;)
+techpowerup.com##:not(:matches-path(/forums/)) body:has(a[href*="/login/"]) diddv > a[href^="/review/"] > span > img:style(height: 1px !important; width: 1px !important; opacity: 0 !important; pointer-events: none !important;)
 tf1.fr##+js(no-fetch-if, adsafeprotected)
 uii.io##+js(aeld, mouseup, _blank)
 uii.io#@#+js(noeval)
@@ -24068,7 +24077,7 @@ sexvid.*##.thumb-adv
 sexvid.*##.under-player.spot-holder > .spot
 sexvid.*##.wrapper > .spot-holder
 sexvid.*,hdtube.porn###fltd-inner
-techpowerup.com##:not(:matches-path(/forums/)) body:has(a[href*="/login/"]) nav[class^="y"] > div + aside[class]:has(> div:not([class]):not([id]) > a[href^="/review/"] > span > img):style(height: 1px !important; width: 1px !important; opacity: 0 !important; pointer-events: none !important;)
+techpowerup.com##:not(:matches-path(/forums/)) body:has(a[href*="/login/"]) nav[class^="p"] > div + aside[class]:has(> div:not([class]):not([id]) > a[href^="/review/"] > span > img):style(height: 1px !important; width: 1px !important; opacity: 0 !important; pointer-events: none !important;)
 viz.com###metamodal-dfp-preroll
 viz.com###overlay
 viz.com##+js(nano-sib, , ,0)
