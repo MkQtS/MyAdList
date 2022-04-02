@@ -22,10 +22,8 @@ jobs:
 
       - name: Get source files
         env:
-          ADLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/AddonTitle.txt
-          DNSLIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/DNSTitle.txt
-          UBLOCK_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/uBoTitle.txt
-          EASYLIST: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
+          LIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/Titles.txt
+          EASYLIST_NOHIDE: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
           EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
           CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
           ADDITION_RULES: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/Additions.txt
@@ -49,11 +47,9 @@ jobs:
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
         run: |
           cd ./title
-          curl -s $ADLIST_TITLE > addon0.txt
-          curl -s $DNSLIST_TITLE > dns0.txt
-          curl -s $UBLOCK_TITLE > ubo0.txt
+          curl -s $LIST_TITLE > title0.txt
           cd ../addon
-          curl -s $EASYLIST | sed -e '/^\[Adblock/d' -e '$G' > ad1.txt
+          curl -s $EASYLIST_NOHIDE | sed -e '/^\[Adblock/d' -e '$G' > ad1.txt
           curl -s $EASYLISTCHINA | sed -e '/^\[Adblock/d' -e '$G' > ad2.txt
           curl -s $CJX_ANNOYANCE | sed -e '/^\[Adblock/d' -e '/^!#include/d' -e '$G' > ad3.txt
           curl -s $ADDITION_RULES | sed '$G' > rawad4.txt
@@ -173,9 +169,10 @@ jobs:
           addon_numcount=$(sed -n '$=' addonrules.txt)
           dns_numcount=$(sed -n '$=' dnsrules.txt)
           ubo_numcount=$(sed -n '$=' uborules.txt)
-          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "s/NUMCOUNT/$addon_numcount/" addon0.txt > addontitle.txt
-          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "s/NUMCOUNT/$dns_numcount/" dns0.txt > dnstitle.txt
-          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" -e "s/NUMCOUNT/$ubo_numcount/" ubo0.txt > ubotitle.txt
+          sed -e "s/BLANKVER/$VERSION_CODE/" -e "s/BLANKTIME/$MODIFY_TIME/" title0.txt > title.txt
+          sed -n '/^! Title: AdList for MkQtS/,/^# Addon title end/p' title.txt | sed -e "s/NUMCOUNT/$addon_numcount/" -e '/^#/d' > addontitle.txt
+          sed -n '/^! Title: DNS Block List/,/^# DNS title end/p' title.txt | sed -e "s/NUMCOUNT/$dns_numcount/" -e '/^#/d' > dnstitle.txt
+          sed -n '/^! Title: uBlock Filters/,/^# uBo title end/p' title.txt | sed -e "s/NUMCOUNT/$ubo_numcount/" -e '/^#/d' > ubotitle.txt
           cat addontitle.txt addonrules.txt > ../addonlist.txt
           cat dnstitle.txt dnsrules.txt > ../dnsblock.txt
           cat ubotitle.txt uborules.txt > ../ublocklist.txt
