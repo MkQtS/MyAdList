@@ -4,15 +4,13 @@ on:
   schedule:
     - cron: 0 22 * * *
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Basic preparation
         run: |
@@ -181,8 +179,8 @@ jobs:
 
       - name: Commit
         run: |
-          git config user.name "actions"
-          git config user.email "action@github.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add --all
           git commit -m "Updated on $MODIFY_TIME"
           git push origin main
