@@ -14,7 +14,7 @@ jobs:
 
       - name: Basic preparation
         run: |
-          mkdir -p title addon fop dns ubo
+          mkdir title addon fop dns ubo
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y/%m/%d %H:%M UTC+8")" >> $GITHUB_ENV
 
@@ -47,83 +47,92 @@ jobs:
           curl -s $LIST_TITLE > ./title/title0.txt
           curl -s $FOP_SCRIPT > ./fop/FOP.py
           cd ./addon
-          curl -s $EASYLIST_NOHIDE | sed '$G' > ad1.txt
-          curl -s $EASYLISTCHINA | sed '$G' > ad2.txt
-          curl -s $CJX_ANNOYANCE | sed '$G' > ad3.txt
-          curl -s $ADDITION_RULES | sed '$G' > rawad4.txt
-          curl -s $EASYPRIVACY_1 | sed '$G' > pri1.txt
-          curl -s $EASYPRIVACY_2 | sed -n '/^!---------- Chinese/,/^!---------- Czech/p' | sed '$G' > pri2.txt
-          curl -s $EASYPRIVACY_3 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' > pri3.txt
-          curl -s $EASYPRIVACY_4 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' > pri4.txt
-          curl -s $EASYPRIVACY_5 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' > pri5.txt
+          curl -s $EASYLIST_NOHIDE | sed '$G' > rawad.txt
+          curl -s $EASYLISTCHINA | sed '$G' >> rawad.txt
+          curl -s $CJX_ANNOYANCE | sed '$G' >> rawad.txt
+          curl -s $ADDITION_RULES | sed '$G' > rawadd.txt
+          curl -s $EASYPRIVACY_1 | sed '$G' > rawpri.txt
+          curl -s $EASYPRIVACY_2 | sed -n '/^!---------- Chinese/,/^!---------- Czech/p' | sed '$G' >> rawpri.txt
+          curl -s $EASYPRIVACY_3 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
+          curl -s $EASYPRIVACY_4 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
+          curl -s $EASYPRIVACY_5 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
           cd ../dns
-          curl -s $ADGUARD_DNS | sed -e '/^[^|@]/d' -e '$G' > dns1.txt
-          curl -s $ANTI_AD_ADGUARD | sed '$G' > dns2.txt
-          curl -s $PETER_LOWE | sed -e '/^\[Adblock/d' -e '$G' > dns3.txt
+          curl -s $ADGUARD_DNS | sed -e '/^[^|@]/d' -e '$G' > rawdns.txt
+          curl -s $ANTI_AD_ADGUARD | sed '$G' >> rawdns.txt
+          curl -s $PETER_LOWE | sed -e '/^\[Adblock/d' -e '$G' >> rawdns.txt
           cd ../ubo
-          curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > ubo1.txt
-          curl -s $UBLOCK_2020 | sed '$G' > ubo2.txt
-          curl -s $UBLOCK_2021 | sed '$G' > ubo3.txt
-          curl -s $UBLOCK_2022 | sed '$G' > ubo4.txt
-          curl -s $UBLOCK_BADWARE | sed '$G' > ubo5.txt
-          curl -s $UBLOCK_PRIVACY | sed '$G' > ubo6.txt
-          curl -s $UBLOCK_ABUSE | sed '$G' > ubo7.txt
-          curl -s $UBLOCK_UNBREAK | sed '$G' > ubo8.txt
-          curl -s $UBLOCK_QUICK | sed '$G' > ubo9.txt
+          curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > rawubo.txt
+          curl -s $UBLOCK_2020 | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_2021 | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_2022 | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_BADWARE | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_PRIVACY | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_ABUSE | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_UNBREAK | sed '$G' >> rawubo.txt
+          curl -s $UBLOCK_QUICK | sed '$G' >> rawubo.txt
 
       - name: Arrange addon rules
         run: |
           cd ./addon
-          sed '/+js/d' rawad4.txt > ad4.txt
-          sed -n '/+js/p' rawad4.txt > advanced.txt
-          cat ad1.txt ad2.txt ad3.txt ad4.txt pri1.txt pri2.txt pri3.txt pri4.txt pri5.txt > addonsource.txt
-          sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' addonsource.txt | sort -u > addoncombined0.txt
-          sed -n '/^##/p' addoncombined0.txt > general_hide.txt
-          sed '/^##/d' addoncombined0.txt > addonrules0.txt
-          sed -n '/^||/p' addonrules0.txt > redun_raw.txt
-          sed -n '/\^$/p' redun_raw.txt > redun0.txt
-          sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check1.txt
-          sed -n '/\^\$popup$/p' redun_raw.txt > redun_check2.txt
-          sed -n '/\^\$popup,third-party$/p' redun_raw.txt > redun_check3.txt
-          sed -n '/\^\$script$/p' redun_raw.txt > redun_check4.txt
-          sed -n '/\^\$script,third-party$/p' redun_raw.txt > redun_check5.txt
-          sed -n '/\^\$image$/p' redun_raw.txt > redun_check6.txt
-          sed -n '/\^\$image,third-party$/p' redun_raw.txt > redun_check7.txt
-          cat redun0.txt redun_check1.txt redun_check2.txt redun_check3.txt redun_check4.txt redun_check5.txt redun_check6.txt redun_check7.txt | sort > redun_check.txt
-          diff addonrules0.txt redun_check.txt | grep -E '< .+' | sed 's/^..//g' > addonrules1.txt
-          sed 's/\$third-party//g' redun_check1.txt > redun1.txt
-          sed 's/\$popup//g' redun_check2.txt > redun2.txt
-          sed 's/\$popup,third-party//g' redun_check3.txt > redun3.txt
-          sed 's/\$script//g' redun_check4.txt > redun4.txt
-          sed 's/\$script,third-party//g' redun_check5.txt > redun5.txt
-          sed 's/\$image//g' redun_check6.txt > redun6.txt
-          sed 's/\$image,third-party//g' redun_check7.txt > redun7.txt
-          cat redun1.txt redun3.txt redun5.txt redun7.txt | sort -u > redun_3p.txt
+          sed '/+js/d' rawadd.txt > add_common.txt
+          sed -n '/+js/p' rawadd.txt > advanced.txt
+          cat rawad.txt add_common.txt rawpri.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > addoncombined.txt
+          sed -n '/^##/p' addoncombined.txt > general_hide.txt
+          sed '/^##/d' addoncombined.txt > addon_redun_mixed.txt
+          sed -n '/^||/p' addon_redun_mixed.txt > redun_raw.txt
+          sed -n '/\^$/p' redun_raw.txt > addon_redun_pure.txt
+          sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check0.txt
+          sed -n '/\^\$popup$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$popup,third-party$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$image$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$image,third-party$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$script$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$script,third-party$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$image,script$/p' redun_raw.txt >> redun_check0.txt
+          sed -n '/\^\$image,script,third-party$/p' redun_raw.txt >> redun_check0.txt
+          cat addon_redun_pure.txt redun_check0.txt | sort > redun_check.txt
+          comm -13 redun_check.txt addon_redun_mixed.txt > addon_redun_out.txt
+          sed -n '/\^\$third-party$/p' redun_check.txt | sed 's/\$third-party//g' > redun1.txt
+          sed -n '/\^\$popup$/p' redun_check.txt | sed 's/\$popup//g' > redun2.txt
+          sed -n '/\^\$popup,third-party$/p' redun_check.txt | sed 's/\$popup,third-party//g' > redun3.txt
+          sed -n '/\^\$image$/p' redun_check.txt | sed 's/\$image//g' > redun4.txt
+          sed -n '/\^\$image,third-party$/p' redun_check.txt | sed 's/\$image,third-party//g' > redun5.txt
+          sed -n '/\^\$script$/p' redun_check.txt | sed 's/\$script//g' > redun6.txt
+          sed -n '/\^\$script,third-party$/p' redun_check.txt | sed 's/\$script,third-party//g' > redun7.txt
+          sed -n '/\^\$image,script$/p' redun_check.txt | sed 's/\$image,script//g' > redun8.txt
+          sed -n '/\^\$image,script,third-party$/p' redun_check.txt | sed 's/\$image,script,third-party//g' > redun9.txt
+          cat redun1.txt redun3.txt redun5.txt redun7.txt redun9.txt | sort -u > redun_3p.txt
           cat redun2.txt redun3.txt | sort -u > redun_pop.txt
-          cat redun4.txt redun5.txt | sort -u > redun_script.txt
-          cat redun6.txt redun7.txt | sort -u > redun_image.txt
-          diff redun0.txt redun_3p.txt | grep -E '> .+' | sed 's/^..//g' > redun_3p_1.txt
-          diff redun0.txt redun_pop.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_1.txt
-          diff redun0.txt redun_script.txt | grep -E '> .+' | sed 's/^..//g' > redun_script_1.txt
-          diff redun0.txt redun_image.txt | grep -E '> .+' | sed 's/^..//g' > redun_image_1.txt
+          cat redun4.txt redun5.txt redun8.txt redun9.txt | sort -u > redun_image.txt
+          cat redun6.txt redun7.txt redun8.txt redun9.txt | sort -u > redun_script.txt
+          comm -13 addon_redun_pure.txt redun_3p.txt > redun_3p_1.txt
+          comm -13 addon_redun_pure.txt redun_pop.txt > redun_pop_1.txt
+          comm -13 addon_redun_pure.txt redun_image.txt > redun_image_0.txt
+          comm -13 addon_redun_pure.txt redun_script.txt > redun_script_0.txt
+          comm -13 redun_image_0.txt redun_script_0.txt > redun_script_1.txt
+          comm -13 redun_script_0.txt redun_image_0.txt > redun_image_1.txt
+          comm -12 redun_image_0.txt redun_script_0.txt > redun_image_script_1.txt
           comm -12 redun_3p_1.txt redun_pop_1.txt > redun_3p_pop.txt
           comm -12 redun_3p_1.txt redun_script_1.txt > redun_3p_script.txt
           comm -12 redun_3p_1.txt redun_image_1.txt > redun_3p_image.txt
-          diff redun_3p_1.txt redun_pop_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_pop_only.txt
-          diff redun_3p_1.txt redun_script_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_script_only.txt
-          diff redun_3p_1.txt redun_image_1.txt | grep -E '> .+' | sed 's/^..//g' > redun_image_only.txt
-          cat redun_3p_1.txt redun_pop_1.txt redun_script_1.txt redun_image_1.txt | sort -u > redun_passed_all.txt
-          cat redun_pop_1.txt redun_script_1.txt redun_image_1.txt | sort -u > redun_passed_for3p.txt
-          diff redun_passed_for3p.txt redun_passed_all.txt | grep -E '> .+' | sed 's/^..//g' > redun_3p_only.txt
-          sed -e 's/\^/\^\$third-party/g' -e '$G' redun_3p_only.txt > redun_part1.txt
-          sed -e 's/\^/\^\$popup/g' -e '$G' redun_pop_only.txt > redun_part2.txt
-          sed -e 's/\^/\^\$popup,third-party/g' -e '$G' redun_3p_pop.txt > redun_part3.txt
-          sed -e 's/\^/\^\$script/g' -e '$G' redun_script_only.txt > redun_part4.txt
-          sed -e 's/\^/\^\$script,third-party/g' -e '$G' redun_3p_script.txt > redun_part5.txt
-          sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt > redun_part6.txt
-          sed -e 's/\^/\^\$image,third-party/g' -e '$G' redun_3p_image.txt > redun_part7.txt
-          cat redun0.txt redun_part1.txt redun_part2.txt redun_part3.txt redun_part4.txt redun_part5.txt redun_part6.txt redun_part7.txt > addonrules2.txt
-          cat addonrules1.txt addonrules2.txt > ../fop/addon_fop.txt
+          comm -12 redun_3p_1.txt redun_image_script_1.txt > redun_3p_image_script.txt
+          comm -13 redun_3p_1.txt redun_pop_1.txt > redun_pop_only.txt
+          comm -13 redun_3p_1.txt redun_script_1.txt > redun_script_only.txt
+          comm -13 redun_3p_1.txt redun_image_1.txt > redun_image_only.txt
+          comm -13 redun_3p_1.txt redun_image_script_1.txt > redun_image_script_only.txt
+          cat redun_3p_1.txt redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_all.txt
+          cat redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_for3p.txt
+          comm -13 redun_passed_for3p.txt redun_passed_all.txt > redun_3p_only.txt
+          sed -e 's/\^/\^\$third-party/g' -e '$G' redun_3p_only.txt > addon_redun_mod.txt
+          sed -e 's/\^/\^\$popup/g' -e '$G' redun_pop_only.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$popup,third-party/g' -e '$G' redun_3p_pop.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$image,third-party/g' -e '$G' redun_3p_image.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$script/g' -e '$G' redun_script_only.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$script,third-party/g' -e '$G' redun_3p_script.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$image,script/g' -e '$G' redun_image_script_only.txt >> addon_redun_mod.txt
+          sed -e 's/\^/\^\$image,script,third-party/g' -e '$G' redun_3p_image_script.txt >> addon_redun_mod.txt
+          cat addon_redun_out.txt addon_redun_pure.txt addon_redun_mod.txt > ../fop/addon_fop.txt
           cd ../fop
           python FOP.py
           cd ../addon
@@ -132,20 +141,18 @@ jobs:
       - name: Combine DNS lists
         run: |
           cd ./dns
-          cat dns1.txt dns2.txt dns3.txt > dnssource.txt
-          sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^!/d' -e 's/\r//g' dnssource.txt > dnscombined0.txt
-          sed -n '/^@@/p' dnscombined0.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
+          sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^!/d' -e 's/\r//g' rawdns.txt > dnscombined.txt
+          sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
           sed 's/@@//g' except.txt > except_check.txt
-          sed -e '/^@@/d' -e '/[^^]$/d' dnscombined0.txt | sort -u > common0.txt
-          diff except_check.txt common0.txt | grep -E '> .+' | sed 's/^..//g' > common.txt
+          sed -e '/^@@/d' -e '/[^^]$/d' dnscombined.txt | sort -u > common0.txt
+          comm -13 except_check.txt common0.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
 
       - name: Combine uBlock lists
         run: |
           cd ./ubo
-          cat ubo1.txt ubo2.txt ubo3.txt ubo4.txt ubo5.txt ubo6.txt ubo7.txt ubo8.txt ubo9.txt > ubosource.txt
-          sed -e '/^![^#]/d' -e '/^!$/d' -e 's/\r//g' ubosource.txt > ubocombined0.txt
-          sed -n '/^!#if/,/^!#endif/p' ubocombined0.txt > uboif0.txt
+          sed -e '/^![^#]/d' -e '/^!$/d' -e 's/\r//g' rawubo.txt > ubocombined.txt
+          sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > uboif0.txt
           sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt > uboifchrome0.txt
           sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt > uboiffire0.txt
           sed -n '/^!#if env_mobile/,/^!#endif/p' uboif0.txt > uboifmob0.txt
@@ -156,7 +163,7 @@ jobs:
           sed '/^!/d' uboifnomob0.txt | sort -u | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
           cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt > uboif.txt
-          sed '/^!#if/,/^!#endif/d' ubocombined0.txt | sort -u > ubo_noif.txt
+          sed '/^!#if/,/^!#endif/d' ubocombined.txt | sort -u > ubo_noif.txt
           cat ubo_noif.txt uboif.txt | sed '/^$/d' > ../title/uborules.txt
 
       - name: Create final lists
