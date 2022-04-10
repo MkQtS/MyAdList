@@ -143,9 +143,39 @@ jobs:
           cd ./dns
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^!/d' -e 's/\r//g' rawdns.txt > dnscombined.txt
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
-          sed 's/@@//g' except.txt > except_check.txt
           sed -e '/^@@/d' -e '/[^^]$/d' dnscombined.txt | sort -u > common0.txt
-          comm -13 except_check.txt common0.txt > common.txt
+          sed -n '/*/p' common0.txt > common_wildcards.txt
+          sed '/*/d' common0.txt > rawcheck.txt
+          grep -E '^\|\|[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level3.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level4.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level5.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level6.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level7.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' rawcheck.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level8.txt
+          for ((i=2; i<=7; i++))
+          do
+            echo -n '\S+\.(' > replace_text.txt
+            for ((t=1; t<=$i-1; t++))
+            do
+              echo -n '[^.]+\.' >> replace_text.txt
+            done
+            echo -n '[^.]+)' >> replace_text.txt
+            replace_text=$(cat replace_text.txt)
+            for ((j=$i+1; j<=8; j++))
+            do
+              sed -E 's#^'"$replace_text"'$#\1#' level"$j".txt | sort -u > check"$i"_"$j".txt
+              comm -12 level"$i".txt check"$i"_"$j".txt > redun"$j"_"$i".txt
+              while read redun
+              do
+                sed -i -E '/'"$redun"'$/d' level"$j".txt
+              done < redun"$j"_"$i".txt
+            done
+          done
+          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -e 's/^/\|\|/g' -e 's/$/\^/g' > common_checked.txt
+          cat common_wildcards.txt common_checked.txt | sort > common1.txt
+          sed 's/@@//g' except.txt > except_check.txt
+          comm -13 except_check.txt common1.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
 
       - name: Combine uBlock lists
