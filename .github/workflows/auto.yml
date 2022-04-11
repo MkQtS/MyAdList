@@ -173,7 +173,7 @@ jobs:
           done
           cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -e 's/^/\|\|/g' -e 's/$/\^/g' > common_checked.txt
           cat common_wildcards.txt common_checked.txt | sort > common1.txt
-          sed 's/@@//g' except.txt > except_check.txt
+          sed 's/@@//g' except.txt | sort > except_check.txt
           comm -13 except_check.txt common1.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
 
