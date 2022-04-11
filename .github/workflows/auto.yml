@@ -50,7 +50,7 @@ jobs:
           curl -s $EASYLIST_NOHIDE | sed '$G' > rawad.txt
           curl -s $EASYLISTCHINA | sed '$G' >> rawad.txt
           curl -s $CJX_ANNOYANCE | sed '$G' >> rawad.txt
-          curl -s $ADDITION_RULES | sed '$G' > rawadd.txt
+          curl -s $ADDITION_RULES | sed '$G' >> rawad.txt
           curl -s $EASYPRIVACY_1 | sed '$G' > rawpri.txt
           curl -s $EASYPRIVACY_2 | sed -n '/^!---------- Chinese/,/^!---------- Czech/p' | sed '$G' >> rawpri.txt
           curl -s $EASYPRIVACY_3 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
@@ -74,11 +74,10 @@ jobs:
       - name: Arrange addon rules
         run: |
           cd ./addon
-          sed '/+js/d' rawadd.txt > add_common.txt
-          sed -n '/+js/p' rawadd.txt > advanced.txt
-          cat rawad.txt add_common.txt rawpri.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > addoncombined.txt
+          cat rawad.txt rawpri.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > addoncombined.txt
           sed -n '/^##/p' addoncombined.txt > general_hide.txt
-          sed '/^##/d' addoncombined.txt > addon_redun_mixed.txt
+          sed -n '/+js/p' addoncombined.txt > advanced.txt
+          sed -e '/^##/d' -e '/+js/d' addoncombined.txt > addon_redun_mixed.txt
           sed -n '/^||/p' addon_redun_mixed.txt > redun_raw.txt
           sed -n '/\^$/p' redun_raw.txt > addon_redun_pure.txt
           sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check0.txt
@@ -142,9 +141,9 @@ jobs:
         run: |
           cd ./dns
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^!/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
-          sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' > except.txt
-          sed -n '/*/p' dnscombined.txt | sed -e '/^@@/d' -e '/[^^]$/d' > common_wildcards.txt
-          sed -e '/^@@/d' -e '/[^^]$/d' -e '/*/d' dnscombined.txt > common_check.txt
+          sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
+          sed -n '/\*/p' dnscombined.txt | sed -e '/^@@/d' -e '/[^^]$/d' > common_wildcards.txt
+          sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*/d' dnscombined.txt > common_check.txt
           grep -E '^\|\|[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
           grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level3.txt
           grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level4.txt
@@ -167,13 +166,13 @@ jobs:
               comm -12 level"$i".txt check"$i"_"$j".txt > redun"$j"_"$i".txt
               while read redun
               do
-                sed -i '/.'"$redun"'$/d' level"$j".txt
+                sed -i '/\.'"$redun"'$/d' level"$j".txt
               done < redun"$j"_"$i".txt
             done
           done
           cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -e 's/^/\|\|/g' -e 's/$/\^/g' > common_checked.txt
           cat common_wildcards.txt common_checked.txt | sort > common1.txt
-          sed 's/@@//g' except.txt | sort > except_check.txt
+          sed 's/@@//g' except.txt > except_check.txt
           comm -13 except_check.txt common1.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
 
