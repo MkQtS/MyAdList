@@ -79,18 +79,11 @@ jobs:
           sed -n '/+js/p' addoncombined.txt > advanced.txt
           sed -e '/^##/d' -e '/+js/d' addoncombined.txt > addon_redun_mixed.txt
           sed -n '/^||/p' addon_redun_mixed.txt > redun_raw.txt
-          sed -n '/\^$/p' redun_raw.txt > addon_redun_pure.txt
-          sed -n '/\^\$third-party$/p' redun_raw.txt > redun_check0.txt
-          sed -n '/\^\$popup$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$popup,third-party$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$image$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$image,third-party$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$script$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$script,third-party$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$image,script$/p' redun_raw.txt >> redun_check0.txt
-          sed -n '/\^\$image,script,third-party$/p' redun_raw.txt >> redun_check0.txt
-          cat addon_redun_pure.txt redun_check0.txt | sort > redun_check.txt
+          sed -e '/\^$/d' -e '/\^\$third-party$/d' -e '/\^\$popup$/d' -e '/\^\$popup,third-party$/d' -e '/\^\$image$/d' -e '/\^\$image,third-party$/d' \
+          -e '/\^\$script$/d' -e '/\^\$script,third-party$/d' -e '/\^\$image,script$/d' -e '/\^\$image,script,third-party$/d' redun_raw.txt > redun_out.txt
+          comm -13 redun_out.txt redun_raw.txt > redun_check.txt
           comm -13 redun_check.txt addon_redun_mixed.txt > addon_redun_out.txt
+          sed -n '/\^$/p' redun_check.txt > addon_redun_pure.txt
           sed -n '/\^\$third-party$/p' redun_check.txt | sed 's/\$third-party//g' > redun1.txt
           sed -n '/\^\$popup$/p' redun_check.txt | sed 's/\$popup//g' > redun2.txt
           sed -n '/\^\$popup,third-party$/p' redun_check.txt | sed 's/\$popup,third-party//g' > redun3.txt
@@ -122,15 +115,15 @@ jobs:
           cat redun_3p_1.txt redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_all.txt
           cat redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_for3p.txt
           comm -13 redun_passed_for3p.txt redun_passed_all.txt > redun_3p_only.txt
-          sed -e 's/\^/\^\$third-party/g' -e '$G' redun_3p_only.txt > addon_redun_mod.txt
-          sed -e 's/\^/\^\$popup/g' -e '$G' redun_pop_only.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$popup,third-party/g' -e '$G' redun_3p_pop.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$image/g' -e '$G' redun_image_only.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$image,third-party/g' -e '$G' redun_3p_image.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$script/g' -e '$G' redun_script_only.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$script,third-party/g' -e '$G' redun_3p_script.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$image,script/g' -e '$G' redun_image_script_only.txt >> addon_redun_mod.txt
-          sed -e 's/\^/\^\$image,script,third-party/g' -e '$G' redun_3p_image_script.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$third-party/g' redun_3p_only.txt > addon_redun_mod.txt
+          sed 's/\^/\^\$popup/g' redun_pop_only.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$popup,third-party/g' redun_3p_pop.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$image/g' redun_image_only.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$image,third-party/g' redun_3p_image.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$script/g' redun_script_only.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$script,third-party/g' redun_3p_script.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$image,script/g' redun_image_script_only.txt >> addon_redun_mod.txt
+          sed 's/\^/\^\$image,script,third-party/g' redun_3p_image_script.txt >> addon_redun_mod.txt
           cat addon_redun_out.txt addon_redun_pure.txt addon_redun_mod.txt > ../fop/addon_fop.txt
           cd ../fop
           python FOP.py
@@ -142,7 +135,7 @@ jobs:
           cd ./dns
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^!/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
-          sed -n '/\*/p' dnscombined.txt | sed -e '/^@@/d' -e '/[^^]$/d' -e '/\.\*\^/d' > common_wildcards.txt
+          sed -n '/\*/p' dnscombined.txt | sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*\^/d' > common_wildcards.txt
           sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*/d' dnscombined.txt > common_check.txt
           grep -E '^\|\|[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
           grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level3.txt
@@ -159,14 +152,14 @@ jobs:
               echo -n '[^.]+\.' >> replace_text.txt
             done
             echo -n '[^.]+)' >> replace_text.txt
-            replace_text=$(cat replace_text.txt)
+            replace_re=$(cat replace_text.txt)
             for ((j=$i+1; j<=8; j++))
             do
-              sed -E 's#^'"$replace_text"'$#\1#' level"$j".txt | sort -u > check"$i"_"$j".txt
-              comm -12 level"$i".txt check"$i"_"$j".txt > redun"$j"_"$i".txt
-              while read redun
+              sed -E 's#^'"$replace_re"'$#\1#' level"$j".txt | sort -u > check"$i"_"$j".txt
+              comm -12 level"$i".txt check"$i"_"$j".txt | sed 's/\./\\\./g' > redun"$j"_"$i".txt
+              while read redun_rule
               do
-                sed -i '/\.'"$redun"'$/d' level"$j".txt
+                sed -i '/\.'"$redun_rule"'$/d' level"$j".txt
               done < redun"$j"_"$i".txt
             done
           done
