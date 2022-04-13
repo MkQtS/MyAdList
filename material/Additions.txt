@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! See: https://github.com/xinggsf/Adblock-Plus-Rule/commits/master/mv.txt
-! LastCommit: 62051a1b6d87b2b7210632d97f0aa63a922e66d5
+! LastCommit: 1e67eeadf4a42d638c05d323c49149e8a00bb86d
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,third-party,domain=youtube.com
@@ -68,7 +68,6 @@
 ||iqiyipic.com/image/20*_100000$image
 ||jinrongwang.net^
 ||js.letvcdn.com/*_banner_$script
-||js.ykimg.com/youku/dist/js/lib/ikuAdapterNew.js
 ||kejet.net^
 ||l.qq.com/livemsg?
 ||l.qq.com/lview?
@@ -95,6 +94,7 @@
 ||ssports.iqiyi.com/json/shop/shopInfo
 ||static.g.iqiyi.com^
 ||static.iqiyi.com/js/common/mars_v.js$script
+||static.youku.com/index/js/ikuAdapterNew.js
 ||stgowan.com^
 ||synacast.com^
 ||tencentmind.com^
@@ -149,7 +149,7 @@ m.youku.com,v.youku.com##+js(nano-stb, r--,, 0.02)
 netflix.mom,netflixya.com,yanetflix.com##.tips-box,#note.popup
 netflix.mom,netflixya.com,yanetflix.com##+js(aopw,document.onkeydown)
 new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
-pan.baidu.com,www.bilibili.com##+js(aeld,ratechange)
+pan.baidu.com,v.qq.com,www.bilibili.com##+js(aeld,ratechange,/^(?!.*?localStorage\.mvPlayRate).*$/)
 pptv.com##.advView-two,#p-mark
 qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap
 qq.com##+js(aopr, Beacon.prototype.fail)
@@ -175,6 +175,8 @@ youtube.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.adPlacements,
 ! My rules
 ! CC98 can only be accessed in a specific network
 ||api.cc98.org/config/global/advertisement
+! mbalib.com
+||img.mbalib.com/common/a_mbalib/ad_*.js
 
 ! General hide
 ! As supplements to easylist_noelemhide
