@@ -75,7 +75,7 @@ jobs:
         run: |
           cd ./addon
           cat rawad.txt rawpri.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > addoncombined.txt
-          sed -n '/^##/p' addoncombined.txt > general_hide.txt
+          sed -n '/^##/p' addoncombined.txt | sed '/ /d' > general_hide.txt
           sed -n '/+js/p' addoncombined.txt > advanced.txt
           sed -e '/^##/d' -e '/+js/d' addoncombined.txt > addon_redun_mixed.txt
           sed -n '/^||/p' addon_redun_mixed.txt > redun_raw.txt
