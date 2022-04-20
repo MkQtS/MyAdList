@@ -163,7 +163,7 @@ jobs:
               done < redun"$j"_"$i".txt
             done
           done
-          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -e 's/^/\|\|/g' -e 's/$/\^/g' > common_checked.txt
+          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -E 's#^(\S+)$#\|\|\1\^#' > common_checked.txt
           cat common_wildcards.txt common_checked.txt | sort > common1.txt
           sed 's/@@//g' except.txt > except_check.txt
           comm -13 except_check.txt common1.txt > common.txt
@@ -194,9 +194,9 @@ jobs:
           dns_numcount=$(sed -n '$=' dnsrules.txt)
           ubo_numcount=$(sed -n '$=' uborules.txt)
           sed -i -e "s/BLANKVER/$VERSION_CODE/" -e "s#BLANKTIME#$MODIFY_TIME#" title.txt
-          sed -n '/^! Title: AdList for MkQtS/,/^# Addon title end/p' title.txt | sed -e "s/NUMCOUNT/$addon_numcount/" -e '/^#/d' > addontitle.txt
-          sed -n '/^! Title: DNS Block List/,/^# DNS title end/p' title.txt | sed -e "s/NUMCOUNT/$dns_numcount/" -e '/^#/d' > dnstitle.txt
-          sed -n '/^! Title: uBlock Filters/,/^# uBo title end/p' title.txt | sed -e "s/NUMCOUNT/$ubo_numcount/" -e '/^#/d' > ubotitle.txt
+          sed -n '/^! Title: AdList/,/^# Addon/p' title.txt | sed -e "s/NUMCOUNT/$addon_numcount/" -e '/^#/d' > addontitle.txt
+          sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$dns_numcount/" -e '/^#/d' > dnstitle.txt
+          sed -n '/^! Title: uBlock/,/^# uBo/p' title.txt | sed -e "s/NUMCOUNT/$ubo_numcount/" -e '/^#/d' > ubotitle.txt
           cat addontitle.txt addonrules.txt > ../addonlist.txt
           cat dnstitle.txt dnsrules.txt > ../dnsblock.txt
           cat ubotitle.txt uborules.txt > ../ublocklist.txt
