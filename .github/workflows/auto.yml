@@ -47,15 +47,15 @@ jobs:
           curl -s $LIST_TITLE > ./title/title.txt
           curl -s $FOP_SCRIPT > ./fop/FOP.py
           cd ./addon
-          curl -s $EASYLIST_NOHIDE | sed '$G' > rawad.txt
-          curl -s $EASYLISTCHINA | sed '$G' >> rawad.txt
-          curl -s $CJX_ANNOYANCE | sed '$G' >> rawad.txt
-          curl -s $ADDITION_RULES | sed '$G' >> rawad.txt
-          curl -s $EASYPRIVACY_1 | sed '$G' > rawpri.txt
-          curl -s $EASYPRIVACY_2 | sed -n '/^!---------- Chinese/,/^!---------- Czech/p' | sed '$G' >> rawpri.txt
-          curl -s $EASYPRIVACY_3 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
-          curl -s $EASYPRIVACY_4 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
-          curl -s $EASYPRIVACY_5 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawpri.txt
+          curl -s $EASYLIST_NOHIDE | sed '$G' > rawaddon.txt
+          curl -s $EASYLISTCHINA | sed '$G' >> rawaddon.txt
+          curl -s $CJX_ANNOYANCE | sed '$G' >> rawaddon.txt
+          curl -s $ADDITION_RULES | sed '$G' >> rawaddon.txt
+          curl -s $EASYPRIVACY_1 | sed '$G' >> rawaddon.txt
+          curl -s $EASYPRIVACY_2 | sed -n '/^!---------- Chinese/,/^!---------- Czech/p' | sed '$G' >> rawaddon.txt
+          curl -s $EASYPRIVACY_3 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawaddon.txt
+          curl -s $EASYPRIVACY_4 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawaddon.txt
+          curl -s $EASYPRIVACY_5 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawaddon.txt
           cd ../dns
           curl -s $ADGUARD_DNS | sed -e '/^[^|@]/d' -e '$G' > rawdns.txt
           curl -s $ANTI_AD_ADGUARD | sed '$G' >> rawdns.txt
@@ -71,10 +71,10 @@ jobs:
           curl -s $UBLOCK_UNBREAK | sed '$G' >> rawubo.txt
           curl -s $UBLOCK_QUICK | sed '$G' >> rawubo.txt
 
-      - name: Arrange addon rules
+      - name: Combine addon lists
         run: |
           cd ./addon
-          cat rawad.txt rawpri.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > addoncombined.txt
+          sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' rawaddon.txt | sort -u > addoncombined.txt
           sed -n '/^##/p' addoncombined.txt | sed '/ /d' > general_hide.txt
           sed -n '/+js/p' addoncombined.txt > advanced.txt
           sed -e '/^##/d' -e '/+js/d' addoncombined.txt > addon_redun_mixed.txt
@@ -182,7 +182,8 @@ jobs:
           sed '/^!/d' uboiffire0.txt | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
           sed '/^!/d' uboifmob0.txt | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
           sed '/^!/d' uboifnomob0.txt | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
-          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
+          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' \
+          -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
           cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt > uboif.txt
           sed '/^!#if/,/^!#endif/d' ubocombined.txt | sort -u > ubo_noif.txt
           cat ubo_noif.txt uboif.txt | sed '/^$/d' > ../title/uborules.txt
