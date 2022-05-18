@@ -34,6 +34,7 @@ jobs:
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
           ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
           PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
+          ADAWAY_HOST: https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
           UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
@@ -57,9 +58,10 @@ jobs:
           curl -s $EASYPRIVACY_4 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawaddon.txt
           curl -s $EASYPRIVACY_5 | sed -n '/^! Chinese/,/^! Croatian/p' | sed '$G' >> rawaddon.txt
           cd ../dns
-          curl -s $ADGUARD_DNS | sed -e '/^[^|@]/d' -e '$G' > rawdns.txt
+          curl -s $ADGUARD_DNS | sed '$G' > rawdns.txt
           curl -s $ANTI_AD_ADGUARD | sed '$G' >> rawdns.txt
-          curl -s $PETER_LOWE | sed -e '/^\[Adblock/d' -e '$G' >> rawdns.txt
+          curl -s $PETER_LOWE | sed '$G' >> rawdns.txt
+          curl -s $ADAWAY_HOST | sed '$G' > host.txt
           cd ../ubo
           curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > rawubo.txt
           curl -s $UBLOCK_2020 | sed '$G' >> rawubo.txt
@@ -133,9 +135,10 @@ jobs:
       - name: Combine DNS lists
         run: |
           cd ./dns
-          sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^!/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
+          sed -e '/^#/d' -e '/localhost$/d' host.txt | sed -E 's#^127\.0\.0\.1 (\S+)$#\|\|\1\^#' >> rawdns.txt
+          sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
-          sed -e '/^@@/d' -e '/[^^]$/d'  -e '/\*\^/d' dnscombined.txt > common_check.txt
+          sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*\^/d' dnscombined.txt > common_check.txt
           grep -E '^\|\|[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
           grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level3.txt
           grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level4.txt
@@ -155,14 +158,21 @@ jobs:
             for ((j=$i+1; j<=8; j++))
             do
               sed -E 's#^'"$replace_re"'$#\1#' level"$j".txt | sort -u > check"$i"_"$j".txt
-              comm -12 level"$i".txt check"$i"_"$j".txt | sed 's/\./\\\./g' > redun"$j"_"$i".txt
+              comm -12 level"$i".txt check"$i"_"$j".txt | sed -e 's/\./\\\./g' -e 's/\*/\\\*/g' > redun"$j"_"$i".txt
               while read redun_rule
               do
                 sed -i '/\.'"$redun_rule"'$/d' level"$j".txt
               done < redun"$j"_"$i".txt
             done
           done
-          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -E 's#^(\S+)$#\|\|\1\^#' | sort > common_checked.txt
+          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -n '/\*/p' > common_wildcards.txt
+          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed '/\*/d' > common_plain.txt
+          sed 's/\./\\\./g' common_wildcards.txt > wild_check.txt
+          while read wild_rule
+          do
+            sed -i -E '/(^|\.)'"$wild_rule"'$/d' common_plain.txt
+          done < wild_check.txt
+          cat common_wildcards.txt common_plain.txt | sed -E 's#^(\S+)$#\|\|\1\^#' | sort > common_checked.txt
           sed 's/@@//g' except.txt > except_check.txt
           comm -13 except_check.txt common_checked.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
