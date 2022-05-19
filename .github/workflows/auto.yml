@@ -167,7 +167,7 @@ jobs:
           done
           cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -n '/\*/p' > common_wildcards.txt
           cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed '/\*/d' > common_plain.txt
-          sed 's/\./\\\./g' common_wildcards.txt > wild_check.txt
+          sed -e 's/\./\\\./g' -e 's/\*/\.\*/g' common_wildcards.txt > wild_check.txt
           while read wild_rule
           do
             sed -i -E '/(^|\.)'"$wild_rule"'$/d' common_plain.txt
