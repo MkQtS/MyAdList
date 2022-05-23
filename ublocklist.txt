@@ -1,9 +1,9 @@
 ! Title: uBlock Filters
 ! Expires: 2 days
-! Version: 202205230606
+! Version: 202205240607
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 24826, updated on 2022/05/23 06:06 UTC+8
+! Total lines: 24830, updated on 2022/05/24 06:07 UTC+8
 !
  @@||dailymotion.com^$ghide 
 ###Ad300x145:not([style^="position: absolute; left: -5000px"])
@@ -1512,6 +1512,7 @@ $script,domain=zdnet.fr,3p
 /prebid-add.js$script,redirect-rule=prebid-ads.js
 /prebid-ads.js$script,redirect-rule=prebid-ads.js,domain=~exey.io
 /prebid-ads/adsensebase.js$script,redirect-rule=prebid-ads.js
+/prebid-article-ad-ad-300x250.js$script,redirect-rule=prebid-ads.js
 /prize/luckyus-ad/*$doc
 /proxy|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
 /pu-placer.js
@@ -1698,7 +1699,7 @@ $script,domain=zdnet.fr,3p
 123lnk.xyz##center + p
 123mkv.*##+js(nowoif)
 123movie.digital,123moviesjr.cc##+js(aopr, mm)
-123moviefree.*,atdhe.pro,bdmusic23.*,canonprintersdrivers.com,cinema.cimatna.com,clipconverter.cc,dailyuploads.net,dload.my.id,dood.*,elevationmap.net,flixtor.*,freemoviesfull.com,insurancebillpayment.net,linkotes.com,melodelaa.*,mkvcage.*,mkvpapa.*,mobdropro.com,moviefreak.*,mp3fusion.net,multicanais.*,naijanowell.com,nkiri.com,nullpk.com,ogario.*,ovamusic.com,pahe.*,paidnaija.com,songspk.*,southfreak.*,stream4free.live,thelosmovies.com,uptoimage.com,watchopm.net,watchseriess.net,ytapi.my.id##+js(acis, parseInt, break;case $.)
+123moviefree.*,atdhe.pro,bdmusic23.*,canonprintersdrivers.com,cinema.cimatna.com,clipconverter.cc,dailyuploads.net,dload.my.id,dood.*,elevationmap.net,flixtor.*,freemoviesfull.com,hotmasti.*,insurancebillpayment.net,linkotes.com,melodelaa.*,mkvcage.*,mkvpapa.*,mobdropro.com,moviefreak.*,mp3fusion.net,multicanais.*,naijanowell.com,nkiri.com,nullpk.com,ogario.*,ovamusic.com,pahe.*,paidnaija.com,songspk.*,southfreak.*,stream4free.live,thelosmovies.com,uptoimage.com,watchopm.net,watchseriess.net,ytapi.my.id##+js(acis, parseInt, break;case $.)
 123moviefree4u.com##+js(acis, parseInt, break;case $.)
 123moviefree4u.com##+js(ra, onclick, a.thumb.mvi-cover)
 123moviefree4u.com##^script:has-text(break;case $.)
@@ -5856,6 +5857,7 @@ adshrink.it##+js(aopr, open)
 adshrink.it##.active.dimmer.ui:has-text(/Wait|Skip/i)
 adslink.programasfulltaf16.com##+js(aopr, app_vars.force_disable_adblock)
 adslink.programasfulltaf16.com##+js(set, blurred, false)
+adslink.pw##+js(acis, document.createElement, __htas)
 adslink.pw##+js(aopw, _pop)
 adslink.pw##+js(aopw, ai_adb)
 adslink.pw##+js(nosiif, visibility, 1000)
@@ -5949,6 +5951,7 @@ afrodity.sk,alimentprofi.ru,brato.bg,chuguevforum.com,cinema21fullmovie.com,cota
 agar.pro##+js(aeld, load, onload)
 agefi.fr##+js(nostif, {r(), 0)
 aghaniyt.com##+js(aopr, absda)
+agrarwetter.net##+js(aopw, detector_launch)
 agrigentonotizie.it,anconatoday.it,arezzonotizie.it,avellinotoday.it,bresciatoday.it,brindisireport.it,casertanews.it,cataniatoday.it,cesenatoday.it,chietitoday.it,forlitoday.it,frosinonetoday.it,genovatoday.it,ilpescara.it,ilpiacenza.it,latinatoday.it,lecceprima.it,leccotoday.it,livornotoday.it,messinatoday.it,milanotoday.it,modenatoday.it,monzatoday.it,novaratoday.it,padovaoggi.it,parmatoday.it,perugiatoday.it,pisatoday.it,quicomo.it,ravennatoday.it,reggiotoday.it,riminitoday.it,romatoday.it,salernotoday.it,sondriotoday.it,sportpiacenza.it,ternitoday.it,today.it,torinotoday.it,trevisotoday.it,triesteprima.it,udinetoday.it,veneziatoday.it,vicenzatoday.it##+js(nostif, bADBlock)
 ah-me.com##+js(acis, $, serve)
 ah-me.com##+js(aopr, open)
@@ -6623,7 +6626,7 @@ atdhe.*##[href^="https://horti.brovada.eu/"]
 aternos.org##.ad:style(opacity: 0.00105 !important; pointer-events: none !important;)
 aternos.org##.header-ad
 aternos.org##.header-exaroton-link
-aternos.org##.header-link-exaroton *:style(opacity: 0.001196 !important; pointer-events: none !important;)
+aternos.org##.header-link-exaroton *:style(opacity: 0.001199 !important; pointer-events: none !important;)
 aternos.org##.sidebar:remove()
 aternos.org##[data-google-query-id]:upward(.bottom):style(opacity: 0.00105 !important; pointer-events: none !important;)
 aternos.org##[data-google-query-id]:upward(.responsive-leaderboard)
@@ -10006,6 +10009,7 @@ flashx.*##+js(popads.net)
 flashx.*##A[href$=".html"][rel="nofollow norefferer noopener"]
 flashx.*##[src*="/img/player.png"]
 flashx.*##^script:has-text(FingerprintJS)
+flaticon.com##+js(aopr, pu_url)
 flickr.com##+js(set, appContext.adManager.context.current.adFriendly, false)
 flickr.com##.sub-photo-submoola-view
 flightsim.to##+js(acis, document.getElementById, adsblock)
@@ -11463,6 +11467,7 @@ himovies.to##+js(nostif, 0x)
 himovies.to##.modal-backdrop
 himovies.to##body.modal-open:style(overflow: auto!important;)
 himovies.to#@#a[onclick]
+hindilinks4u.*##+js(acis, Math, zfgloaded)
 hindilinks4u.*##.mvic-btn
 hindilinks4u.to##.btn.stream-hd
 hindimean.com##+js(acis, Math, break;case $.)
@@ -14472,10 +14477,7 @@ mytoolz.net##+js(acis, document.createElement, adb)
 mytoolz.net##+js(aopr, onload)
 myupload.co###mytest
 myuploadedpremium.de###babasbmsgx
-myuploadedpremium.de##+js(aeld, mouseover)
-myuploadedpremium.de##+js(aopr, atob)
-myuploadedpremium.de##+js(nosiif, /length|checkifr/)
-myuploadedpremium.de##+js(nostif, checkifr)
+myuploadedpremium.de##+js(set, getRandomArbitrary, noopFunc)
 myuploadedpremium.de##.adsbygoogle
 myuploadedpremium.de##.copyright > .card
 myviptuto.com##+js(nosiif, visibility, 1000)
@@ -16063,7 +16065,6 @@ powerclicks.xyz##.blog-content
 powerthesaurus.org##+js(aopw, ad_abblock_ad)
 powforums.com##+js(nowoif)
 powforums.com##+js(set, adsBlocked, false)
-ppss.kr##+js(no-fetch-if, adsbygoogle)
 ppss.kr,ygosu.com,tgd.kr,loawa.com,inven.co.kr,feedclick.net,dailian.co.kr##+js(nostif, , 10)
 practicequiz.com,reportscam.com,wapkiz.com##+js(aopw, adBlockDetected)
 practicetestgeeks.com##+js(nobab)
@@ -17006,6 +17007,7 @@ sexykittenporn.com##.hr.babes
 sexytrunk.com,teensark.com##+js(aopr, document.dispatchEvent)
 sexywomeninlingerie.com##+js(aopr, exoNoExternalUI38djdkjDDJsio96)
 sexywomeninlingerie.com##[href^="http://join.wearehairy.com/track/"]
+sezonlukdizi2.com##+js(aopr, puShown)
 sfile.mobi##+js(nano-sib)
 sfirmware.com##+js(nano-sib)
 sfirmware.com##.buy_on_amazon
@@ -18124,6 +18126,7 @@ tapetus.pl##div[style="box-sizing: border-box; padding:0px 5px 0px 0px; text-ali
 taraa.xyz##+js(adfly-defuser)
 taradinhos.com##.under-player-ad
 tarjetarojatvonline.*##+js(aopr, absda)
+tarnkappe.info##+js(aopr, Matomo)
 taroot-rangi.com##+js(aopw, sc_adv_out)
 tasma.ru##+js(aopw, decodeURIComponent)
 tatangga.com##+js(acis, eval, AdBlock)
@@ -18385,6 +18388,7 @@ thekingavatar.com##+js(aopw, _pop)
 thelanb.com##+js(aeld, load, undefined)
 thelayoff.com##+js(nostif, alert)
 thelayoff.com##.epp-bf
+thelincolnite.co.uk#@#.inline-ad
 theloadout.com###nn_bfa_wrapper
 theloadout.com##.legion_primiswrapper
 theloadout.com##header:style(top:0 !important)
