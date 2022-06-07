@@ -21,7 +21,8 @@ jobs:
       - name: Get source files
         env:
           LIST_TITLE: https://raw.githubusercontent.com/MkQtS/MyAdList/main/material/Titles.txt
-          FOP_SCRIPT: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
+          #FOP_SCRIPT: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
+          FOP_SCRIPT: https://raw.githubusercontent.com/FiltersHeroes/ScriptsPlayground/master/scripts/FOP.py
           EASYLIST_NOHIDE: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
           EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
           CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
@@ -61,7 +62,7 @@ jobs:
           curl -s $ADGUARD_DNS | sed '$G' > rawdns.txt
           curl -s $ANTI_AD_ADGUARD | sed '$G' >> rawdns.txt
           curl -s $PETER_LOWE | sed '$G' >> rawdns.txt
-          curl -s $ADAWAY_HOST | sed '$G' > host.txt
+          curl -s $ADAWAY_HOST | sed '$G' > rawhost.txt
           cd ../ubo
           curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > rawubo.txt
           curl -s $UBLOCK_2020 | sed '$G' >> rawubo.txt
@@ -129,13 +130,14 @@ jobs:
           cat addon_redun_out.txt addon_redun_pure.txt addon_redun_mod.txt > ../fop/addon_fop.txt
           cd ../fop
           python FOP.py
+          mv addon_fop.txt ../addon/addon_fopped.txt
           cd ../addon
-          cat general_hide.txt ../fop/addon_fop.txt advanced.txt | sed '/^$/d' > ../title/addonrules.txt
+          cat general_hide.txt addon_fopped.txt advanced.txt | sed '/^$/d' > ../title/addonrules.txt
 
       - name: Combine DNS lists
         run: |
           cd ./dns
-          sed -e '/^#/d' -e '/localhost$/d' host.txt | sed -E 's#^127\.0\.0\.1 (\S+)$#\|\|\1\^#' >> rawdns.txt
+          sed -e '/^#/d' -e '/localhost$/d' rawhost.txt | sed -E 's#^127\.0\.0\.1 (\S+)$#\|\|\1\^#' >> rawdns.txt
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
           sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*\^/d' dnscombined.txt > common_check.txt
@@ -193,8 +195,12 @@ jobs:
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' \
           -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
           cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt > uboif.txt
-          sed '/^!#if/,/^!#endif/d' ubocombined.txt | sort -u > ubo_noif.txt
-          cat ubo_noif.txt uboif.txt | sed '/^$/d' > ../title/uborules.txt
+          sed '/^!#if/,/^!#endif/d' ubocombined.txt > ../fop/ubo_fop.txt
+          cd ../fop
+          python FOP.py
+          mv ubo_fop.txt ../ubo/ubo_fopped.txt
+          cd ./ubo
+          cat ubo_fopped.txt uboif.txt | sed '/^$/d' > ../title/uborules.txt
 
       - name: Create final lists
         run: |
