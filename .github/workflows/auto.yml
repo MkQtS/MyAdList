@@ -128,11 +128,14 @@ jobs:
           sed 's/\^/\^\$image,script/g' redun_image_script_only.txt >> addon_redun_mod.txt
           sed 's/\^/\^\$image,script,third-party/g' redun_3p_image_script.txt >> addon_redun_mod.txt
           cat addon_redun_out.txt addon_redun_pure.txt addon_redun_mod.txt > ../fop/addon_fop.txt
+          cp addon_redun_out.txt ../fop/addon_chip_fop.txt
           cd ../fop
           python FOP.py
           mv addon_fop.txt ../addon/addon_fopped.txt
+          mv addon_chip_fop.txt ../addon/addon_chip_fopped.txt
           cd ../addon
           cat general_hide.txt addon_fopped.txt advanced.txt | sed '/^$/d' > ../title/addonrules.txt
+          cat general_hide.txt addon_chip_fopped.txt advanced.txt | sed '/^$/d' > ../title/addonrules_chip.txt
 
       - name: Combine DNS lists
         run: |
@@ -206,13 +209,16 @@ jobs:
         run: |
           cd ./title
           addon_numcount=$(sed -n '$=' addonrules.txt)
+          chip_numcount=$(sed -n '$=' addonrules_chip.txt)
           dns_numcount=$(sed -n '$=' dnsrules.txt)
           ubo_numcount=$(sed -n '$=' uborules.txt)
           sed -i -e "s/BLANKVER/$VERSION_CODE/" -e "s#BLANKTIME#$MODIFY_TIME#" title.txt
           sed -n '/^! Title: AdList/,/^# Addon/p' title.txt | sed -e "s/NUMCOUNT/$addon_numcount/" -e '/^#/d' > addontitle.txt
+          sed -n '/^! Title: Chipped/,/^# Chip/p' title.txt | sed -e "s/NUMCOUNT/$chip_numcount/" -e '/^#/d' > chiptitle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$dns_numcount/" -e '/^#/d' > dnstitle.txt
           sed -n '/^! Title: uBlock/,/^# uBo/p' title.txt | sed -e "s/NUMCOUNT/$ubo_numcount/" -e '/^#/d' > ubotitle.txt
           cat addontitle.txt addonrules.txt > ../addonlist.txt
+          cat chiptitle.txt addonrules_chip.txt > ../addonlist_chip.txt
           cat dnstitle.txt dnsrules.txt > ../dnsblock.txt
           cat ubotitle.txt uborules.txt > ../ublocklist.txt
           cd ..
@@ -222,12 +228,13 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add addonlist.txt dnsblock.txt ublocklist.txt
+          git add addonlist.txt addonlist_chip.txt dnsblock.txt ublocklist.txt
           git commit -m "Updated on $MODIFY_TIME"
           git push origin main
 
       - name: Purge jsDelivr
         run: |
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
+          curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist_chip.txt
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
