@@ -128,14 +128,12 @@ jobs:
           sed 's/\^/\^\$image,script/g' redun_image_script_only.txt >> addon_redun_mod.txt
           sed 's/\^/\^\$image,script,third-party/g' redun_3p_image_script.txt >> addon_redun_mod.txt
           cat addon_redun_out.txt addon_redun_pure.txt addon_redun_mod.txt > ../fop/addon_fop.txt
-          cp addon_redun_out.txt ../fop/addon_chip_fop.txt
           cd ../fop
           python FOP.py
           mv addon_fop.txt ../addon/addon_fopped.txt
-          mv addon_chip_fop.txt ../addon/addon_chip_fopped.txt
           cd ../addon
           cat general_hide.txt addon_fopped.txt advanced.txt | sed '/^$/d' > ../title/addonrules.txt
-          cat general_hide.txt addon_chip_fopped.txt advanced.txt | sed '/^$/d' > ../title/addonrules_chip.txt
+          sed -E '/^\|\|([^/]+)\^([^/=*]*)$/d' ../title/addonrules.txt > ../title/addonrules_chip.txt
 
       - name: Combine DNS lists
         run: |
@@ -238,3 +236,4 @@ jobs:
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist_chip.txt
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
           curl -sS https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+
