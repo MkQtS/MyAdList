@@ -1,9 +1,9 @@
 ! Title: uBlock Filters
 ! Expires: 2 days
-! Version: 202206180606
+! Version: 202206190605
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 24054, updated on 2022/06/18 06:06 UTC+8
+! Total lines: 24064, updated on 2022/06/19 06:05 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"])
 ###ad-container-1:not([style^="position: absolute; left: -5000px"])
@@ -267,8 +267,8 @@
 #@##ad_space
 #@##adAd
 #@##AdArea
-#@##adbanner
 #@##adBanner
+#@##adbanner
 #@##adBannerWrap
 #@##adblock
 #@##AdBox160
@@ -800,10 +800,11 @@ $3p,script,domain=zdnet.fr
 /^https:\/\/ltn\.hitomi\.la\/[A-Za-z]{4,}\/(?=[a-z]{0,19}[A-Z])[A-Za-z]{4,20}\.js$/$1p,match-case,script,domain=hitomi.la
 /^https:\/\/serch\d{2}\.biz\/\?p=/$doc,domain=biz
 /^https:\/\/to\ds\.biz\/\?p=/$doc,domain=biz
+/^https:\/\/www\.aeon\.[a-z]{7,8}\.com\/login\.php\?user_token=\d+/$doc
 /^https:\/\/www\.pussyspace\.(?:com|net)\/style\/\w{200,}$/$1p,image,domain=pussyspace.*
 /^https:\/\/x?1337x\.(?:[0-9a-z]{3,9}\.)?[a-z]{2,4}\/(?:images\/)?[0-9a-z]+\.jpg/$1p,image,domain=1337x.*|1337x.g3g.*|unblockit.*|x1337x.*
-/^https?:\/\/((?!www)[a-z]{3,}\.)?[-0-9a-z]{6,}\.(?:com|de|fun|guru|life|online|pw|site|space|top|us|xyz)\/(?:[a-z]{6,8}\/)?\/?\?o=[0-9a-z]{7}&u=[0-9a-z]{7}/$doc,frame,match-case,domain=com|de|fun|guru|life|online|pw|site|space|top|us|xyz
-/^https?:\/\/((?!www)[a-z]{3,}\.)?[-0-9a-z]{6,}\.(?:com|de|fun|guru|life|online|pw|site|space|top|us|xyz)\/(?:[a-z]{6,8}\/)?\/?\?u=[0-9a-z]{7}&o=[0-9a-z]{7}/$doc,frame,match-case,domain=com|de|fun|guru|life|online|pw|site|space|top|us|xyz
+/^https?:\/\/((?!www)[a-z]{3,}\.)?[-0-9a-z]{6,}\.(?:buzz|com|de|fun|guru|life|online|pw|site|space|top|us|xyz)\/(?:[a-z]{6,8}\/)?\/?\?o=[0-9a-z]{7}&u=[0-9a-z]{7}/$doc,frame,match-case,domain=buzz|com|de|fun|guru|life|online|pw|site|space|top|us|xyz
+/^https?:\/\/((?!www)[a-z]{3,}\.)?[-0-9a-z]{6,}\.(?:buzz|com|de|fun|guru|life|online|pw|site|space|top|us|xyz)\/(?:[a-z]{6,8}\/)?\/?\?u=[0-9a-z]{7}&o=[0-9a-z]{7}/$doc,frame,match-case,domain=buzz|com|de|fun|guru|life|online|pw|site|space|top|us|xyz
 /^https?:\/\/(35|104)\.(\d){1,3}\.(\d){1,3}\.(\d){1,3}\//$3p,badfilter,popup
 /^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{7,16}\.com\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/(?:[1-5]\d{4}|[3-9]\d{3})\??(?:_=\d+|v=\d)?$/$3p,frame,match-case,popup,script,xhr
 /^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{7,16}\.website\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/(?:[1-5]\d{4}|[3-9]\d{3})\??(?:_=\d+|v=\d)?$/$3p,frame,match-case,popup,script,xhr
@@ -827,7 +828,7 @@ $3p,script,domain=zdnet.fr
 /^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.json$/$3p,match-case,xhr
 /^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.png\?aHR0c[\/0-9a-zA-Z]{33,}=?=?$/$3p,image,match-case
 /^https?:\/\/cdn\.[a-z]{4,6}\.xyz\/app\.js$/$3p,match-case,script
-/^https?:\/\/listen\.tidal\.com\/v1\/tracks\/[0-9]{6,10}\?/$redirect=noop.txt,xhr
+/^https?:\/\/listen\.tidal\.com\/v1\/tracks\/[0-9]{6,10}\?/$badfilter,redirect=noop.txt,xhr
 /^https?:\/\/s3\.us-east-1\.amazonaws\.com\/[0-9a-f]{50,}\/[0-9a-f]{10}$/$3p,xhr
 /_/ads/*$badfilter
 /_a_ta/s/s/*
@@ -876,6 +877,7 @@ $3p,script,domain=zdnet.fr
 /apu.php?*&zoneid=$important
 /askdrej/*$1p,script
 /askrej/*$1p,script
+/assets/js/sailthru.js?ver=
 /assets/jwplayer-*/vast.js$1p,script
 /bab.min.js$1p,script
 /backend_loader$script
@@ -3310,6 +3312,7 @@ $3p,script,domain=zdnet.fr
 @@||laredoute.com^$image,domain=laredoute.lu|laredoute.nl
 @@||larioja.com^$ghide
 @@||lasprovincias.es^$ghide
+@@||last.fm/static/js-build/tracking/tealium-utag-set.js$1p,script
 @@||laufpix.de^$ghide
 @@||laverdad.es^$ghide
 @@||league-funny.com^$ghide
@@ -5454,6 +5457,7 @@ animotvslashz.blogspot.com##+js(aopr, _pop)
 animotvslashz.blogspot.com##+js(aopr, absda)
 animotvslashz.blogspot.com##^script[data-cfasync]:has-text(h=decodeURIComponent)
 aniplay.*##+js(aopw, _pop)
+anisearch.com###top_outside
 anisubindo.*##+js(aeld, load, nextFunction)
 anitoki.com##+js(aopr, Base64.encode)
 anitube.*###iframeCore____
@@ -7092,7 +7096,7 @@ clicads.fr##+js(nano-sib)
 clickhouse.xyz##+js(aopr, app_vars.force_disable_adblock)
 clickhouse.xyz##+js(nosiif, visibility, 1000)
 clickmon.co.kr##a[href="https://www.clickmon.co.kr/home_aff/rtbanner/rtbanner_info.php"]
-clicknupload.*##+js(acis, JSON, break;case $.)
+clicknupload.*##+js(acis, parseInt, break;case $.)
 clicknupload.*##+js(aopw, _pop)
 clickscoin.com##+js(acis, $, 'body')
 clickscoin.com##+js(aopr, app_vars.force_disable_adblock)
@@ -13929,7 +13933,6 @@ news.com.au##+js(aopr, __cmpGdprAppliesGlobally)
 news18.com##[class="Article_article_mad__1sOil"]
 news18.com##[style^="min-height :90px"]
 news18.com##[style^="min-height:"]:has(.OUTBRAIN)
-news18.com##[style^="width:300px;min-height:250px;"]
 newsalret.com##+js(aopr, app_vars.force_disable_adblock)
 newsalret.com##+js(set, blurred, false)
 newsbomb.gr##.banner-area
@@ -18517,6 +18520,8 @@ uploads.mobi##+js(aost, Math.random, /\st\.[a-zA-Z]*\s/)
 uploadshare.net##.adsbygoogle
 uploady.io##+js(acis, document.addEventListener, nextFunction)
 upnewsinfo.com##+js(aopr, mMCheckAgainBlock)
+uporn.icu##+js(acis, decodeURI, decodeURIComponent)
+uporn.icu##+js(acis, document.querySelectorAll, popMagic)
 upornia.*##+js(acis, adver)
 upornia.*##.aa_label + div:not([class])
 upornia.*##.app-banners
@@ -18735,6 +18740,10 @@ verteleseriesonline.com##+js(nosiif, visibility, 1000)
 veryfastdownload.pw##+js(aopr, SmartPopunder.make)
 veryfiles.com##+js(nano-stb)
 veryfiles.com##+js(nosiif, visibility, 1000)
+veryfreeporn.com##+js(aopr, Object)
+veryfreeporn.com##+js(nowoif)
+veryfreeporn.com##.js-mob-popup
+veryfreeporn.com##^script:has-text(popMagic)
 vev.*##.vjs-overlay
 vev.*##body > div[style="position: fixed; display: block; width: 100%; height: 100%; inset: 0px; background-color: rgba(0, 0, 0, 0); z-index: 300000;"]
 vev.*,vidop.*##+js(aeld, /^(?:click|mousedown|mouseup)$/, di())
@@ -19008,8 +19017,8 @@ vladan.fr##body:style(background-image:none !important)
 vlive.tv##+js(json-prune, meta.advertise)
 vmovee.watch##+js(ra, href, #clickfakeplayer)
 vods.tv##+js(no-fetch-if, doubleclick)
-voe-unblock.*,voeunblck.com,voeunblock.com,voeunblock1.com,voeunblock2.com,voeunblock3.com,voeunbl0ck.com,voeunblk.com##+js(acis, $, /\.fadeIn|\.show\(.?\)/)
-voe.*,voe-unblock.*,voeunblck.com,voeunblock.com,voeunblock1.com,voeunblock2.com,voeunblock3.com,voeunbl0ck.com,voeunblk.com##+js(nowoif)
+voe-un-block.com,voe-unblock.*,voe.*,voeunbl0ck.com,voeunblck.com,voeunblk.com,voeunblock.com,voeunblock1.com,voeunblock2.com,voeunblock3.com##+js(nowoif)
+voe-un-block.com,voe-unblock.*,voeunbl0ck.com,voeunblck.com,voeunblk.com,voeunblock.com,voeunblock1.com,voeunblock2.com,voeunblock3.com##+js(acis, $, /\.fadeIn|\.show\(.?\)/)
 voe.sx##+js(acis, $, fadeIn)
 voe.sx##+js(acis, EventTarget.prototype.addEventListener, /\^http|test/)
 voe.sx##+js(acis, google)
@@ -22575,6 +22584,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$redirect-rule=googlesyndication-adsbygoogle.js:5,script,xhr
 ||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$redirect-rule=noopjs,xhr,domain=coursevania.com
 ||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js^$redirect-rule=googlesyndication-adsbygoogle.js,script,domain=andreyex.ru|arabseed.*|crypto-fun-faucet.de|persianhive.com|unityassetcollection.com
+||pagead2.googlesyndication.com/pagead/show_ads.js$redirect-rule=noop.js,xhr,domain=spinbot.com
 ||pagead2.googlesyndication.com/pagead/show_ads.js$redirect=noop.js,script,domain=ehubsoft.net|websimhockey.com
 ||pagead2.googlesyndication.com/pagead/show_ads.js^$redirect-rule=noopjs,script,domain=thetimetube.com
 ||pagead2.googlesyndication.com/tag/js/gpt.js$redirect=googletagservices-gpt.js:5,script
@@ -23579,7 +23589,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||velaro.com^$3p,badfilter
 ||vendigamus.com^$3p
 ||vendigamus.com^$badfilter
-||vendorlist.dmcdn.net^$badfilter
 ||verified-extensions.com^
 ||vev.*/sw.js$1p,script
 ||vexfile.com/img/cofksar.png
@@ -24041,6 +24050,7 @@ xnxx.com,xvideos.com###ad-header-mobile
 ||telugu-wap.in^$csp=default-src 'self'
 !#endif
 !#if !env_mobile
+/^http:\/\/[a-z]{5}\.[a-z]{5}\.com\/[a-z]{10}\.apk$/$doc,match-case,domain=com
 msn.com##[data-aop="stripe.store.navigation_stripenavigation"]:upward(2)
 news18.com##+js(aeld, scroll, getElementById)
 w3schools.com###tryitLeaderboard ~ #container:style(top: 84px!important;)
