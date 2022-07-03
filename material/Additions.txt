@@ -1,9 +1,11 @@
 ! 乘风视频规则 Modified
 ! See: https://github.com/xinggsf/Adblock-Plus-Rule/commits/master/mv.txt
-! LastCommit: b6a533f030fa168cec82d8506f5972d1a8b31f5a
+! LastCommit: 1d04f5a070afdb58d56e663132f18d8926b7fd03
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,third-party,domain=youtube.com
+17173.com###vjs-ad-on-pause
+4kya.com###player_pause
 @@||g.w.bilicdn1.com^$script,domain=bilibili.com
 @@||js.tv.itc.cn/gg.seed.js
 @@||mmstat.com^$domain=youku.com
@@ -11,7 +13,52 @@
 @@||tb.mgtv.com/sdk/*/ad-sdk.
 @@||union.bokecc.com/player
 @@||union.video.qq.com/fcgi-bin/$script,domain=qq.com
+acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
+age.tv,agemys.cc##+js(noeval-if, devtoolsDetector)
+bilibili.com##.ad-report, .ad-floor
+bilibili.com##.gg-floor-module,#slide_ad,a[href^="//cm.bilibili.com"]
+cctv.com###bgAd_div
+dandanzan10.top,nunuyy1.org##+js(set,RTCPeerConnection,null)
+dandanzan10.top,nunuyy1.org##+js(set,mozRTCPeerConnection,null)
+dandanzan10.top,nunuyy1.org##+js(set,webkitRTCPeerConnection,null)
+dandanzan10.top,nunuyy1.org##.gm-fp-body video:style(max-height:100%!important)
+dandanzan10.top,nunuyy1.org#@#+js(nowebrtc)
+douyu.com##+js(set, RTCPeerConnection.prototype.addTrack, noopFunc)
+douyu.com##.Title-ad, .DropMenuList-ad, .DropPane-ad
+douyu.com,huya.com##a[href^="https://g.wan."]
+hanmidy.com,bimiacg4.net##+js(acis,Object.defineProperty,location.href)
+huya.com###hy-ad,#hy-ab,#huya-ab
+iqiyi.com##+js(set, Object.prototype.blackscreenDuration, 1)
+iqiyi.com##+js(set, Object.prototype.parseXML, noopFunc)
+iqiyi.com##.black-screen[data-cupid="adblock-blackscreen"]
+iqiyi.com##div[data-adzone],#block-V
+le.com##+js(set, isAdLoaded, true)
+le.com##.min_pause_img
+m.iqiyi.com##+js(set, Object.prototype.adPlayerId, '')
+m.youku.com,v.youku.com##+js(nano-stb, r--,, 0.02)
+netflix.mom,netflixya.com,yanetflix.com##+js(aopw,document.onkeydown)
+netflix.mom,netflixya.com,yanetflix.com##.tips-box,#note.popup
+new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
+pptv.com##.advView-two,#p-mark
+qq.com##+js(aopr, Beacon.prototype.fail)
+qq.com##+js(json-prune,adList.item)
+qq.com##+js(no-fetch-if, trace.)
+qq.com##+js(no-xhr-if, trace.)
+qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap
+qq.com,yy.com,le.com##+js(nowebrtc)
+tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
+v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
+www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
+www.ted.com##.gm-fp-body .justify-center.tracking-tightest
+yatu.tv##.dplayer-web-fullscreen-fix #tburl,#loadtop,[id^=myas],#myds1,#daohang
+yatu.tv,yhdm15.com##+js(set,document.oncontextmenu,trueFunc)
+youtube.com##.masthead-ad-control, .ad-div, .pyv-afc-ads-container, #promotion-shelf
+youtube.com##ytd-video-masthead-ad-advertiser-info-renderer, ytm-promoted-sparkles-web-renderer, ytd-promoted-sparkles-web-renderer
+youtube.com,youtube-nocookie.com##+js(json-prune, [].playerResponse.adPlacements [].playerResponse.playerAds playerResponse.adPlacements playerResponse.playerAds adPlacements playerAds)
+youtube.com,youtube-nocookie.com##+js(set, playerResponse.adPlacements, undefined)
+youtube.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.adPlacements, undefined)
 ||17173.com/batch_show?ads=
+||71edge.com/videos/other/202$xmlhttprequest
 ||91p20.space^
 ||adpushup.com^
 ||adx1.com^
@@ -47,12 +94,12 @@
 ||imgcache.qq.com/qzone/biz/comm/js/qbs.js
 ||in-page-push.com^
 ||ipinyou.com^
-||iqiyi.com/videos/other/20$xmlhttprequest,object-subrequest
+||iqiyi.com/videos/other/202$xmlhttprequest
 ||iqiyipic.com/image/20*_100000$image
 ||js.letvcdn.com/*_banner_$script
 ||kejet.net^
-||letvimg.com/*_gugwl/$image
 ||letvimg.com/$object,xhr
+||letvimg.com/*_gugwl/$image
 ||litix.io^
 ||log1.17173.com^
 ||mark.l.qq.com/fcgi-bin/get_video_mark_all?
@@ -92,51 +139,6 @@
 ||youtube.com/pagead/
 ||youtube.com/ptracking?
 ||zhiziyun.com^
-17173.com###vjs-ad-on-pause
-4kya.com###player_pause
-acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
-age.tv,agemys.cc##+js(noeval-if, devtoolsDetector)
-bilibili.com##.ad-report, .ad-floor
-bilibili.com##.gg-floor-module,#slide_ad,a[href^="//cm.bilibili.com"]
-cctv.com###bgAd_div
-dandanzan10.top,nunuyy1.org##.gm-fp-body video:style(max-height:100%!important)
-dandanzan10.top,nunuyy1.org##+js(set,mozRTCPeerConnection,null)
-dandanzan10.top,nunuyy1.org##+js(set,RTCPeerConnection,null)
-dandanzan10.top,nunuyy1.org##+js(set,webkitRTCPeerConnection,null)
-dandanzan10.top,nunuyy1.org#@#+js(nowebrtc)
-douyu.com##.Title-ad, .DropMenuList-ad, .DropPane-ad
-douyu.com##+js(set, RTCPeerConnection.prototype.addTrack, noopFunc)
-douyu.com,huya.com##a[href^="https://g.wan."]
-hanmidy.com,bimiacg4.net##+js(acis,Object.defineProperty,location.href)
-huya.com###hy-ad,#hy-ab,#huya-ab
-iqiyi.com##.black-screen[data-cupid="adblock-blackscreen"], div[data-adzone],#block-V
-iqiyi.com##+js(set, Object.prototype.blackscreenDuration, 1)
-iqiyi.com##+js(set, Object.prototype.parseXML, noopFunc)
-le.com##.min_pause_img
-le.com##+js(set, isAdLoaded, true)
-m.iqiyi.com##+js(set, Object.prototype.adPlayerId, '')
-m.youku.com,v.youku.com##+js(nano-stb, r--,, 0.02)
-netflix.mom,netflixya.com,yanetflix.com##.tips-box,#note.popup
-netflix.mom,netflixya.com,yanetflix.com##+js(aopw,document.onkeydown)
-new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
-pptv.com##.advView-two,#p-mark
-qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap
-qq.com##+js(aopr, Beacon.prototype.fail)
-qq.com##+js(json-prune,adList.item)
-qq.com##+js(no-fetch-if, trace.)
-qq.com##+js(no-xhr-if, trace.)
-qq.com,yy.com,le.com##+js(nowebrtc)
-tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
-v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
-www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
-www.ted.com##.gm-fp-body .justify-center.tracking-tightest
-yatu.tv##.dplayer-web-fullscreen-fix #tburl,#loadtop,[id^=myas],#myds1,#daohang
-yatu.tv,yhdm15.com##+js(set,document.oncontextmenu,trueFunc)
-youtube.com##.masthead-ad-control, .ad-div, .pyv-afc-ads-container, #promotion-shelf
-youtube.com##ytd-video-masthead-ad-advertiser-info-renderer, ytm-promoted-sparkles-web-renderer, ytd-promoted-sparkles-web-renderer
-youtube.com,youtube-nocookie.com##+js(json-prune, [].playerResponse.adPlacements [].playerResponse.playerAds playerResponse.adPlacements playerResponse.playerAds adPlacements playerAds)
-youtube.com,youtube-nocookie.com##+js(set, playerResponse.adPlacements, undefined)
-youtube.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.adPlacements, undefined)
 
 ! My rules
 ! bandisoft
@@ -524,5 +526,4 @@ youtube.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.adPlacements,
 ##div[class^="AdItem-"]
 ##div[class^="adUnit_"]
 ##div[class^="BannerAd_"]
-##div[class^="SponsoredAds"]
 
