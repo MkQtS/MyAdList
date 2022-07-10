@@ -78,6 +78,7 @@ jobs:
         run: |
           cd ./addon
           sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' rawaddon.txt | sort -u > addoncombined.txt
+          echo "Raw addon rules combined: $(sed -n '$=' addoncombined.txt) lines..."
           sed -n '/^##/p' addoncombined.txt | sed '/ /d' > general_hide.txt
           sed -n '/+js/p' addoncombined.txt > advanced.txt
           sed -e '/^##/d' -e '/+js/d' addoncombined.txt > addon_redun_mixed.txt
@@ -133,13 +134,16 @@ jobs:
           mv addon_fop.txt ../addon/addon_fopped.txt
           cd ../addon
           cat general_hide.txt addon_fopped.txt advanced.txt | sed '/^$/d' > ../title/addonrules.txt
+          echo "Final addon list: $(sed -n '$=' ../title/addonrules.txt) lines."
           sed -E '/^\|\|([^/]+)\^([^/=*]*)$/d' ../title/addonrules.txt > ../title/addonrules_chip.txt
+          echo "Final addon_chip list: $(sed -n '$=' ../title/addonrules_chip.txt) lines."
 
       - name: Combine DNS lists
         run: |
           cd ./dns
           sed -e '/^#/d' -e '/localhost$/d' rawhost.txt | sed -E 's#^127\.0\.0\.1 (\S+)$#\|\|\1\^#' >> rawdns.txt
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
+          echo "Raw dns rules combined: $(sed -n '$=' dnscombined.txt) lines..."
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
           sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*\^/d' dnscombined.txt > common_check.txt
           grep -E '^\|\|[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
@@ -179,11 +183,13 @@ jobs:
           sed 's/@@//g' except.txt > except_check.txt
           comm -13 except_check.txt common_checked.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ../title/dnsrules.txt
+          echo "Final dns list: $(sed -n '$=' ../title/dnsrules.txt) lines."
 
       - name: Combine uBlock lists
         run: |
           cd ./ubo
           sed -e '/^![^#]/d' -e '/^!$/d' -e 's/\r//g' rawubo.txt > ubocombined.txt
+          echo "Raw ubo rules combined: $(sed -n '$=' ubocombined.txt) lines..."
           sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > uboif0.txt
           sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt | sort -u > uboifchrome0.txt
           sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt | sort -u > uboiffire0.txt
@@ -202,19 +208,16 @@ jobs:
           mv ubo_fop.txt ../ubo/ubo_fopped.txt
           cd ../ubo
           cat ubo_fopped.txt uboif.txt | sed '/^$/d' > ../title/uborules.txt
+          echo "Final ubo list: $(sed -n '$=' ../title/uborules.txt) lines."
 
       - name: Create final lists
         run: |
           cd ./title
-          addon_numcount=$(sed -n '$=' addonrules.txt)
-          chip_numcount=$(sed -n '$=' addonrules_chip.txt)
-          dns_numcount=$(sed -n '$=' dnsrules.txt)
-          ubo_numcount=$(sed -n '$=' uborules.txt)
           sed -i -e "s/BLANKVER/$VERSION_CODE/" -e "s#BLANKTIME#$MODIFY_TIME#" title.txt
-          sed -n '/^! Title: AdList/,/^# Addon/p' title.txt | sed -e "s/NUMCOUNT/$addon_numcount/" -e '/^#/d' > addontitle.txt
-          sed -n '/^! Title: Chipped/,/^# Chip/p' title.txt | sed -e "s/NUMCOUNT/$chip_numcount/" -e '/^#/d' > chiptitle.txt
-          sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$dns_numcount/" -e '/^#/d' > dnstitle.txt
-          sed -n '/^! Title: uBlock/,/^# uBo/p' title.txt | sed -e "s/NUMCOUNT/$ubo_numcount/" -e '/^#/d' > ubotitle.txt
+          sed -n '/^! Title: AdList/,/^# Addon/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' addonrules.txt)/" -e '/^#/d' > addontitle.txt
+          sed -n '/^! Title: Chipped/,/^# Chip/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' addonrules_chip.txt)/" -e '/^#/d' > chiptitle.txt
+          sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > dnstitle.txt
+          sed -n '/^! Title: uBlock/,/^# uBo/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' uborules.txt)/" -e '/^#/d' > ubotitle.txt
           cat addontitle.txt addonrules.txt > ../addonlist.txt
           cat chiptitle.txt addonrules_chip.txt > ../addonlist_chip.txt
           cat dnstitle.txt dnsrules.txt > ../dnsblock.txt
@@ -242,5 +245,6 @@ jobs:
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
-          retain_days: 7
+          retain_days: 6
+          keep_minimum_runs: 1
 
