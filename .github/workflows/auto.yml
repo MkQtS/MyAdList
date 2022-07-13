@@ -35,7 +35,6 @@ jobs:
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
           ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
           PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
-          ADAWAY_HOST: https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
           UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
@@ -62,7 +61,6 @@ jobs:
           curl -s $ADGUARD_DNS | sed '$G' > rawdns.txt
           curl -s $ANTI_AD_ADGUARD | sed '$G' >> rawdns.txt
           curl -s $PETER_LOWE | sed '$G' >> rawdns.txt
-          curl -s $ADAWAY_HOST | sed '$G' > rawhost.txt
           cd ../ubo
           curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > rawubo.txt
           curl -s $UBLOCK_2020 | sed '$G' >> rawubo.txt
@@ -141,7 +139,6 @@ jobs:
       - name: Combine DNS lists
         run: |
           cd ./dns
-          sed -e '/^#/d' -e '/localhost$/d' rawhost.txt | sed -E 's#^127\.0\.0\.1 (\S+)$#\|\|\1\^#' >> rawdns.txt
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
           echo "Raw dns rules combined: $(sed -n '$=' dnscombined.txt) lines..."
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
