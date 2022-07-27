@@ -60,7 +60,7 @@ jobs:
           cd ../dns
           curl -s $ADGUARD_DNS | sed '$G' > rawdns.txt
           curl -s $ANTI_AD_ADGUARD | sed '$G' >> rawdns.txt
-          curl -s $PETER_LOWE | sed '$G' >> rawdns.txt
+          #curl -s $PETER_LOWE | sed '$G' >> rawdns.txt
           cd ../ubo
           curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > rawubo.txt
           curl -s $UBLOCK_2020 | sed '$G' >> rawubo.txt
@@ -232,10 +232,7 @@ jobs:
 
       - name: Purge jsDelivr
         run: |
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/addonlist_chip.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/dnsblock.txt
-          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/ublocklist.txt
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
