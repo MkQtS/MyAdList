@@ -1,9 +1,9 @@
 ! Title: uBlock Filters
 ! Expires: 2 days
-! Version: 202207280606
+! Version: 202207290605
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23412, updated on 2022/07/28 06:06 UTC+8
+! Total lines: 23427, updated on 2022/07/29 06:05 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"])
 ###ad-container-1:not([style^="position: absolute; left: -5000px"])
@@ -27,6 +27,7 @@
 ###ad_big:not([style^="position: absolute; left: -5000px"])
 ###ad_box:not([style^="position: absolute; left: -5000px"])
 ###ad_channel:not([style^="position: absolute; left: -5000px"])
+###ad_feature:not(:empty)
 ###ad_footer:not([style^="position: absolute; left: -5000px"])
 ###ad_slot:not([style^="position: absolute; left: -5000px"])
 ###adAd:not([style^="position: absolute; left: -5000px"])
@@ -44,12 +45,14 @@
 ###AdImage:not([style^="position: absolute; left: -5000px"])
 ###AdLayer1:not([style^="position: absolute; left: -5000px"])
 ###AdLayer2:not([style^="position: absolute; left: -5000px"])
+###adMid1:not(:empty)
 ###ads-1:not([style^="position: absolute; left: -5000px"])
 ###ads-banner:not([style^="position: absolute; left: -5000px"])
 ###ads-footer:not([style^="position: absolute; left: -5000px"])
 ###ads-sticky:not(:empty)
 ###adslot:not([style^="position: absolute; left: -5000px"])
 ###adsquare:not([style^="position: absolute; left: -5000px"])
+###adtagfooter:not(:empty)
 ###adTeaser:not([style^="position: absolute; left: -5000px"])
 ###anuncio
 ###banner-advert-container:not(.ad-inserter):not(.adsense)
@@ -65,6 +68,7 @@
 ###DivAdB:not([style^="position: absolute; left: -5000px"])
 ###DivAdC:not([style^="position: absolute; left: -5000px"])
 ###DivTopAd:not(:empty)
+###docmainad:not(:empty)
 ###glinkswrapper:not([style^="position: absolute; left: -5000px"])
 ###google_ad:not([style^="position: absolute; left: -5000px"])
 ###invid_call
@@ -73,17 +77,20 @@
 ###invideo_new
 ###iqadtile5:not(:empty)
 ###leftframeAD:not(:empty)
+###myAd:not(:empty)
 ###outbrain-paid:not([style^="position: absolute; left: -5000px"])
 ###p_native
 ###placeAds
 ###playerOverlay[style="position:absolute; z-index:3"]
 ###plban
+###sideadbox:not(:empty)
 ###sidearm-adblock-modal
 ###sponsored_link:not([style^="position: absolute; left: -5000px"])
 ###stop_ad
 ###stop_ad2
 ###tabVideo > .rmedia
 ###tobsideAd:not(:empty)
+###travel_ad:not(:empty)
 ##.__nat_link
 ##.aan_fake
 ##.aan_fake__video-units
@@ -270,6 +277,7 @@
 #@##ad_big
 #@##ad_box
 #@##ad_channel
+#@##ad_feature
 #@##ad_footer
 #@##ad_slot
 #@##ad_space
@@ -290,6 +298,7 @@
 #@##AdImage
 #@##AdLayer1
 #@##AdLayer2
+#@##adMid1
 #@##ads-1
 #@##ads-banner
 #@##ads-footer
@@ -297,6 +306,7 @@
 #@##adslot
 #@##adspace
 #@##adsquare
+#@##adtagfooter
 #@##adTeaser
 #@##banner-advert-container
 #@##banner468
@@ -311,13 +321,17 @@
 #@##DivAdB
 #@##DivAdC
 #@##DivTopAd
+#@##docmainad
 #@##glinkswrapper
 #@##google_ad
 #@##iqadtile5
 #@##leftframeAD
+#@##myAd
 #@##outbrain-paid
+#@##sideadbox
 #@##sponsored_link
 #@##tobsideAd
+#@##travel_ad
 #@#.ad-300x250
 #@#.ad-banner
 #@#.ad-image
@@ -469,6 +483,7 @@ $3p,script,domain=zdnet.fr
 *$3p,denyallow=cloudflare.com|cloudflare.net|edgecastcdn.net|facebook.net|fastly.net|fbcdn.net|fontawesome.com|google.com|googleapis.com|graphcomment.com|gstatic.com|hwcdn.net|jquery.com|jsdelivr.net|recaptcha.net|twitter.com|watch-series.la|zdassets.com|unpkg.com,script,domain=watch-series.*|watchseries.*
 *$3p,denyallow=cloudflare.com|cloudflare.net|fastly.net|fastlylb.net|fluidplayer.com|google.com|googleapis.com|gstatic.com|hcaptcha.com|hwcdn.net|jquery.com|jsdelivr.net|recaptcha.net|twitter.com,script,domain=bdsmstreak.com
 *$3p,denyallow=cloudflare.com|cloudflare.net|fastly.net|fastlylb.net|google.com|googleapis.com|gstatic.com|hwcdn.net|jquery.com|jsdelivr.net|jwplatform.com|jwpcdn.com|recaptcha.net|arc.io,script,domain=zpaste.net|zplayer.live
+*$3p,denyallow=cloudflare.com|cloudflare.net|fastly.net|fluidplayer.com|gstatic.com|jsdelivr.net|jwpcdn.com|streamsb.com,script,domain=sbembed.com|streamsb.*
 *$3p,denyallow=cloudflare.com|cloudflare.net|fastly.net|google.com|googleapis.com|gstatic.com|hcaptcha.com|jsdelivr.net|recaptcha.net,script,domain=manga4life.com
 *$3p,denyallow=cloudflare.com|cloudflare.net|fastly.net|google.com|gstatic.com|hwcdn.net|jquery.com|jsdelivr.net|section.io|streamroot.io|zencdn.net,script,domain=jetload.net
 *$3p,denyallow=cloudflare.com|cloudflare.net|fastly.net|jsdelivr.net|unpkg.com|zencdn.net,script,domain=xxxfiles.com
@@ -494,7 +509,6 @@ $3p,script,domain=zdnet.fr
 *$3p,denyallow=cloudflare.com|disqus.com|disquscdn.com|fastly.net|gstatic.com|jwpcdn.com|movcloud.net,script,domain=dembed1.com
 *$3p,denyallow=cloudflare.com|disqus.com|fastlylb.net|google.com|googleapis.com|gstatic.com|hwcdn.net|jquery.com|unpkg.com,script,domain=megavideo.*
 *$3p,denyallow=cloudflare.com|facebook.net|fbcdn.net|google.com|googleapis.com|gstatic.com|hcaptcha.com|recaptcha.net,script,domain=dramacool9.*
-*$3p,denyallow=cloudflare.com|fastly.net|fluidplayer.com|gstatic.com|jsdelivr.net|jwpcdn.com|streamsb.com,script,domain=sbembed.com|streamsb.*
 *$3p,denyallow=cloudflare.com|gcdn.co|google.com|gstatic.com|videocdn.name,script,domain=hog.*
 *$3p,denyallow=cloudflare.com|github.io|google.com|googleapis.com|gstatic.com|hwcdn.net|jquery.com|recaptcha.net|tipsforce.com,script,domain=gplinks.co
 *$3p,denyallow=cloudflare.com|google.com|googleapis.com|gstatic.com,script,domain=za.gl
@@ -1180,7 +1194,7 @@ $3p,script,domain=zdnet.fr
 1090ys2.com##+js(aopr, adBlockDetected)
 10convert.com##+js(aopr, HTMLIFrameElement)
 10convert.com,besthdgayporn.com,gigmature.com,kantotflix.com,komiklokal.xyz,leermanga.net,mangamovil.net,naijauncut.com,nhentai.com,pornohubonline.com,tatli.biz,teenager365.com,webtoontop.xyz##+js(acs, document.createElement, 'script')
-10crack.com,365crack.com,9to5crack.com,activationkey.org,activatorpros.com,activators4windows.com,allcracks.org,allsoftwarekeys.com,aryancrack.com,autocracking.com,boxcracked.com,bypassapp.com,chcracked.com,clevercracks.com,crack11.com,cracka2zsoft.com,crackdev.com,crackedmacapps.com,crackedmod.com,crackedpc.org,crackedpcs.com,crackedroot.com,crackedsoftpc.com,crackedversion.com,crackfullkey.net,crackfullpro.com,crackfury.com,crackgrid.com,crackkey4u.com,crackkeymac.com,cracklabel.com,cracknew.org,crackpckey.com,crackpcsoft.net,crackpro.org,crackproductkey.com,cracksdat.com,cracksmad.com,cracksole.com,cracksoon.com,crackswall.com,cracksway.com,cracktel.com,crackwinz.com,excrack.com,fileserialkey.com,finalcracked.com,flstudiocrack.org,freeappstorepc.com,freecrack4u.com,freecracker.com,fullactivationkey.com,fullcrackedpc.com,genuineactivator.com,get4pcs.com,getpcsofts.net,getproductkey.co,goharpc.com,greencracks.com,hitcracker.com,hmzapc.com,idmfullcrack.info,idmfullversion.com,idmpatched.com,kalicrack.com,keygenwin.com,keystool.com,licensekeysfree.com,licensekeyup.com,macwinsofts.com,mahcrack.com,masterkreatif.net,miraclecrack.com,mycrackfree.com,newproductkey.com,onhax.io,patchcracks.com,patchlinks.com,pccrackbox.com,pcwarezbox.com,piratespc.net,piratpc.com,proapkcrack.com,proappcrack.com,procrackerz.org,procrackhere.com,procracks.net,productkeyforfree.com,productkeyfree.org,profullversion.com,proproductkey.com,reallpccrack.com,rootcracks.org,rootscrack.com,serialkeypatch.org,serialkeysfree.org,softscracked.com,softwar2crack.com,thecrackbox.com,topcracked.com,torrentfilefree.com,up4crack.com,usecracked.com,wazusoft.com,whitecracked.com,zcracked.com,zgamespc.com##[onclick*="open"]
+10crack.com,365crack.com,9to5crack.com,activationkey.org,activatorpros.com,activators4windows.com,allcracks.org,allsoftwarekeys.com,aryancrack.com,autocracking.com,boxcracked.com,bypassapp.com,centerapps.net,centergames.net,chcracked.com,clevercracks.com,crack11.com,cracka2zsoft.com,crackdev.com,crackedmacapps.com,crackedmod.com,crackedpc.org,crackedpcs.com,crackedroot.com,crackedsoftpc.com,crackedversion.com,crackfullkey.net,crackfullpro.com,crackfury.com,crackgrid.com,crackkey4u.com,crackkeymac.com,cracklabel.com,cracknew.org,crackpckey.com,crackpcsoft.net,crackpro.org,crackproductkey.com,cracksdat.com,cracksmad.com,cracksole.com,cracksoon.com,crackswall.com,cracksway.com,cracktel.com,crackwinz.com,excrack.com,fileserialkey.com,finalcracked.com,flstudiocrack.org,freeappstorepc.com,freecrack4u.com,freecracker.com,fullactivationkey.com,fullcrackedpc.com,genuineactivator.com,get4pcs.com,getpcsofts.net,getproductkey.co,goharpc.com,greencracks.com,hitcracker.com,hmzapc.com,idmfullcrack.info,idmfullversion.com,idmpatched.com,kalicrack.com,keygenwin.com,keystool.com,licensekeysfree.com,licensekeyup.com,macwinsofts.com,mahcrack.com,masterkreatif.net,miraclecrack.com,mycrackfree.com,newproductkey.com,onhax.io,patchcracks.com,patchlinks.com,pccrackbox.com,pcwarezbox.com,piratespc.net,piratpc.com,proapkcrack.com,proappcrack.com,procrackerz.org,procrackhere.com,procracks.net,productkeyforfree.com,productkeyfree.org,profullversion.com,proproductkey.com,reallpccrack.com,rootcracks.org,rootscrack.com,serialkeypatch.org,serialkeysfree.org,softscracked.com,softwar2crack.com,thecrackbox.com,topcracked.com,torrentfilefree.com,up4crack.com,usecracked.com,wazusoft.com,whitecracked.com,zcracked.com,zgamespc.com##[onclick*="open"]
 10fastfingers.com##+js(acis, document.createElement, decodeURIComponent)
 10news.dk##.onp-sl-content:style(display: block !important;)
 10news.dk##.onp-sl-social-locker
@@ -1653,7 +1667,7 @@ $3p,script,domain=zdnet.fr
 @@*$3p,xhr,domain=dl.ccbluex.net|luscious.net
 @@*$csp,domain=activistpost.com
 @@*$document,csp=worker-src 'none',domain=new.lewd.ninja
-@@*$ghide,domain=4bigv.com|5278.cool|5278cc.co|accountingplus786.blogspot.com|acortalo.*|acortar.*|adblockstreamtape.*|adblockstrtape.link|adblockstrtech.link|aetools.blogspot.com|algumon.com|allgemeine-zeitung.de|antenadosnaskyecia.com|apprendrelekabyle.com|aramosalsal.tv|asianexpress.co.uk|autokult.pl|awlinks.live|awomanafoot.com|beeg-pornos.com|bestfunnyjokes4u.com|bgland24.de|bishopsstortfordindependent.co.uk|bookmarksway.com|brainly.*|buerstaedter-zeitung.de|buffed.de|buxearn.com|calculatepercentage.org|cambridgeindependent.co.uk|chiemgau24.de|clashdaily.com|coinrotation.com|comparatif-logiciels.fr|cours-de-droit.net|craigjames.com|dailian.co.kr|deinesexfilme.com|designbump.com|dicionarioconceitos.blogspot.com|dissexpress.co.uk|drivelinks.me|dropcoins.xyz|echo-online.de|edukalife.blogspot.com|einfachtitten.com|elcicko.com|engquimicasantossp.com.br|eodev.com|f1stream.*|fastcoin.ga|faucetbr.tk|fbstream.*|feedclick.net|fenlandcitizen.co.uk|firefiles.us|football-highlight.com|forzearmate.eu|fotoblogia.pl|freeserverhostingweb.club|gadzetomania.pl|games.charlotteobserver.com|games.startribune.com|gamezone.de|gastroepato.it|gozd-les.com|grammarist.com|granadaesnoticia.com|granthamjournal.co.uk|gutesexfilme.com|hackshort.me|halloporno.com|hayastantv.me|hd-pornos.net|hd-sexfilme.com|hdpornos.net|herzporno.com|huffingpost.ga|hunter.fm|idevicetool.eu|imgalor.xyz|imgbew.buzz|imgewe.buzz|imgiut.buzz|imgizw.buzz|imgjut.buzz|imgkaka.xyz|imgkane.buzz|imgkia.*|imgklx.xyz|imgkoka.buzz|imgkuiw.xyz|imglina.xyz|imgoiu.buzz|imgokr.buzz|imgowk.buzz|imgqew.buzz|imgtoyou.icu|imgtrw.buzz|imguebr.buzz|imguo.buzz|imgux.buzz|imguytx.buzz|imgveni.xyz|imgweika.buzz|imgwex.buzz|imgxaqq.buzz|imgxbe.buzz|imgxxxx.buzz|info-desk.co.za|innsalzach24.de|inven.co.kr|iplsc.com|is2btc.com|jaanmusic.in|kentonline.co.uk|komorkomania.pl|l2top.co|lampertheimer-zeitung.de|latinolinks.site|lauterbacher-anzeiger.de|lesbenhd.com|letras2.com|loawa.com|logaritmo.org|lootdb.com|lynnnews.co.uk|madworldnews.com|main-spitze.de|mangfall24.de|me-encantas.com|megadescarga.net|meinyouporn.com|metalymetal.com|mexicogob.com|milffabrik.com|mlbstream.*|modekoninginmaxima.nl|momo-net.com|money.pl|motogpstream.*|mtabrasil.com.br|mysavenshare.com|nbastream.*|nekomeowmeow.com|newarkadvertiser.co.uk|nflstream.*|nhlstream.*|nonude.site|noticiascripto.site|numbersinwords.net|nursexfilme.com|o2.pl|oberhessische-zeitung.de|ovb-online.de|overwatch-teamup.com|oztoml.com|parenting.pl|pelislinks.me|pelispedia.net|plylive.*|plyvdo.*|polygamia.pl|pomponik.pl|porn-monkey.com|porndrake.com|porngayonline.com|pornhubdeutsch.net|pornoaffe.com|pornodavid.com|pornoente.tv|pornofelix.com|pornofisch.com|pornohammer.com|pornohans.com|pornohelm.com|pornohirsch.net|pornoklinge.com|pornoschlange.com|pornotom.com|pornotommy.com|pornovideos-hd.com|pornozebra.com|ppss.kr|printerprojects.com|promipool.com|pudelek.pl|puzzles.bestforpuzzles.com|puzzles.independent.co.uk|puzzles.standard.co.uk|quickclaims.nl|rcbinfo.com|redheadpassions.com|remixsear.ch|remixsearch.es|rendaclix.com|reviveusa.com|rosenheim24.de|rtxkeeda.com|rugbystreams.*|rutland-times.co.uk|sandalwoodking.rocks|seriesonline.one|simplybox.net|socceronline.*|sonsoflibertymedia.com|spaldingtoday.co.uk|sportalkorea.com|stamfordmercury.co.uk|stape.fun|strcloud.*|streamta.*|streamtape.*|streamtapeadblock.*|strtape.*|strtpe.*|suffolknews.co.uk|tamilfunda.com|tanfacil.net|tecnoaldia.net|teknolojiprojeleri.com|tennisstreams.*|tercihiniyap.net|thedesigninspiration.com|theinnews.com|themattwalshblog.com|timesnowhindi.com|timesnowmarathi.com|timesnownews.com|todoandroid.live|top100golfcourses.com|transpassions.com|tripolicastle.com|tube8-pornos.com|tvply.*|tvpolan.ml|tvpolen.ml|ufcstream.*|velvetmag.co.uk|videogamesblogger.com|videosporngay.net|viewster.co|vipleague.*|voltstowatts.com|vww.yggtorrent.fr|walkingenglishman.com|warcheats.net|wasserburg24.de|wiesbadener-kurier.de|wikihandbk.com|wormser-zeitung.de|wp.pl|xhamster-sexvideos.com|xhamsterdeutsch.*|xhamsterdeutsch.xyz|xnxx-sexfilme.com|ygosu.com|zikloud.com|zoomtventertainment.com
+@@*$ghide,domain=4bigv.com|5278.cool|5278cc.co|accountingplus786.blogspot.com|acortalo.*|acortar.*|adblockstreamtape.*|adblockstrtape.link|adblockstrtech.link|aetools.blogspot.com|algumon.com|allgemeine-zeitung.de|antenadosnaskyecia.com|apprendrelekabyle.com|aramosalsal.tv|asianexpress.co.uk|autokult.pl|awlinks.live|awomanafoot.com|beeg-pornos.com|bestfunnyjokes4u.com|bgland24.de|bishopsstortfordindependent.co.uk|bookmarksway.com|brainly.*|buerstaedter-zeitung.de|buffed.de|buxearn.com|calculatepercentage.org|cambridgeindependent.co.uk|chiemgau24.de|clashdaily.com|coinrotation.com|comparatif-logiciels.fr|cours-de-droit.net|craigjames.com|dailian.co.kr|deinesexfilme.com|designbump.com|dicionarioconceitos.blogspot.com|dissexpress.co.uk|drivelinks.me|dropcoins.xyz|echo-online.de|edukalife.blogspot.com|einfachtitten.com|elcicko.com|engquimicasantossp.com.br|eodev.com|f1stream.*|fastcoin.ga|faucetbr.tk|fbstream.*|feedclick.net|fenlandcitizen.co.uk|firefiles.us|football-highlight.com|forzearmate.eu|fotoblogia.pl|freeserverhostingweb.club|gadzetomania.pl|games.charlotteobserver.com|games.startribune.com|gamezone.de|gastroepato.it|gozd-les.com|grammarist.com|granadaesnoticia.com|granthamjournal.co.uk|gutesexfilme.com|hackshort.me|halloporno.com|hayastantv.me|hd-pornos.net|hd-sexfilme.com|hdpornos.net|herzporno.com|huffingpost.ga|hunter.fm|idevicetool.eu|imgalor.xyz|imgbew.buzz|imgewe.buzz|imgeza.buzz|imgiut.buzz|imgizw.buzz|imgjut.buzz|imgkaka.xyz|imgkane.buzz|imgkia.*|imgklx.xyz|imgkoka.buzz|imgkuiw.xyz|imglina.xyz|imgoiu.buzz|imgokr.buzz|imgowk.buzz|imgqew.buzz|imgtoyou.icu|imgtrw.buzz|imguebr.buzz|imguo.buzz|imgux.buzz|imguytx.buzz|imgveni.xyz|imgweika.buzz|imgwex.buzz|imgxaqq.buzz|imgxbe.buzz|imgxxxx.buzz|info-desk.co.za|innsalzach24.de|inven.co.kr|iplsc.com|is2btc.com|jaanmusic.in|kentonline.co.uk|komorkomania.pl|l2top.co|lampertheimer-zeitung.de|latinolinks.site|lauterbacher-anzeiger.de|lesbenhd.com|letras2.com|loawa.com|logaritmo.org|lootdb.com|lynnnews.co.uk|madworldnews.com|main-spitze.de|mangfall24.de|me-encantas.com|megadescarga.net|meinyouporn.com|metalymetal.com|mexicogob.com|milffabrik.com|mlbstream.*|modekoninginmaxima.nl|momo-net.com|money.pl|motogpstream.*|mtabrasil.com.br|mysavenshare.com|nbastream.*|nekomeowmeow.com|newarkadvertiser.co.uk|nflstream.*|nhlstream.*|nonude.site|noticiascripto.site|numbersinwords.net|nursexfilme.com|o2.pl|oberhessische-zeitung.de|ovb-online.de|overwatch-teamup.com|oztoml.com|parenting.pl|pelislinks.me|pelispedia.net|plylive.*|plyvdo.*|polygamia.pl|pomponik.pl|porn-monkey.com|porndrake.com|porngayonline.com|pornhubdeutsch.net|pornoaffe.com|pornodavid.com|pornoente.tv|pornofelix.com|pornofisch.com|pornohammer.com|pornohans.com|pornohelm.com|pornohirsch.net|pornoklinge.com|pornoschlange.com|pornotom.com|pornotommy.com|pornovideos-hd.com|pornozebra.com|ppss.kr|printerprojects.com|promipool.com|pudelek.pl|puzzles.bestforpuzzles.com|puzzles.independent.co.uk|puzzles.standard.co.uk|quickclaims.nl|rcbinfo.com|redheadpassions.com|remixsear.ch|remixsearch.es|rendaclix.com|reviveusa.com|rosenheim24.de|rtxkeeda.com|rugbystreams.*|rutland-times.co.uk|sandalwoodking.rocks|seriesonline.one|simplybox.net|socceronline.*|sonsoflibertymedia.com|spaldingtoday.co.uk|sportalkorea.com|stamfordmercury.co.uk|stape.fun|strcloud.*|streamta.*|streamtape.*|streamtapeadblock.*|strtape.*|strtpe.*|suffolknews.co.uk|tamilfunda.com|tanfacil.net|tecnoaldia.net|teknolojiprojeleri.com|tennisstreams.*|tercihiniyap.net|thedesigninspiration.com|theinnews.com|themattwalshblog.com|timesnowhindi.com|timesnowmarathi.com|timesnownews.com|todoandroid.live|top100golfcourses.com|transpassions.com|tripolicastle.com|tube8-pornos.com|tvply.*|tvpolan.ml|tvpolen.ml|ufcstream.*|velvetmag.co.uk|videogamesblogger.com|videosporngay.net|viewster.co|vipleague.*|voltstowatts.com|vww.yggtorrent.fr|walkingenglishman.com|warcheats.net|wasserburg24.de|wiesbadener-kurier.de|wikihandbk.com|wormser-zeitung.de|wp.pl|xhamster-sexvideos.com|xhamsterdeutsch.*|xhamsterdeutsch.xyz|xnxx-sexfilme.com|ygosu.com|zikloud.com|zoomtventertainment.com
 @@*$image,domain=a2zupload.com|jaanmusic.in|rtxkeeda.com|wstream.video
 @@*$media,domain=1movies.is|camvideos.org|camwhores.tv
 @@*$object,domain=asklaftananlamazinhindi.com
@@ -2232,9 +2246,9 @@ $3p,script,domain=zdnet.fr
 @@||cdn.gotraffic.net^$domain=bloomberg.*
 @@||cdn.intergi.com/hera/*$xhr,domain=duellinksmeta.com
 @@||cdn.intergi.com/pageos/pageos.js$script,domain=abcya.com
-@@||cdn.intergi.com^$script,domain=novelgames.com
+@@||cdn.intergi.com^$script,domain=bestiefy.com|novelgames.com
 @@||cdn.intergient.com^$1p
-@@||cdn.intergient.com^$domain=novelgames.com
+@@||cdn.intergient.com^$domain=bestiefy.com|novelgames.com
 @@||cdn.jsdelivr.net/npm/*/fuckadblock$script,xhr,domain=series-d.com
 @@||cdn.jsdelivr.net/npm/*/fuckadblock.min.js$3p,script
 @@||cdn.jsdelivr.net/npm/videojs-contrib-ads/$domain=hqq.*|meucdn.vip|waaw.tv|waaw1.tv|waaws.tk
@@ -5769,7 +5783,7 @@ atdhe.*###bannerInCenter
 atdhe.*##+js(popads-dummy)
 atdhe.*##[href^="https://horti.brovada.eu/"]
 aternos.org###placement-takeover
-aternos.org##.ad-dfp:style(min-height: 0.5px !important; height: 1.1px !important; pointer-events: none !important;)
+aternos.org##.ad-dfp:style(min-height: 0.51px !important; height: 1.1px !important; pointer-events: none !important;)
 aternos.org##.header-ad
 aternos.org##.header-exaroton-link
 aternos.org##.header-link-exaroton-link:style(pointer-events: none !important;)
@@ -6581,8 +6595,8 @@ bustybloom.com,decorativemodels.com,eroticacamp.com,erowall.com,exgirlfriendmark
 buycialisnbv.com##+js(acis, addEventListener, google_ad_client)
 buycialisnbv.com##+js(aopw, adcashMacros)
 buydekhke.com##+js(aost, String.prototype.charCodeAt, ai_)
-buzz##div[id][style^="position: fixed; display: block; width: 100%; height: 1"][style$="top: 0; left: 0; background-color: rgba(0, 0, 0, 0); z-index: 299999;"]
-buzz#@#.ads1
+buzz##div[id][style="position: fixed; display: block; width: 99.9%; height: 15.2%; top: 0; left: 0; background-color: rgba(0, 0, 0, 0); z-index: 299999;"]
+buzz#@#.ads2
 buzz50.com##+js(acis, jQuery, blocker)
 buzz50.com##[href^="http://buzz50.co.uk/"]
 c1ne.co##+js(aopr, mdpDeBlocker)
@@ -8346,7 +8360,6 @@ eio.io,exe.app,freshi.site##+js(no-fetch-if, google)
 eisamay.indiatimes.com,maharashtratimes.com,malayalam.samayam.com,navbharattimes.indiatimes.com,tamil.samayam.com,telugu.samayam.com,vijaykarnataka.com##.minitv-container
 eitplay.xyz##+js(nowoif)
 ekasiwap.com,freeporn.org.uk,girl2sex.com,jav688.com,juicyoldpussy.com,pornbox.cc,pornhex.com,pornobr.ninja,pornoruhe.net,pornovidea.net,pornowatch.net,sexofilm.co,suki48.web.id,xnxx66.com,xpornass.com,xxxhub.cc,xxxlucah.com##+js(acis, decodeURI, decodeURIComponent)
-eksisozluk.com##+js(nostif, ,100)
 ekstrabladet.dk##.eb-placement
 elahmad.com###ad_asd
 elahmad.com##+js(nostif, debugger)
@@ -10934,14 +10947,14 @@ imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imglqw.buzz,imgpe
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imglqw.buzz,imgpekele.buzz,imgqte.buzz,imgwang.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(nostif, 0x)
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imglqw.buzz,imgpekele.buzz,imgqte.buzz,imgwang.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(nowoif)
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imglqw.buzz,imgpekele.buzz,imgqte.buzz,imgwang.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(set, hold_click, false)
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(aeld, , _0x)
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(aopr, console.clear)
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(nano-sib, timer)
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(nosiif, _0x)
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##[id*="ScriptRootC"]
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbew.buzz,imgewe.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##div[style="width:100%;height:110px"]
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(aeld, , _0x)
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(aopr, console.clear)
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(nano-sib, timer)
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(nosiif, _0x)
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##[id*="ScriptRootC"]
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgbew.buzz,imgewe.buzz,imgeza.buzz,imgqew.buzz,imguebr.buzz,imguo.buzz,imgux.buzz,imgxbe.buzz,imgxxxx.buzz##div[style="width:100%;height:110px"]
 imgclick.net##+js(aopw, Fingerprint2)
 imgclick.net##+js(noeval)
 imgcloud.pw##+js(popads-dummy)
@@ -12816,7 +12829,7 @@ megaplayer.bokracdn.run##.blockingAd, .popBannerTeaser
 megapornfreehd.com##+js(aopr, V4ss)
 megatube.xxx##+js(aopr, BetterJsPop)
 megaup.net##+js(ra, href|target, a[href^="https://tm-offers.gamingadult.com/"])
-megaup.net##.metaRedirectWrapperBottomAds > div > a > img:style(transform: translateX(10000px) !important; pointer-events: none !important;)
+megaup.net##.metaRedirectWrapperBottomAds > div > a > img:style(visibility: hidden !important; pointer-events: none !important;)
 megaurl.*##+js(aopr, app_vars.force_disable_adblock)
 megaurl.*##[id*="ScriptRoot"]
 megaurl.*##a[href^="//"]
@@ -13795,7 +13808,11 @@ novablogitalia.*##+js(aeld, load, nextFunction)
 novamovie.net##+js(aopw, _pop)
 novelasesp.*##+js(aeld, load, 2000)
 novelasligera.com##+js(nosiif, visibility, 1000)
-novelgames.com##+js(nano-sib)
+novelgames.com###gameEtTopRight.commonEt:style(height: 0 !important;)
+novelgames.com###gamelistCategories:style(margin-bottom: auto !important;)
+novelgames.com##+js(nano-sib, skipAdSeconds, , 0.02)
+novelgames.com##.gamelistGame.commonEt
+novelgames.com##div[id^="forums"][id*="Et"]
 novelgo.id##.adsbygoogle
 novelism.jp##+js(aeld, blur, native code)
 novelmultiverse.com##+js(no-xhr-if, ads)
@@ -20771,7 +20788,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||easysexe.com^$3p
 ||ebd.cda-hd.cc^
 ||ecotrackings.com^$3p
-||ecybnxxpeq.com^
 ||edassiumw.xyz^
 ||edge.api.brightcove.com^$removeparam=ad_config_id,xhr,domain=9now.com.au|mech-plus.com|threenow.co.nz
 ||edgecast-vod.yimg.com/$media,redirect=noop-0.1s.mp3,domain=yahoo.com
@@ -21347,7 +21363,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||imageweb.ws/*.gif$image
 ||imasdk.googleapis.com/js/core/bridge*.html$frame,important,domain=html5.gamemonetize.co
 ||imasdk.googleapis.com/js/sdkloader/$redirect-rule=noopjs,script,domain=timesnowhindi.com|tvid.in
-||imasdk.googleapis.com/js/sdkloader/ima3.js$redirect-rule=noopjs,script,domain=881903.com|8world.com|ksl.com|loomi.tv
+||imasdk.googleapis.com/js/sdkloader/ima3.js$redirect-rule=noopjs,script,domain=881903.com|8world.com|ksl.com|liveone.com|loomi.tv
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$redirect=noop.js,script,domain=atozmath.com|news18.com
 ||imasdk.googleapis.com/js/sdkloader/ima3.js^$redirect-rule=noopjs,script,domain=gbnews.uk|howstuffworks.com|ilmeteo.it|plex.tv|weather.com
 ||imasdk.googleapis.com/js/sdkloader/ima3_debug.js$important,domain=foxnews.com
@@ -21868,6 +21884,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||notification-time.com^$doc
 ||notifscreen.com^$all
 ||notifyvideo.info/p/creative-video/*$3p,media,redirect=noop-1s.mp4
+||novelgames.com/flashgames/*/banner_660x250.png
 ||npcwfrohnshriw.com^
 ||npttech.com/advertising.js$important,redirect=fuckadblock.js-3.2.0,script
 ||nsevermatold.info^$3p
@@ -23172,7 +23189,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||yacurlik.com^$3p
 ||yahoo-news.co^$doc
 ||yandexcdn.com/cdn-cgi/trace$1p,xhr
-||yctamonieomgb.com^
 ||yellowblue.io^
 ||yeptube.*/templates/base_master/js/jquery.shows.min.js
 ||yespornclips.com/sw.js$1p,script
@@ -23367,7 +23383,6 @@ sexvid.*##.thumb-adv
 sexvid.*##.under-player.spot-holder > .spot
 sexvid.*##.wrapper > .spot-holder
 sexvid.*,hdtube.porn###fltd-inner
-techpowerup.com##div[class*="__"] + div[asdafsetewfwe]:has(img):style(opacity: 0 !important; pointer-events: none !important;)
 viz.com###metamodal-dfp-preroll
 viz.com###overlay
 viz.com##+js(nano-sib, , ,0)
