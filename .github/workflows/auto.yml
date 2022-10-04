@@ -1,0 +1,325 @@
+name: Generate my adlists
+
+on:
+  schedule:
+    - cron: 0 10,22 * * *
+  workflow_dispatch:
+
+jobs:
+  generate:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Basic preparation
+        run: |
+          mkdir checksum title big opt mini fop dns ubo
+          echo "MAIN_PATH=$PWD" >> $GITHUB_ENV
+          echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y/%m/%d %H:%M UTC+8")" >> $GITHUB_ENV
+
+      - name: Get source files
+        env:
+          EASY_FOP_SCRIPT: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
+          MOD_FOP_SCRIPT: https://raw.githubusercontent.com/FiltersHeroes/ScriptsPlayground/master/scripts/FOP_FH.py
+          EASYLIST: https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt
+          EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy.txt
+          EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
+          CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
+          OPTIMIZED_EASYLIST: https://filters.adtidy.org/windows/filters/101_optimized.txt
+          OPTIMIZED_EASYPRIVACY: https://filters.adtidy.org/windows/filters/118_optimized.txt
+          OPTIMIZED_EASYLISTCHINA: https://filters.adtidy.org/windows/filters/104_optimized.txt
+          OPTIMIZED_CJX_ANNOYANCE: https://filters.adtidy.org/windows/filters/220_optimized.txt
+          MINI_EASYLIST: https://easylist-downloads.adblockplus.org/easylist-minified.txt
+          MINI_EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy-minified.txt
+          MINI_EASYLISTCHINA: https://easylist-downloads.adblockplus.org/easylistchina-minified.txt
+          ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
+          ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
+          PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
+          UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
+          UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
+          UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
+          UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
+          UBLOCK_BADWARE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt
+          UBLOCK_PRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
+          UBLOCK_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
+          UBLOCK_UNBREAK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
+          UBLOCK_QUICK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
+        run: |
+          cp ${{ env.MAIN_PATH }}/material/Titles.txt ${{ env.MAIN_PATH }}/title/title.txt
+          #curl -s $EASY_FOP_SCRIPT > ${{ env.MAIN_PATH }}/fop/FOP.py
+          curl -s $MOD_FOP_SCRIPT > ${{ env.MAIN_PATH }}/fop/FOP.py
+          cd ${{ env.MAIN_PATH }}/big
+          curl -s $EASYLIST | sed '$G' > ./rawbig.txt
+          curl -s $EASYPRIVACY | sed '$G' >> ./rawbig.txt
+          curl -s $EASYLISTCHINA | sed '$G' >> ./rawbig.txt
+          curl -s $CJX_ANNOYANCE | sed '$G' >> ./rawbig.txt
+          cat ${{ env.MAIN_PATH }}/material/Additions.txt >> ./rawbig.txt
+          cd ${{ env.MAIN_PATH }}/opt
+          curl -s $OPTIMIZED_EASYLIST | sed '$G' > ./rawopt.txt
+          curl -s $OPTIMIZED_EASYPRIVACY | sed '$G' >> ./rawopt.txt
+          curl -s $OPTIMIZED_EASYLISTCHINA | sed '$G' >> ./rawopt.txt
+          curl -s $OPTIMIZED_CJX_ANNOYANCE | sed '$G' >> ./rawopt.txt
+          cat ${{ env.MAIN_PATH }}/material/Additions.txt >> ./rawopt.txt
+          cd ${{ env.MAIN_PATH }}/mini
+          curl -s $MINI_EASYLIST | sed '$G' > ./rawmini.txt
+          curl -s $MINI_EASYPRIVACY | sed '$G' >> ./rawmini.txt
+          curl -s $MINI_EASYLISTCHINA | sed '$G' >> ./rawmini.txt
+          curl -s $OPTIMIZED_CJX_ANNOYANCE | sed '$G' >> ./rawmini.txt
+          cat ${{ env.MAIN_PATH }}/material/Additions.txt >> ./rawmini.txt
+          cd ${{ env.MAIN_PATH }}/dns
+          curl -s $ADGUARD_DNS | sed '$G' > ./rawdns.txt
+          curl -s $ANTI_AD_ADGUARD | sed -e '/^||cis\.sohu\.com\^$/d' -e '$G' >> ./rawdns.txt
+          curl -s $PETER_LOWE | sed -e '/^||t\.co\^$/d' -e '$G' >> ./rawdns.txt
+          cd ${{ env.MAIN_PATH }}/ubo
+          curl -s $UBLOCK_FILTERS | sed -e '/^!#include/d' -e '$G' > ./rawubo.txt
+          curl -s $UBLOCK_2020 | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_2021 | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_2022 | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_BADWARE | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_PRIVACY | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_ABUSE | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_UNBREAK | sed '$G' >> ./rawubo.txt
+          curl -s $UBLOCK_QUICK | sed '$G' >> ./rawubo.txt
+
+      - name: Combine big lists
+        run: |
+          cd ${{ env.MAIN_PATH }}/big
+          sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' rawbig.txt | sort -u > bigcombined.txt
+          sed -n '/^##/p' bigcombined.txt | sed '/ /d' > general_hide.txt
+          sed '/^##/d' bigcombined.txt > big_redun_mixed.txt
+          sed -n '/^||/p' big_redun_mixed.txt > redun_raw.txt
+          sed -e '/\^$/d' -e '/\^\$third-party$/d' -e '/\^\$popup$/d' -e '/\^\$popup,third-party$/d' -e '/\^\$image$/d' -e '/\^\$image,third-party$/d' \
+          -e '/\^\$script$/d' -e '/\^\$script,third-party$/d' -e '/\^\$image,script$/d' -e '/\^\$image,script,third-party$/d' redun_raw.txt > redun_out.txt
+          comm -13 redun_out.txt redun_raw.txt > redun_check.txt
+          comm -13 redun_check.txt big_redun_mixed.txt > big_redun_out.txt
+          sed -n '/\^$/p' redun_check.txt > big_redun_pure.txt
+          sed -n '/\^\$third-party$/p' redun_check.txt | sed 's/\$third-party//g' > redun1.txt
+          sed -n '/\^\$popup$/p' redun_check.txt | sed 's/\$popup//g' > redun2.txt
+          sed -n '/\^\$popup,third-party$/p' redun_check.txt | sed 's/\$popup,third-party//g' > redun3.txt
+          sed -n '/\^\$image$/p' redun_check.txt | sed 's/\$image//g' > redun4.txt
+          sed -n '/\^\$image,third-party$/p' redun_check.txt | sed 's/\$image,third-party//g' > redun5.txt
+          sed -n '/\^\$script$/p' redun_check.txt | sed 's/\$script//g' > redun6.txt
+          sed -n '/\^\$script,third-party$/p' redun_check.txt | sed 's/\$script,third-party//g' > redun7.txt
+          sed -n '/\^\$image,script$/p' redun_check.txt | sed 's/\$image,script//g' > redun8.txt
+          sed -n '/\^\$image,script,third-party$/p' redun_check.txt | sed 's/\$image,script,third-party//g' > redun9.txt
+          cat redun1.txt redun3.txt redun5.txt redun7.txt redun9.txt | sort -u > redun_3p.txt
+          cat redun2.txt redun3.txt | sort -u > redun_pop.txt
+          cat redun4.txt redun5.txt redun8.txt redun9.txt | sort -u > redun_image.txt
+          cat redun6.txt redun7.txt redun8.txt redun9.txt | sort -u > redun_script.txt
+          comm -13 big_redun_pure.txt redun_3p.txt > redun_3p_1.txt
+          comm -13 big_redun_pure.txt redun_pop.txt > redun_pop_1.txt
+          comm -13 big_redun_pure.txt redun_image.txt > redun_image_0.txt
+          comm -13 big_redun_pure.txt redun_script.txt > redun_script_0.txt
+          comm -13 redun_image_0.txt redun_script_0.txt > redun_script_1.txt
+          comm -13 redun_script_0.txt redun_image_0.txt > redun_image_1.txt
+          comm -12 redun_image_0.txt redun_script_0.txt > redun_image_script_1.txt
+          comm -12 redun_3p_1.txt redun_pop_1.txt > redun_3p_pop.txt
+          comm -12 redun_3p_1.txt redun_script_1.txt > redun_3p_script.txt
+          comm -12 redun_3p_1.txt redun_image_1.txt > redun_3p_image.txt
+          comm -12 redun_3p_1.txt redun_image_script_1.txt > redun_3p_image_script.txt
+          comm -13 redun_3p_1.txt redun_pop_1.txt > redun_pop_only.txt
+          comm -13 redun_3p_1.txt redun_script_1.txt > redun_script_only.txt
+          comm -13 redun_3p_1.txt redun_image_1.txt > redun_image_only.txt
+          comm -13 redun_3p_1.txt redun_image_script_1.txt > redun_image_script_only.txt
+          cat redun_3p_1.txt redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_all.txt
+          cat redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_for3p.txt
+          comm -13 redun_passed_for3p.txt redun_passed_all.txt > redun_3p_only.txt
+          sed 's/\^/\^\$third-party/g' redun_3p_only.txt > big_redun_mod.txt
+          sed 's/\^/\^\$popup/g' redun_pop_only.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$popup,third-party/g' redun_3p_pop.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$image/g' redun_image_only.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$image,third-party/g' redun_3p_image.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$script/g' redun_script_only.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$script,third-party/g' redun_3p_script.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$image,script/g' redun_image_script_only.txt >> big_redun_mod.txt
+          sed 's/\^/\^\$image,script,third-party/g' redun_3p_image_script.txt >> big_redun_mod.txt
+          cat big_redun_out.txt big_redun_pure.txt big_redun_mod.txt > ${{ env.MAIN_PATH }}/fop/big_fop.txt
+          cd ${{ env.MAIN_PATH }}/fop
+          python FOP.py
+          mv big_fop.txt ${{ env.MAIN_PATH }}/big/big_fopped.txt
+          cd ${{ env.MAIN_PATH }}/big
+          cat general_hide.txt big_fopped.txt | sed '/^$/d' > ${{ env.MAIN_PATH }}/title/bigrules.txt
+
+      - name: Combine opt lists
+        run: |
+          cd ${{ env.MAIN_PATH }}/opt
+          sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' rawopt.txt | sort -u > optcombined.txt
+          sed -n '/^##/p' optcombined.txt | sed '/ /d' > general_hide.txt
+          sed '/^##/d' optcombined.txt > opt_redun_mixed.txt
+          sed -n '/^||/p' opt_redun_mixed.txt > redun_raw.txt
+          sed -e '/\^$/d' -e '/\^\$third-party$/d' -e '/\^\$popup$/d' -e '/\^\$popup,third-party$/d' -e '/\^\$image$/d' -e '/\^\$image,third-party$/d' \
+          -e '/\^\$script$/d' -e '/\^\$script,third-party$/d' -e '/\^\$image,script$/d' -e '/\^\$image,script,third-party$/d' redun_raw.txt > redun_out.txt
+          comm -13 redun_out.txt redun_raw.txt > redun_check.txt
+          comm -13 redun_check.txt opt_redun_mixed.txt > opt_redun_out.txt
+          sed -n '/\^$/p' redun_check.txt > opt_redun_pure.txt
+          sed -n '/\^\$third-party$/p' redun_check.txt | sed 's/\$third-party//g' > redun1.txt
+          sed -n '/\^\$popup$/p' redun_check.txt | sed 's/\$popup//g' > redun2.txt
+          sed -n '/\^\$popup,third-party$/p' redun_check.txt | sed 's/\$popup,third-party//g' > redun3.txt
+          sed -n '/\^\$image$/p' redun_check.txt | sed 's/\$image//g' > redun4.txt
+          sed -n '/\^\$image,third-party$/p' redun_check.txt | sed 's/\$image,third-party//g' > redun5.txt
+          sed -n '/\^\$script$/p' redun_check.txt | sed 's/\$script//g' > redun6.txt
+          sed -n '/\^\$script,third-party$/p' redun_check.txt | sed 's/\$script,third-party//g' > redun7.txt
+          sed -n '/\^\$image,script$/p' redun_check.txt | sed 's/\$image,script//g' > redun8.txt
+          sed -n '/\^\$image,script,third-party$/p' redun_check.txt | sed 's/\$image,script,third-party//g' > redun9.txt
+          cat redun1.txt redun3.txt redun5.txt redun7.txt redun9.txt | sort -u > redun_3p.txt
+          cat redun2.txt redun3.txt | sort -u > redun_pop.txt
+          cat redun4.txt redun5.txt redun8.txt redun9.txt | sort -u > redun_image.txt
+          cat redun6.txt redun7.txt redun8.txt redun9.txt | sort -u > redun_script.txt
+          comm -13 opt_redun_pure.txt redun_3p.txt > redun_3p_1.txt
+          comm -13 opt_redun_pure.txt redun_pop.txt > redun_pop_1.txt
+          comm -13 opt_redun_pure.txt redun_image.txt > redun_image_0.txt
+          comm -13 opt_redun_pure.txt redun_script.txt > redun_script_0.txt
+          comm -13 redun_image_0.txt redun_script_0.txt > redun_script_1.txt
+          comm -13 redun_script_0.txt redun_image_0.txt > redun_image_1.txt
+          comm -12 redun_image_0.txt redun_script_0.txt > redun_image_script_1.txt
+          comm -12 redun_3p_1.txt redun_pop_1.txt > redun_3p_pop.txt
+          comm -12 redun_3p_1.txt redun_script_1.txt > redun_3p_script.txt
+          comm -12 redun_3p_1.txt redun_image_1.txt > redun_3p_image.txt
+          comm -12 redun_3p_1.txt redun_image_script_1.txt > redun_3p_image_script.txt
+          comm -13 redun_3p_1.txt redun_pop_1.txt > redun_pop_only.txt
+          comm -13 redun_3p_1.txt redun_script_1.txt > redun_script_only.txt
+          comm -13 redun_3p_1.txt redun_image_1.txt > redun_image_only.txt
+          comm -13 redun_3p_1.txt redun_image_script_1.txt > redun_image_script_only.txt
+          cat redun_3p_1.txt redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_all.txt
+          cat redun_pop_1.txt redun_image_0.txt redun_script_0.txt | sort -u > redun_passed_for3p.txt
+          comm -13 redun_passed_for3p.txt redun_passed_all.txt > redun_3p_only.txt
+          sed 's/\^/\^\$third-party/g' redun_3p_only.txt > opt_redun_mod.txt
+          sed 's/\^/\^\$popup/g' redun_pop_only.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$popup,third-party/g' redun_3p_pop.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$image/g' redun_image_only.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$image,third-party/g' redun_3p_image.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$script/g' redun_script_only.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$script,third-party/g' redun_3p_script.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$image,script/g' redun_image_script_only.txt >> opt_redun_mod.txt
+          sed 's/\^/\^\$image,script,third-party/g' redun_3p_image_script.txt >> opt_redun_mod.txt
+          cat opt_redun_out.txt opt_redun_pure.txt opt_redun_mod.txt > ${{ env.MAIN_PATH }}/fop/opt_fop.txt
+          cd ${{ env.MAIN_PATH }}/fop
+          python FOP.py
+          mv opt_fop.txt ${{ env.MAIN_PATH }}/opt/opt_fopped.txt
+          cd ${{ env.MAIN_PATH }}/opt
+          cat general_hide.txt opt_fopped.txt | sed '/^$/d' > ${{ env.MAIN_PATH }}/title/optrules.txt
+
+      - name: Combine mini lists
+        run: |
+          cd ${{ env.MAIN_PATH }}/mini
+          sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' rawmini.txt | sort -u > minicombined.txt
+          sed -n '/^##/p' minicombined.txt | sed '/ /d' > general_hide.txt
+          sed '/^##/d' minicombined.txt > ${{ env.MAIN_PATH }}/fop/mini_fop.txt
+          cd ${{ env.MAIN_PATH }}/fop
+          python FOP.py
+          mv mini_fop.txt ${{ env.MAIN_PATH }}/mini/mini_fopped.txt
+          cd ${{ env.MAIN_PATH }}/mini
+          cat general_hide.txt mini_fopped.txt | sed '/^$/d' > ${{ env.MAIN_PATH }}/title/minirules.txt
+
+      - name: Combine DNS lists
+        run: |
+          cd ${{ env.MAIN_PATH }}/dns
+          sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' rawdns.txt | sort -u > dnscombined.txt
+          sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
+          sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*\^/d' dnscombined.txt > common_check.txt
+          grep -E '^\|\|[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level3.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level4.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level5.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level6.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level7.txt
+          grep -E '^\|\|[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level8.txt
+          for ((i=2; i<=7; i++))
+          do
+            echo -n '\S+\.(' > replace_text.txt
+            for ((t=1; t<=$i-1; t++))
+            do
+              echo -n '[^.]+\.' >> replace_text.txt
+            done
+            echo -n '[^.]+)' >> replace_text.txt
+            replace_re=$(cat replace_text.txt)
+            for ((j=$i+1; j<=8; j++))
+            do
+              sed -E 's#^'"$replace_re"'$#\1#' level"$j".txt | sort -u > check"$i"_"$j".txt
+              comm -12 level"$i".txt check"$i"_"$j".txt | sed -e 's/\./\\\./g' -e 's/\*/\\\*/g' > redun"$j"_"$i".txt
+              while read redun_rule
+              do
+                sed -i '/\.'"$redun_rule"'$/d' level"$j".txt
+              done < redun"$j"_"$i".txt
+            done
+          done
+          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed -n '/\*/p' > common_wildcards.txt
+          cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed '/\*/d' > common_plain.txt
+          sed -e 's/\./\\\./g' -e 's/\*/\.\*/g' common_wildcards.txt > wild_check.txt
+          while read wild_rule
+          do
+            sed -i -E '/(^|\.)'"$wild_rule"'$/d' common_plain.txt
+          done < wild_check.txt
+          cat common_wildcards.txt common_plain.txt | sed -E 's#^(\S+)$#\|\|\1\^#' | sort > common_checked.txt
+          sed 's/@@//g' except.txt > except_check.txt
+          comm -13 except_check.txt common_checked.txt > common.txt
+          cat except.txt common.txt | sed '/^$/d' > ${{ env.MAIN_PATH }}/title/dnsrules.txt
+
+      - name: Combine uBlock lists
+        run: |
+          cd ${{ env.MAIN_PATH }}/ubo
+          sed -e '/^![^#]/d' -e '/^!$/d' -e 's/\r//g' rawubo.txt > ubocombined.txt
+          sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > uboif0.txt
+          sed -n '/^!#if env_chromium/,/^!#endif/p' uboif0.txt | sort -u > uboifchrome0.txt
+          sed -n '/^!#if env_firefox/,/^!#endif/p' uboif0.txt | sort -u > uboiffire0.txt
+          sed -n '/^!#if env_mobile/,/^!#endif/p' uboif0.txt | sort -u > uboifmob0.txt
+          sed -n '/^!#if !env_mobile/,/^!#endif/p' uboif0.txt | sort -u > uboifnomob0.txt
+          sed '/^!/d' uboifchrome0.txt | sed -e '1i !#if env_chromium' -e '$a !#endif\n' > uboifchrome.txt
+          sed '/^!/d' uboiffire0.txt | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
+          sed '/^!/d' uboifmob0.txt | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
+          sed '/^!/d' uboifnomob0.txt | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
+          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' \
+          -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' uboif0.txt > uboifleft.txt
+          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt > uboif.txt
+          sed '/^!#if/,/^!#endif/d' ubocombined.txt > ${{ env.MAIN_PATH }}/fop/ubo_fop.txt
+          cd ${{ env.MAIN_PATH }}/fop
+          python FOP.py
+          mv ubo_fop.txt ${{ env.MAIN_PATH }}/ubo/ubo_fopped.txt
+          cd ${{ env.MAIN_PATH }}/ubo
+          cat ubo_fopped.txt uboif.txt | sed '/^$/d' > ${{ env.MAIN_PATH }}/title/uborules.txt
+
+      - name: Create final lists
+        run: |
+          cd ${{ env.MAIN_PATH }}/title
+          sed -i -e "s/BLANKVER/${{ env.VERSION_CODE }}/" -e "s#BLANKTIME#${{ env.MODIFY_TIME }}#" title.txt
+          sed -n '/^! Title: Big/,/^# Big/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' bigrules.txt)/" -e '/^#/d' > bigtitle.txt
+          sed -n '/^! Title: Optimized/,/^# Optimized/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' optrules.txt)/" -e '/^#/d' > opttitle.txt
+          sed -n '/^! Title: Mini/,/^# Mini/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' minirules.txt)/" -e '/^#/d' > minititle.txt
+          sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > dnstitle.txt
+          sed -n '/^! Title: uBlock/,/^# uBlock/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' uborules.txt)/" -e '/^#/d' > ubotitle.txt
+          cat bigtitle.txt bigrules.txt > ${{ env.MAIN_PATH }}/checksum/biglist.txt
+          cat opttitle.txt optrules.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
+          cat minititle.txt minirules.txt > ${{ env.MAIN_PATH }}/checksum/minilist.txt
+          cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
+          cat ubotitle.txt uborules.txt > ${{ env.MAIN_PATH }}/checksum/ublocklist.txt
+          cd ${{ env.MAIN_PATH }}
+          for list in ./checksum/*.txt; do
+            perl ./material/addChecksum.pl ${list}
+            mv -f ${list} ./
+          done
+          rm -rf checksum title big opt mini fop dns ubo
+
+      - name: Commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add biglist.txt optlist.txt minilist.txt dnsblock.txt ublocklist.txt
+          git commit -m "Updated on ${{ env.MODIFY_TIME }}"
+          git push origin main
+
+      - name: Purge jsDelivr
+        run: |
+          [ $(date -d "8 hour" -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
+
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 3
+          keep_minimum_runs: 1
+
