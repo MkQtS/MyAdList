@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: Dme3dXnCQ7E319JxERCzyw
+! Checksum: bL7P5ppUG/pXY6URYKDjJw
 ! Expires: 2 days
-! Version: 202210220616
+! Version: 202210221816
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23890, sources at 2022/10/22 06:16 UTC+8
+! Total lines: 23900, sources at 2022/10/22 18:16 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"]):not([style*="width: 1px;"])
 ###ad-container-1:not([style^="position: absolute; left: -5000px"])
@@ -266,8 +266,8 @@
 #@##ad_space
 #@##adAd
 #@##AdArea
-#@##adbanner
 #@##adBanner
+#@##adbanner
 #@##adBannerWrap
 #@##AdBox160
 #@##AdContainer
@@ -812,7 +812,7 @@ $3p,script,domain=zdnet.fr
 /\/n0cvd19n0fun\/(?:336x768-|dsw\d|s[a-z]_w3_).*/$1p,image,domain=69games.xxx
 /\/static\/[0-9a-z]+/[0-9a-z]+\.js$/$1p,script,domain=fleshed.com
 /\/t\/[0-9]{3}\/[0-9]{3}\/a[0-9]{4,9}\.js$/$script
-/\/wp-content\/plugins\/(?:[a-z0-9]+){15,}\/(?:[a-z0-9]+){10,}\.js\?ver=/$important,domain=allcryptoz.net|crewbase.net|crewus.net|shinbhu.net|shinchu.net|thumb8.net|thumb9.net|topcryptoz.net|ultraten.net|uniqueten.net
+/\/wp-content\/plugins\/(?:[a-z0-9]+){10,}\/(?:[a-z0-9]+){10,}\.js\?ver=/$important,domain=allcryptoz.net|crewbase.net|crewus.net|shinbhu.net|shinchu.net|thumb8.net|thumb9.net|topcryptoz.net|ultraten.net|uniqueten.net
 /^\w+://[0-9a-z]{11}\.taxliencode\.com//$1p,script
 /^\w+://[0-9a-z]{12}\.adria\.gg//$1p,script
 /^\w+://[0-9a-z]{12}\.dataunlocker\.com//$1p,script
@@ -2866,7 +2866,9 @@ $3p,script,domain=zdnet.fr
 @@||g.doubleclick.net/gampad/ads?*&url=https%3A%2F%2Fgames.poki.com$xhr,domain=imasdk.googleapis.com
 @@||g.doubleclick.net/gampad/ads?*&url=https%3A%2F%2Frepuls.io$xhr,domain=imasdk.googleapis.com
 @@||g.doubleclick.net/gpt/pubads_impl_$badfilter,script,domain=11freunde.de|auto-motor-und-sport.de|brigitte.de|gala.de|geo.de|guterhut.de|hardwareluxx.de|hbf-info.de|kochbar.de|n-tv.de|notebooksbilliger.de|rakuten.at|rakuten.de|rtl.de|stern.de|welt.de|zalando.de
+@@||g.doubleclick.net/gpt/pubads_impl_$script,domain=rocketnews24.com
 @@||g.doubleclick.net/pagead/ads?$frame,domain=anydebrid.com|ff14angler.com|hotdebrid.com
+@@||g.doubleclick.net/tag/js/gpt.js$domain=rocketnews24.com
 @@||g.doubleclick.net/tag/js/gpt.js$redirect-rule,script,domain=pomponik.pl
 @@||gagetmatome.com^$ghide
 @@||gala100.net^$ghide
@@ -4105,7 +4107,7 @@ $3p,script,domain=zdnet.fr
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_*.js$script,domain=dropgalaxy.com|myjest.com
 @@||securepubads.g.doubleclick.net/pagead/ppub_config?ippd=$xhr,domain=dropgalaxy.com
 @@||securepubads.g.doubleclick.net/pcs/view/*$xhr,domain=joyn.de
-@@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule,script,domain=gamedeveloper.com|golf.com|honestjohn.co.uk|rocketnews24.com
+@@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule,script,domain=gamedeveloper.com|golf.com|honestjohn.co.uk
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule=googletagservices-gpt.js:5,script,domain=olx.pt
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dagelijksekost.een.be|dropgalaxy.com|epaper.eenadu.net|esgentside.com|factable.com|gentside.*|gsc.com.my|jn.pt|meteoetradar.com|moviepilot.de|ohmirevista.com|ohmymag.*|ojogo.pt|paraphraser.io|plataformamedia.com
 @@||securepubads.g.doubleclick.net^$script,domain=bearteach.com|mope.io
@@ -8685,6 +8687,7 @@ etcscrs.to##+js(aopr, LieDetector)
 etkisizeleman.com##+js(nostif, nextFunction, 250)
 etonline.com##+js(aopr, _sp_._networkListenerData)
 etonline.com##+js(set, canRunAds, true)
+etsy.com##.listing-link[href*="ref=listing_in_grid"]:upward(li)
 etsy.com##.listing-link[href*="ref=sc_gallery"]:upward(li)
 ettv.*##+js(aopr, AaDetector)
 ettv.*##+js(nowoif)
@@ -9281,8 +9284,9 @@ foreca.com##main > div > div > div[class]:matches-css(width:350px)
 forex-articles.com,forexlap.com,forexmab.com,forexwaw.club,fx4vip.com##+js(nano-sib, , , 0)
 forex-gold.net##+js(nano-sib, timeleft)
 forex-gold.net##.demand-supply
-forex-gold.net,mobi2c.com,newforex.online,world-trips.net###go_d:style(display: inline-block !important)
-forex-gold.net,mobi2c.com,newforex.online,world-trips.net##a#go_d.submitBtn:others()
+forex-gold.net,mobi2c.com,newforex.online,world-trips.net###devozon-snp ~ *:not(div)
+forex-gold.net,mobi2c.com,newforex.online,world-trips.net###devozon-snp:style(display: block !important;)
+forex-gold.net,mobi2c.com,newforex.online,world-trips.net##[id^="devozon-wait"]
 forex-golds.com,forex-trnd.com,gawbne.com##+js(nano-sib, counter, 2000)
 forex-trnd.com###link-view > [style*="width:300px"]
 forex-trnd.com##+js(acis, document.createElement, themoneytizer)
@@ -10170,6 +10174,7 @@ gounlimited.to##+js(acis, $, adb)
 gounlimited.to##+js(aopw, Fingerprint2)
 gounlimited.to##+js(nowebrtc)
 gounlimited.to##+js(nowoif)
+gourmetscans.net##+js(nosiif, daadb_get_data)
 gourmetscans.net##+js(nostif, show)
 govid.me##+js(aopr, open)
 gplcanyon.com##.elementor-shortcode
@@ -11639,6 +11644,7 @@ jpopsingles.eu##+js(aeld, , ads)
 jpopsingles.eu##+js(aeld, load, Blanket)
 jpopsingles.eu##+js(aopw, _pop)
 jpopsingles.eu##+js(nano-sib, downloadTimer)
+jpopsingles.eu##style[id$="-css"]:remove()
 jppopav.club##+js(nowoif)
 jppopav.club##div[style^="position:fixed;inset:0px;z-index:2147483647"]
 jptorrent.org##+js(nano-stb)
@@ -16754,6 +16760,8 @@ softairbay.com##[class^="bmadblock"]
 softandapps.info##.adsbygoogle
 softarchive.*##+js(aopw, _pop)
 softcobra.*##+js(set, canRunAds, true)
+softcobra.com##.adsbygoogle:style(visibility: collapse !important;)
+softcobra.com#@#.adsbygoogle
 softdescargas.com,softwaredescargas.com##+js(aeld, DOMContentLoaded, scriptwz_url)
 softmaroc.org##+js(nobab)
 softonic.com###show_banner_leaderboard
@@ -23339,6 +23347,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||unetbootin.net^$doc
 ||unetbootin.org^$doc
 ||unileversolutions.com/*/config/analytics.js$3p,important,redirect=noopjs,script
+||uniqueten.net/assets/uniqueten.js$important
 ||united-infos.net^$domain=gmx.*|web.de
 ||unknowncheats.me/forum/images/*ban$image
 ||unogames.site^$all
@@ -23686,6 +23695,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||zedo.com^$important,script,domain=indiatoday.in|intoday.in
 ||zedplays.com^$all
 ||zehnporn.com/img/12221.gif
+||zenlytrade.com^$all
 ||zergnet.com/zerg-inf-multi$3p,script
 ||zerion.cc/assets/js/pcm.js
 ||zerion.cc/assets/js/pk.js
