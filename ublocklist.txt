@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: v7n++yXilf2Dse+JsOflCQ
+! Checksum: Hb7zUB5IlbOjiOBgDVlxBQ
 ! Expires: 2 days
-! Version: 202210240615
+! Version: 202210241822
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23915, sources at 2022/10/24 06:15 UTC+8
+! Total lines: 23916, sources at 2022/10/24 18:22 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"]):not([style*="width: 1px;"])
 ###ad-container-1:not([style^="position: absolute; left: -5000px"])
@@ -29,8 +29,8 @@
 ###ad_slot:not([style^="position: absolute; left: -5000px"])
 ###adAd:not([style^="position: absolute; left: -5000px"])
 ###AdArea:not([style^="position: absolute; left: -5000px"])
-###adbanner:not([style^="position: absolute; left: -5000px"])
 ###adBanner:not([style^="position: absolute; left: -5000px"])
+###adbanner:not([style^="position: absolute; left: -5000px"])
 ###adBannerWrap:not([style^="position: absolute; left: -5000px"])
 ###AdBox160:not([style^="position: absolute; left: -5000px"])
 ###adContext:not(:empty)
@@ -266,8 +266,8 @@
 #@##ad_space
 #@##adAd
 #@##AdArea
-#@##adBanner
 #@##adbanner
+#@##adBanner
 #@##adBannerWrap
 #@##AdBox160
 #@##AdContainer
@@ -312,8 +312,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adbanner
 #@#.adBanner
+#@#.adbanner
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
@@ -1831,6 +1831,7 @@ $3p,script,domain=zdnet.fr
 @@||adserver.pandora.com/haymaker/api/v1/serve/$1p,xhr
 @@||adserver.va3.megaphone.cloud^$media,domain=podigee.com
 @@||adservice.google.com/adsid/integrator.js$xhr,domain=tamrieltradecentre.com
+@@||adshnk.com^$ghide
 @@||adshort.*^$ghide
 @@||adsterra.com/images/*$image,domain=newsjizz.in
 @@||adsuite.io^$ghide
@@ -2850,6 +2851,8 @@ $3p,script,domain=zdnet.fr
 @@||ftuudemy.com^$ghide
 @@||fullmatchesandshows.com/wp$1p,script
 @@||fulltip.net^$ghide
+@@||fundingchoicesmessages.google.com/f/$script,domain=adshnk.com
+@@||fundingchoicesmessages.google.com/i/pub-$script,domain=adshnk.com
 @@||fundingchoicesmessages.google.com^$domain=rocketnews24.com
 @@||fundingchoicesmessages.google.com^$script,domain=bbc.com|downloads.descendant.me|stooq.com|stooq.pl|youpouch.com
 @@||fusion.ddmcdn.com/app/*/comscore.streaming.$script,domain=motortrend.com|velocity.com
@@ -4524,7 +4527,6 @@ $3p,script,domain=zdnet.fr
 @@||tricxbd.com^$ghide
 @@||tritinia.com^$ghide
 @@||trueid.net^$ghide
-@@||trustsellgoghk.ga^$css,script,domain=promo-visits.site|satoshi-win.xyz|shorterall.com
 @@||truyenaudiocv.*^$ghide
 @@||try.abtasty.com/$script,domain=shop.euromaster.de
 @@||ts3.cloud^$ghide
@@ -13008,7 +13010,7 @@ megaplayer.bokracdn.run##.blockingAd, .popBannerTeaser
 megapornfreehd.com##+js(aopr, V4ss)
 megatube.xxx##+js(aopr, BetterJsPop)
 megaup.net##+js(ra, href|target, a[href^="https://tm-offers.gamingadult.com/"])
-megaup.net##.metaRedirectWrapperBottomAds:style(opacity: 0 !important; pointer-events: none important;)
+megaup.net##.metaRedirectWrapperBottomAds:style(transform: scaleY(0.0) !important; pointer-events: none important;)
 megaurl.*##+js(aopr, app_vars.force_disable_adblock)
 megaurl.*##[id*="ScriptRoot"]
 megaurl.*##a[href^="//"]
@@ -15407,6 +15409,7 @@ promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, avc3, noopFunc)
 promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, blurred, false)
 promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, google_ads, true)
 promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, window.http, 1)
+promo-visits.site,satoshi-win.xyz,shorterall.com##^script:has-text((http))
 promo-visits.site,shorterall.com##+js(ra, disabled, .btn-primary)
 promo-visits.site,shorterall.com##.btn-primary:style(visibility: visible !important;)
 pronpic.org##+js(aopr, document.createEvent)
@@ -20711,6 +20714,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||cdn.jsdelivr.net^*/arlinablock.js$script
 ||cdn.krxd.net^$redirect=noopjs,script,domain=video.foxnews.com
 ||cdn.nsimg.net/cache/landing^
+||cdn.optimizely.com/js/$redirect=noopjs,script,domain=myscore.cibil.com
 ||cdn.osamime.ml^$media,redirect=noopmp3-0.1s,domain=stream.osami.xyz
 ||cdn.parsely.com/keys/nfl.com/p.js$important,redirect=noop.js,script,domain=nfl.com
 ||cdn.prod.www.spiegel.de/public/spon/generated/web/js/header*.js$1p,script
@@ -21357,7 +21361,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||fpmaypyeegktq.com^
 ||frafinomoney01.fun^$all
 ||fragbot.net^$all
-||fragbot.online^$all
 ||fredfiber.no^$doc
 ||free-discordnitro.$all
 ||freebunker.com/includes/js/layer.js^
@@ -23419,8 +23422,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||vendigamus.com^$3p
 ||vendigamus.com^$badfilter
 ||verified-extensions.com^
-||verifyhypixel.com^$all
-||verifyhypixel.net^$all
 ||vev.*/sw.js$1p,script
 ||vexfile.com/img/cofksar.png
 ||vexfile.com/sw.js$1p,script
