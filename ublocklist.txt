@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: KpK/722SVyTUKILwse+bfQ
+! Checksum: QVRMrbru3gs2rKR6oW0ASA
 ! Expires: 2 days
-! Version: 202210251820
+! Version: 202210260616
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23833, sources at 2022/10/25 18:20 UTC+8
+! Total lines: 23830, sources at 2022/10/26 06:16 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"]):not([style*="width: 1px;"])
 ###ad_300:not([style^="position: absolute; left: -5000px"])
@@ -4138,6 +4138,7 @@ $3p,script,domain=zdnet.fr
 @@||slink.bid^$ghide
 @@||smallseo.tools^$ghide
 @@||smallseotool.org^$ghide
+@@||smallseotools.com/webimages/process.gif
 @@||smartadserver.com/400/call$xhr,domain=deezer.com
 @@||smartclip.net^$script,domain=energy.de
 @@||smarthomearea.de^$ghide
@@ -6680,8 +6681,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -7496,8 +7497,6 @@ cut-fly.com##+js(nowoif)
 cut-fly.com##+js(set, blurred, false)
 cut-fly.com##.banner-inner
 cut-fly.com##form#go-popup:remove()
-cut-urls.com##+js(acis, decodeURI, decodeURIComponent)
-cut-urls.com##+js(aopr, app_vars.force_disable_adblock)
 cut-y.net##+js(set, blurred, false)
 cut-y.net##.adsbygoogle:style(position: absolute!important; left: -3000px!important;)
 cut-y.net#@#.adsbygoogle
@@ -7717,6 +7716,7 @@ depvailon.com##.c-normdenomination-output
 depvailon.com##.spots
 derbyshiretimes.co.uk##.leaderboard-ad
 derivative-calculator.net##+js(aopr, fallbackAds)
+derstandard.at##+js(acis, document.createElement, Adblocker)
 desbloqueador.*##+js(aeld, mousedown, trigger)
 desbloqueador.*##+js(nowoif, given)
 desbloqueador.*##+js(set, Ok, true)
@@ -7827,7 +7827,7 @@ digjav.com##+js(aeld, , Pop)
 digjav.com##+js(nowoif)
 diglink.blogspot.com##+js(nano-sib)
 digminecraft.com##+js(aopr, pbg)
-digminecraft.com##:xpath(//*[contains(text(),"Advertisements")]):upward(1)
+digminecraft.com##div > [id$="_slot"]:upward(div)
 dikgames.com##+js(acis, document.querySelectorAll, popMagic)
 dilo.nu##+js(nowoif)
 dinamalar.com###taboola-below-article-thumbnails
@@ -8012,10 +8012,6 @@ down.mdiaload.com##.btn-dow.btn[href$=".html"]
 down.mdiaload.com##div.download-option-btn:nth-of-type(4)
 down.mdiaload.com##div[style$="background-color:#ffffff; text-align:center"]
 down.mdiaload.com##div[style="width:336px; height:280px"]
-downace.com##+js(acis, decodeURI, decodeURIComponent)
-downace.com##+js(nowebrtc)
-downace.com##.uk-panel-box-secondary.uk-panel-box.uk-panel:has-text(VPN)
-downace.com##[href*="/download/"]
 downfile.site##+js(nowoif)
 downfile.site,downphanmem.com,expertvn.com###myModal
 downfile.site,downphanmem.com,expertvn.com##+js(aopr, adBlockDetected)
@@ -21045,7 +21041,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||dougale.com^$all
 ||douploads.*/*sw$1p,script
 ||douyucdn.cn/front-publish/stream-sdk-lib-master/dyp2pxp2p_*.js$script,domain=douyu.com
-||downace.com/sw.js$1p,script
 ||download-app.net^$all
 ||download-ready-now.com^$all
 ||download.mokeedev.com/js/jquery-common.js.*$1p,redirect=fuckadblock.js-3.2.0,script
@@ -23135,6 +23130,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tinypass.com^$domain=christianity.com|crosswalk.com|thechive.com
 ||tinyurl.com/gp84uz2$doc
 ||tinyurl.com/setup-full-version$doc
+||tirexo.blue/main.js?
+||tirexo.blue^$csp=default-src 'unsafe-inline' 'self' *.gstatic.com *.googleapis.com *.jquery.com
 ||titsbox.com/eb/api.php$1p,script
 ||titsbox.com/sw.js$1p,script
 ||tldw.me^$3p,badfilter
