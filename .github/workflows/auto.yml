@@ -43,7 +43,7 @@ jobs:
           UBLOCK_QUICK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
         run: |
           mkdir checksum title easy big opt mini fop dns ubo
-          echo "MAIN_PATH=$(pwd)" >> $GITHUB_ENV
+          echo "MAIN_PATH=$PWD" >> $GITHUB_ENV
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y/%m/%d %H:%M UTC+8")" >> $GITHUB_ENV
           cp ${{ env.MAIN_PATH }}/material/Titles.txt ${{ env.MAIN_PATH }}/title/title.txt
