@@ -61,7 +61,7 @@ jobs:
           wget -qO- ${MINI_EASYLIST} | sed '$G' > ./mini-easylist.txt
           wget -qO- ${MINI_EASYPRIVACY} | sed '$G' > ./mini-easyprivacy.txt
           wget -qO- ${MINI_EASYLISTCHINA} | sed '$G' > ./mini-easylistchina.txt
-          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt ../material/Additions.txt > .rawbig.txt
+          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt ../material/Additions.txt > ./rawbig.txt
           sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' ./rawbig.txt | sort -u > ../big/bigcombined.txt
           cat ./opt-easylist.txt ./opt-easyprivacy.txt ./opt-easylistchina.txt ./opt-cjx-annoyance.txt ../material/Additions.txt > ./rawopt.txt
           sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' ./rawopt.txt | sort -u > ../opt/optcombined.txt
@@ -70,8 +70,8 @@ jobs:
           cd ${{ env.MAIN_PATH }} && rm -rf ./easy
           cd ${{ env.MAIN_PATH }}/dns
           wget -qO- ${ADGUARD_DNS} | sed '$G' > ./rawdns.txt
-          wget -qO- ${ANTI_AD_ADGUARD} | sed -e '/^||cis\.sohu\.com\^$/d' -e '$G' >> ./rawdns.txt
-          wget -qO- "${PETER_LOWE}" | sed -e '/^||t\.co\^$/d' -e '$G' >> ./rawdns.txt
+          wget -qO- ${ANTI_AD_ADGUARD} | sed '$G' >> ./rawdns.txt
+          wget -qO- "${PETER_LOWE}" | sed '$G' >> ./rawdns.txt
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' ./rawdns.txt | sort -u > ./dnscombined.txt
           cd ${{ env.MAIN_PATH }}/ubo
           wget -qO- ${UBLOCK_FILTERS} | sed -e '/^!#include/d' -e '$G' > ./rawubo.txt
@@ -216,6 +216,7 @@ jobs:
       - name: Combine DNS lists
         run: |
           cd ${{ env.MAIN_PATH }}/dns
+          sed -i -e '/^||cis\.sohu\.com\^/d' -e '/^||t\.co\^/d' dnscombined.txt
           sed -n '/^@@/p' dnscombined.txt | sed 's/@@|/@@||/g' | sed 's/@@|||/@@||/g' | sort -u > except.txt
           sed -e '/^@@/d' -e '/[^^]$/d' -e '/\*\^/d' dnscombined.txt > common_check.txt
           grep -E '^\|\|[^.]+\.[^.]+\^$' common_check.txt | sed -E 's#^\|\|([^^]+)\^$#\1#' > level2.txt
