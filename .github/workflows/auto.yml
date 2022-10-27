@@ -207,7 +207,6 @@ jobs:
       - name: Combine mini lists
         run: |
           cd ${{ env.MAIN_PATH }}/mini
-          sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' rawmini.txt | sort -u > minicombined.txt
           sed -n '/^##/p' minicombined.txt | sed '/ /d' > general_hide.txt
           sed '/^##/d' minicombined.txt > ${{ env.MAIN_PATH }}/fop/mini_fop.txt
           cd ${{ env.MAIN_PATH }}/fop
