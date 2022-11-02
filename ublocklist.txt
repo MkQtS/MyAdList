@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 9DuOHrU9Ce5CE7f4Lgrrmg
+! Checksum: SnYNdb5z4TlQm6CPfF/fcA
 ! Expires: 2 days
-! Version: 202211020616
+! Version: 202211021816
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23288, sources at 2022/11/02 06:16 UTC+8
+! Total lines: 23299, sources at 2022/11/02 18:16 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"]):not([style*="width: 1px;"])
 ###ad_300:not([style^="position: absolute; left: -5000px"])
@@ -1775,7 +1775,6 @@ $3p,script,domain=zdnet.fr
 @@||adz7short.space^$ghide
 @@||aeonax.com^$ghide
 @@||aetnd.com^$ghide
-@@||aetv.hb.omtrdc.net^$xhr,domain=play.aetv.com
 @@||afcs.dellcdn.com^$css,domain=dell.com
 @@||afdah.*/show-ad*.js$1p,script
 @@||aflamtalk.com^$ghide
@@ -3729,7 +3728,6 @@ $3p,script,domain=zdnet.fr
 @@||pladform.ru/*/hls-vod/*$xhr,domain=rutube.ru
 @@||plantaobrasil.net^$ghide
 @@||plantuml.com^$cname
-@@||play.aetv.com^$1p,script
 @@||play.history.com^$ghide
 @@||play.nova.bg^$1p,script
 @@||play.tv3.ee^$1p,script
@@ -4707,6 +4705,7 @@ $3p,script,domain=zdnet.fr
 @@||xpaja.net^$ghide
 @@||xtremestream.co^$ghide
 @@||xuxon.com^$ghide
+@@||xweb.instagram.com/ads/preferences/ad_topics/$1p,frame
 @@||xxxpornplease.*^$ghide
 @@||yandexcdn.com^$1p,script
 @@||yandexcdn.com^$ghide
@@ -6594,8 +6593,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -8963,6 +8962,8 @@ financeflix.in,technoflip.in##+js(nano-sib, timer)
 financeflix.in,technoflip.in##+js(no-xhr-if, googlesyndication)
 financemonk.net###vipada
 financemonk.net##+js(aopr, absda)
+financerites.*##h4:has-text(Ads)
+financerites.*##p:has-text([ad_)
 financerites.com,skincarie.com###orquidea-slideup
 financialpost.com##.ad__container
 finanzas-vida.com##+js(set, blurred, false)
@@ -12433,6 +12434,7 @@ mail.com##+js(nostif, offsetHeight)
 mail.com##.mod-container:has-text(/sponsor/i)
 mail.de###euccBanner
 mail.de##+js(nostif, .call(null), 10)
+mail.google.com#@#div[aria-label="Ads"]
 mail.yahoo.com###shellcontent:style(right: 0px !important;)
 mail.yahoo.com##.ab_C.I_Zjpytw:has-text(blocker)
 mail.yahoo.com##[data-test-id="video-container"]
@@ -15542,6 +15544,7 @@ robot-forum.com##+js(acis, $, offsetHeight)
 roboticsandautomationnews.com##.advads-widget
 rocketnews24.com#@#+js(set, navigator.webdriver, true)
 rocketnews24.com#@#.ad
+rocketnews24.com#@#.ad:style(position: absolute!important; left: -3000px!important;)
 rocketnews24.com,youpouch.com#@#.adb-caption
 rockit.it##.articolo-body-text-banner
 rocklink.in##+js(set, blurred, false)
@@ -21952,6 +21955,14 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pl.allsports4free.club^
 ||pl.allsports4u.club^
 ||plausible.io/js/plausible.js$important,redirect=noopjs,script
+||play.aetv.com/vendor/amplitude.js$script
+||play.aetv.com/vendor/at.js$script
+||play.aetv.com/vendor/branch.js$script
+||play.aetv.com/vendor/conviva-core-sdk.js$script
+||play.aetv.com/vendor/conviva-thePlatform-plugin.js$script
+||play.aetv.com/vendor/MediaSDK.min.js$script
+||play.aetv.com/vendor/ResonateAnalytics.min.js$script
+||play.aetv.com/vendor/Samba.min.js$script
 ||play.google.com/store/apps/*referrer$removeparam=referrer
 ||playbrain.io/analytics/
 ||playdede.nu/z-$1p,script
