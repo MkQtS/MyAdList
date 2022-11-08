@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: C4UbaHah1n0VSYLCKjCHZg
+! Checksum: jYgPlnbDeiOf4BLvEyVeRA
 ! Expires: 2 days
-! Version: 202211080614
+! Version: 202211081815
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23333, sources at 2022/11/08 06:14 UTC+8
+! Total lines: 23339, sources at 2022/11/08 18:15 UTC+8
 !
 ###ad-banner:not([style="height: 5px; width: 5px; position: absolute; top: 0;"]):not([style*="width: 1px;"])
 ###ad_300:not([style^="position: absolute; left: -5000px"])
@@ -250,8 +250,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adBanner
 #@#.adbanner
+#@#.adBanner
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
@@ -1900,7 +1900,7 @@ $3p,script,domain=zdnet.fr
 @@||api.opinary.com/poll/*$xhr,domain=pressekompass.net
 @@||api.permutive.com/*/batch/$xhr,domain=reuters.com
 @@||api.permutive.com/v*/geoip$xhr,domain=watch.globaltv.com
-@@||api.prod.ad-shield.io^$image,xhr,domain=ppss.kr
+@@||api.prod.ad-shield.io^$image,xhr,domain=algumon.com|dailian.co.kr|feedclick.net|loawa.com|ondemandkorea.com|ppss.kr|sportalkorea.com|ygosu.com
 @@||api.sbs.com.au/js/tracking/ondemand.js$1p,script
 @@||api.solvemedia.com^$frame,script
 @@||api.thingiverse.com/banner/*/pageAd$1p,xhr
@@ -4018,7 +4018,7 @@ $3p,script,domain=zdnet.fr
 @@||securepubads.g.doubleclick.net/pcs/view/*$xhr,domain=joyn.de
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule,script,domain=gamedeveloper.com|golf.com|honestjohn.co.uk
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule=googletagservices-gpt.js:5,script,domain=olx.pt
-@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dagelijksekost.een.be|dragontea.ink|dropgalaxy.com|epaper.eenadu.net|esgentside.com|factable.com|gala.fr|gentside.*|gsc.com.my|jn.pt|meteoetradar.com|moviepilot.de|ohmirevista.com|ohmymag.*|ojogo.pt|paraphraser.io|plataformamedia.com|soranews24.com
+@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dagelijksekost.een.be|dropgalaxy.com|epaper.eenadu.net|esgentside.com|factable.com|gala.fr|gentside.*|gsc.com.my|jn.pt|meteoetradar.com|moviepilot.de|ohmirevista.com|ohmymag.*|ojogo.pt|paraphraser.io|plataformamedia.com|soranews24.com
 @@||securepubads.g.doubleclick.net^$script,domain=bearteach.com|mope.io
 @@||securepubads.g.doubleclick.net^$script,xhr,domain=weatherandradar.com
 @@||seekingalpha.com/*/captcha/$1p,script
@@ -9767,7 +9767,7 @@ gifhq.com##+js(acis, $, open)
 gifhq.com##+js(acis, document.dispatchEvent, myEl)
 gifhq.com##+js(aopr, exoNoExternalUI38djdkjDDJsio96)
 giga.de##+js(nostif, [native code], 0)
-giga.de,t-online.de##div[style$="px; left: 0px; top: 0px; position: absolute;"]:has(iframe[src*="damoh."]):style(visibility: collapse;)
+giga.de,t-online.de##div[style$="px; left: 0rem; top: 0rem; position: absolute;"]:has(iframe[src*="damoh."]):style(opacity: 0 !important; pointer-events: none !important;)
 gigacourse.com##+js(acis, eval, replace)
 gigaho.com##+js(aopr, onload)
 gigantti.fi##.mat-drawer-container:style(overflow-x: auto !important)
@@ -17433,6 +17433,9 @@ theswagsports.com##a[rel*="sponsored"]
 thetodaypost.com##+js(acis, PopFocus)
 thetruedefender.com###text-4
 thetruedefender.com##.adsbyvli
+theusaposts.com###wpsafe-generate, #wpsafe-link:style(display: block !important;)
+theusaposts.com##+js(no-fetch-if, googlesyndication)
+theusaposts.com##div[id^="wpsafe-wait"]
 thevideos.ga##+js(aopw, _pop)
 thevidhd.*##+js(aopw, smrtSB)
 thevidhd.*##+js(nowebrtc)
@@ -22335,6 +22338,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||serverads.net^
 ||serving-passthrough.com^$all
 ||setfilmizlee.com/gurme.js
+||setupad.net^
 ||sex-and-flirt.com^
 ||sex-is-here.com/*.shtml$doc
 ||sexall.net/*.shtml$doc
@@ -23163,6 +23167,9 @@ zwergenstadt.com##+js(aeld, load, onload)
 @@||gibevay.ru/retarget/get$script,domain=satoshi-win.xyz
 @@||googletagservices.com/tag/js/gpt.js$script,domain=satoshi-win.xyz
 @@||govbusi.info^$script,domain=satoshi-win.xyz
+@@||securepubads.g.doubleclick.net/gpt/pubads_impl*$script,domain=dragontea.ink
+@@||securepubads.g.doubleclick.net/pagead/ppub_config?ippd=dragontea.ink$xhr,domain=dragontea.ink
+@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dragontea.ink
 @@||subaru.com/guides/*/libs/adobe/AppMeasurement.js$script,1p
 @@||svonm.com/hd-main.js$script,domain=kicker.de|kino.de|videos.giga.de|video.spieletipps.de,badfilter
 @@||themoneytizer.com^$frame,domain=satoshi-win.xyz
@@ -23216,7 +23223,6 @@ streamingcommunity.*##+js(no-xhr-if, thaudray.com)
 ||fastly.net^$image,important,domain=cbs.com,badfilter
 ||fastly.net^$script,important,domain=cbs.com,badfilter
 ||fwmrm.net/ad/*$script,redirect=noopjs,domain=nationalgeographic.com
-||securepubads.g.doubleclick.net/tag/js/gpt.js$script,important,domain=dragontea.ink
 !#endif
 !#if env_mobile
 *##.ad-300x250:not(.ads)
