@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: Rs9kErGK/5lXQFJ8dYxAdg
+! Checksum: GzNMMShpjI4AArrRGvkcqA
 ! Expires: 2 days
-! Version: 202211091814
+! Version: 202211100613
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23358, sources at 2022/11/09 18:14 UTC+8
+! Total lines: 23357, sources at 2022/11/10 06:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -777,7 +777,7 @@ $3p,script,domain=zdnet.fr
 /^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{7,16}\.com\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/(?:[1-5]\d{4}|[3-9]\d{3})\??(?:_=\d+|v=\d)?$/$redirect-rule=noop.js,script
 /^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{7,16}\.website\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/(?:[1-5]\d{4}|[3-9]\d{3})\??(?:_=\d+|v=\d)?$/$3p,frame,match-case,popup,script,xhr
 /^https?:\/\/(?:www\.|[0-9a-z]{7,10}\.)?[-0-9a-z]{5,}\.com\/(?:[0-9a-f]{2}\/){2,3}[0-9a-f]{32}\.js/$3p,script,xhr
-/^https?:\/\/[-.0-9a-z]+\.(?:com|de)\/script\.js$/$1p,match-case,script,strict3p,domain=com|de
+/^https?:\/\/[-.0-9a-z]+\.[a-z]{2,6}\/script\.js$/$1p,match-case,script,strict3p
 /^https?:\/\/[-0-9a-z]{5,}\.com\/[0-9a-z]{8,10}\?key=[0-9a-f]{32}$/$3p,frame
 /^https?:\/\/[-a-z]{6,16}\.com?\/[a-d][-\.\/_A-Za-z][DHWXm][-\.\/_A-Za-z][59FVZ][-\.\/_A-Za-z][6swyz][-\.\/_A-Za-z][-\/_0-9a-zA-Z][-\.\/_A-Za-z][-\/_0-9a-zA-Z]{22,162}$/$3p,match-case,script,xhr
 /^https?:\/\/[-a-z]{6,16}\.info\/[a-d][-\.\/_A-Za-z][DHWXm][-\.\/_A-Za-z][59FVZ][-\.\/_A-Za-z][6swyz][-\.\/_A-Za-z][-\/_0-9a-zA-Z][-\.\/_A-Za-z][-\/_0-9a-zA-Z]{22,162}$/$3p,match-case,script,xhr
@@ -1214,7 +1214,7 @@ $3p,script,domain=zdnet.fr
 1337x.*,x1337x.*##.link-info-stream
 1337x.*,x1337x.*##.no-top-radius div > a[href]:has-text(VPN)
 1337x.*,x1337x.*##.stream-torrent
-1337x.*,x1337x.*,1337x.unblock2.xyz,1337x.unblocked.*,1337x.unblockit.*##:xpath(//*[contains(text(),"IP Address")]/..)
+1337x.*,x1337x.*,1337x.unblock2.xyz,1337x.unblocked.*,1337x.unblockit.*##:xpath('//*[contains(text(),"Hide your IP")]/..')
 1337x.*,x1337x.*,1337x.unblock2.xyz,1337x.unblocked.*,1337x.unblockit.*##ul > li:has-text(/‌/i)
 1337x.g3g.sbs##+js(aopw, _pop)
 1337x.unblock2.xyz##+js(aopr, Math.floor)
@@ -5062,7 +5062,7 @@ akumanimes.com##+js(acis, eval, replace)
 akuu-sflin.blogspot.com##+js(acis, matchMedia, Adblocker)
 akuu-sflin.blogspot.com##.text-center:has-text(Adv)
 akvi.icu##+js(acis, $, show)
-akvi.icu##:xpath(//*[contains(text(),"Disable")])
+akvi.icu##:xpath('//*[contains(text(),"Disable")]')
 akvi.icu##[style='display: none;']:has(#vplayer):style(display:block!important;)
 akwam.*##+js(acis, addEventListener, blocker)
 akwam.*##+js(aopw, afScript)
@@ -5784,7 +5784,7 @@ autofaucet.dutchycorp.space##[href^="https://enicyvys.xyz/"]
 autofaucet.dutchycorp.space##[src^="blob:https://autofaucet.dutchycorp.space/"]:remove()
 autojournal.fr,autoplus.fr,sportauto.fr##+js(nostif, (), 1)
 autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,o2.pl,polygamia.pl,pudelek.pl,wp.pl##div[class]:has(> img[src] + div > style:has-text(flex: 0 0 100%))
-autokult.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,o2.pl,open.fm,parenting.pl,polygamia.pl,pudelek.pl,wp.pl##:xpath(//*[string-length(@href) >  1600])
+autokult.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,o2.pl,open.fm,parenting.pl,polygamia.pl,pudelek.pl,wp.pl##:xpath('//*[string-length(@href) > 1600]')
 autokult.pl,fotoblogia.pl,komorkomania.pl##div[class]:has(> div[class]:empty + img[src^="https://i.wpimg.pl/"])
 automobiledimension.com##.avisdiv
 automodeler.com##.adsbygoogle
@@ -6606,8 +6606,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -7986,6 +7986,7 @@ dragontea.ink##+js(nostif, /addClass|block|classList|console|gogo|having/)
 dragontea.ink##+js(nostif, _0x, 6000)
 dragontea.ink##+js(nostif, iframe)
 dragontea.ink##+js(nostif, overflow)
+dragontea.ink##html, body:style(overflow: auto !important;)
 dragontranslation.com###teaser2
 dragontranslation.com##+js(aopw, _pop)
 dragontranslation.com##+js(aost, String.prototype.charCodeAt, https)
@@ -8096,7 +8097,8 @@ dubzstreams.com##.aoa_overlay
 dubzstreams.com##.stickyfadein.admania_sidebarsticky.widget_admania_sticky_widgets.widget
 dubzstreams.com##.stickyfadeout.widget_admania_sticky_widgets.widget
 dubzstreams.com##div.clpr-emre1
-duden.de##+js(aopr,showAdBlockerOverlay)
+duden.de##+js(aopr, showAABOverlay)
+duden.de##+js(aopr, showAdBlockerOverlay)
 duden.de##.tabloid__side-column
 duden.de##[id*="billboard"]
 dudestream.com##+js(norafif, style.opacity)
@@ -8221,7 +8223,7 @@ easymp3converter.com##+js(nowoif, !yt2api)
 easymp3converter.com##body > div[style$="z-index: 300000;"]
 easymp3converter.com##div[id^="waldo-tag"]
 easysky.in,veganab.co##+js(set, blurred, false)
-ebay.*##.s-item:has-text(Sponsored):xpath(//*[string-length(@aria-labelledby) = 8]):upward(.s-item)
+ebay.*##.s-item:has-text(Sponsored):xpath('//*[string-length(@aria-labelledby) = 8]'):upward(.s-item)
 ebay.*##.s-item__sep:matches-css(display: none):remove()
 ebay.*##.s-item__title-tag:has-text(/^SPONSORED$/):upward(.s-item)
 ebay.*##.sresult:has(.promoted-lv)
@@ -8543,7 +8545,7 @@ etsy.com##ul#search-results > li a[data-logging-key]
 ettv.*##+js(aopr, AaDetector)
 ettv.*##+js(nowoif)
 ettv.*##+js(popads-dummy)
-ettv.*##:xpath(//*[contains(text(),"VPN")]):upward(2)
+ettv.*##:xpath('//*[contains(text(),"VPN")]'):upward(2)
 eturbonews.com##^responseheader(location)
 eurogamer.*##.advert
 eurogamer.de,eurogamer.es,eurogamer.it,eurogamer.net,eurogamer.pt,rockpapershotgun.com,vg247.com##+js(aopr, _sp_.mms.startMsg)
@@ -8995,7 +8997,7 @@ finanzen.*##+js(nostif, nrWrapper)
 finanzen.*##[id^="sas_"]:style(height: 1px !important)
 finanzen.*##^script:has-text(Inject=!)
 finanzen.net##.pull-right.img-responsive
-finanzen.net##:xpath(//*[contains(text(),"Werbung")]) + [class]
+finanzen.net##:xpath('//*[contains(text(),"Werbung")]') + [class]
 finanznachrichten.de##+js(nostif, .call(null), 10)
 finchtechs.com,imginn.com##+js(acis, document.createElement, unblocker)
 findandfound.ga##+js(aopr, $.prototype.html)
@@ -12622,7 +12624,7 @@ masihbelajar.com##[id*="ScriptRoot"]
 masstamilan.im##+js(nowoif)
 masstamilan.im##[src*=".gif"]
 masteranime.es##+js(set, check_adblock, true)
-masterduelmeta.com##:xpath(//*[contains(text(),"adblock")]):upward(3)
+masterduelmeta.com##:xpath('//*[contains(text(),"adblock")]'):upward(3)
 masterduelmeta.com##html,body:style(overflow: auto !important;)
 masterplayer.xyz##+js(aeld, click, popundr)
 mat6tube.com##+js(set, ads, undefined)
@@ -15104,7 +15106,7 @@ primeos.in##body:style(overflow: auto !important;)
 primetubsub.*##+js(aopr, AaDetector)
 primewire.*##+js(set, console.clear, noopFunc)
 primewire.*##.ico.close
-primewire.*##:xpath(//*[contains(text(),"Sponsored")]):upward(2)
+primewire.*##:xpath('//*[contains(text(),"Sponsored")]'):upward(2)
 primewire.*##[href="/user/profile/premium-membership"][target="_blank"]
 prinxy.app##.native-ads-wrapper
 prinxy.app##.sticky-banner
@@ -15420,14 +15422,19 @@ reallifecam.vip##+js(aopr, decodeURI)
 reallifecam.vip##.pm-ads-banner
 reallifecamsex.xyz##+js(aopr, absda)
 reallifecamsex.xyz##.pm-ads-banner
-realtime-chart.info##+js(ra, onclick, div[onclick="JumpDataHref(this)"][data-href], stay)
-realtime-chart.info##div[style="top:378px;width:120px;line-height:1.1;"] div[data-href^="https://a.r10.to"] > b.rakuten:style(background: none !important;)
+realtime-chart.info##+js(ra, href, a[href^="https://a.r10.to/"])
+realtime-chart.info##+js(ra, href, a[href^="https://px.a8.net/svt/ejp?"])
+realtime-chart.info##+js(ra, onclick, div[onclick*="JumpDataHref(this)"][data-href], stay)
+realtime-chart.info##img[src*="/clip_"] + b:style(background: none !important; font-size: 0 !important;)
 realtime-chart.info#@#+js(acs, document.write, /a8\.net|adsbygoogle/)
+realtime-chart.info#@#+js(ra, onclick, div[onclick="JumpDataHref(this)"][data-href], stay)
 realtime-chart.info#@#.amazonsearch + div[style="top:378px;width:120px;line-height:1.1;"]
 realtime-chart.info#@#.amazonsearch ~ div[style="top:1421px"]
+realtime-chart.info#@#a[href^="https://px.a8.net/svt/ejp?"]
 realtime-chart.info#@#div[data-ih*="広告"][style*="background:"]
 realtime-chart.info#@#div[style="top:378px;width:120px;line-height:1.1;"] div[data-href^="https://a.r10.to"]
-realtime-chart.info#@?#td > div[class] > ins.adsbygoogle:upward(1)
+realtime-chart.info#@#div[style="top:378px;width:120px;line-height:1.1;"] div[data-href^="https://amzn.to"]
+realtime-chart.info,sekai-kabuka.com##div[data-js]:style(background: none !important; cursor: default !important;)
 realyoungsex.com###topbar
 reamporn.com###bnclose
 reamporn.com##.ave-pl
@@ -15887,11 +15894,11 @@ seirsanduk.*##+js(popads.net)
 seirsanduk.*##.adsbygoogle
 seirsanduk.*##[href^="//bgtop.net/"]
 seirsanduk.*##[href^="https://www.bybit.com/"]
-sekai-kabuka.com##+js(ra, data-ih, , stay)
-sekai-kabuka.com##div[style="height: 179px;width:153px;top: 467px;line-height:2;background:#fff;color:#000;z-index:-1;margin: 0 0 0 -374px;position: absolute;font-size: 22px;"]
-sekai-kabuka.com##img#nyanta
-sekai-kabuka.com#@#+js(acs, document.write, 広告非表示)
+sekai-kabuka.com##+js(ra, onclick, div[data-js][style*="background"], stay)
+sekai-kabuka.com##div[data-ih]:style(font-size: 0 !important;)
+sekai-kabuka.com##div[style="height: 20px;width:272px;top: 567px;line-height:1;background:#800;color:#fff;z-index:0;margin: 0 0 0 -374px;position: absolute;font-size: 22px;"]
 sekai-kabuka.com#@#+js(nostif, 槎椦騁ｰﾟoﾛｴ廝ﾛｴ)
+sekai-kabuka.com#@#+js(ra, data-ih, , stay)
 sekai-kabuka.com#@#div[data-ih*="広告"][style*="background:"]
 sekai-kabuka.com#@#td[width="160"] > div[class] > div[style="height:2px;width:0px;"] + ins.adsbygoogle[style="display:inline-block;width:160px;height:600px;"]:upward(1)
 sekilastekno.com##+js(aopr, app_vars.force_disable_adblock)
@@ -16612,7 +16619,7 @@ spankbang.com##a[class][href^="https://www.blacked.com/"]
 spankwire.com###js-react-player-ad-under
 spankwire.com##.vjs-inplayer-closeandplay
 spankwire.com##.vjs-inplayer-disclaimer
-spankwire.com##:xpath(//*[contains(text(),"Advertisement")]):upward(1)
+spankwire.com##:xpath('//*[contains(text(),"Advertisement")]'):upward(1)
 spankwire.com##[src^="//www.spankwire.com/neverblock/"]
 spankwire.com##div[data-class="vjs-inplayer-overlay"]
 spaste.com##+js(nofab)
@@ -16712,7 +16719,7 @@ sports24.*##.container > div.col[style^="height: 225px; width: 400px"]
 sports24.*##.container > div.row[style="margin-top: 20px;"] > div.col
 sports24.*##.landscape_ad_pos
 sports24.*##.sp24
-sports24.*##:xpath(//*[contains(text(),"Watch HD")])
+sports24.*##:xpath('//*[contains(text(),"Watch HD")]')
 sports24.*##[href*="/vpn"]
 sports24.*##[href^="https://brave.com/"]
 sports24.*##[src^="/tv/ol.php?"]
@@ -17734,7 +17741,7 @@ track24.ru##+js(aopr, adBlockDetectet)
 track24.ru##+js(set, ab, false)
 trade2win.com##+js(nostif, .show)
 traderepublic.community##+js(nostif, show)
-trakt.tv##:xpath(//*[(text()='Advertisement')]/..)
+trakt.tv##:xpath('//*[(text()='Advertisement')]/..')
 tralhasvarias.*##+js(nobab)
 trangchu.news##.video-js
 tranny.one##+js(aopr, exoNoExternalUI38djdkjDDJsio96)
@@ -18767,7 +18774,7 @@ washingtonpost.com##.bb.pt-0
 washingtonpost.com##.bottom-ad--bigbox:upward(1)
 washingtonpost.com##.outbrain-wrapper
 washingtonpost.com##.remainder-content .db-ns.dn
-washingtonpost.com##:xpath(//*[(text()='AD')]/..)
+washingtonpost.com##:xpath('//*[(text()='AD')]/..')
 washingtonpost.com##^script:has-text(_0x)
 washingtonpost.com##div.grey-bg
 washingtonpost.com##html[style="overflow: hidden;"]:style(overflow: auto !important;)
@@ -21586,6 +21593,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ltn.hitomi.la^*?yuo1=$1p,script
 ||lubuntu.net^$doc
 ||lucky4wins.club^$all
+||luckypatchers.net^$all,domain=~luckypatchers.com
+||luckypatcherwin.com^$all,domain=~luckypatchers.com
 ||luckywinner-web1.com^$all
 ||lumupu.xyz^$3p
 ||m-afee.com^$all
@@ -23173,26 +23182,18 @@ zwergenstadt.com##+js(aeld, load, onload)
 ~rocketnews24.com,~soranews24.com,~youpouch.com,*##[id^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 ~streetinsider.com###ad_space:not([style^="position: absolute; left: -5000px"])
 !#if env_chromium
-@@/\/hb-api.omnitagjs.com\/hb-api\/prebid\/v1$/$xhr,domain=dragontea.ink
 @@||ads.themoneytizer.com/s/requestform.js?$script,domain=satoshi-win.xyz
-@@||bidder.criteo.com/cdb$xhr,domain=dragontea.ink
-@@||bidder.criteo.com/csm/events$xhr,domain=dragontea.ink
 @@||gibevay.ru/retarget/get$script,domain=satoshi-win.xyz
 @@||googletagservices.com/tag/js/gpt.js$script,domain=satoshi-win.xyz
 @@||govbusi.info^$script,domain=satoshi-win.xyz
-@@||id5-sync.com/g/v2/*.json$xhr,domain=dragontea.ink
-@@||prebid.a-mo.net/a/c$xhr,domain=dragontea.ink
-@@||securepubads.g.doubleclick.net/gpt/pubads_impl*$script,domain=dragontea.ink
-@@||securepubads.g.doubleclick.net/pagead/ppub_config?ippd=dragontea.ink$xhr,domain=dragontea.ink
-@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dragontea.ink
-@@||stpd.cloud^$script,xhr,domain=dragontea.ink
 @@||subaru.com/guides/*/libs/adobe/AppMeasurement.js$script,1p
 @@||svonm.com/hd-main.js$script,domain=kicker.de|kino.de|videos.giga.de|video.spieletipps.de,badfilter
 @@||themoneytizer.com^$frame,domain=satoshi-win.xyz
 @@||umekana.ru/retarget/get$script,domain=satoshi-win.xyz
 @@||zatnoh.com/pw/*=eyJ.js$script,domain=satoshi-win.xyz
-dragontea.ink##+js(nosiif, _0x)
-dragontea.ink##html, body:style(overflow: auto !important;)
+dragontea.ink##+js(nosiif, , 1001)
+dragontea.ink##+js(nosiif, googletag)
+dragontea.ink##body > div:not([id], [class], [style]) > div:not([id], [class], [style]) > div:not([id], [class], [style])
 haus-garten-test.de##+js(set, Object.keys, trueFunc)
 ignboards.com##+js(acis, JSON.stringify)
 lablue.*##+js(nostif, push, 500)
@@ -23205,7 +23206,6 @@ ylilauta.org##iframe.a
 ||amazonaws.com/homad-global-configs.schneevonmorgen.com/global_config.json$xhr,redirect=nooptext,domain=ani-stream.com
 ||amazonaws.com/homad-global-configs.schneevonmorgen.com/global_config.json$xhr,redirect=nooptext,domain=fitforfun.de|golem.de|n-tv.de|wetter.de
 ||au.ign.com^$inline-script
-||bidder.criteo.com/cdb?*bundle$xhr,domain=dragontea.ink,important
 ||carsensor.net/usedcar/modules/clicklog_$xhr,1p,important,redirect=noop.txt
 ||doubleclick.net/gampad/ads?*&output=xml_vmap$xhr,redirect=noopvmap-1.0,important,domain=tver.jp
 ||doubleclick.net^$script,important,domain=auto-motor-und-sport.de
@@ -23232,9 +23232,8 @@ ylilauta.org##iframe.a
 @@||svonm.com/hd-main.js$script,domain=kicker.de|kino.de|videos.giga.de|video.spieletipps.de,badfilter
 adshnk.com##+js(nosiif, adblocker, 10000)
 bing.com##+js(nosiif, logQueue, 10000)
-dragontea.ink##^script:has-text(/_0x|_3x|console\.log|MutationObserver/)
-dragontea.ink##div[style*="display:block!important"][style*="background-color:"][style$="!important;"]
-dragontea.ink##html, body:style(overflow: auto !important;)
+dragontea.ink##^script:has-text(/_0x|_1x|_2x|_3x|_4x|_5x|_6x|_7x|_8x|_9x|console\.log|MutationObserver/)
+dragontea.ink##h4:has-text(Ads Blocker Detected!!!):upward(div:not([id], [class], [style]))
 linkdoni.soft98.ir##^body, title
 qub.ca##.jss2
 streamingcommunity.*##+js(no-xhr-if, thaudray.com)
