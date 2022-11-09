@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: N9FOSqrO8cRoi9+dFfuJEA
+! Checksum: Rs9kErGK/5lXQFJ8dYxAdg
 ! Expires: 2 days
-! Version: 202211090614
+! Version: 202211091814
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23353, sources at 2022/11/09 06:14 UTC+8
+! Total lines: 23358, sources at 2022/11/09 18:14 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -1592,7 +1592,7 @@ $3p,script,domain=zdnet.fr
 @@*$image,domain=a2zupload.com|jaanmusic.in|rtxkeeda.com|wstream.video
 @@*$media,domain=1movies.is|camvideos.org|camwhores.tv
 @@*$object,domain=asklaftananlamazinhindi.com
-@@*$xhr,domain=adclickersbot.com|cbssports.com|designtagebuch.de|thehouseofportable.com
+@@*$xhr,domain=adclickersbot.com|app.molotov.tv|cbssports.com|designtagebuch.de|thehouseofportable.com
 @@*.js|$3p,script,domain=unique-tutorials.info
 @@*/assets/prebid/$1p,script,xhr,domain=esgentside.com|gentside.*|maxisciences.com|ohmirevista.com|ohmymag.*
 @@*ad2.$image,domain=sophiabushfan.net
@@ -6606,8 +6606,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -13064,6 +13064,8 @@ modsbase.com##+js(nowebrtc)
 mohammedkhc.com##+js(aopr, detectAdblock)
 mohammedkhc.com##+js(nano-sib, countdown)
 molll.mobi##+js(nostif, innerText, 2000)
+molotov.tv##+js(aeld, , goog)
+molotov.tv##+js(nosiif, goog)
 momo-net.com##+js(aeld, contextmenu)
 momo-net.com##+js(aopr, document.body.appendChild)
 momomesh.tv##+js(set, lck, true)
@@ -23171,11 +23173,15 @@ zwergenstadt.com##+js(aeld, load, onload)
 ~rocketnews24.com,~soranews24.com,~youpouch.com,*##[id^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 ~streetinsider.com###ad_space:not([style^="position: absolute; left: -5000px"])
 !#if env_chromium
+@@/\/hb-api.omnitagjs.com\/hb-api\/prebid\/v1$/$xhr,domain=dragontea.ink
 @@||ads.themoneytizer.com/s/requestform.js?$script,domain=satoshi-win.xyz
+@@||bidder.criteo.com/cdb$xhr,domain=dragontea.ink
+@@||bidder.criteo.com/csm/events$xhr,domain=dragontea.ink
 @@||gibevay.ru/retarget/get$script,domain=satoshi-win.xyz
 @@||googletagservices.com/tag/js/gpt.js$script,domain=satoshi-win.xyz
 @@||govbusi.info^$script,domain=satoshi-win.xyz
 @@||id5-sync.com/g/v2/*.json$xhr,domain=dragontea.ink
+@@||prebid.a-mo.net/a/c$xhr,domain=dragontea.ink
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl*$script,domain=dragontea.ink
 @@||securepubads.g.doubleclick.net/pagead/ppub_config?ippd=dragontea.ink$xhr,domain=dragontea.ink
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dragontea.ink
@@ -23185,9 +23191,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 @@||themoneytizer.com^$frame,domain=satoshi-win.xyz
 @@||umekana.ru/retarget/get$script,domain=satoshi-win.xyz
 @@||zatnoh.com/pw/*=eyJ.js$script,domain=satoshi-win.xyz
-dragontea.ink##+js(no-xhr-if, /gum\.criteo\.com\/sid\/json|prebid|adx|1rx\.io|omnitagjs\.com|bidder\.criteo\.com\/csm\/events|adsystem/)
 dragontea.ink##+js(nosiif, _0x)
-dragontea.ink##body > div[style]:not([id], [class])
 dragontea.ink##html, body:style(overflow: auto !important;)
 haus-garten-test.de##+js(set, Object.keys, trueFunc)
 ignboards.com##+js(acis, JSON.stringify)
@@ -23201,6 +23205,7 @@ ylilauta.org##iframe.a
 ||amazonaws.com/homad-global-configs.schneevonmorgen.com/global_config.json$xhr,redirect=nooptext,domain=ani-stream.com
 ||amazonaws.com/homad-global-configs.schneevonmorgen.com/global_config.json$xhr,redirect=nooptext,domain=fitforfun.de|golem.de|n-tv.de|wetter.de
 ||au.ign.com^$inline-script
+||bidder.criteo.com/cdb?*bundle$xhr,domain=dragontea.ink,important
 ||carsensor.net/usedcar/modules/clicklog_$xhr,1p,important,redirect=noop.txt
 ||doubleclick.net/gampad/ads?*&output=xml_vmap$xhr,redirect=noopvmap-1.0,important,domain=tver.jp
 ||doubleclick.net^$script,important,domain=auto-motor-und-sport.de
@@ -23227,7 +23232,7 @@ ylilauta.org##iframe.a
 @@||svonm.com/hd-main.js$script,domain=kicker.de|kino.de|videos.giga.de|video.spieletipps.de,badfilter
 adshnk.com##+js(nosiif, adblocker, 10000)
 bing.com##+js(nosiif, logQueue, 10000)
-dragontea.ink##^script:has-text(/_0x|_3x|MutationObserver/)
+dragontea.ink##^script:has-text(/_0x|_3x|console\.log|MutationObserver/)
 dragontea.ink##div[style*="display:block!important"][style*="background-color:"][style$="!important;"]
 dragontea.ink##html, body:style(overflow: auto !important;)
 linkdoni.soft98.ir##^body, title
