@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: MvX3hfPdPYxeqj6klU+siA
+! Checksum: aoYXFgk4Ok2IKhAV7k86SQ
 ! Expires: 2 days
-! Version: 202211140613
+! Version: 202211141816
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23424, sources at 2022/11/14 06:13 UTC+8
+! Total lines: 23417, sources at 2022/11/14 18:16 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -248,8 +248,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adbanner
 #@#.adBanner
+#@#.adbanner
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
@@ -4116,6 +4116,7 @@ $3p,script,domain=zdnet.fr
 @@||smashresume.com^$ghide
 @@||sme.sk^$ghide
 @@||sms-anonyme.net^$ghide
+@@||sms24.*^$ghide
 @@||smscodeonline.com^$ghide
 @@||smwebs.xyz^$ghide
 @@||so-abnehmen.info^$ghide
@@ -12793,7 +12794,7 @@ megaplayer.bokracdn.run##.blockingAd, .popBannerTeaser
 megapornfreehd.com##+js(aopr, V4ss)
 megatube.xxx##+js(aopr, BetterJsPop)
 megaup.net##+js(ra, href|target, a[href^="https://tm-offers.gamingadult.com/"])
-megaup.net##.metaRedirectWrapperBottomAds > div[id]:style(position: absolute !important; left: -3000px !important;)
+megaup.net##.metaRedirectWrapperBottomAds:style(clip-path: circle(0%) !important;)
 megaurl.*##+js(aopr, app_vars.force_disable_adblock)
 megaurl.*##[id*="ScriptRoot"]
 megaurl.*##a[href^="//"]
@@ -15449,7 +15450,6 @@ reallifecam.vip##+js(aopr, decodeURI)
 reallifecam.vip##.pm-ads-banner
 reallifecamsex.xyz##+js(aopr, absda)
 reallifecamsex.xyz##.pm-ads-banner
-realtime-chart.info##+js(ra, href, a[href^="https://a.r10.to/"])
 realtime-chart.info##+js(ra, onclick, .amazoom1[onclick^="clickcat"][target="_blank"])
 realtime-chart.info##+js(ra, onclick, [onclick^="location.href=\'https://px.a8.net"])
 realtime-chart.info##a[href^="https://px.a8.net/svt/ejp?"]:style(pointer-events: none !important;)
@@ -15457,15 +15457,10 @@ realtime-chart.info##div[class^="amazon"] > b[class^="amazon"] > b[style^="font-
 realtime-chart.info##div[onclick$="()"]:style(pointer-events: none !important;)
 realtime-chart.info##div[onclick][style*="cursor:pointer"]:style(pointer-events: none !important;)
 realtime-chart.info##div[style="width:120px;line-height:1.1;position:relative;"] > b[style="font-size:32px"]:style(font-size: 0 !important;)
-realtime-chart.info##img[src*="/clip_"] + b:style(background: none !important; font-size: 0 !important;)
 realtime-chart.info#@#+js(ra, href, a[href^="https://px.a8.net/svt/ejp?"])
-realtime-chart.info#@#+js(ra, id, td > div[style="width:0px;height:0;display:inline-block;position:absolute;"] + div[style^="display:"])
-realtime-chart.info#@#+js(ra, onclick, div[onclick="JumpDataHref(this)"][data-href], stay)
-realtime-chart.info#@#a[href^="https://px.a8.net/svt/ejp?"]
 realtime-chart.info#@#div[data-ih*="広告"]:style(background: none !important; font-size: 0 !important; cursor: default !important;)
-realtime-chart.info#@#div[style="top:378px;width:120px;line-height:1.1;"] div[data-href^="https://amzn.to"]
 realtime-chart.info,sekai-kabuka.com##div[data-i2h]:style(font-size: 0 !important;)
-realtime-chart.info,sekai-kabuka.com##div[data-js]:style(background: none !important; cursor: default !important;)
+realtime-chart.info,sekai-kabuka.com##div[data-i4h]:style(font-size: 0 !important;)
 realyoungsex.com###topbar
 reamporn.com###bnclose
 reamporn.com##.ave-pl
@@ -15926,14 +15921,11 @@ seirsanduk.*##+js(popads.net)
 seirsanduk.*##.adsbygoogle
 seirsanduk.*##[href^="//bgtop.net/"]
 seirsanduk.*##[href^="https://www.bybit.com/"]
-sekai-kabuka.com##+js(ra, onclick, div[data-js][style*="background"], stay)
-sekai-kabuka.com##div[data-i3h]:style(font-size: 0 !important;)
-sekai-kabuka.com##div[data-ih]:style(font-size: 0 !important;)
-sekai-kabuka.com##div[id][class][style^="position:relative;background:#000;"][style*="width:729px;"][style*="height: 90px;"]:style(height: 1px !important; overflow: auto !important;)
+sekai-kabuka.com##div[id][class][style^="position:relative;background:#000;"][style*="width:729px;"][style*="height: 90px;"]:style(height: 1px !important;)
 sekai-kabuka.com##div[style^="height:0px;width:"][style$="position:abusolute;margin: 0 auto;"] > div[class][style*="background:"][style*="font-size:"]:style(font-size: 0 !important; background: none !important;)
-sekai-kabuka.com#@#+js(ra, data-ih, , stay)
+sekai-kabuka.com##div[style^="height:0px;width:"][style$="position:abusolute;margin: 0 auto;"] > div[class][style*="background:#900;color:#fff"]:style(font-size: 0 !important; background: none !important;)
 sekai-kabuka.com#@#div[id][class][style^="position:relative;background:#000;"]:style(height: 1px !important; overflow: auto !important;)
-sekai-kabuka.com#@#div[style="height: 20px;width:272px;top: 567px;line-height:1;background:#800;color:#fff;z-index:0;margin: 0 0 0 -374px;position: absolute;font-size: 22px;"]
+sekai-kabuka.com#@#div[id][class][style^="position:relative;background:#000;"][style*="width:729px;"][style*="height: 90px;"]:style(height: 1px !important; overflow: auto !important;)
 sekilastekno.com##+js(aopr, app_vars.force_disable_adblock)
 sekilastekno.com##+js(no-fetch-if, ads)
 sekilastekno.com##+js(nowoif, wapka)
@@ -23125,7 +23117,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||wxhiojortldjyegtkx.bid^$all
 ||x-soft.club^$all
 ||x.kinja-static.com/assets/packaged-js/OnionAM.$script,domain=avclub.com|clickhole.com|deadspin.com|earther.com|gizmodo.com|jalopnik.com|jezebel.com|kotaku.com|lifehacker.com|splinternews.com|theinventory.com|theonion.com|theroot.com|thetakeout.com
-||x.sekai-kabuka.com/http/pr/$script
 ||x.shopsavvy.com^$3p
 ||xasiat.com^$csp=script-src 'self' 'unsafe-inline' *.google.com *.xasiatvideo.com *.cloudflare.com *.gstatic.com *.googletagmanager.com
 ||xasiatvideo.com^$csp=script-src 'self' 'unsafe-inline' *.google.com *.xasiat.com *.cloudflare.com *.gstatic.com *.googletagmanager.com
@@ -23365,6 +23356,8 @@ pornid.*##.spots-title
 quora.com##.top_slot
 reddit.com##.XPromoBlockingModal
 reddit.com##.m-blurred:style(filter: none !important;)
+reddit.com##[style^="filter:"]:style(filter: none !important;)
+reddit.com##xpromo-new-nsfw-blocking-modal
 reddit.com##xpromo-nsfw-blocking-modal
 sexvid.*##.container > .headline, .intro
 sexvid.*##.cs
