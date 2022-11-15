@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! See: https://github.com/xinggsf/Adblock-Plus-Rule/commits/master/mv.txt
-! LastCommit: 96735de5cc499cb0e75a531b203ebc95cabba17c
+! LastCommit: e660128af4c9948bca3e1a575b02a7b96e97514a
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,third-party,domain=youtube.com
@@ -38,8 +38,10 @@ netflix.mom,netflixya.com,yanetflix.com##.rm-list.player-rm
 netflix.mom,netflixya.com,yanetflix.com##.tips-box,#note.popup
 new.qq.com##+js(set, SSPAd.prototype.loadAd, noopFunc)
 pptv.com##.advView-two,#p-mark
-qq.com##+js(json-prune,adList.item)
-qq.com##+js(json-prune,ads)
+qq.com##+js(json-prune,ads adList.item)
+qq.com##+js(no-fetch-if,/trace\.|beacon\./)
+qq.com##+js(no-xhr-if,/trace\.|\/collect/)
+qq.com##+js(set,RTCPeerConnection,null)
 qq.com#@#+js(nowebrtc)
 qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap, .iwan-wrapper
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
