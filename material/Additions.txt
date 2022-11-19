@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! See: https://github.com/xinggsf/Adblock-Plus-Rule/commits/master/mv.txt
-! LastCommit: e660128af4c9948bca3e1a575b02a7b96e97514a
+! LastCommit: d071e3c0fe0aad67fcb2115183abd03b93f574bb
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,third-party,domain=youtube.com
@@ -47,6 +47,10 @@ qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_vi
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
 v.qq.com###player  .txp_zt_content
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
+video.qq.com#@#+js(no-fetch-if,/trace\.|beacon\./)
+video.qq.com#@#+js(no-xhr-if,/trace\.|\/collect/)
+video.qq.com#@#+js(json-prune,ads adList.item)
+video.qq.com#@#+js(set,RTCPeerConnection,null)
 www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
 www.ted.com##.gm-fp-body .justify-center.tracking-tightest
 yatu.tv##.dplayer-web-fullscreen-fix #tburl,#loadtop,[id^=myas],#myds1,#daohang
@@ -125,7 +129,6 @@ yy.com,le.com##+js(nowebrtc)
 ||valipl.cp31.ott.cibntv.net^$media
 ||wan.douyu.com^
 ||waust.at^
-||web-player-tracker.biliapi.net^
 ||wp.com/netflixya.com/upload/$image
 ||www.yatu.tv:2082/image/*.gif^$image
 ||www.yatu.tv:2082/m/images/$image
@@ -138,5 +141,5 @@ yy.com,le.com##+js(nowebrtc)
 ! My rules
 ||www.bandisoft.com/bandizip/ad/
 ||api.live.bilibili.com/xlive/web-room/v1/banner/getAdBanner
-||api.cc98.org/config/global/advertisement
+||api.cc98.org//config/global/advertisement
 ||mbalib.com/services/ad
