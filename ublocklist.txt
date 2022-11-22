@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: FCfgpq/mk9Z9PRjwn8N5gA
+! Checksum: 7xHL3xB8Lngpmtr7NE4n5A
 ! Expires: 2 days
-! Version: 202211220612
+! Version: 202211221813
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23492, sources at 2022/11/22 06:12 UTC+8
+! Total lines: 23482, sources at 2022/11/22 18:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -802,6 +802,7 @@ $3p,script,domain=zdnet.fr
 /a/ipn/js/*
 /a/pop/js/*
 /aas/r45d/vki/*$3p,script
+/ad-ads.$badfilter
 /ad-m.js$1p,script
 /ad.xml$badfilter,xhr
 /adblock-detect.js$important,script,domain=allcryptoz.net|crewbase.net|crewus.net|shinbhu.net|shinchu.net|thumb8.net|thumb9.net|topcryptoz.net|ultraten.net|uniqueten.net
@@ -7673,22 +7674,6 @@ descarga.xyz##+js(aopr, AaDetector)
 descarga.xyz##+js(aopw, atOptions)
 descarga.xyz##+js(aopw, smrtSB)
 descarga.xyz##.code-block-1.code-block
-descargas2020.*###idx-1
-descargas2020.*##+js(acis, decodeURI, decodeURIComponent)
-descargas2020.*##+js(aeld, DOMContentLoaded, [native code])
-descargas2020.*##+js(aeld, mousedown, (b){u()})
-descargas2020.*##+js(aopr, _cpp)
-descargas2020.*##+js(aopr, _Crstatistics.inIframe)
-descargas2020.*##+js(aopr, AaDetector)
-descargas2020.*##+js(aopr, TID)
-descargas2020.*##+js(aopw, _pop)
-descargas2020.*##+js(aopw, _ti_ab_only)
-descargas2020.*##+js(aopw, Fingerprint2)
-descargas2020.*##+js(noeval)
-descargas2020.*##+js(nowebrtc)
-descargas2020.*##+js(nowoif, !link)
-descargas2020.*##+js(set, _ti_ab, true)
-descargas2020.*##[src*="banner_728x90"]:xpath(..)
 descargasok.*##+js(acs, document.addEventListener, google_ad_client)
 descargaspcpro.net###AdSense1
 descargaspcpro.net###HTML90
@@ -12996,6 +12981,11 @@ mio.to##+js(acis, document.getElementById, abmsg)
 miohentai.com###idtop
 miohentai.com##+js(aopr, mnpwclone)
 miohentai.com##.in.paused-ad-container
+miraculous.to##+js(aeld, hashchange)
+miraculous.to##+js(aeld, popstate)
+miraculous.to##+js(aopr, history.back)
+miraculous.to##+js(aopw, Fingerprint2)
+miraculous.to##+js(nowoif)
 miroir1.trackr.fr##+js(nostif, adsBlocked)
 mirrorace.*##+js(aeld, click, _0x)
 mirrorace.*##+js(aopr, AaDetector)
@@ -15661,7 +15651,8 @@ robofight.io##.home-banner
 robofight.io##div.side-loadout-item:nth-of-type(3)
 robot-forum.com##+js(acis, $, offsetHeight)
 roboticsandautomationnews.com##.advads-widget
-rocketnews24.com,youpouch.com##iframe[id^="google_ads_iframe"]:style(transform: scaleY(0.0) !important; pointer-events: none important;)
+rocketnews24.com,youpouch.com##div[id^="google_ads_iframe"]:style(height: 1px !important;)
+rocketnews24.com,youpouch.com#@#iframe[id^="google_ads_iframe"]:style(transform: scaleY(0.0) !important; pointer-events: none important;)
 rockit.it##.articolo-body-text-banner
 rocklink.in##+js(set, blurred, false)
 rockmods.net##+js(acis, String.prototype.charCodeAt, protected_links)
@@ -15955,12 +15946,8 @@ seirsanduk.*##+js(popads.net)
 seirsanduk.*##.adsbygoogle
 seirsanduk.*##[href^="//bgtop.net/"]
 seirsanduk.*##[href^="https://www.bybit.com/"]
-sekai-kabuka.com##div[style="width:0px;height:0;"] > div[style^="width: 300px;height: 50px"][data-i4h*="広告"]:style(font-size: 0 !important;)
-sekai-kabuka.com##td[class] > div[style="position:absolute;left:-9999px;"] + div[class][id] > div[class]:has-text(/^不具合が発生しています$/):style(z-index: -1 !important;)
+sekai-kabuka.com##ins.adsbygoogle > div[style="width:728px;height:90px;position:absolute;z-index:999;line-height:1.1;display:flex;justify-content:center;align-items:center;"]:style(height: 1px !important; overflow: auto !important;)
 sekai-kabuka.com##td[width="160"] div > div[style*="height"][style*="position"][data-i4h*="不具合"]:style(z-index: -1 !important;)
-sekai-kabuka.com#@#div[data-i4h]:style(font-size: 0 !important;)
-sekai-kabuka.com#@#div[data-i4h]:style(opacity: 0 !important;)
-sekai-kabuka.com#@#td[class] > div[class][id] > div[class][style*="background:"]:has-text(/^不具合が発生しています$/):style(position: static !important;)
 sekilastekno.com##+js(aopr, app_vars.force_disable_adblock)
 sekilastekno.com##+js(no-fetch-if, ads)
 sekilastekno.com##+js(nowoif, wapka)
@@ -16650,9 +16637,10 @@ sonorousporn.com##.vid-ave-pl
 sonyliv.com##+js(json-prune, adProvider)
 soranews24.com###div-gpt-ad-header:style(opacity: 0 !important;)
 soranews24.com##.ads-relatedbottom
-soranews24.com##iframe[id^="google_ads_iframe"]:remove()
+soranews24.com##div[id^="google_ads_iframe"]:style(height: 1px !important;)
 soranews24.com#@#.ad
 soranews24.com#@#[id^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
+soranews24.com#@#iframe[id^="google_ads_iframe"]:remove()
 sortporn.com##[href^="https://www.sortporn.com/link/"]
 sosyalbilgiler.net##+js(aopr, adBlockDetected)
 sotemnovinhas.com##+js(nofab)
@@ -17628,6 +17616,9 @@ tio.ch##+js(ra, href, a[href*="/ads.php"][target="_blank"])
 tio.ch##.ad
 tionghoa.info##.adsbygoogle
 tipstertube.com##+js(ra, href|target, a[href^="https://tipstertube.com/bookmaker/"][target="_blank"], stay)
+tirexo.tel##+js(nowoif)
+tirexo.tel##[href^="https://dl-protect.net/get-premium-url"]
+tirexo.tel##[style]:has-text(PREMIUM)
 tiscali.it##+js(set, adEnable, true)
 tistory.com##+js(nostif, nextFunction, 250)
 tistory.com##+js(set, canRunAds, true)
@@ -20754,7 +20745,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||desbloqueador.org^$3p,badfilter,popup
 ||descargaloaca.com^$3p
 ||descargarjuegospc.net^
-||descargas2020.*/sw.js$script
 ||desirefx.com^$frame,redirect=noopframe,domain=uploadcloud.pro
 ||desiremovies.*/sw.js$1p,script
 ||desktopnexus.com/pb-ads/
