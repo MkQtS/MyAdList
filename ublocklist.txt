@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: /88nLApXPEvp/6Oxt20E0Q
+! Checksum: bwD3MQtqZVaj4AlozN1cIw
 ! Expires: 2 days
-! Version: 202211300611
+! Version: 202211301813
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23557, sources at 2022/11/30 06:11 UTC+8
+! Total lines: 23558, sources at 2022/11/30 18:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -252,6 +252,7 @@
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
+#@#.adv-title
 #@#.display_ad
 #@#.div-gpt-ad
 #@#.google-ad
@@ -1920,7 +1921,6 @@ $3p,script,domain=zdnet.fr
 @@||api.solvemedia.com^$frame,script
 @@||api.thingiverse.com/banner/*/pageAd$1p,xhr
 @@||api.unidadeditorial.es/sports/v1/events/*$xhr
-@@||api.us1.exponea.com^$script,xhr,domain=walmartpetrx.com
 @@||api.useinsider.com^$domain=lenovo.com
 @@||api2.branch.io/v1/url$xhr,domain=ecwid.com
 @@||apis.google.com/js/platform.js$script,domain=kitsunekko.net
@@ -2718,6 +2718,7 @@ $3p,script,domain=zdnet.fr
 @@||fisp.io^$1p,script
 @@||fisp.io^$ghide
 @@||fitgirl-repacks.site^$image
+@@||fitgirl-repacks.site^$popup
 @@||fivethirtyeight.com/wp-content/plugins/abc-analytics/assets/js/analytics.min.js$1p,script
 @@||flashx.*/counter.cgi$script
 @@||flight-report.com^$ghide
@@ -3012,6 +3013,7 @@ $3p,script,domain=zdnet.fr
 @@||hausbau-forum.de/js/siropu/am/ads.min.js$1p,script
 @@||hb.improvedigital.com/pbw/headerlift.min.js$script,domain=html5.gamedistribution.com
 @@||hb.improvedigital.com/pbw/prebid/*$script,domain=html5.gamedistribution.com
+@@||hb.vntsm.com/*/ad-manager.min.js$script,domain=aternos.org
 @@||hb.vntsm.com/v2/live/$xhr,domain=aternos.org
 @@||hb.vntsm.com/v3/live/ad-manager.min.js$script,domain=aternos.org|raider.io
 @@||hbopenbid.pubmatic.com/translator?source=prebid-client$xhr,domain=aternos.org
@@ -3371,6 +3373,8 @@ $3p,script,domain=zdnet.fr
 @@||madeintorrent.com^$ghide
 @@||mademoiselleosaki.com^$ghide
 @@||mage.si^$ghide
+@@||magesy.blog/wp-content/plugins/akismet/_inc/akismet-frontend.js?$1p,script
+@@||magesy.blog/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js?$1p,script
 @@||magesy.blog^$ghide
 @@||magesypro.*^$ghide
 @@||maggotdrowning.com/forums/js/siropu/am/ads.min.js$1p,script
@@ -4198,7 +4202,6 @@ $3p,script,domain=zdnet.fr
 @@||src.fedoraproject.org/static/issues_stats.js$1p,script
 @@||src.litix.io/core/*/mux.js$script,domain=destinationamerica.com
 @@||src.litix.io/jwplayer/$script,domain=video.eurosport.com
-@@||src.litix.io/shakaplayer/*/shakaplayer-mux.js$script,domain=showtimeanytime.com
 @@||src.litix.io/theoplayer/*$script,domain=rte.ie
 @@||src.litix.io/videojs/$script,domain=rte.ie
 @@||src.litix.io/videojs/*/videojs-mux.js$script,domain=dmax.de|tlc.de
@@ -5752,7 +5755,7 @@ atdhe.*###bannerInCenter
 atdhe.*##+js(popads-dummy)
 atdhe.*##[href^="https://horti.brovada.eu/"]
 aternos.org###placement-takeover
-aternos.org##.ad-dfp:style(min-height: 0.0222px !important; height: 0.0222px !important; pointer-events: none !important;)
+aternos.org##.ad-dfp:style(min-height: 0.0212px !important; height: 0.0212px !important; pointer-events: none !important;)
 aternos.org##.header-ad
 aternos.org##.header-exaroton-link
 aternos.org##.header-link-exaroton-link:style(pointer-events: none !important;)
@@ -10970,15 +10973,15 @@ imgkings.com##+js(aopr, ExoLoader)
 imgkings.com##+js(aopw, _pop)
 imgkings.com##+js(nostif, location.href)
 imgmaze.*,imgtown.*##+js(aopr, popjs.init)
-imgmilu.store,picliume.store##+js(aeld, , _0x)
-imgmilu.store,picliume.store##+js(aopr, console.clear)
-imgmilu.store,picliume.store##+js(nano-sib, timer)
-imgmilu.store,picliume.store##+js(nosiif, _0x)
-imgmilu.store,picliume.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgmilu.store,picliume.store##[id*="ScriptRootC"]
-imgmilu.store,picliume.store##div[class][style="display: block;"]
-imgmilu.store,picliume.store##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgmilu.store,picliume.store##div[style="width:100%;height:110px"]
+imgmilu.store,picliume.store,pixmela.online##+js(aeld, , _0x)
+imgmilu.store,picliume.store,pixmela.online##+js(aopr, console.clear)
+imgmilu.store,picliume.store,pixmela.online##+js(nano-sib, timer)
+imgmilu.store,picliume.store,pixmela.online##+js(nosiif, _0x)
+imgmilu.store,picliume.store,pixmela.online##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgmilu.store,picliume.store,pixmela.online##[id*="ScriptRootC"]
+imgmilu.store,picliume.store,pixmela.online##div[class][style="display: block;"]
+imgmilu.store,picliume.store,pixmela.online##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgmilu.store,picliume.store,pixmela.online##div[style="width:100%;height:110px"]
 imgprime.com##+js(ra, href|target, a[href="https://imgprime.com/view.php"][target="_blank"], complete)
 imgprime.com##.overlayBg
 imgrock.*##+js(aopr, CustomEvent)
@@ -15543,7 +15546,7 @@ reallifecam.vip##+js(aopr, decodeURI)
 reallifecam.vip##.pm-ads-banner
 reallifecamsex.xyz##+js(aopr, absda)
 reallifecamsex.xyz##.pm-ads-banner
-realtime-chart.info##td[style="vertical-align: top"] > div[id] > div[id] > div[id] > div[style="top:1550px"] > div[style="z-index:-1"]:has-text(/^広告非表示だと色々と不具合が発生します$/)
+realtime-chart.info##div[style="top:1550px"] > [style*="font-size:"]:is(b, span, a):style(font-size: 0 !important;)
 realyoungsex.com###topbar
 reamporn.com###bnclose
 reamporn.com##.ave-pl
@@ -15710,10 +15713,11 @@ robofight.io##.home-banner
 robofight.io##div.side-loadout-item:nth-of-type(3)
 robot-forum.com##+js(acis, $, offsetHeight)
 roboticsandautomationnews.com##.advads-widget
-rocketnews24.com,youpouch.com##iframe[id^="google_ads_iframe"]:remove()
+rocketnews24.com,youpouch.com##iframe[id^="google_ads_iframe"]:style(width: 2px !important; overflow: auto !important;)
 rocketnews24.com,youpouch.com#@#div[id^="google_ads_iframe"]:style(clip-path: circle(1%) !important;)
 rocketnews24.com,youpouch.com#@#div[id^="google_ads_iframe"]:style(height: 2px !important; overflow: auto !important;)
 rocketnews24.com,youpouch.com#@#div[id^="google_ads_iframe"]:style(position: absolute !important; left: -3000px !important;)
+rocketnews24.com,youpouch.com#@#iframe[id^="google_ads_iframe"]:remove()
 rockit.it##.articolo-body-text-banner
 rocklink.in##+js(set, blurred, false)
 rockmods.net##+js(acis, String.prototype.charCodeAt, protected_links)
@@ -16004,9 +16008,6 @@ seirsanduk.*##+js(popads.net)
 seirsanduk.*##.adsbygoogle
 seirsanduk.*##[href^="//bgtop.net/"]
 seirsanduk.*##[href^="https://www.bybit.com/"]
-sekai-kabuka.com##table[width="762px"] > tbody > tr > td[class] > div[id][class] > div[style="width: 259px;"]:has-text(不具合が):style(z-index: -1 !important;)
-sekai-kabuka.com##td[width="160"] > div[class] > div > div[id][style^="height:"]:has-text(広告非表示):style(z-index: -1 !important;)
-sekai-kabuka.com##td[width="160"] > div[style] > div[id][style]:has(> div[class]:has-text(定期的に配置が)):style(z-index: -1 !important;)
 sekilastekno.com##+js(aopr, app_vars.force_disable_adblock)
 sekilastekno.com##+js(no-fetch-if, ads)
 sekilastekno.com##+js(nowoif, wapka)
@@ -16699,9 +16700,10 @@ sonorousporn.com##.vid-ave-pl
 sonyliv.com##+js(json-prune, adProvider)
 soranews24.com###div-gpt-ad-header:style(opacity: 0 !important;)
 soranews24.com##.ads-relatedbottom
-soranews24.com##iframe[id^="google_ads_iframe"]:remove()
+soranews24.com##iframe[id^="google_ads_iframe"]:style(width: 2px !important; overflow: auto !important;)
 soranews24.com#@#.ad
 soranews24.com#@#[id^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
+soranews24.com#@#iframe[id^="google_ads_iframe"]:remove()
 sortporn.com##[href^="https://www.sortporn.com/link/"]
 sosyalbilgiler.net##+js(aopr, adBlockDetected)
 sotemnovinhas.com##+js(nofab)
@@ -21781,7 +21783,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||madratesforall.com^$3p
 ||madsims.com^
 ||madsips.com^$3p
-||magesy.blog/wp-content/plugins/$1p,badfilter,script
+||magesy.blog/wp-content/plugins/$1p,script
 ||magiskmanager.com^$doc
 ||magnus-beo.com^$all
 ||magyarhang.org/*.gif$image
@@ -22164,7 +22166,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pandanetwork.club^$3p,script
 ||partner.googleadservices.com/gampad/cookie.js?domain=$important,script,domain=anydebrid.com|hotdebrid.com
 ||partners2.das-onlinespiel.de^$3p
-||passion.com^$badfilter
 ||pastemytxt.com/downloadad.jpg
 ||paypou.com/newbanner
 ||payskip.org/sw.js$1p,script
