@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 7zFkSCneqoLulhwhhKZttw
+! Checksum: Eq0n38tb71+lGolSV+fEEA
 ! Expires: 2 days
-! Version: 202212040610
+! Version: 202212041811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23621, sources at 2022/12/04 06:10 UTC+8
+! Total lines: 23621, sources at 2022/12/04 18:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -247,8 +247,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adBanner
 #@#.adbanner
+#@#.adBanner
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
@@ -2096,6 +2096,7 @@ $3p,script,domain=zdnet.fr
 @@||bolsanow.com^$ghide
 @@||bom.gov.au/*/analytics.js$1p,script
 @@||bombom.io/ads.txt$1p,xhr
+@@||bombuj.*^$ghide
 @@||bomcondutor.pt^$ghide
 @@||bongacash.com/js/videojs/video.js
 @@||bonjourdefrance.com^$1p,script
@@ -4079,7 +4080,6 @@ $3p,script,domain=zdnet.fr
 @@||seomafia.net^$ghide
 @@||seopolarity.com^$ghide
 @@||sephora.com/js/ufe/isomorphic/thirdparty/VisitorAPI.js$1p,script
-@@||serialy.bombuj.*^$ghide
 @@||serialy.io^$1p,script
 @@||series-d.com^$ghide
 @@||serieslatinoamerica.tv^$cname
@@ -4435,6 +4435,7 @@ $3p,script,domain=zdnet.fr
 @@||toyoheadquarters.com^$ghide
 @@||toyota-club.eu^$ghide
 @@||tpc.googlesyndication.com/safeframe/*/container.html$other,domain=abola.pt
+@@||tpc.googlesyndication.com/simgad/$image,domain=dragontea.ink
 @@||tpc.googlesyndication.com/simgad/$xhr,domain=soranews24.com
 @@||tpc.googlesyndication.com/sodar/sodar2/225/runner.html$frame,domain=dragontea.ink
 @@||tra.scds.pmdstatic.net/$xhr,domain=gala.fr
@@ -6442,6 +6443,8 @@ bollyholic.*##+js(nostif, mdpDeBlocker)
 bollywoodshaadis.com##+js(aopr, Debugger)
 bollywoodshaadis.com##+js(aopw, adBlockDetected)
 bolor-toli.com##[class^="banner"]
+bombuj.*##.ad_banner
+bombuj.*##[id*="ekla"]
 bondibeachau.com##+js(nano-sib)
 bonedo.de##.banner
 bonobono.com##.custom-html-widget
@@ -6665,8 +6668,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -8040,10 +8043,10 @@ dr-farfar.com##+js(nowoif)
 dr-farfar.com##.essb-sharebooster
 dr-farfar.com##.essb-sharebooster-overlay
 dragontea.ink##+js(aeld, DOMContentLoaded, Adblock)
-dragontea.ink##:not(:matches-path(tyc)) body.amp-animate:not(:has(iframe, canvas)) *
+dragontea.ink##:not(:matches-path(tyc)) body.amp-animate:not(:has(iframe, .top_article_leadeboard)) *
 dragontea.ink##:not(:matches-path(tyc)) body[onload="init();"]:not(:has(iframe)) canvas:style(opacity: 0 !important; pointer-events: none !important;)
-dragontea.ink##html:has(link[rel="pingback"][href="https://dragontea.ink/xmlrpc.php"]) + ins[id^="gpt_unit_/"][style^="display: block !important; width: 100vw !important; height: 100vh !important;"]
-dragontea.ink##html:has(link[rel="pingback"][href="https://dragontea.ink/xmlrpc.php"]) .dtaf > div[style][id="dragontea_ink_1000x100_anchor"]
+dragontea.ink##html:has(script[src="https://dragontea.ink/wp-includes/js/jquery/jquery.min.js"]) + ins[id^="gpt_unit_/"]
+dragontea.ink##html:has(script[src="https://dragontea.ink/wp-includes/js/jquery/jquery.min.js"]) .dtaf > div[style][id="dragontea_ink_1000x100_anchor"]
 dragontea.ink##img[src^="https://tpc.googlesyndication.com/simgad/"]:style(height: 250px !important; width: 250px !important;)
 dragontea.ink#@#+js(addEventListener-defuser, DOMContentLoaded, Adblock)
 dragontea.ink#@#.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -10911,6 +10914,7 @@ ilprimatonazionale.it##+js(set, td_ad_background_click_link, undefined)
 ilprimatonazionale.it##body:style(background-image: none !important;)
 ilprimatonazionale.it#@#.td-ad-background-link
 ilpuntotecnico.com##[style^="text-align:center; height:"][style$="px;"]
+ilsole24ore.com##+js(nostif, refresh)
 im1.buzz,imagent.buzz,imagepuitr.buzz,imgbeaw.buzz,imgjtuq.buzz,imgkixx.buzz,imgkux.buzz,imgnfg.buzz,imgpiluka.website,imgpuloki.online,imguqkt.buzz,imgwelz.buzz,imgxabb.buzz,imgxann.buzz,imgxhgh.buzz,imgxhtue.website,imgxkhm.buzz,imgxza.buzz,mrlzqoe.buzz,optiye.buzz,pixmtke.buzz,pixnbvj.buzz,pyotinle.buzz,utinwpqqui.buzz,velnibug.buzz##div[class][style="display: block;"]
 imag-r.com##+js(aopr, adBlockerDetected)
 imagecolorpicker.com##[class^="leftAds-"]
@@ -16078,8 +16082,6 @@ serialeonline.biz###overlay
 serialeonline.biz##+js(nowoif)
 serialeonlinesubtitrate.ro###text-6
 serialghar.me##+js(acs, XMLHttpRequest)
-serialy.bombuj.*##.ad_banner
-serialy.bombuj.*##[id*="reklam"]
 serialy.io##+js(set, currentAd, 3)
 serialy.io#@#[id^="etarget"]
 seriemega.*##+js(nowoif)
@@ -20510,7 +20512,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||btpnav.com^$all
 ||buddygays.com^$all
 ||bulletprofit.com^$3p
-||burlydeclined.com
 ||bustyporn.com/*.php?src=$3p,frame
 ||buyqpfire.xyz^$all
 ||buzzadnetwork.com^$all
@@ -21617,11 +21618,9 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||instahookupxxx.com^$all
 ||instapornvideos.com/back.js
 ||intellipopup.com^$redirect=noopjs,script
-||intermediarymarkswe.com^
 ||internalpound.com^
 ||internetspeedtracker.com^$all
 ||interserver.net^$3p
-||interviewdegenerateperspective.com^
 ||intoupload.com/images/StartDownload.gif$image
 ||intoupload.net/sw.js
 ||invest-digest.com^$all
@@ -22250,6 +22249,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||piguiqproxy.com^$redirect=nooptext,xhr,domain=1movies.*
 ||piktag.net^$all
 ||pingit.*/sw.js$1p,script,domain=~pingit.com|~pingit.me
+||pix.onebid.cloud/events/$image,domain=dragontea.ink
 ||pixsense.net^$3p
 ||pkcasts.com/z-$1p,script
 ||pl.allsports4free.club^
@@ -22934,6 +22934,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ti.com/assets/js/headerfooter/$badfilter,script
 ||tibiabr.com/$1p,frame
 ||tii.ai/*sw*.js$1p,script
+||tiiny.site^$frame,domain=dragontea.ink
 ||tilda.gb.net^$all
 ||tinypass.com^$domain=christianity.com|crosswalk.com|thechive.com
 ||tinyurl.com/gp84uz2$doc
@@ -23313,7 +23314,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||x.shopsavvy.com^$3p
 ||xasiat.com^$csp=script-src 'self' 'unsafe-inline' *.google.com *.xasiatvideo.com *.cloudflare.com *.gstatic.com *.googletagmanager.com
 ||xasiatvideo.com^$csp=script-src 'self' 'unsafe-inline' *.google.com *.xasiat.com *.cloudflare.com *.gstatic.com *.googletagmanager.com
-||xawlop.com^
 ||xbjav.com/*/adv/adv.js$script
 ||xbjav.com/asset/js/vast.js$script
 ||xbooru.com/script/application.js$badfilter
