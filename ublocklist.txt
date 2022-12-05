@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: MWvnhtWfRoycrvrbIupxfA
+! Checksum: dBy+VZAAreOrd7LSWQAUfQ
 ! Expires: 2 days
-! Version: 202212050610
+! Version: 202212051813
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23616, sources at 2022/12/05 06:10 UTC+8
+! Total lines: 23622, sources at 2022/12/05 18:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -3989,6 +3989,7 @@ $3p,script,domain=zdnet.fr
 @@||s0.2mdn.net/ads/studio/Enabler.js$script,domain=kabum.com.br
 @@||s0.2mdn.net/instream/*$domain=cnet.com
 @@||s0.2mdn.net/instream/html5/ima3.js$script,domain=as.com|cadenaser.com|cbs.com|eurogamer.net|indiatimes.com|paramountplus.com|techrepublic.com
+@@||s0.2mdn.net/simgad/3800139464231641503$image,domain=dragontea.ink
 @@||s0ft4pc.com^$ghide
 @@||s1.adform.net/banners/scripts/mobile/adform.js?$script,xhr,domain=ylilauta.org
 @@||s1.adform.net/stoat/626/s1.adform.net/bootstrap.js$script,xhr,domain=ylilauta.org
@@ -4435,7 +4436,6 @@ $3p,script,domain=zdnet.fr
 @@||toyota-club.eu^$ghide
 @@||tpc.googlesyndication.com/daca_images/simgad/18219151247623369518$image,domain=dragontea.ink
 @@||tpc.googlesyndication.com/safeframe/*/container.html$other,domain=abola.pt
-@@||tpc.googlesyndication.com/simgad/$image,domain=dragontea.ink
 @@||tpc.googlesyndication.com/simgad/$xhr,domain=soranews24.com
 @@||tpc.googlesyndication.com/sodar/sodar2/225/runner.html$frame,domain=dragontea.ink
 @@||tra.scds.pmdstatic.net/$xhr,domain=gala.fr
@@ -6669,8 +6669,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -8047,7 +8047,7 @@ dragontea.ink##+js(aeld, DOMContentLoaded, Adblock)
 dragontea.ink##:not(:matches-path(tyc)) body[onload="init();"]:not(:has(iframe, img[src*="tpc.googlesyndication.com/simgad/"])) canvas:style(opacity: 0 !important; pointer-events: none !important;)
 dragontea.ink##html:has(script[src="https://dragontea.ink/wp-includes/js/jquery/jquery.min.js"]) + ins[id^="gpt_unit_/"]
 dragontea.ink##html:has(script[src="https://dragontea.ink/wp-includes/js/jquery/jquery.min.js"]) .dtaf > div:remove()
-dragontea.ink##html:has(script[src^="https://tagan.adlightning.com/setupad/"]) body[class^="amp-animate "]:not(:has(iframe, img[src*="tpc.googlesyndication.com/simgad/"])) *:style(opacity: 0 !important; pointer-events: none !important;)
+dragontea.ink##html:has(script[src^="https://tagan.adlightning.com/setupad/"]) body[class^="amp-animate "]:not(:has(iframe, .body-wrap)) *:style(opacity: 0 !important; pointer-events: none !important;)
 dragontea.ink#@#+js(addEventListener-defuser, DOMContentLoaded, Adblock)
 dragontea.ink#@#.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 dragontea.ink#@#[class^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -9939,6 +9939,7 @@ gmx.*##+js(set, adBlockDetectionResult, undefined)
 gmx.*##.main [data-ac]:empty
 gmx.*##^script:has-text(adslotFilledByCriteo)
 gmx.*,web.de##+js(aeld, timeupdate)
+gnomio.com##+js(no-xhr-if, /doubleclick|googlesyndication/)
 gnomio.com##+js(nosiif, visibility, 1000)
 gntai.*##+js(aeld, click, popMagic)
 gnula.*##+js(nowoif)
@@ -16714,6 +16715,8 @@ solosavoia.it##.adsbygoogle
 solotrend.net###text-9 > .textwidget > p
 solotrend.net##+js(aopr, b2a)
 solotrend.net##[href^="https://www.hoster.co.id/"]
+soltoshindo.com##+js(aopr, Swal.fire)
+soltoshindo.com##+js(set, console.clear, noopFunc)
 solvetube.*##+js(nostif, 0x, 3000)
 sombex.com##+js(nosiif, visibility, 1000)
 songs.*##+js(aopr, AaDetector)
@@ -17715,9 +17718,9 @@ tio.ch##+js(ra, href, a[href*="/ads.php"][target="_blank"])
 tio.ch##.ad
 tionghoa.info##.adsbygoogle
 tipstertube.com##+js(ra, href|target, a[href^="https://tipstertube.com/bookmaker/"][target="_blank"], stay)
-tirexo.tel##+js(nowoif)
-tirexo.tel##[href^="https://dl-protect.net/get-premium-url"]
-tirexo.tel##[style]:has-text(PREMIUM)
+tirexo.*##+js(nowoif)
+tirexo.*##[href^="https://dl-protect.net/get-premium-url"]
+tirexo.*##[style]:has-text(PREMIUM)
 tiscali.it##+js(set, adEnable, true)
 tistory.com##+js(nostif, nextFunction, 250)
 tistory.com##+js(set, canRunAds, true)
@@ -18627,6 +18630,7 @@ video1tube.com##+js(set, popit, false)
 video1tube.com##.ad
 video1tube.com##.wrap > center > span
 video1tube.com##center > center > span
+videobin.co##+js(acs, document.addEventListener, initBCPopunder)
 videobin.co##+js(aopw, Fingerprint2)
 videobin.co##+js(set, adb, 0)
 videobot.stream##+js(aopr, __Y)
@@ -19244,6 +19248,7 @@ wmoviesfree.*##.orange.big-color-btn
 wmur.com##.ad
 wmur.com##.ad-leaderboard
 wmur.com##.ad-rectangle
+wnd.com##+js(acs, document.createElement, admiral)
 wo2viral.com##.lienet:style(display:block !important)
 wo2viral.com##a.button
 wohnungsboerse.net##+js(aopr, Number.isNaN)
@@ -22934,7 +22939,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tinypass.com^$domain=christianity.com|crosswalk.com|thechive.com
 ||tinyurl.com/gp84uz2$doc
 ||tinyurl.com/setup-full-version$doc
-||tirexo.blue^$csp=default-src 'unsafe-inline' 'self' *.gstatic.com *.googleapis.com *.jquery.com
+||tirexo.*/main.js?v=$1p,script
+||tirexo.*^$csp=default-src 'unsafe-inline' 'self' *.gstatic.com *.googleapis.com *.jquery.com
 ||titsbox.com/eb/api.php$1p,script
 ||titsbox.com/sw.js$1p,script
 ||tjncw.com^$all
