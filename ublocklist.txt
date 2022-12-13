@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: w4zYZHpv+lzZmaLX645YoA
+! Checksum: EC/FwnYCT8YJ+R/wl8BSmw
 ! Expires: 2 days
-! Version: 202212131813
+! Version: 202212140611
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23665, sources at 2022/12/13 18:13 UTC+8
+! Total lines: 23668, sources at 2022/12/14 06:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -246,8 +246,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adBanner
 #@#.adbanner
+#@#.adBanner
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
@@ -6686,8 +6686,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -6957,10 +6957,9 @@ chineseanime.co.in##+js(acis, String.fromCharCode, ai_adb)
 chip.de###banner_top_table
 chip.de##+js(json-prune, enabled, force_disabled)
 chip.de##.Main--Skyscraper > div[id]
+chip.de##:root:style(--topbanner-height-min:unset!important;--topbanner-height-max:unset!important;)
 chip.de##^script:has-text(pushAdTag)
 chip.de##a[href^="https://www.mein-organizer.de"]
-chip.de##div[style="min-height:120px;"]
-chip.de##div[style="min-height:250px;"]
 chip.de##div[style^="min-height:120px"]
 chip.de##div[style^="min-height:250px"]
 chipverify.com##.adsbygoogle
@@ -8059,9 +8058,10 @@ dr-farfar.com##+js(aopr, mdpDeBlocker)
 dr-farfar.com##+js(nowoif)
 dr-farfar.com##.essb-sharebooster
 dr-farfar.com##.essb-sharebooster-overlay
+dragontea.ink###Layer_1
 dragontea.ink##+js(aeld, DOMContentLoaded, Adblock)
-dragontea.ink##:not(:matches-path(/oon/)) body.amp-animate:style(opacity: 0 !important; pointer-events: none !important;)
-dragontea.ink##body.amp-animate > * > * *:style(max-height: 1px !important; max-width: 1px !important;)
+dragontea.ink##body.amp-animate *:style(height: 0.1px !important; width: 0.1px !important; font-size: 0px !important;)
+dragontea.ink##div[style^="position: fixed;z-index: 999999999999;top: 50%;transform: translateY(-50%)"]:style(z-index: -100000 !important; font-size: 0px !important;)
 dragontea.ink##ins[id^="gpt_unit_/"]:style(opacity: 0 !important; pointer-events: none !important;)
 dragontea.ink#@#+js(addEventListener-defuser, DOMContentLoaded, Adblock)
 dragontea.ink#@#.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -12708,7 +12708,7 @@ manhwa18.cc##+js(aopr, exoNoExternalUI38djdkjDDJsio96)
 manhwadesu.me##+js(nowoif)
 manhwaid.org##.c-top-sidebar
 manhwalist.com##+js(aost, btoa, /https|stackDepth:3/)
-manhwalist.com,soap2day.*##+js(acs, navigator, FingerprintJS)
+manhwalist.com,s2dfree.to,soap2day.*##+js(acs, navigator, FingerprintJS)
 maniac.de##+js(aopr, td_ad_background_click_link)
 maniac.de##[href^="https://www.maniac.de/linkout/"]
 manikusa.com###overlay
@@ -15756,12 +15756,9 @@ robofight.io##.home-banner
 robofight.io##div.side-loadout-item:nth-of-type(3)
 robot-forum.com##+js(acis, $, offsetHeight)
 roboticsandautomationnews.com##.advads-widget
+rocketnews24.com,youpouch.com###div-gpt-ad-footer
 rocketnews24.com,youpouch.com##+js(ra, style|height, amp-img)
-rocketnews24.com,youpouch.com##a.advertiser-link
-rocketnews24.com,youpouch.com##a.body-link:style(font-size: 0 !important;)
-rocketnews24.com,youpouch.com##a.call-to-action-link
-rocketnews24.com,youpouch.com##a.title-link:style(font-size: 0 !important;)
-rocketnews24.com,youpouch.com##a[data-asoch-targets]:style(font-size: 0 !important;)
+rocketnews24.com,youpouch.com##.ad300x250:not(#div-gpt-ad-)
 rocketnews24.com,youpouch.com##style[amp-custom]:remove()
 rocketnews24.com,youpouch.com#@#+js(aost, document.createElement, k=:7)
 rocketnews24.com,youpouch.com#@#+js(aost, document.getElementById, googlefc.hasOwnProperty.Object.getOwnPropertyDescriptor.configurable.t.onload)
@@ -15770,9 +15767,16 @@ rocketnews24.com,youpouch.com#@#+js(aost, jQuery, contributor.ContributorServing
 rocketnews24.com,youpouch.com#@#.ad
 rocketnews24.com,youpouch.com#@#.ad728x90:style(position: relative !important; z-index: -10000 !important;)
 rocketnews24.com,youpouch.com#@#.ad:style(position: absolute !important; z-index: -10000 !important;)
+rocketnews24.com,youpouch.com#@#a.advertiser-link
+rocketnews24.com,youpouch.com#@#a.advertiser-link:style(font-size: 0 !important;)
 rocketnews24.com,youpouch.com#@#a.body-link
+rocketnews24.com,youpouch.com#@#a.body-link:style(font-size: 0 !important;)
+rocketnews24.com,youpouch.com#@#a.call-to-action-link
+rocketnews24.com,youpouch.com#@#a.call-to-action-link:style(font-size: 0 !important;)
 rocketnews24.com,youpouch.com#@#a.title-link
+rocketnews24.com,youpouch.com#@#a.title-link:style(font-size: 0 !important;)
 rocketnews24.com,youpouch.com#@#a[data-asoch-targets]
+rocketnews24.com,youpouch.com#@#a[data-asoch-targets]:style(font-size: 0 !important;)
 rockit.it##.articolo-body-text-banner
 rocklink.in##+js(set, blurred, false)
 rockmods.net##+js(acis, String.prototype.charCodeAt, protected_links)
@@ -16757,13 +16761,10 @@ sonorousporn.com##.on-player-pl
 sonorousporn.com##.vid-ave-pl
 sonyliv.com##+js(json-prune, adProvider)
 soranews24.com###div-gpt-ad-header:style(opacity: 0 !important;)
+soranews24.com###div-gpt-ad-sidebottom.ad
 soranews24.com##+js(ra, style|height, amp-img)
+soranews24.com##.ad300x250:not(#div-gpt-ad-)
 soranews24.com##.ads-relatedbottom
-soranews24.com##a.advertiser-link
-soranews24.com##a.body-link:style(font-size: 0 !important;)
-soranews24.com##a.call-to-action-link
-soranews24.com##a.title-link:style(font-size: 0 !important;)
-soranews24.com##a[data-asoch-targets]:style(font-size: 0 !important;)
 soranews24.com##style[amp-custom]:remove()
 soranews24.com#@#.ad
 soranews24.com#@#[id^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -20422,7 +20423,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||beop.io^$3p
 ||beqbox.com^
 ||berangkasilmu.com^$3p
-||bergdamm.de^$image,domain=chip.de
 ||best-prizes-house.life^$all
 ||best-winplace.life^$all
 ||best18porn.com/best18.js
@@ -21004,6 +21004,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||downlosaly.info^$all
 ||dracenic-gravinyl.icu^$all
 ||dragonballzpolo.*^$csp=worker-src 'none'
+||dragontea.ink/img/j-list.png$image,redirect=1x1.gif:5,domain=dragontea.ink
 ||dreamone.online^$all
 ||drectsearch.com^$all
 ||drive.google.com^$3p,css,script,domain=potvid.com
@@ -21276,6 +21277,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ganohr.net/gnr-access-analyze/
 ||gapscult.com^$all
 ||garagebandforpc.org^$doc
+||gartenplanze.de^$image,domain=chip.de
 ||gartic.io/videos/*$1p,media,redirect=noopmp4-1s
 ||gayfeetbusy.link^$all
 ||gaytail.com/fancy-mode-7abe/
@@ -21715,6 +21717,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jeengweb.com^$3p
 ||jekone.cfd^
 ||jinshanduba.org.cn^$all
+||jlist.com/media/banners/$image,redirect=1x1.gif:5,domain=dragontea.ink
 ||jobrave.live^$all
 ||johannesburg.top^
 ||join.megaphonetv.com^$3p,badfilter
@@ -21809,6 +21812,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||limetorrents.*/sw.js
 ||linetv.tw/public/scripts/ads.js$1p,important
 ||link-to.net^$1p,image,redirect-rule=1x1.gif
+||link.theplatform.com/s/*/media*=rotten_tomatoes_video$removeparam=/^((?!SMIL|formats).)*$/,xhr
 ||link.tl/interstitial/*$1p,frame
 ||link.tl/splash/*$1p,script
 ||linkcc.pro/assets/methods/hereads.png
@@ -21926,7 +21930,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||megatube.xxx^$1p,frame
 ||megaup.mobi/assets/scripts/$1p,script
 ||megayoungsex.com/func.js
-||mein-organizer.de^$image,domain=chip.de
 ||mejortorrent.*/bannner
 ||members.hanime.tv/*/preroll_ad_event$xhr
 ||mercurial.cointelegraph.com^$xhr
@@ -22445,6 +22448,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pub.javwide.com^
 ||pubads.g.doubleclick.net/gampad/ads$redirect=nooptext,xhr,domain=imasdk.googleapis.com
 ||pubads.g.doubleclick.net/ondemand/*/content/*/vid/*/streams/*/time-events.json$important,domain=cbs.com|paramountplus.com
+||pubgw.yahoo.com/admax/bid/$3p,important,xhr,domain=dragontea.ink
 ||publi.atresmediapublicidad.com^$media,redirect=noopmp3-0.1s,domain=lasexta.com
 ||pubovore.com^$3p
 ||pugliain.net/wp-content/uploads/*.gif$image
@@ -22833,7 +22837,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||stfly.me/sw.js$1p,script
 ||stiflersmoms.com/yes/
 ||stils-top.space^$all
-||stopundstart.de^$image,domain=chip.de
 ||storage.de.cloud.ovh.net^*/sarsor/avikingdynamic.js$3p,script
 ||storage.googleapis.com/*&GoogleAccessId=firebase-adminsdk$media,redirect=noop-1s.mp4,domain=moviehdkh.com
 ||storageplay.net^
