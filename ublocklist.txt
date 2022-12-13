@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 0QJppTlf2dXBUVCJjDkujw
+! Checksum: w4zYZHpv+lzZmaLX645YoA
 ! Expires: 2 days
-! Version: 202212130611
+! Version: 202212131813
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23654, sources at 2022/12/13 06:11 UTC+8
+! Total lines: 23665, sources at 2022/12/13 18:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -246,8 +246,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adbanner
 #@#.adBanner
+#@#.adbanner
 #@#.adbox
 #@#.ads-iframe
 #@#.adsBox
@@ -5685,6 +5685,8 @@ articlesmania.me##.adsbygoogle
 articlesmania.me##.demand-supply
 articlesmania.me##.widget_text.widget
 artribune.com##+js(aost, Object, mark)
+artribune.com##+js(rc, td-ad-background-link)
+artribune.com##+js(set, td_ad_background_click_link, undefined)
 artribune.com##^script:has-text(window.adsbygoogle)
 artunnel57.com##+js(nosiif, adb)
 aruble.net###middle-adspace
@@ -9000,7 +9002,7 @@ fileone.tv##+js(acis, document.querySelectorAll, popMagic)
 fileone.tv##+js(aopr, absda)
 fileone.tv##+js(aopw, _pop)
 fileone.tv##+js(nowoif)
-filepress.lol##+js(nowoif)
+filepress.*##+js(nowoif)
 filerio.in###player_img:upward(2)
 filerio.in##+js(aopr, onload)
 filerio.in##+js(nowoif)
@@ -11668,7 +11670,7 @@ kbb.com##.spotlight__ad
 kbb.com##[id^="kbbAds"]
 ke-1.com##+js(aeld, load, onload)
 keephealth.info,kissasian.*##+js(aopr, mm)
-keephealth.info,kissasian.*,kissorg.net##+js(nostif, (), 45000)
+keephealth.info,kissasian.*##+js(nostif, (), 45000)
 keeplinks.*##+js(aopw, _pop)
 keepv.id##+js(nowoif)
 keepvid.*##+js(aopw, _pop)
@@ -11725,12 +11727,12 @@ kiktu.com##+js(acs, $, google_ads_iframe_)
 kiktu.com,techcyan.com###recap-btn:style(display: block !important;)
 kiktu.com,techcyan.com##.e-container--row.innerParentContainer > .e-container--column:has(#abovehead > .e-container--column > .elementor-widget-shortcode > .elementor-widget-container > #recap-btn) ~ div
 kiktu.com,techcyan.com##.elementor-button-wrapper
+kimcartoon.*###ads-top-wrap
 kimcartoon.*###subcontent > div:has(.adsbyvli)
 kimcartoon.*##+js(acis, $, adbWarn)
 kimcartoon.*##+js(aopw, Fingerprint2)
 kimcartoon.*##.kcAds1
 kimcartoon.*##div[style*="width: 300px; height: 250px"]
-kimcartoon.*,kisscenter.net###ads-top-wrap
 kimchi.tv###player-advertising
 kimochi.info##+js(aopw, _pop)
 kimochi.info##+js(nosiif, visibility, 1000)
@@ -11768,23 +11770,21 @@ kissanimex.com##+js(acis, addEventListener, -0x)
 kissasia.cc##+js(aeld, , 0x)
 kissasia.cc##+js(aopr, mm)
 kissasia.cc##[href*="&refer"][target="_blank"]
+kissasian.*###hideAds
+kissasian.*###leftside .adsbyvli:upward(div[style$="height: 90px;"])
 kissasian.*###overplay
+kissasian.*###videoAd
 kissasian.*##+js(aeld, /^(?:click|mousedown)$/, _0x)
 kissasian.*##+js(set, check_adblock, true)
-kissasian.*,kisscenter.net,kissorg.net###hideAds
-kissasian.*,kisscenter.net,kissorg.net###leftside .adsbyvli:upward(div[style$="height: 90px;"])
-kissasian.*,kisscenter.net,kissorg.net###videoAd
-kissasian.*,kisscenter.net,kissorg.net##.adsbyvli:upward(div[style$="width: 610px;"])
-kissasian.*,kisscenter.net,kissorg.net##.ksAds
-kissasian.*,kisscenter.net,kissorg.net##[id*="ScriptRoot"]
+kissasian.*##.adsbyvli:upward(div[style$="width: 610px;"])
+kissasian.*##.ksAds
+kissasian.*##[id*="ScriptRoot"]
 kissasians.org##.banner
 kissasians.org##.btn-success[href*="?key="]
 kisscartoon.*###upgrade_pop
 kisscartoon.*##+js(aeld, mousedown, clientX)
 kisscartoon.info##.countdown
 kisscartoon.info##.offads
-kisscenter.net,kissorg.net##+js(nostif, adbWarnContainer)
-kisscenter.net,kissorg.net##.kcAds1
 kisscos.net##+js(acis, addEventListener, -0x)
 kisscos.net##+js(aopr, absda)
 kisscos.net##[id$="-overlay"]
@@ -13071,6 +13071,7 @@ mio.to##+js(acis, document.getElementById, abmsg)
 miohentai.com###idtop
 miohentai.com##+js(aopr, mnpwclone)
 miohentai.com##.in.paused-ad-container
+miraculous.*##+js(acs, navigator, FingerprintJS)
 miraculous.to##+js(aeld, hashchange)
 miraculous.to##+js(aeld, popstate)
 miraculous.to##+js(aopr, history.back)
@@ -15755,17 +15756,23 @@ robofight.io##.home-banner
 robofight.io##div.side-loadout-item:nth-of-type(3)
 robot-forum.com##+js(acis, $, offsetHeight)
 roboticsandautomationnews.com##.advads-widget
-rocketnews24.com,youpouch.com##.ad728x90:style(position: relative !important; z-index: -10000 !important;)
-rocketnews24.com,youpouch.com##.ad:style(position: absolute !important; z-index: -10000 !important;)
+rocketnews24.com,youpouch.com##+js(ra, style|height, amp-img)
+rocketnews24.com,youpouch.com##a.advertiser-link
+rocketnews24.com,youpouch.com##a.body-link:style(font-size: 0 !important;)
+rocketnews24.com,youpouch.com##a.call-to-action-link
+rocketnews24.com,youpouch.com##a.title-link:style(font-size: 0 !important;)
+rocketnews24.com,youpouch.com##a[data-asoch-targets]:style(font-size: 0 !important;)
+rocketnews24.com,youpouch.com##style[amp-custom]:remove()
 rocketnews24.com,youpouch.com#@#+js(aost, document.createElement, k=:7)
 rocketnews24.com,youpouch.com#@#+js(aost, document.getElementById, googlefc.hasOwnProperty.Object.getOwnPropertyDescriptor.configurable.t.onload)
 rocketnews24.com,youpouch.com#@#+js(aost, getComputedStyle, googlefc.hasOwnProperty.Object.getOwnPropertyDescriptor.configurable.t.onload)
 rocketnews24.com,youpouch.com#@#+js(aost, jQuery, contributor.ContributorServingResponseClientJs)
 rocketnews24.com,youpouch.com#@#.ad
-rocketnews24.com,youpouch.com#@#.i-amphtml-inabox
-rocketnews24.com,youpouch.com#@#a[href^="https://googleads.g.doubleclick.net"]
-rocketnews24.com,youpouch.com#@#a[href^="https://www.googleadservices.com"]
-rocketnews24.com,youpouch.com#@#amp-img
+rocketnews24.com,youpouch.com#@#.ad728x90:style(position: relative !important; z-index: -10000 !important;)
+rocketnews24.com,youpouch.com#@#.ad:style(position: absolute !important; z-index: -10000 !important;)
+rocketnews24.com,youpouch.com#@#a.body-link
+rocketnews24.com,youpouch.com#@#a.title-link
+rocketnews24.com,youpouch.com#@#a[data-asoch-targets]
 rockit.it##.articolo-body-text-banner
 rocklink.in##+js(set, blurred, false)
 rockmods.net##+js(acis, String.prototype.charCodeAt, protected_links)
@@ -16750,9 +16757,14 @@ sonorousporn.com##.on-player-pl
 sonorousporn.com##.vid-ave-pl
 sonyliv.com##+js(json-prune, adProvider)
 soranews24.com###div-gpt-ad-header:style(opacity: 0 !important;)
-soranews24.com##.ad728x90:style(position: relative !important; z-index: -10000 !important;)
-soranews24.com##.ad:style(position: absolute !important; z-index: -10000 !important;)
+soranews24.com##+js(ra, style|height, amp-img)
 soranews24.com##.ads-relatedbottom
+soranews24.com##a.advertiser-link
+soranews24.com##a.body-link:style(font-size: 0 !important;)
+soranews24.com##a.call-to-action-link
+soranews24.com##a.title-link:style(font-size: 0 !important;)
+soranews24.com##a[data-asoch-targets]:style(font-size: 0 !important;)
+soranews24.com##style[amp-custom]:remove()
 soranews24.com#@#.ad
 soranews24.com#@#[id^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 sortporn.com##[href^="https://www.sortporn.com/link/"]
@@ -18199,6 +18211,7 @@ typinggames.zone##+js(acis, document.getElementById, alert)
 u-s-news.com##+js(set, ulp_noadb, true)
 u.gg###af-all:style(margin-top: 4em;)
 u.gg###af-header-link
+uberhumor.com##+js(nowoif)
 ubuntudde.com##+js(aopw, b2a)
 ucanwatch.*##+js(nowoif)
 ucptt.com##+js(aopw, _pop)
@@ -21744,10 +21757,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||kissasian.*/Ads/$frame
 ||kissasian.*/api/pop.php$1p,xhr
 ||kisscartoon.*/api/pop.php$1p,xhr
-||kisscenter.net/Ads/$frame
 ||kissmetrics.com^$3p
 ||kissmetrics.com^$badfilter
-||kissorg.net/Ads/$frame
 ||kisstvshow.*/api/pop.php$1p,xhr
 ||klaviyo.com^$badfilter
 ||kochava.com^
