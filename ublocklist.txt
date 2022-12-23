@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: Y22E7yrkDb6gZW/NKZtcMQ
+! Checksum: m6A+9HzVikK7XKZ9vR47eg
 ! Expires: 2 days
-! Version: 202212230610
+! Version: 202212231812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23699, sources at 2022/12/23 06:10 UTC+8
+! Total lines: 23698, sources at 2022/12/23 18:12 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -62,7 +62,6 @@
 ##.ad-refresh:not(.adsbox)
 ##.ad-unit:not(.text-ad)
 ##.ad_unit:not(.text-ad)
-##.adBanner:not(:empty):not(.testAd):not(#wrapfabtest > .adBanner)
 ##.adde_modal-overlay
 ##.adde_modal_detector
 ##.addthis_toolbox
@@ -8231,7 +8230,6 @@ dump.xxx##+js(aopr, open)
 dump.xxx##+js(popads-dummy)
 duplichecker.com##+js(no-fetch-if, /google|\/ad.+\.js/)
 duplichecker.com##+js(no-xhr-if, ads)
-duplichecker.com##._ap_apex_ad:upward(.clearfix + div, .tool_bg > div)
 duplichecker.com##.adsbygoogle:upward(.clearfix + div, .data_inbox > div)
 duplichecker.com##.clearfix + div > style + style + div
 duplichecker.com##.clearfix + div:has(> style:has-text(min-height:302px))
@@ -9061,6 +9059,7 @@ filmeserialeonline.org##+js(nowebrtc)
 filmesonlinegratis.com##+js(aopw, smrtSB)
 filmesonlinegratis.com##.ads-720x90
 filmesonlinehd1.org##+js(nowoif)
+filmi7.com##+js(no-xhr-if, method:HEAD)
 filmiseriali.com##+js(set, noAdBlock, true)
 filmisub.com##+js(no-fetch-if, /^/)
 filmlecteur.info,tpxanime.in,welovestream.xyz##+js(nowoif)
