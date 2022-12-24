@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: p2YEC6fD0B2Ny5u0SmbJog
+! Checksum: ed1010g/PGPQpowA4d1lAA
 ! Expires: 2 days
-! Version: 202212241810
+! Version: 202212250609
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23725, sources at 2022/12/24 18:10 UTC+8
+! Total lines: 23726, sources at 2022/12/25 06:09 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -246,8 +246,8 @@
 #@#.ad-refresh
 #@#.ad-unit
 #@#.ad_unit
-#@#.adbanner
 #@#.adBanner
+#@#.adbanner
 #@#.adbox
 #@#.ads-iframe
 #@#.display_ad
@@ -454,6 +454,7 @@ $3p,script,domain=zdnet.fr
 *$3p,denyallow=earnload.com,image,domain=earnload.*
 *$3p,denyallow=facebook.com|facebook.net|fbcdn.net|googleapis.com|googleusercontent.com|gstatic.com|isaidub1.com|ninjastream.to|vadbom.com|vadshar.com|vidbam.org|vidshar.org|youtube.com,domain=isaidub.*
 *$3p,denyallow=facebook.com|google.com|hcaptcha.com|recaptcha.net|twitter.com|youtube.com|api.paymentwall.com|streamable.com|vimeo.com,frame,domain=elitepvpers.com
+*$3p,denyallow=facebook.com|google.com|iconfinder.com,domain=zone-telechargement.*
 *$3p,denyallow=facebook.net|fbcdn.net,script,domain=sukidesuost.info
 *$3p,denyallow=facebook.net|fbcdn.net|googleapis.com|google.com|gstatic.com|recaptcha.net|hcaptcha.com,script,domain=adcorto.*
 *$3p,denyallow=facebook.net|google.com|gstatic.com|recaptcha.net,script,domain=dz4link.com
@@ -543,7 +544,7 @@ $3p,script,domain=zdnet.fr
 *$3p,domain=direct-cloud.*
 *$3p,frame,domain=22pixx.xyz|9ig.de|bc.vc|cpmlink.net|curto.win|elil.cc|glory-link.com|goto.com.np|imgtorrnt.in|ironysub.net|linkdrop.net|lusthero.com|mwpaste.com|pingit.im|pngit.live|shrinkearn.com|so.gd|tubepornclassic.com|vev.red|videobin.co|vidop.icu|vidup.io
 *$3p,frame,script,domain=crownimg.com|freeadultcomix.com|xxxwebdlxxx.top
-*$3p,frame,script,xhr,domain=bolly4umovies.*|zone-telechargement.bond
+*$3p,frame,script,xhr,domain=bolly4umovies.*
 *$3p,frame,xhr,domain=pcgamez-download.com|pomvideo.cc|steampiay.cc
 *$3p,image,domain=fc-lc.com|shorthero.site|shortlink.prz.pw
 *$3p,image,redirect-rule=1x1.gif,domain=world4.eu
@@ -4457,7 +4458,7 @@ $3p,script,domain=zdnet.fr
 @@||tpc.googlesyndication.com/pagead/images/adchoices/*.png|$image,domain=dragontea.ink
 @@||tpc.googlesyndication.com/safeframe/*/container.html$other,domain=abola.pt
 @@||tpc.googlesyndication.com/simgad/$image,domain=dragontea.ink
-@@||tpc.googlesyndication.com/simgad/$xhr,domain=rocketnews24.com|soranews24.com|youpouch.com
+@@||tpc.googlesyndication.com/simgad/$xhr,domain=soranews24.com
 @@||tpc.googlesyndication.com/simgad/8870769850887102755/$image,domain=dragontea.ink
 @@||tpc.googlesyndication.com/simga|$image,domain=dragontea.ink
 @@||tpc.googlesyndication.com/sodar/sodar2/225/runner.html$frame,domain=dragontea.ink
@@ -8663,7 +8664,7 @@ etkisizeleman.com##+js(nostif, nextFunction, 250)
 etonline.com##+js(aopr, _sp_._networkListenerData)
 etonline.com##+js(set, canRunAds, true)
 etsy.com##.listing-link[href*="ref=sc_gallery"]:upward(li)
-etsy.com##li .listing-link .wt-text-truncate.wt-text-gray > span:has-text(/^ad /):not(:matches-css(height: 0px)):upward(li)
+etsy.com##li .listing-link .wt-text-truncate.wt-text-gray > span:has-text(/^ad /i):not(:matches-css(height: 0px)):upward(li)
 ettv.*##+js(aopr, AaDetector)
 ettv.*##+js(nowoif)
 ettv.*##+js(popads-dummy)
@@ -14382,6 +14383,7 @@ oxy.st###divdownload > div[data-template][data-source_url]
 oxy.st##+js(acis, $, localStorage)
 oxy.st##+js(nosiif, .hide)
 oxy.st##[href*=".info"]
+oxydti.xyz##+js(nowoif)
 oyungibi.com##+js(set, jQuery.adblock, false)
 ozulscans.com##+js(no-fetch-if, ads)
 pagalmovies.*,7starhd.*,1jalshamoviez.*,moviesyug.net,9xupload.*,bdupload.*,desiupload.*,rdxhd1.*,w4files.ws##+js(aeld, , _0x)
@@ -15649,8 +15651,6 @@ reallifecam.vip##.pm-ads-banner
 reallifecamsex.xyz##+js(aopr, absda)
 reallifecamsex.xyz##.pm-ads-banner
 realtime-chart.info##+js(ra, onclick, td[style] div[style^="top:1"] > div)
-realtime-chart.info#@#+js(ra, onclick, [onclick^="location.href=\'https://px.a8.net"])
-realtime-chart.info#@#div[onclick$="()"]:style(pointer-events: none !important;)
 realyoungsex.com###topbar
 reamporn.com###bnclose
 reamporn.com##.ave-pl
@@ -16112,7 +16112,7 @@ seirsanduk.*##+js(popads.net)
 seirsanduk.*##.adsbygoogle
 seirsanduk.*##[href^="//bgtop.net/"]
 seirsanduk.*##[href^="https://www.bybit.com/"]
-sekai-kabuka.com#@#td[width="160"] > div[style] > div[id][style]:has(> div[class]:contains(定期的に配置が)):style(z-index: -1 !important;)
+sekai-kabuka.com#@#+js(set, adsbygoogle.loaded, true)
 sekilastekno.com##+js(aopr, app_vars.force_disable_adblock)
 sekilastekno.com##+js(no-fetch-if, ads)
 sekilastekno.com##+js(nowoif, wapka)
@@ -16676,6 +16676,7 @@ smartadserver.*#@#[href*=".smartadserver.com"]
 smartadserver.*#@#a[href*=".smartadserver.com"]
 smartwebsolutions.org##+js(acis, $, .show)
 smdailyjournal.com##+js(aopr, __tnt)
+smgplaza.com##+js(acs, eval, replace)
 smgplaza.com##+js(aeld, , modal)
 smgplaza.com##+js(nostif, modal)
 smiechawatv.pl##+js(nowoif)
@@ -19781,8 +19782,8 @@ youpornru.com##+js(nowoif)
 youpornru.com##.adLinkText
 youpornru.com##[data-tracking="track-close-btn-ad"]
 youpouch.com###header-main > div.ad
-youpouch.com##+js(ra, id, #div-gpt-ad-sidetop)
 youpouch.com##.widget_text:first-child
+youpouch.com#@#+js(ra, id, #div-gpt-ad-sidetop)
 your-daily-girl.com##+js(aopr, adtoniq)
 youranshare.com##+js(acis, $, .init)
 yourbittorrent.*##+js(aopw, _pop)
@@ -22287,6 +22288,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||padspms.com^$all
 ||pagath.com^$3p
 ||pagead2.googlesyndication.com/pagead/$redirect-rule=noopjs,script,domain=overbits.herokuapp.com
+||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$badfilter,important,script,domain=realtime-chart.info|sekai-kabuka.com
 ||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$redirect-rule=noopjs,xhr,domain=coursevania.com
 ||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$redirect=googlesyndication-adsbygoogle.js:5,script,xhr,domain=~zipextractor.app
 ||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js^$redirect-rule=googlesyndication-adsbygoogle.js,script,domain=andreyex.ru|arabseed.*|crypto-fun-faucet.de|persianhive.com|unityassetcollection.com
@@ -23088,7 +23090,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||totalav.com^$doc
 ||totaltopposts.com^$all
 ||toxicwap.us/sw.js$1p,script
-||tpc.googlesyndication.com/simgad/$image,important,redirect=1x1.gif,domain=soranews24.com
 ||tpc.googlesyndication.com/simgad/*/$important,redirect=1x1.gif:5,domain=dragontea.ink
 ||tpc.googlesyndication.com^$image,redirect-rule=1x1.gif,domain=soranews24.com
 ||tplinkextender.net^
