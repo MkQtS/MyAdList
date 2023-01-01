@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 4Xv8Onwzc18ma6a61y6FZA
+! Checksum: hZKWc3BZuDyBA5lwue6ZUA
 ! Expires: 2 days
-! Version: 202301011811
+! Version: 202301020609
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23676, sources at 2023/01/01 18:11 UTC+8
+! Total lines: 23682, sources at 2023/01/02 06:09 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -392,7 +392,7 @@ $3p,script,domain=zdnet.fr
 *$3p,denyallow=cloudflare.com|cloudflare.net|googleapis.com|jquery.com|jsdelivr.net|netdna-cdn.com|rawgit.com,script,domain=reamporn.com
 *$3p,denyallow=cloudflare.com|cloudflare.net|hwcdn.net|jquery.com|fontawesome.com,script,domain=dekhobd.com
 *$3p,denyallow=cloudflare.com|cloudflare.net|hwcdn.net|jquery.com|jsdelivr.net,script,domain=wuxiarealm.com
-*$3p,denyallow=cloudflare.com|cloudflare.net|jsdelivr.net,script,domain=javct.net
+*$3p,denyallow=cloudflare.com|cloudflare.net|jsdelivr.net|jsdelivr.map.fastly.net,script,domain=javct.net
 *$3p,denyallow=cloudflare.com|cloudfront.net|disqus.com|disquscdn.com|fastlylb.net,script,domain=mangas-raw.com
 *$3p,denyallow=cloudflare.com|cloudfront.net|facebook.net|fbcdn.net|googleapis.com|gstatic.com|heyoya.com,script,domain=allcalidad.*
 *$3p,denyallow=cloudflare.com|cloudfront.net|fastly.net|googleapis.com|gstatic.com|jwpcdn.com|sharethis.com|sharethis.net,script,domain=toonanime.*
@@ -548,7 +548,7 @@ $3p,script,domain=zdnet.fr
 *$3p,image,redirect=1x1.gif,domain=rmdown.com
 *$3p,media,redirect-rule=noop-0.1s.mp3,domain=gmx.*|web.de
 *$3p,media,redirect=noopmp3-0.1s,domain=hdd.moviefun24.com|imdb.com
-*$3p,popunder,domain=alemannia-aachen.de|bs.to|burningseries.*|convert2mp3.tv|imgrock.pw|imgtorrnt.in|m.pornoxo.com|mp4porn.space|multiup.*|r18hub.com|smutr.com|spankbang.com|tubepornclassic.com|txxx.*|xfreehd.com|xhamster.*
+*$3p,popunder,domain=alemannia-aachen.de|bs.to|burningseries.*|convert2mp3.tv|imgrock.pw|imgtorrnt.in|m.pornoxo.com|mp4porn.space|multiup.*|r18hub.com|smutr.com|tubepornclassic.com|txxx.*|xfreehd.com|xhamster.*
 *$3p,popup,domain=avgle.com|babesxworld.com|clik.pw|extremotvplay.com|vipbox.*
 *$3p,redirect-rule=noop.js,script,domain=koushoku.org|toolxox.com
 *$3p,redirect-rule=noop.txt,xhr,domain=mangahosted.com
@@ -748,6 +748,7 @@ $3p,script,domain=zdnet.fr
 /^\w+://[0-9a-z]{11}\.taxliencode\.com//$1p,script
 /^\w+://[0-9a-z]{12}\.adria\.gg//$1p,script
 /^\w+://[0-9a-z]{12}\.dataunlocker\.com//$1p,script
+/^\w+://[0-9a-z]{12}\.www\.sidsplumbing\.ie//$1p,script
 /^\w+://[\w.\-]+\.www\.atlaslane\.com//$1p,script
 /^\w+://[\w.\-]+\.www\.cybernetman\.com//$1p,script
 /^\w+://[\w.\-]+\.www\.logology\.co//$1p,script
@@ -3421,6 +3422,7 @@ $3p,script,domain=zdnet.fr
 @@||mb.moatads.com^$script,domain=nascar.com
 @@||mcloud.to^$ghide
 @@||mcqmall.com^$ghide
+@@||mcs-va.tiktok.com/v1/user/webid$xhr
 @@||mdsrwdassets-a.akamaihd.net^$other,script,xhr,domain=cuatro.com|telecinco.es
 @@||mdsrwdassets-a.akamaihd.net^$script,xhr,domain=mediaset.es|yasss.es
 @@||media-imdb.com^$media,domain=imdb.com
@@ -4280,6 +4282,7 @@ $3p,script,domain=zdnet.fr
 @@||streamadblockplus.com^$frame,domain=streamtape.com
 @@||streamarmy.co.uk^$ghide
 @@||streamextreme.cc^$ghide
+@@||streamhide.to/js/boxad.js$1p,script
 @@||streaming.adswizz.com^$media,domain=streamonfoot.xyz
 @@||streamingcommunity.*/$1p,xhr
 @@||streamp1ay.*^$ghide
@@ -11621,7 +11624,6 @@ kachelmannwetter.com##[href="https://pflotsh.com"]
 kachelmannwetter.com,meteologix.com##.dkpw-billboard-margin
 kachelmannwetter.com,meteologix.com##.dkpw-billboard-margin-fixed
 kachelmannwetter.com,meteologix.com,weather.us##.kw-ad-right
-kaguya.live##+js(nowoif)
 kamerabudaya.com##+js(acis, addEventListener, adblock)
 kamerabudaya.com##.ads, div.adsadsense, #HTML1
 kangkimin.com##+js(nano-sib)
@@ -12585,12 +12587,12 @@ magdownload.org##+js(nostif, _0x)
 magdownload.org##.home-jumbotron
 mage.si##+js(aeld, load, nextFunction)
 mage.si##+js(nano-sib)
+magesy.*##+js(nobab)
 magesy.*##+js(nostif, show)
 magesy.*##.adsbygoogle
 magesy.*##div[class$="-wrapper"]:has(> div[style="background-color: rgb(255, 255, 255);"])
 magesy.*##div[style="background-color: rgba(255, 0, 0, 0.75);"]
 magesy.download##+js(acis, addEventListener, google_ad_client)
-magesy.download##+js(nobab)
 magesypro.*##+js(aopr, $)
 magesypro.*##+js(no-xhr-if, ads)
 magesypro.*##+js(set, detectAdBlock, noopFunc)
@@ -15398,9 +15400,12 @@ pussy-hub.com##+js(aeld, click, popundr)
 pussy.org##+js(nowoif)
 pussymaturephoto.com##div[class^="mikex"]:upward(1)
 pussyspace.*##+js(aopr, open)
+pussyspace.com,pussyspace.net###alphabet, #channels, #divx-container, #hmenu, #inform, #nowlooking, #playerCamBox, #playerMenu, #qcat, #showPlayer, #tabel_tagslist, #video_content, #web_cam, .buttons, .carouselTopScroll, .carusel-keys-box-ps, .footerdesc, .load_more_rel, .mainBoxTitle, .pagIno, .playerContent100pr, .relatedVideo, .right-160px, .videos-related, footer, header, [href^="/webcams.php"]:others()
 pussyspace.com,pussyspace.net##+js(aopw, ldasdsaj)
 pussyspace.com,pussyspace.net##+js(aost, document.createElement, ExoSupport)
-pussyspace.com,pussyspace.net##[class] img:xpath(ancestor::*[string-length(@class) >  20])
+pussyspace.com,pussyspace.net##+js(aost, Node.prototype.appendChild, www.pussyspace.net/js/all.js)
+pussyspace.com,pussyspace.net##:matches-path(/vid-) [class] img:xpath(ancestor::*[string-length(@class) >  20])
+pussyspace.com,pussyspace.net##style ~ [id] [class]:only-child div:only-child > img
 pussyspot.net,wildpictures.net##+js(aopr, decodeURI)
 pussyspot.net,wildpictures.net##[href^="http://ucam.xxx/"]
 pussyspot.net,wildpictures.net##[href^="https://easygamepromo.com/"]
@@ -20407,6 +20412,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||bector-blotance.xyz^$all
 ||beeg.surf/blood.asp?
 ||beinsports.com/*/adbw/
+||belbenback.live^$all
 ||benaughty.com^$all
 ||benaughty.fun^$all
 ||beop.io^$3p
