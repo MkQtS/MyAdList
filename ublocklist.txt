@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: ssRKU/i0HvLe/iFs3lGE4w
+! Checksum: 9a93ZKLgmT5zdqRQAGtrRg
 ! Expires: 2 days
-! Version: 202301050611
+! Version: 202301051812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23639, sources at 2023/01/05 06:11 UTC+8
+! Total lines: 23640, sources at 2023/01/05 18:12 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -634,6 +634,7 @@ $3p,script,domain=zdnet.fr
 */fuckadblock.$redirect=fuckadblock.js-3.2.0,script
 */gfp_video_ads/*$media,redirect=noopmp3-0.1s,domain=digisport.ro
 */jump/next.php
+*/media/*.mp4|$media,redirect=noopmp3-0.1s,domain=rte.ie
 */mts_ad_sense/*$script
 */player/plugins/vast-*.js$script
 */plugin/advertisement/$image
@@ -1719,6 +1720,7 @@ $3p,script,domain=zdnet.fr
 @@||8tm.net/stylesheets/$1p,css
 @@||9anime.*/user/ajax/$1p,xhr
 @@||9anime.*^$ghide
+@@||9anime.vc^$csp
 @@||9docu.*^$ghide
 @@||9xbdlink.xyz^$ghide
 @@||a.4cdn.org/*.json$xhr,domain=4chan.org
@@ -5384,6 +5386,7 @@ animecurse.cz##+js(aost, Object, inlineScript)
 animedao.*##+js(aopr, devtoolsDetector)
 animedao.*##.ab
 animedao.*##.gads
+animedao.*##hr
 animefenix.com##+js(aopr, decodeURI)
 animefenix.com##+js(aopr, mm)
 animefire.net##+js(aopw, _pop)
@@ -5782,6 +5785,7 @@ aternos.org##[style*="opacity:  0"]
 atgearn.xyz##+js(aopr, app_vars.force_disable_adblock)
 atgearn.xyz##+js(set, blurred, false)
 atgearn.xyz##.banner
+atishmkv.*##.inner-floatbanner-bottom
 atishmkv.*##[href^="https://go.aff.thecasinoaffiliates.com/"]
 atishmkv.marathi.vip##.idmuvi-topbanner-aftermenu
 atlaq.com,bolly4umovies.*,dietafitness.fun,douploads.net,moalm-qudwa.blogspot.com,redecanais.*,shurt.pw,topauto.fun##+js(aopr, zfgformats)
@@ -6003,7 +6007,6 @@ barchart.com##[id^=customAd]
 barfuck.com###im-layer
 barfuck.com##+js(aopr, document.dispatchEvent)
 baritoday.it##+js(nostif, bADBlock)
-barurotero.blogspot.com##+js(nowoif)
 barurotero.net##+js(acis, document.querySelectorAll, popMagic)
 barurotero.net##+js(nosiif, visibility, 1000)
 basic-tutorials.de##+js(aopr, advanced_ads_ready)
@@ -7750,6 +7753,8 @@ designtagebuch.de##[id^="desig-"]:has-text(ANZEIGE)
 desired.de##.sad_banner
 desiremovies.*##+js(acis, document.createElement, console)
 desiremovies.*##+js(aeld, , _0x)
+desiremovies.*##+js(aopw, _pop)
+desiremovies.*##.code-block-2.code-block
 desishoot.fun##.islemag-content-right > .widget_custom_html
 desitab69.sextgem.com##+js(nowoif)
 desitelugusex.com##+js(set, D4zz, noopFunc)
@@ -12328,8 +12333,6 @@ lite.qwant.com##.ad:upward(article.result.web)
 litecoinads.com##+js(set, blockAdBlock, trueFunc)
 litecoinads.com##[class^="bmadblock"]
 litecoinfaucet.info##+js(acis, document.getElementById, DOMContentLoaded)
-littlebyte.net##+js(nano-sib, freeRemind)
-littlebyte.net##+js(ra, href|target, a[onclick^="getActionContent"])
 live-tv-channels.org##+js(aopr, adBlockDetected)
 live-tv-channels.org##+js(nostif, adBlocked)
 live-tv-channels.org##._ads-in-player
@@ -12924,7 +12927,7 @@ megaplayer.bokracdn.run##.blockingAd, .popBannerTeaser
 megapornfreehd.com##+js(aopr, V4ss)
 megatube.xxx##+js(aopr, BetterJsPop)
 megaup.net##+js(ra, href|target, a[href^="https://tm-offers.gamingadult.com/"])
-megaup.net##.metaRedirectWrapperBottomAds > div > .imgAds:style(-webkit-mask-image: linear-gradient(transparent, transparent) !important;)
+megaup.net##body .metaRedirectWrapperBottomAds:style(-webkit-mask-image: linear-gradient(transparent, transparent) !important;)
 megaurl.*##+js(aopr, app_vars.force_disable_adblock)
 megaurl.*##[id*="ScriptRoot"]
 megaurl.*##a[href^="//"]
@@ -13729,9 +13732,6 @@ nekopoi.*##[href^="http://bit.ly/"]
 nemenlake.*##+js(nowoif)
 nensaysubs.net###outerdiv
 neomovies.net###clickfakeplayer
-neonlink.net##+js(aopr, app_vars.force_disable_adblock)
-neonlink.net##+js(nowoif)
-neonlink.net##+js(set, blurred, false)
 neos-easygames.com,synk-casualgames.com#@##ad_block
 neoskip.*##+js(aopr, app_vars.force_disable_adblock)
 neoteo.com##+js(set, jQuery.adblock, false)
@@ -20058,7 +20058,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||a2zapk.com/js/notification.js
 ||a2ztechworld.com^$3p
 ||aa.pornvideotop.com^
-||abc.comick.top^
 ||abcdserver.com^$all
 ||abdittoan.com^$all
 ||abusageqh.com^
@@ -21708,7 +21707,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jorpetz.com/kahitano/banner.gif
 ||josannastudio.co^$all
 ||js.helltraffic.com/fluidplayer/scripts/webvtt.min.js$important,script,domain=tubewolf.com
-||js.mangapro.top^
 ||js.wpadmngr.com/static/adManager.js$redirect-rule=noopjs,script
 ||jsdelivr.net/*/adb-analytics$3p,script
 ||jsdelivr.net/*/levelmaxblock.js$3p,script
@@ -22465,6 +22463,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||px.moatads.com/pixel.gif$image,redirect-rule=1x1.gif,domain=abcya.com
 ||pythoncareens.tech^
 ||qbittorrent.com^$doc
+||qdfxeqhnjuknyy.com^
 ||qik.cc^$3p
 ||qiota.com/assets/fingerprint2.$important,redirect=noopjs,script,domain=science-et-vie.com
 ||qip.ng^$doc
@@ -22545,6 +22544,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||rontent.powvibeo.me^
 ||root-nation.com/*banner
 ||root-nation.com/wp-content/uploads/*background$image
+||rotf.lol^
 ||rouonixon.com^$all
 ||royaljapan02.*^$all
 ||rołex.com^$doc
@@ -23371,6 +23371,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||xtremetop100.com^$badfilter
 ||xvideo.party/shop.aspx?
 ||xxlargepop.com/apu.php$redirect=noopjs,script
+||xxmaqoupnd.com^
 ||xxvideoss.org/wp-content/uploads/*/bannerrtx.jpg$1p,image
 ||xxx-comics.pro/*?view=$doc,other,removeparam=view
 ||xxx18.uno/*-code.js
