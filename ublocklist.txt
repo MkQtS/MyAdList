@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: FD2Tku4lfn1NQHQG+/PJTg
+! Checksum: Ej+4j8GsdP/heR2IjKvJNQ
 ! Expires: 2 days
-! Version: 202301111815
+! Version: 202301120612
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23686, sources at 2023/01/11 18:15 UTC+8
+! Total lines: 23691, sources at 2023/01/12 06:12 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -806,6 +806,7 @@ $3p,script,domain=zdnet.fr
 /^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.png\?aHR0c[\/0-9a-zA-Z]{33,}=?=?$/$3p,image,match-case
 /^https?:\/\/cdn\.[a-z]{4,6}\.xyz\/app\.js$/$3p,match-case,script
 /^https?:\/\/s3\.us-east-1\.amazonaws\.com\/[0-9a-f]{50,}\/[0-9a-f]{10}$/$3p,xhr
+/_/api/v2/analytics/?
 /_a_ta/s/s/*
 /_dating\d\/index\.html\?aref=/$doc
 /a/ipn/js/*
@@ -848,6 +849,7 @@ $3p,script,domain=zdnet.fr
 /api/spots/*&ev$script
 /api/spots/*?kw=$script
 /api/v1/metrics$badfilter
+/api/v2/analytics$badfilter
 /apis-2.js^$1p
 /apop/redirect/zone/*$doc,popup
 /app14.js$domain=siteunblocked.info|theproxy.app
@@ -2137,7 +2139,7 @@ $3p,script,domain=zdnet.fr
 @@||bzbasel.ch^$ghide
 @@||c.adsco.re/|$script,domain=hotfrog.*
 @@||c.adsco.re^$script,domain=financemonk.net
-@@||c.amazon-adsystem.com/aax2/apstag.js$script,domain=mylifetime.com|oggi.it
+@@||c.amazon-adsystem.com/aax2/apstag.js$script,domain=mylifetime.com|oggi.it|video.gazzetta.it
 @@||c.s-microsoft.com/mscc/statics/*$css,domain=microsoft.com
 @@||c.zontera.com/adv/b.js$script,domain=profit.ro
 @@||c0.ifengimg.com/iis/*.js?$script,domain=rjno1.com
@@ -2372,6 +2374,7 @@ $3p,script,domain=zdnet.fr
 @@||collect.igodigital.com^$script,domain=oka.com
 @@||colonist.io^$ghide
 @@||common-static.tunnl.com/api/$script,domain=player.videodistribution.com
+@@||components2.rcsobjects.it/rcs_adv/*/distro/dfp/common/prebid.js$script,domain=video.gazzetta.it
 @@||components2.rcsobjects.it/rcs_adv/v1/distro/dfp/common/prebid.js$script,domain=oggi.it
 @@||compressnow.com^$ghide
 @@||computerworld.com/*/jquery$1p,script
@@ -3720,7 +3723,7 @@ $3p,script,domain=zdnet.fr
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$redirect-rule,xhr,domain=carousell.*
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=b00.tw|boo.tw|exey.io|ff14angler.com|kiktu.com|pasty.*|play.aidungeon.io|yiv.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,xhr,domain=algumon.com|feedclick.net|loawa.com|ondemandkorea.com|sportalkorea.com|ygosu.com
-@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xhr,domain=1cloudfile.com|95news.com|aosmark.com|chamcuuhoc.com|chinhnhacoban.com|coin-free.com|comidoc.net|dhlgame.com|fanclup.info|hocchannuoi.com|hoclamdaubep.com|hynews.biz|kienthucrangmieng.com|nhacremix.biz|tai-mui-hong.com|techmart4u.in|theappstore.org|thuocdangian.net|tiodonghua.com|tremamnon.com|vnpttelle.com
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xhr,domain=1cloudfile.com|95news.com|aosmark.com|chamcuuhoc.com|chinhnhacoban.com|coin-free.com|comidoc.net|dhlgame.com|duden.de|fanclup.info|hocchannuoi.com|hoclamdaubep.com|hynews.biz|kienthucrangmieng.com|nhacremix.biz|tai-mui-hong.com|techmart4u.in|theappstore.org|thuocdangian.net|tiodonghua.com|tremamnon.com|vnpttelle.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js^$script,domain=aiarticlespinner.co|sudoku-aktuell.de
 @@||pagead2.googlesyndication.com/pagead/managed/js/$script,domain=tamrieltradecentre.com
 @@||pagead2.googlesyndication.com/pagead/managed/js/adsense/$script,domain=exey.io|ff14angler.com
@@ -8189,9 +8192,10 @@ dubzstreams.com##.aoa_overlay
 dubzstreams.com##.stickyfadein.admania_sidebarsticky.widget_admania_sticky_widgets.widget
 dubzstreams.com##.stickyfadeout.widget_admania_sticky_widgets.widget
 dubzstreams.com##div.clpr-emre1
-duden.de##+js(aopr, detectAdBlock)
+duden.de##+js(aopr, detectaab)
 duden.de##.tabloid__side-column
 duden.de##[id*="billboard"]
+duden.de#@#.ad-box
 dudestream.com##+js(norafif, style.opacity)
 dudestream.com##body > div[id^="\30"][class^="popup0"][class$="wrap"]
 dudestream.com#@#.adsBanner
@@ -16085,7 +16089,8 @@ seirsanduk.*##.adsbygoogle
 seirsanduk.*##[href^="//bgtop.net/"]
 seirsanduk.*##[href^="https://www.bybit.com/"]
 sekai-kabuka.com##+js(set, 偸筮紿鵑舸麩瀟蜊ﾟ0姆0, 0)
-sekai-kabuka.com##+js(set, 險倚く1盍蹲潭偬簔oﾛ, false)
+sekai-kabuka.com##+js(set, 笆ﾟ荵ﾞﾉ1ｴIolﾟ1, false)
+sekai-kabuka.com#@#+js(set, 險倚く1盍蹲潭偬簔oﾛ, false)
 sekilastekno.com##+js(aopr, app_vars.force_disable_adblock)
 sekilastekno.com##+js(no-fetch-if, ads)
 sekilastekno.com##+js(nowoif, wapka)
