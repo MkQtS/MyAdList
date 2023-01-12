@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: tT1cQAxAUSsQ7DONndRUsQ
+! Checksum: u9lq4oiV1CTA0Y0MJRJldA
 ! Expires: 2 days
-! Version: 202301121814
+! Version: 202301130611
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23694, sources at 2023/01/12 18:14 UTC+8
+! Total lines: 23708, sources at 2023/01/13 06:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -67,6 +67,7 @@
 ##.adde_modal_detector
 ##.addthis_toolbox
 ##.ads-iframe:not([style="position: absolute; left: -10px; top: -10px;"])
+##.ads_container:not(.text-ad)
 ##.adsbyrunactive
 ##.advboxemb
 ##.aff-content-col
@@ -236,6 +237,7 @@
 #@##topBannerAd
 #@##weatherad
 #@#.ad-300x250
+#@#.ad-area
 #@#.ad-content
 #@#.ad-left
 #@#.ad-link
@@ -248,6 +250,7 @@
 #@#.ad_unit
 #@#.adbox
 #@#.ads-iframe
+#@#.ads_container
 #@#.display_ad
 #@#.div-gpt-ad
 #@#.google-ad
@@ -6689,6 +6692,8 @@ cambro.tv###kt_player > [href^="https://www.cambro.tv/"]
 cambro.tv##+js(acis, crakPopInParams)
 cambro.tv##+js(acis, document.addEventListener, initBCPopunder)
 cambro.tv##+js(aopr, onload)
+cambro.tv##+js(set, flashvars.logo_text, '')
+cambro.tv##+js(set, flashvars.logo_url, '')
 cambro.tv##.box.rltdsldr
 cambro.tv##.bttsptt.box
 cambro.tv##.crak_cams_ctn
@@ -6705,8 +6710,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -7556,6 +7561,7 @@ cuts-url.com,eio.io,exe.app,exee.io,freshi.site##+js(set, blurred, false)
 cutscenes.net##.item > div[id^="ts_ad_native"]:upward(1)
 cutscenes.net##.item > iframe[src^="https://go."]:upward(1)
 cutt.net##.aspace
+cutty.app##+js(set, blurred, false)
 cutty.app#@#.adsbygoogle
 cuturl.in##+js(aopr, app_vars.force_disable_adblock)
 cuturl.in##+js(aopw, _pop)
@@ -7887,6 +7893,12 @@ divxtotal.*,divxtotal1.*##+js(aopw, _pop)
 divyabhaskar.co.in##[id^="Ad"]:upward([style])
 dj-figo.com##+js(aopr, adBlockDetected)
 djs.sk##+js(aopr, miner)
+djxmaza.in###wait1button:upward(center) ~ *:not(center)
+djxmaza.in,proviralhost.com###wait1
+djxmaza.in,proviralhost.com###wait1button, #wait2button:style(display: block !important;)
+djxmaza.in,proviralhost.com###wait1button.disabled, #wait2button.disabled:remove-class(disabled)
+djxmaza.in,proviralhost.com##+js(ra, disabled, #wait1button[disabled], stay)
+djxmaza.in,proviralhost.com##+js(ra, disabled, #wait2button[disabled], stay)
 dl-protect.*##+js(nowoif)
 dl.3dmodelshare.org##+js(acis, document.addEventListener, google_ad_client)
 dl.apkmb.com##.btnDownload:has-text(SHARE)
@@ -14321,8 +14333,6 @@ otakukan.com##.adsbygoogle
 otakukan.com##.ai-attributes
 otakuworldsite.blogspot.com##+js(aeld, load, onload)
 otomi-games.com##+js(nano-sib)
-otorrents.com##+js(aopr, _pop)
-otorrents.com##+js(aopr, popjs.init)
 ottverse.com##+js(nostif, show)
 ouo.*##+js(aopr, AaDetector)
 ouo.*##+js(aopw, _pop)
@@ -15376,6 +15386,8 @@ protege-liens.com##+js(nowoif)
 protege-torrent.com##+js(aeld, , pop)
 protege-torrent.com##+js(aopr, decodeURI)
 protopage.com##+js(aopr, pageParams.dispAds)
+proviralhost.com###wait1button ~ *:not(#wait2button, center:has(#wait2button))
+proviralhost.com###wait2button:upward(center):style(display: block !important;)
 proviralhost.com##.inst > div.text-left
 proviralhost.com,urbharat.xyz##+js(nano-sib, timePassed, 1300)
 proxoexploits.com##+js(acis, isChrome)
@@ -16815,6 +16827,7 @@ sourceforge.net##.project-body > section[id]
 soy502.com##+js(acis, document.getElementById, length)
 soyoungteens.com##+js(aopr, document.dispatchEvent)
 sozcu.com.tr##+js(aopr, detectAdBlock)
+sozcu.com.tr##+js(no-fetch-if, /assets/js/prebid)
 sp-today.com##+js(set, isAdBlockActive, false)
 space.tribuntekno.com##+js(aopw, adBlockDetected)
 spank-and-bang.com##+js(aopr, absda)
@@ -23510,6 +23523,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ~backcar.fr,~flat-ads.com,~job.inshokuten.com##.ad-content:not(:empty)
 ~forum.soft98.ir,soft98.ir##+js(aeld, mousedown)
 ~forum.soft98.ir,soft98.ir##+js(window-close-if, /link-)
+~job.inshokuten.com##.ad-area:not(.text-ad)
 ~kazukichi0914.hatenablog.com###adframe:not(frameset):not([style^="position: absolute; left: -5000px"])
 ~ma-bank.net,~video.tv-tokyo.co.jp###adspace:not([style^="position: absolute; left: -5000px"])
 ~mmiyue.com##.google-ad:not(.testAd)
