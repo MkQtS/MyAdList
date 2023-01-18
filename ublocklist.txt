@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: afD+EA4O3DBiABx32a+6Pw
+! Checksum: PP4nTPS7ztey8XlVt4s6BA
 ! Expires: 2 days
-! Version: 202301180611
+! Version: 202301181812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23745, sources at 2023/01/18 06:11 UTC+8
+! Total lines: 23741, sources at 2023/01/18 18:12 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -268,7 +268,6 @@ $3p,script,domain=zdnet.fr
 &adspot_id=*&cost=0.$doc
 &click_price=0.*&click_id=$doc
 &key=*&adb=y$3p,popup
-&td=redirect4u.com$all
 *##.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 *##[class^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 *##div.adsbygoogle.Ad-Container.sidebar-ad:style(display:block !important)
@@ -644,7 +643,6 @@ $3p,script,domain=zdnet.fr
 */player/plugins/vast-*.js$script
 */plugin/advertisement/$image
 */pwafeeds/amazon
-*/redirect?feed=$frame
 */rellect/AdblockDetector/handler.min.js$important,redirect=noopjs,script
 */tegna-tracking.js$1p,important,redirect=noop.js,script
 */videoplayback?expire$media,redirect=noopmp3-0.1s,domain=webmd.com
@@ -694,7 +692,6 @@ $3p,script,domain=zdnet.fr
 .xyz/event|$3p,xhr
 .xyz/related_1.html?$3p,frame
 .xyz/universal_1.html?$3p,frame
-.xyz/v1/redirect?cid=$doc
 .xyz/video.php?=*&dating_xyz_0&&0$frame
 /(?:com|net)\/[0-9a-f]{12}\.js$/$1p,script,domain=imgadult.com|imgdrive.net|imgtaxi.com|imgwallet.com
 /(?:com|net)\/[a-z-]{3,10}\.html$/$1p,frame,domain=imgadult.com|imgdrive.net|imgtaxi.com|imgwallet.com
@@ -707,14 +704,12 @@ $3p,script,domain=zdnet.fr
 /1pixel.php$badfilter
 /1pixel.php$domain=~1lib.domains|~singlelogin.app|~z-lib.org
 /2/index.html#|$doc
-/?%7B%7Bip%7D%7D*&clickId=$doc
 /?*&callback=callback_json_adblade*$script
 /?act=*&epcVIP=$doc
 /?banner=*&phone=$doc
-/?btd=*token$all
 /?c=propeller&lpid=$all
 /?camp=*&cost=0.$doc
-/?clck=*&sid=$doc
+/?cid=*&dom=$doc
 /?clickid=*&cost=0.$doc
 /?clickid=*&ptracker=$doc
 /?h=https%3A%2F%2F*&r=&sid=*&qs=*&cid=$1p,image
@@ -727,7 +722,6 @@ $3p,script,domain=zdnet.fr
 /?track=*&key=$all
 /?v=eyI*sImgiOiJodHRwczovL$1p,image
 /?v=eyJoIjoiaHR0cHM6Ly9$1p,image
-/?wm=*&t=onclick|$doc
 /?{BV_SRCID}&$doc
 /[0-9a-f]{32}\/invoke\.js/$3p,script
 /\.com\/(full)?ad[0-9a-z]+\.(?:gif|jpg)$/$1p,image,domain=palcomix.com
@@ -867,7 +861,6 @@ $3p,script,domain=zdnet.fr
 /backend_loader$script
 /banner.gif?$image,redirect-rule=1x1.gif
 /barbar7.$1p,script
-/bdv_rd.dbm?ownid=$doc
 /bknd_ldr_$1p,script
 /block-adblock.js$script
 /bultykh/ipp24/7/bazinga/*$3p,script
@@ -913,7 +906,6 @@ $3p,script,domain=zdnet.fr
 /get/*.js#$script,domain=gload.to
 /get/*?zoneid=$script
 /glx_*.js$script
-/go.php?url=*&uclick=$doc
 /go/*?ident=$1p,frame
 /gofd_fl.js
 /google-ad-$badfilter
@@ -935,7 +927,6 @@ $3p,script,domain=zdnet.fr
 /img/ads/Spinner.png$image,redirect-rule=1x1.gif
 /index.php?key=*&t1=$doc
 /index.php?uid=*&code=ad^$doc
-/index555.php?sub=*&tel=&utm_source=$doc
 /invoke.js$script,domain=mirrorace.*
 /istripper*$image,domain=hentaipins.com
 /istripper.js
@@ -951,7 +942,6 @@ $3p,script,domain=zdnet.fr
 /js/static/header/sda/ppsuma*.js$script
 /jsa.hh?$script
 /jsa.hh?z=$1p,script
-/jump?id=*&_tgUrl=$doc
 /klesd7.$1p,script
 /kzdh7.$1p,script
 /lemon7.$1p,script
@@ -1033,7 +1023,6 @@ $3p,script,domain=zdnet.fr
 /shrinker/js/ionqsnwx1.js$1p,script
 /shrinker/js/ionqsnwx2.js$1p,script
 /siropu/am/core.min.js$important,script,domain=~darksoftware.net|~hifiwigwam.com
-/site/redirectpage?ca=link&sid=$doc
 /skipad.png$image
 /smallfr/*$frame,domain=babeimpact.com|decorativemodels.com|sexykittenporn.com
 /smallfr2/*$frame,domain=babeimpact.com|decorativemodels.com
@@ -1045,9 +1034,8 @@ $3p,script,domain=zdnet.fr
 /sw.js$1p,script,domain=eio.io|exe.app|exee.io|strcloud.*|streamta.*|streamtape.*|strtape.*|strtapeadblock.*|strtpe.*
 /sw.js$script,domain=androidapks.biz|androidsite.net|animeonlinefree.org|animesite.net|blademaster666.com|computercrack.com|crackedsoftware.biz|crackfree.org|cracksite.info|culonas.com.ve|desktophut.com|downloadapk.info|downloadapps.info|downloadgames.info|downloadmusic.info|downloadsite.org|ebooksite.org|emulatorsite.com|fanproj.net|fmovies24.com|freeflix.info|freemoviesu4.com|freesoccer.net|fseries.org|gamefast.org|gamesite.info|gostreamon.net|hindisite.net|isosite.org|luchoedu.org|lupaste.com|macsite.info|mangasite.org|megamovies.org|moviefree2.com|moviesite.app|moviesx.org|musicsite.biz|patchsite.net|pdfsite.net|play1002.com|pornovenezolano.com.ve|productkeysite.com|qeylo.net|romsite.org|seriale-po-polsku.pl|seriesite.net|siteapk.net|siteflix.org|sitegames.net|sitekeys.net|sitepdf.com|sitesunblocked.*|sitetorrent.com|softwaresite.net|superapk.org|supermovies.org|tvonlinesports.com|ultramovies.org|venezporn.com|warezsite.net|watchmovies2.com|watchmoviesforfree.org|watchsite.net|youapk.net
 /sytheb$all
-/tds/ae?affid=$doc
+/tds/ae?*&clickid=$doc
 /tds/ae?tds_campaign=$doc
-/tds/ae?tdsId=*&clickid=$doc
 /teo4.$script
 /teo7.$1p,script
 /tghr.js$script
@@ -1055,7 +1043,6 @@ $3p,script,domain=zdnet.fr
 /thermostat.js$script,domain=royle.com
 /tortoise.min.js$domain=boards.net|freeforums.net|proboards.com
 /tp/filter.php?pro=
-/track/click.php?c=*&zoneid=$doc
 /transparent-pixel.$badfilter
 /transparent.gif?ray=$badfilter
 /ts.php?$3p,xhr
@@ -4839,6 +4826,7 @@ $3p,script,domain=zdnet.fr
 ^cep=*&zoneid=$doc
 ^lpkey=*&uclickhash=$doc
 ^phone=050-$doc
+^s=*&ssk=*&svar=*&z=$doc
 ^utm_source=soft98^$doc,popup,domain=asiatech.ir|iranicard.ir|limoo.host|ok-ex.io
 a-ads.com##.size300x250
 a-o.ninja,anime-odcinki.pl##+js(set, showAds, true)
@@ -8367,6 +8355,7 @@ ebookdz.com##[href*="offer"]
 ebookmed.*##+js(aeld, load, 2000)
 economictimes.indiatimes.com###aroundweb
 economictimes.indiatimes.com##+js(nostif, objSubPromo)
+economictimes.indiatimes.com##+js(set, objVc.interstitial_web,'')
 economictimes.indiatimes.com##.active > ul > li:has-text(Ad:)
 economictimes.indiatimes.com##:xpath(//p[contains(text(),"Ad:")]/../..)
 economictimes.indiatimes.com##:xpath(//span[contains(text(),"Around The")])
@@ -12447,8 +12436,8 @@ lnk2.cc##+js(nano-stb)
 loader.to##+js(aopr, open)
 loadout.tf###main-bar
 loadout.tf###main-content:style(width: 100% !important;)
-loadout.tf##.loadout-application .adsbygoogle:upward(2):style(left:-3000px !important;position:absolute !important)
 loadout.tf##.loadout-application-advertisement-header
+loadout.tf##.loadout-application-top > div:not([class]):style(left:-3000px !important;position:absolute !important;)
 loadsamusicsarchives.blogspot.com##+js(aopr, AaDetector)
 loadx.ws##+js(nowoif)
 loan2host.com,tei.ai,tii.ai###link-view > center
@@ -13170,6 +13159,10 @@ mirrorace.*##[href*="search/"]
 mirrorace.*##[href^="https://fastspeedtest.ml/search/"]
 misa-anime.com##+js(aopw, adBlockDetected)
 misa-anime.com##.img-kosana
+missav.com##+js(acs, document.createElement, htmlAds)
+missav.com##+js(nowoif)
+missav.com##.hidden > .mx-auto
+missav.com##div[\@click\.once]:remove-attr(@click.once)
 missav.com##div[x-show="showBanner"]
 mithaaprilia.com,raredesi.com##+js(aopr, absda)
 mitly.us##+js(aopr, adBlockDetected)
@@ -20861,6 +20854,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||crazyegg.com^$3p
 ||crazyegg.com^$badfilter
 ||crazyshit.com/aff/$frame
+||creative.live.missav.com/widgets/Spot/lib.js
 ||creative.live7mm.tv^
 ||crentgate.com^
 ||crypto-fire.website/mine/partner/$3p
@@ -23227,6 +23221,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||update-phone-today.com^
 ||update-protection.com^$all
 ||updatemobilee.com^$all
+||updaterlife.com^$all
 ||upgraderservices.cf^
 ||upload4earn.org^$doc
 ||uploadbank.com/js/abcode.js
@@ -23387,6 +23382,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||wheelwheel.space^$3p
 ||whentai.com/*.gif$image
 ||wholedailyfeed.com^$all
+||wholenicefeed.com^$all
 ||wholewowblog.com^$all
 ||wicket.pw/embeds/icc-cwc.png$image
 ||widgets.outbrain.com/outbrain.js$redirect=noopjs,script,domain=bongino.com|newsbreak.com
