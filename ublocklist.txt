@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 0JZoAzewk1VpBk8HSCOaFQ
+! Checksum: MIHgHAYtqhXzNbvHQuSwNA
 ! Expires: 2 days
-! Version: 202301291810
+! Version: 202301300610
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23720, sources at 2023/01/29 18:10 UTC+8
+! Total lines: 23723, sources at 2023/01/30 06:10 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -2726,13 +2726,11 @@ $3p,script,domain=zdnet.fr
 @@||fisp.io^$ghide
 @@||fitgirl-repacks.site^$image,popup
 @@||flashx.*/counter.cgi$script
-@@||flight-report.com^$ghide
 @@||flightapi.travix.com/flight$xhr,domain=cheaptickets.nl|vayama.com
 @@||flightradar24.com/static/*/statistics.js$1p,script
 @@||flightsim.to^$1p,script
 @@||flipboard.com/webu/*-contrib-ads*.bundle.js$1p,script
 @@||fls.doubleclick.net^$frame,domain=billpay.suntrust.com
-@@||flsaudio.com^$ghide
 @@||fluid.4strokemedia.com/www/delivery/asyncspc.php$1p,xhr
 @@||fluid.4strokemedia.com/www/delivery/asyncspc.php^$xhr,domain=formulapassion.it
 @@||fluidplayer.com^$script,domain=rule34hentai.net
@@ -2755,7 +2753,6 @@ $3p,script,domain=zdnet.fr
 @@||foxgreat.com^$ghide
 @@||foxseotools.com^$ghide
 @@||fr.de^$ghide
-@@||frag-mutti.de^$ghide
 @@||freebcc.org/assets/img/ad_$image
 @@||freebcc.org^$ghide
 @@||freebitcoin.win^$ghide
@@ -9195,6 +9192,7 @@ flashx.net##+js(set, $.adblock, 0)
 flaticon.com##+js(aopr, pu_url)
 flickr.com##+js(set, appContext.adManager.context.current.adFriendly, false)
 flickr.com##.sub-photo-submoola-view
+flight-report.com##+js(nostif, offsetHeight)
 flightsim.to##+js(acis, document.getElementById, adsblock)
 flightsim.to##+js(acis, fetch, status)
 flightsim.to##+js(nano-sib, timer)
@@ -9206,6 +9204,8 @@ flixtor.stream##+js(nowoif)
 flixtormovies.co##+js(aopr, AaDetector)
 flmods.com##+js(nostif, offsetHeight)
 flmods.com##[href^="https://www.flmods.com/index.php"][target="_blank"]
+flsaudio.com##.adsbygoogle:upward(.widget)
+flsaudio.com##.altumcode-coupon-content
 fluentu.com##+js(aopr, __eiPb)
 flutenotes.ph##+js(nosiif, visibility, 1000)
 fluttercampus.com##.widget > .card
@@ -9341,7 +9341,10 @@ fpo.xxx##+js(set, flashvars.adv_pause_html, '')
 fpo.xxx##+js(set, flashvars.adv_pre_src, '')
 fpo.xxx##.table
 fr.de##div[data-id-advertdfpconf]
-frag-mutti.de##.superbanner
+frag-mutti.de###campaign-popup
+frag-mutti.de###fm-shadow
+frag-mutti.de##.ad-loading:remove()
+frag-mutti.de##.intext-ad
 france.tv##+js(nowebrtc)
 frauporno.com##+js(aeld, , popMagic)
 frebieesforyou.net,freebiesforyou.net##+js(nowoif)
@@ -9735,8 +9738,8 @@ games4king.com##+js(ra, target)
 games4king.com##[class^="ads"]
 games4king.com##[id^="leaderboard"]
 gamespot.com##+js(acis, $, sp.blocking)
-gamesradar.com,livescience.com,techradar.com,tomsguide.com,tomshardware.com,whathifi.com,windowscentral.com##.related-articles-block
-gamesradar.com,livescience.com,techradar.com,tomsguide.com,tomshardware.com,whathifi.com,windowscentral.com##.van_taboola
+gamesradar.com,livescience.com,pcgamer.com,techradar.com,tomsguide.com,tomshardware.com,whathifi.com,windowscentral.com##.related-articles-block
+gamesradar.com,livescience.com,pcgamer.com,techradar.com,tomsguide.com,tomshardware.com,whathifi.com,windowscentral.com##.van_taboola
 gamesradar.com,techradar.com,tomsguide.com,tomshardware.com,whathifi.com##.mobile-leaderboard-320-50:upward([style])
 gamesrepacks.com##+js(aopw, _pop)
 gamesrepacks.com##+js(nostif, showModal)
