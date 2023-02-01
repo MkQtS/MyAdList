@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: ClqRKI1o9wI4R+zA8N30Lw
+! Checksum: d0g7F1SsaLQq6fWwl1KxLw
 ! Expires: 2 days
-! Version: 202302010610
+! Version: 202302011813
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23749, sources at 2023/02/01 06:10 UTC+8
+! Total lines: 23752, sources at 2023/02/01 18:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -2253,6 +2253,7 @@ $3p,script,domain=zdnet.fr
 @@||cdn.taboola.com/libtrc/ndtv-ndtvmobile/loader.js$script,domain=ampproject.net
 @@||cdn.tagcommander.com/cmp-api/cmp.js$script,domain=tf1.fr
 @@||cdn.taplytics.com/taplytics.min.js$script,domain=es.wallapop.com
+@@||cdn.thisiswaldo.com/static/js/$script,domain=work.ink
 @@||cdn.trackjs.com/agent/v*/latest/t.js$script,domain=adshrink.it
 @@||cdn.trafficdok.com/libs/e.js$script,domain=tvmd.info
 @@||cdn.trustcommander.net/iab-tcfapi/tcfapi.js$script,domain=tf1info.fr
@@ -8070,11 +8071,11 @@ dr-farfar.com##+js(nowoif)
 dr-farfar.com##.essb-sharebooster
 dr-farfar.com##.essb-sharebooster-overlay
 dragontea.ink##+js(aeld, DOMContentLoaded, Adblock)
-dragontea.ink##html:not([amp-version="2211060024000"]) #abgc
-dragontea.ink##html:not([amp-version="2211060024000"]) #square > *:not(:empty)
-dragontea.ink##html:not([amp-version="2211060024000"]) [id*="squareThrone"] > *:not(:empty)
-dragontea.ink##html:not([amp-version="2211060024000"]) a[href*="doubleclick.net"]
-dragontea.ink##html:not([amp-version="2211060024000"]) div[class*="-banner"] > *:not(:empty)
+dragontea.ink##html[amp-version^="23"] #abgcp
+dragontea.ink##html[amp-version^="23"] #cbb
+dragontea.ink##html[amp-version^="23"] #square > *:not(:empty)
+dragontea.ink##html[amp-version^="23"] [id*="squareThrone"] > *:not(:empty)
+dragontea.ink##html[amp-version^="23"] a[href*="doubleclick.net"]
 dragontea.ink##ins[id^="gpt_unit_/"]:style(opacity: 0 !important; pointer-events: none !important;)
 dragontea.ink#@#+js(addEventListener-defuser, DOMContentLoaded, Adblock)
 dragontea.ink#@#.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -8433,6 +8434,7 @@ elamigos-games.com##h3.my-4:has-text(/^Advertising/)
 elamigos-games.com,zona-leros.net##+js(aeld, DOMContentLoaded, shortener)
 elamigos-games.com,zona-leros.net##.content_store
 elamigosedition.com##+js(aost, document.addEventListener, blocker)
+eleconomista.es#@#[class*="banner"]
 electomania.es##+js(acis, eval, replace)
 electomania.es##.td-pb-row.wpb_row.tdi_73.vc_row
 electricaltechnology.org###stream-item-widget-2
@@ -19408,8 +19410,8 @@ wordgames.com###ad-gamepage-leaderboard
 wordgames.com###skyscraper-container
 wordgames.com###skyscrapper-container
 work.ink###overlay
-work.ink##+js(nostif, waldo)
 work.ink##.desc:upward([class*="adb"])
+work.ink#@#+js(nostif, waldo)
 workink.click##+js(no-fetch-if, cloudfront)
 world-sms.org##.promoBlock
 world-trips.net##+js(nano-sib, timer)
@@ -22197,6 +22199,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||newssocial.org^$all
 ||newsurprizeforyou.com^$all
 ||newtoki*.net/*banner$1p,image
+||nextmillmedia.com^
 ||nextyourcontent.com^$all
 ||nexusbytes.com^$3p
 ||nfkd2ug8d9.com^
