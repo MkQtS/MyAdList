@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: +Zv1vRjo8ITH64h3Iw0gZg
+! Checksum: NPsj6D4ivzsc1rxlia3SqA
 ! Expires: 2 days
-! Version: 202302131813
+! Version: 202302140611
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23778, sources at 2023/02/13 18:13 UTC+8
+! Total lines: 23786, sources at 2023/02/14 06:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -1806,6 +1806,8 @@ $3p,script,domain=zdnet.fr
 @@||ads.themoneytizer.com/s/requestform.js?$script,domain=satoshi-win.xyz
 @@||ads.upshrink.com/|$3p,xhr
 @@||ads.ylilauta.org^$1p,frame
+@@||ads2.kiktu.com/index.js$xhr
+@@||ads2.upshrink.com/|$3p,xhr
 @@||adserver.iprom.net/adserver7$xhr,domain=rtl.hr
 @@||adserver.pandora.com/haymaker/api/v1/serve/$1p,xhr
 @@||adserver.va3.megaphone.cloud^$media,domain=podigee.com
@@ -2390,7 +2392,6 @@ $3p,script,domain=zdnet.fr
 @@||config-prod.choice.faktor.io/*/faktor.js$script,domain=consent.talpanetwork.com
 @@||confirmit.com/api/$domain=lenovo.com
 @@||connatix.com/connatix.player.js$script,domain=reuters.com
-@@||connatix.com^$css,script,xhr,domain=loot.tv
 @@||connatix.com^$media,script,domain=realclearpolitics.com
 @@||connect.facebook.*/*/AudienceNetworkPrebid.js$script,domain=cbssports.com
 @@||connectwww.com^$ghide
@@ -5961,8 +5962,9 @@ bananamovies.net##+js(acis, puShown, /doOpen|popundr/)
 bananamovies.net##+js(aopr, ExoLoader.serve)
 bananamovies.net##+js(nowoif)
 bananamovies.net##+js(popads-dummy)
-banaraswap.in###wggen2
-banaraswap.in##.btnbox-outer
+banaraswap.in,techcyan.com###wggen2
+banaraswap.in,techcyan.com##.btnbox-outer
+banaraswap.in,techcyan.com##a[href$="file.zip"]
 bandab.com.br##.widget_publicidade
 bang14.com##+js(acis, $, setCookie)
 bangsaku.web.id##+js(acis, document.addEventListener, google_ad_client)
@@ -6668,8 +6670,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -10433,6 +10435,10 @@ heavy-r.com##+js(acis, document.createElement, insertBefore)
 heavy-r.com##.mob-ban
 heavy-r.com##.nopop.hd-bar
 heavy-r.com##[class^="adzone"]
+heavyfetish.com##+js(cookie-remover, kt_ips)
+heavyfetish.com##+js(cookie-remover, kt_qparams)
+heavyfetish.com##+js(cookie-remover, kt_referer)
+heavyfetish.com##+js(set, flashvars.event_reporting, '')
 hegreartnudes.com##+js(acis, loadTool, popping)
 heidibemvindaacasabrasil.blogspot.com###popup
 heidisql.com##+js(acis, $, adblock)
@@ -12388,9 +12394,9 @@ litecoinads.com##[class^="bmadblock"]
 litecoinfaucet.info##+js(acis, document.getElementById, DOMContentLoaded)
 live-tv-channels.org##+js(aopr, adBlockDetected)
 live-tv-channels.org##+js(nostif, adBlocked)
-live-tv-channels.org##._ads-in-player
 live-tv-channels.org##.adsense-player
 live-tv-channels.org##.adsense-player-2
+live-tv-channels.org##[class^="_ads-"]
 live.crackstreams.*##.m-1.fw-bold.btn-danger.btn[data-openuri="|BTN_URL|"]
 live.dragaoconnect.net###yx-sli1
 live.dragaoconnect.net###yx-sli2
@@ -13177,8 +13183,8 @@ mitly.us##.adsbygoogle
 mitly.us##[href^="http://deloplen.com/"]
 mitsubishiclub.cz##.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="banner"]
 mittelhessen.de##[class*="Banner"]
+mittelhessen.de##[class*="banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -15408,10 +15414,9 @@ promo-visits.site##+js(nosiif, visibility, 1000)
 promo-visits.site##+js(set, puURL, '')
 promo-visits.site##.banner
 promo-visits.site,satoshi-win.xyz,shorterall.com###qc-cmp2-container + p
-promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, avc3, noopFunc)
+promo-visits.site,satoshi-win.xyz,shorterall.com##+js(nobab)
 promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, blurred, false)
 promo-visits.site,satoshi-win.xyz,shorterall.com##+js(set, google_ads, true)
-promo-visits.site,satoshi-win.xyz,shorterall.com##^script:has-text((http))
 promo-visits.site,shorterall.com##+js(ra, disabled, .btn-primary)
 promo-visits.site,shorterall.com##.btn-primary:style(visibility: visible !important;)
 pronpic.org##+js(aopr, document.createEvent)
@@ -15683,11 +15688,10 @@ reallifecam.vip##.pm-ads-banner
 reallifecamsex.xyz##+js(aopr, absda)
 reallifecamsex.xyz##.pm-ads-banner
 realtime-chart.info##td[style^="vertical-align"] div[style^="top"] [class^="amazoom"][onclick]
-realtime-chart.info##td[style^="vertical-align"] div[style^="top:"] a[onmousedown]
-realtime-chart.info#@#+js(ra, onmousedown, a)
+realtime-chart.info##td[style^="vertical-align"] div[style^="top:"] img[src*="/clip_"] + b
 realtime-chart.info#@#div[data-js]:style(background: none !important; cursor: default !important;)
-realtime-chart.info#@#div[onclick][style*="cursor:pointer"]:style(pointer-events: none !important;)
 realtime-chart.info#@#div[style^="top:1"] > a[href^="https://a.r10.to"]:style(pointer-events: none !important;)
+realtime-chart.info#@#img[src*="/clip_"] + b:style(background: none !important; font-size: 0 !important;)
 realyoungsex.com###topbar
 reamporn.com###bnclose
 reamporn.com##.ave-pl
@@ -17792,7 +17796,6 @@ tiki.vn##.brand-ad:upward(div)
 tiki.vn##[class^="ProductList__Wrapper"] > div
 time4tv.stream##+js(acis, atob, decodeURIComponent)
 timeforbitco.in##+js(set, adBlock, false)
-timelessleaf.com##+js(acis, document.createElement, admiral)
 timesnowhindi.com##.ad-panel-wrap
 timesnowhindi.com##.ad-section-one
 timesnowhindi.com##.ad-section-three
@@ -20482,7 +20485,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||bambarmedia.com^$3p
 ||bananamovies.net/*.php|$1p,script
 ||bananamovies.net/sw.js$1p,script
-||banaraswap.in/wp-content/plugins/a-wg-safelink1/assets/play.webp
 ||bannertrack.net^$3p,redirect-rule=nobab2.js:10,script
 ||baomay01.com^$3p
 ||baremetrics.com^$3p
@@ -21817,6 +21819,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jinshanduba.org.cn^$all
 ||jizz.us/loco/$script
 ||jlydxj.com^$all
+||jNKmS0zFuEh.click^$all
 ||jobrave.live^$all
 ||johannesburg.top^
 ||join.megaphonetv.com^$3p,badfilter
@@ -22331,6 +22334,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||p-cdn.us/public/*$media,redirect=noopmp3-0.1s,domain=soundcloud.com
 ||p.jwpcdn.com/*/vast.js$domain=saruch.co
 ||p.jwpcdn.com/*/vast.js$important,script,domain=timesnownews.com
+||p5tvhrlw30h.click^$all
 ||pa5g7e5xs9.com^$all
 ||padsabs.com^
 ||padsims.com^
@@ -22403,6 +22407,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pingit.*/sw.js$1p,script,domain=~pingit.com|~pingit.me
 ||pixlr.com/dad/cut/$frame
 ||pixsense.net^$3p
+||pjljo54uk.click^$all
 ||pl.allsports4free.club^
 ||pl.allsports4u.club^
 ||plausible.io/js/plausible.js$important,redirect=noopjs,script
@@ -23269,11 +23274,13 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||usdownload.widost.com^$all
 ||userload.*/maroc.js$1p,script
 ||userscloud.com/js/de.min.js$1p,script
+||usmall.xyz^$all
 ||usmlematerials.net^$image,domain=micloudfiles.com
 ||ussive.com^
 ||utorrent.it^$doc
 ||utubeworkers.com/Campaigns/$script,xhr,domain=vivud.com
 ||v.embed-cdn.com/v8/player.js$script,domain=streamable.com
+||v1asy4ncr.click^$all
 ||va.huya.com^
 ||vadspremium.com^$3p
 ||valipl.cp31.ott.cibntv.net^$media,redirect=noopmp3-0.1s,domain=youku.com
@@ -23454,6 +23461,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||wuzhuiso.com^$removeparam=src
 ||ww-softs.com^$all
 ||wwtracking.net^$all
+||www-info-cr-mufg.facebook-pay.com^$all
 ||www-moviesflix.com^$domain=zipurls.com
 ||www.sfr.fr^$redirect-rule=noop.js,script,domain=red-by-sfr.fr
 ||www.techpowerup.com/reviyuu/$1p,image
