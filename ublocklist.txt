@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: ABwGxW9/YDOsYDgoof/WtA
+! Checksum: ucIvn49r6Twyv88T2UE7MA
 ! Expires: 2 days
-! Version: 202302181811
+! Version: 202302190610
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23751, sources at 2023/02/18 18:11 UTC+8
+! Total lines: 23759, sources at 2023/02/19 06:10 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -688,11 +688,12 @@ $3p,script,domain=zdnet.fr
 .top/event|$3p,xhr
 .top/index-install.html|$doc
 .top/prize/*.php?c=$doc
-.top/robot4/*&a=$doc,domain=top
+.top/robot4*&a=$doc,domain=top
 .top/vpnupdate/*/index.html$doc
 .wasm|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
 .wa|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
 .wsm|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
+.xyz/ddos/1tn.html?clickid=$doc
 .xyz/event|$3p,xhr
 .xyz/related_1.html?$3p,frame
 .xyz/universal_1.html?$3p,frame
@@ -729,6 +730,7 @@ $3p,script,domain=zdnet.fr
 /?rb=*&zoneid=$3p,popup,xhr
 /?referral=sythe$all
 /?s1=*&click_id=$doc
+/?srv_id=@$doc
 /?t=main9expsess|$doc
 /?track=*&key=$all
 /?type=*&button=2&clickid=$doc
@@ -778,6 +780,7 @@ $3p,script,domain=zdnet.fr
 /^https:\/\/[0-9a-z]{3,}\.[-a-z]{10,}\.(?:li[fv]e|top|xyz)\/[a-z]{8}\/\?utm_campaign=\w{40,}/$doc,match-case,domain=life|live|top|xyz
 /^https:\/\/[0-9a-z]{3,}\.[-a-z]{10,}\.top\/[a-z]{8}\/\?(?:cid=[0-9a-z]+&)?u=[0-9a-z]+&/$doc,domain=top
 /^https:\/\/[0-9a-z]{7,25}\.com\/v2(?:\/0\/)?(?=[-_0-9a-z]{0,84}[A-Z])(?=[-_a-zA-Z]{0,84}[0-9])[-_0-9a-zA-Z]{54,85}(#\?v=[0-9a-f]{32})?$/$3p,match-case,script,xhr
+/^https:\/\/[a-z]+\.com\/away\.php\?url=[%0-9A-z]{100,}$/$doc
 /^https:\/\/[a-z]{2,14}\.wp\.pl\/[a-zA-Z0-9_-]{200,915}$/$script,domain=nowy.tlen.pl|poczta.o2.pl|profil.wp.pl
 /^https:\/\/[a-z]{2,14}\.wp\.pl\/[a-zA-Z0-9_-]{200,}/$badfilter,script,domain=nowy.tlen.pl|poczta.o2.pl|profil.wp.pl
 /^https:\/\/[a-z]{2,3}\d\.biz\/go\/[0-9a-z]{15,18}$/$doc,domain=biz
@@ -933,6 +936,7 @@ $3p,script,domain=zdnet.fr
 /google-analytics-$badfilter,~image
 /google-analytics.$badfilter,script
 /google-analytics.$badfilter,~image
+/google-tag-manager.min.js$redirect-rule=googletagmanager-gtm.js,script,domain=511tactical.com
 /googleanalytics.js$3p
 /googleanalytics.js$badfilter
 /grgfbigo.js
@@ -1619,6 +1623,7 @@ $3p,script,domain=zdnet.fr
 ://adv.$badfilter,domain=~adv.asahi.com|~adv.bet|~adv.cincsys.com|~adv.co.it|~adv.cpa-api.ru|~adv.cryptonetlabs.it|~adv.derfunke.at|~adv.design|~adv.digimatix.ru|~adv.ec|~adv.ee|~adv.gg|~adv.michaelgat.com|~adv.msk.ru|~adv.neosystem.co.uk|~adv.rest|~adv.ru|~adv.tools|~adv.trinet.ru|~adv.ua|~adv.vg|~adv.vn.ua|~adv.works|~adv.yomiuri.co.jp|~advids.co|~erti.se|~escreverdireito.com|~farapp.com|~forex-tv-online.com|~pracuj.pl|~r7.com|~typeform.com|~welaika.com
 ://adv.$domain=~adv.asahi.com|~adv.bet|~adv.chunichi.co.jp|~adv.cincsys.com|~adv.co.it|~adv.cpa-api.ru|~adv.cr|~adv.cryptonetlabs.it|~adv.derfunke.at|~adv.design|~adv.digimatix.ru|~adv.ec|~adv.ee|~adv.gg|~adv.hokkaido-np.co.jp|~adv.lack-girl.com|~adv.michaelgat.com|~adv.msk.ru|~adv.neosystem.co.uk|~adv.rest|~adv.ru|~adv.tools|~adv.trinet.ru|~adv.ua|~adv.vg|~adv.vn.ua|~adv.works|~adv.yomiuri.co.jp|~advids.co|~erti.se|~escreverdireito.com|~farapp.com|~forex-tv-online.com|~pracuj.pl|~r7.com|~typeform.com|~welaika.com
 ://api.*/lib/native.wasm$3p
+://e.*.top/video/?c=$doc
 ://ply.*/?v=$3p,image
 ://posthog.$script,domain=~posthog.com
 ://vip.*/?pge=$3p,image
@@ -1727,7 +1732,6 @@ $3p,script,domain=zdnet.fr
 @@||4cdn.org/adv/*$image,domain=4channel.org
 @@||4cdn.org^$script,domain=4chan.org
 @@||4strokemedia.com^$script,xhr,domain=ilmeteo.it|oasport.it
-@@||511tactical.com/*/Magento_GoogleTagManager/js/google-tag-manager.min.js$1p,script
 @@||65creedmoor.com^$ghide
 @@||71i.de/*/loader.js$script,domain=sportdeutschland.tv
 @@||777partner.com^$image,media,domain=jetztlive.com
@@ -6760,7 +6764,10 @@ cartoonbrew.com##.ad-inner
 cartoonbrew.com##.cb-ad
 cartoonporno.xxx##+js(aopr, prPuShown)
 cartoonporno.xxx##+js(nowoif)
+cartoonth12.com##.dessert-frame
 cartoonth12.com##.header-ad
+cartoonth12.com##.video-player.responsive-player
+cartoonth12.com##[href="https://www.sagame350.bet/"]
 cartoonvideos247.com##.adv
 cartoonvideos247.com##.sponsor
 cartoonvideos247.com##.topad
@@ -8597,7 +8604,7 @@ etkisizeleman.com##+js(nostif, nextFunction, 250)
 etonline.com##+js(aopr, _sp_._networkListenerData)
 etonline.com##+js(set, canRunAds, true)
 etsy.com##.listing-link[href*="ref=sc_gallery"]:upward(li)
-etsy.com##li.wt-list-unstyled .v2-listing-card__info > div.wt-text-truncate.wt-text-caption > span[class] > span[class]:upward(1):matches-css(display: inline-block):upward(li)
+etsy.com##li.wt-list-unstyled .v2-listing-card__info > .wt-text-truncate.wt-text-caption > p:has-text(/^ad /i):matches-css(display: inline-block):upward(li)
 ettv.*##+js(aopr, AaDetector)
 ettv.*##+js(nowoif)
 ettv.*##+js(popads-dummy)
@@ -13144,8 +13151,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="banner"]
 mittelhessen.de##[class*="Banner"]
+mittelhessen.de##[class*="banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -15643,12 +15650,11 @@ reallifecam.vip##+js(aopr, decodeURI)
 reallifecam.vip##.pm-ads-banner
 reallifecamsex.xyz##+js(aopr, absda)
 reallifecamsex.xyz##.pm-ads-banner
-realtime-chart.info##td[style^="vertical-align"] div[style^="top:"] div[onclick] > img[src*="/clip_"] + b:has-text(/Amazon|楽天市場/)
-realtime-chart.info##td[style^="vertical-align"] div[style^="top:"] img[src*="/clip_"] + b
+realtime-chart.info#?#td[style^="vertical-align"] div[style^="top:"] div[onclick]:has(> img[src*="/clip_"] + b:has-text(/Amazon|楽天市場/)):style(pointer-events: none !important;)
 realtime-chart.info#@#.amazon22 > div.amazonwar
 realtime-chart.info#@#a[href^="https://px.a8.net/svt/ejp?"]:style(pointer-events: none !important;)
-realtime-chart.info#@#img[src*="/clip_"] + b:style(background: none !important; font-size: 0 !important;)
 realtime-chart.info#@#td[style^="vertical-align"] div[style^="top:"] img[src*="/clip_"] + b
+realtime-chart.info#@?#td[style^="vertical-align"] div[style^="top:"] div[onclick] > img[src*="/clip_"] + b:has-text(/Amazon|楽天市場/)
 realyoungsex.com###topbar
 reamporn.com###bnclose
 reamporn.com##.ave-pl
@@ -19367,7 +19373,6 @@ wordcounter.icu##div[style*="z-index:99999"] > div[style*="width:300px"]
 wordgames.com###ad-gamepage-leaderboard
 wordgames.com###skyscraper-container
 wordgames.com###skyscrapper-container
-work.ink###overlay
 work.ink##+js(ra, href, [href*="jump"], stay)
 work.ink#@#+js(nostif, waldo)
 workink.click##+js(no-fetch-if, cloudfront)
@@ -19518,7 +19523,7 @@ xervoo.net##+js(adfly-defuser)
 xfiles.io##+js(aopr, app_vars.force_disable_adblock)
 xfiles.io##+js(set, blurred, false)
 xfreehd.com##+js(acis, document.querySelectorAll, popMagic)
-xfreehd.com##+js(acis, setTimeout, .ad)
+xfreehd.com##.ad-body:remove()
 xfreehd.com##.nvheader > span:has-text(Advertisement)
 xfreepornsite.com##+js(acis, document.querySelectorAll, popMagic)
 xhamster-sexvideos.com##.vjs-overlay
@@ -21790,6 +21795,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jootizud.net^
 ||jorpetz.com/kahitano/banner.gif
 ||josannastudio.co^$all
+||jpmalls.xyz^$all
 ||js.helltraffic.com/fluidplayer/scripts/webvtt.min.js$important,script,domain=tubewolf.com
 ||js.wpadmngr.com/static/adManager.js$redirect-rule=noopjs,script
 ||jscrambler.com/api/statistics
@@ -22527,6 +22533,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pubovore.com^$3p
 ||pufgilsofp.sbs^$all
 ||pugliain.net/wp-content/uploads/*.gif$image
+||pulan.site^$all
 ||punosy.best^$3p,domain=~ouo.today
 ||punosy.top^$3p
 ||pupok.link^$all
@@ -23048,6 +23055,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||thevideo.*^$csp=worker-src 'none';
 ||thevidhd.*/sw.js$1p,script
 ||thisiswaldo.com/static/js$redirect-rule=noop.js,script
+||thostco.club^$all
 ||thothd.com^$1p,image,redirect-rule=1x1.gif
 ||thotvids.com/player/html.php$frame
 ||thunderbird.es^$doc
