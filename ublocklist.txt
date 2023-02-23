@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: QAJYtb7OrdxvG0pemtSycw
+! Checksum: UNVE22oOpti77ID6v0QNuA
 ! Expires: 2 days
-! Version: 202302230610
+! Version: 202302231812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23904, sources at 2023/02/23 06:10 UTC+8
+! Total lines: 23910, sources at 2023/02/23 18:12 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -266,7 +266,9 @@
 #@#div[id^="div-gpt-"]
 $3p,script,domain=zdnet.fr
 &adspot_id=*&cost=0.$doc
+&cbrandom=$badfilter
 &click_price=0.*&click_id=$doc
+&clicktag=http$badfilter
 &dci=*&tds_campaign=$doc
 &key=*&adb=y$3p,popup
 *##.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -6673,8 +6675,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -7957,6 +7959,7 @@ donugdee.com##.moviePlayer
 dood.*##+js(acs, adcashMacros)
 dood.*##+js(acs, decodeURI, decodeURIComponent)
 dood.*##+js(acs, document.createElement, 'script')
+dood.*##+js(aopr, __aaZoneid)
 dood.*##+js(aopw, _pop)
 dood.*##+js(aopw, DoodPop)
 dood.*##+js(nostif, debugger)
@@ -12762,6 +12765,7 @@ mangalek.com##+js(acis, String.fromCharCode, decodeURIComponent)
 mangalist.org##+js(nosiif, 0x)
 mangallama.com##+js(acis, $, height)
 mangamanga.*##+js(aeld, keydown)
+mangameta.com##+js(nowoif)
 mangameta.com##.flex-1 > .adsbyexoclick:upward(1)
 manganelo.tv##+js(aopr, JSON.parse)
 mangaonline.fun##+js(acis, document.querySelectorAll, popMagic)
@@ -13196,8 +13200,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -13908,7 +13912,8 @@ newtumbl.com##.nt_holder_of_promoish_content
 newyorker.com##+js(set, paywallGateway.truncateContent, noopFunc)
 newyorker.com##.journey-unit
 newyorker.com##.paywall-registration-gate
-next-episode.net##+js(aopr, showNotice)
+next-episode.net##+js(set, showTheNotice, undefined)
+next-episode.net##[id=""]
 nextorrent.*##+js(acis, jQuery, popunder)
 nextorrent.*##+js(ra, onclick)
 nexusmods.com##+js(nano-stb, timer)
@@ -22218,6 +22223,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||multinews.me^$3p
 ||multipledrawers.com^
 ||multiup.us/cdn-cgi/trace$1p,xhr
+||munkop.com^$all
 ||musicinmysoul.biz^$all
 ||musmentportal.com^$all
 ||mw19c3mi5a.com^$3p
@@ -22722,6 +22728,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||rawgit.com/fahimraza/FK/master/ad-unblocker.js^$script
 ||rawgit.com/Pocketart/$3p,script
 ||rcsobjects.it/rcs_anti-adblocker
+||rdagfaw.shop^$all
 ||readytosinglesmeet.com^$all
 ||real-women-online.com^$all
 ||realgfporn.com/sw.js$1p,script
@@ -23482,7 +23489,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||watchadsfree.com^$all
 ||watchfreejavonline.co/*.gif$1p,image
 ||watchfreexxx.net/*.php$1p,script
-||watchmdh.to/*.gif$image
 ||watchmyexgf.net/z/gf.jpg
 ||watchmygf.me/js/popupimage.js
 ||watchnewvids.today^
