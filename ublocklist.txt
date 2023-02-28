@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: BEf0RUat7NXHkq+qVg3q5Q
+! Checksum: rnO26gXWcLoHzjDz8QWCmQ
 ! Expires: 2 days
-! Version: 202302280612
+! Version: 202302281813
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23921, sources at 2023/02/28 06:12 UTC+8
+! Total lines: 23926, sources at 2023/02/28 18:13 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -1513,7 +1513,7 @@ $3p,script,domain=zdnet.fr
 4movierulz1.*##[href^="https://api.whatsapp.com/send"]
 4movierulz1.*,filmygod6.*##+js(nowoif)
 4players.de##+js(set, adBlockerDetected, false)
-4players.de,buffed.de,gamesaktuell.de,gamezone.de,pcgames.de,pcgameshardware.de,videogameszone.de,welt.de##+js(set, CustomEvent, noopFunc)
+4players.de,buffed.de,gamesaktuell.de,gamezone.de,pcgames.de,player.pcgameshardware.de,videogameszone.de,welt.de##+js(set, CustomEvent, noopFunc)
 4porn4.com##+js(acis, document.querySelectorAll, popMagic)
 4porn4.com##.table
 4rkinggame.com,phimmoiaz.cc,thuvienhd.com,tvhay.top,xemhaivn.com##+js(aopr, popunder)
@@ -5786,6 +5786,7 @@ aternos.org##.header-link-exaroton-link:style(pointer-events: none !important;)
 aternos.org##.header-link-exaroton:style(filter: opacity(0) !important;)
 aternos.org##.sidebar:style(width: 0px !important;)
 aternos.org##[style*="opacity:  0"]
+aternos.org#@##placement-takeover
 aternos.org#@#.header-exaroton-link
 aternos.org#@#.header-link-exaroton-link:style(pointer-events: none !important;)
 atgearn.xyz##+js(aopr, app_vars.force_disable_adblock)
@@ -6251,6 +6252,7 @@ bilibili.com,dandanzan.top,nunuyy.*,v.qq.com##+js(nowebrtc)
 binbox.io##+js(acis, $, adblock-detected)
 bing.com###b_results > li[style]:not([class])
 bing.com###pole:has-text(/Ads|Anzeigen/)
+bing.com##.b_adLastChild:style(position: absolute !important; top: -9999px !important;)
 bing.com##.b_algo:has(.b_textAdTitleLink)
 bing.com##.ins_exp.tds
 bing.com##.ins_exp.vsp
@@ -6260,7 +6262,6 @@ bing.com##:matches-path(~ /shop) a[href*="/aclick?"]:not(.vsp_ads)
 bing.com##[mv-data^="Ads"]:has([href*="aclick"]):upward(.b_overlay)
 bing.com##[onclick^="ad_choice"]:upward(3)
 bing.com#?#.b_algo:has(.b_caption > *:matches-css-before(display:inline-block))
-bing.com#@##b_results > li:not(.b_algo):not(.b_ans):not(.b_pag):not(.aca_algo):not(.aca_algo_count):not(.b_msg)
 bing.com#@#.b_ad:remove()
 bing.com#@#.b_adLastChild
 bing.com#@#a[href*="/aclick?ld="]
@@ -7086,7 +7087,9 @@ claimfreebits.com##+js(aopr, NoAdBlock)
 claimfreebits.com##+js(set, blurred, false)
 claimfreebits.com##.adnewos
 claimrbx.gg##+js(nostif, swal, 500)
+claimtrx.com##+js(aeld, load, 'block')
 claimtrx.com##+js(nosiif, visibility, 1000)
+claimtrx.com##.ads
 clamor.pl##+js(no-fetch-if, ads)
 clasicotas.org##+js(aopr, nombre_dominio)
 clasicotas.org##+js(nowoif)
@@ -10290,8 +10293,10 @@ gurl.pw##+js(nosiif, visibility, 1000)
 gutekueche.at##+js(set, gkAdsWerbung, true)
 h-flash.com###topzone
 h-flash.com##+js(nowoif)
+h-flash.com##+js(set, adblocked, false)
 h-flash.com##[href^="https://chaturbate.com/in/"]
 h-flash.com##[href^="https://t.aagm.link/"]
+h-flash.com##a[style*="background: url(\"/data/image/mcs/chat.jpg\")"]
 h-flash.com#@#.google-ads
 h5.fotor.com###main:style(right: 0 !important;)
 haaretz.com##+js(acis, $, AdBlockUtil)
@@ -11090,12 +11095,12 @@ imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwe
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(nostif, 0x)
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(nowoif)
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(set, hold_click, false)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgxqy.online##+js(aopr, console.clear)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgxqy.online##+js(nano-sib, timer)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgxqy.online##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgxqy.online##div[class][style="display: block;"]
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgxqy.online##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgxqy.online##div[style="width:100%;height:110px"]
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgxqy.online##+js(aopr, console.clear)
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgxqy.online##+js(nano-sib, timer)
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgxqy.online##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgxqy.online##div[class][style="display: block;"]
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgxqy.online##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgxqy.online##div[style="width:100%;height:110px"]
 imgclick.net##+js(aopw, Fingerprint2)
 imgclick.net##+js(noeval)
 imgcloud.pw##+js(popads-dummy)
@@ -11253,8 +11258,8 @@ instaanime.com##+js(nostif, length)
 instaanime.com##+js(nowoif)
 instagram.com#?#main > div > section div[style*="flex-direction: column;"] > article > div:has(span:has-text(/Sponsored|Gesponsert|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/))
 instagram.com#?#main > div > section div[style*="flex-direction: column;"] > article > div:has(span:has-text(/Sponsored|Gesponsert|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/)):style(visibility: hidden !important;)
-instagram.com#@#article[role="presentation"] > div[style]:has(span:has-text(/Gesponsert|Sponsored|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/))
 instagram.com#@#div[style="max-height: inherit; max-width: inherit;"]:has(span:has-text(Paid partnership with ))
+instagram.com#@?#article[role="presentation"] > div[style]:-abp-has(span:-abp-contains(/Anzeige|Gesponsert|Sponsored|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/))
 instapornvideos.com##.container-sts-bl
 insurance-space.xyz##div[id^="bsa-zone_"]
 insurance-space.xyz,theconomy.me###wpsafe-generate:style(display: block !important;)
@@ -15412,7 +15417,6 @@ pradjadj.com##[href="/advertise"]
 prajwaldesai.com##+js(nostif, ai_)
 praxis-jugendarbeit.de##+js(nostif, nextFunction, 2000)
 precitaj.si##ins.adsbygoogle
-preisvergleich.pcgameshardware.de#@#+js(set-constant, CustomEvent, noopFunc)
 premid.app##+js(nano-sib, clearInterval)
 premid.app##+js(nosiif, innerHTML)
 premid.app##ins.adsbygoogle
@@ -21661,6 +21665,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||gwa8i3rrf9mwozpi.pro^$3p
 ||gyonlineng.com/sw.js$1p,xhr
 ||h-cdn.com/loader.js$script,domain=camwhores.tv
+||h-flash.com/data/image/mcs/chat.jpg$image
 ||hallway.netnaija.app/deliver.1.5.js$3p,script
 ||handbrake.es^$doc
 ||handbrake.it^$doc
@@ -21846,6 +21851,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||imgzong.*^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
 ||imgzong.*^$csp=script-src * 'unsafe-inline'
 ||imilroshoors.com^$all
+||imobileporn.com/premium/$frame
 ||imsdb.pw/cdn-cgi/trace
 ||imsdb.pw/player/ip.php
 ||incasapritif.tech^
@@ -23739,10 +23745,9 @@ zwergenstadt.com##+js(aeld, load, onload)
 ~vipbox.pl,vipbox.*,vipboxtv.*##.position-absolute
 !#if env_chromium
 *$script,3p,denyallow=ajax.googleapis.com|gstatic.com|twitter.com,domain=watchomovies.*
-@@||ezojs.com/ezoic/sa.min.js$script,domain=apkmirror.com
 @@||subaru.com/guides/*/libs/adobe/AppMeasurement.js$script,1p
 @@||svonm.com/hd-main.js$script,domain=kicker.de|kino.de|videos.giga.de|video.spieletipps.de,badfilter
-apkmirror.com###ezmob-wrapper
+apkmirror.com##.ains:style(height: 1px !important; min-height: 1px !important; padding: 0px !important;)
 facebook.com,facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion##html[lang="en"] div[aria-posinset] svg[style$="width: 56.8906px;"] use:upward(div[aria-posinset])
 facebook.com,facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion##html[lang="pl"] div[aria-posinset] svg[style$="width: 78.5465px;"] use:upward(div[aria-posinset])
 facebook.com,facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion##html[lang="vi"] div[aria-posinset] svg[style$="width: 65.0684px;"] use:upward(div[aria-posinset])
