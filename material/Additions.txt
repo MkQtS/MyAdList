@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! See: https://github.com/xinggsf/Adblock-Plus-Rule/commits/master/mv.txt
-! LastCommit: 492775c51b617b2e31b6bdb6f669bf2a9114e57c
+! LastCommit: d31e33303bd6991cc61d70be08bc3fa20042407c
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,third-party,domain=youtube.com
@@ -10,9 +10,9 @@
 @@||tb.mgtv.com/sdk/*/ad-sdk.
 @@||union.video.qq.com/fcgi-bin/$script,domain=qq.com
 1905.com##+js(json-prune,videolink)
-996dm.com,dmlaa.com,dandanzan.com,dandanzan10.top,nunuyy5.org,btnull.*##+js(m3u-prune, /^http/, /^https:\/\/vip\.lz-?cdn\d*\./)
 acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
 age.tv,agemys.net##+js(noeval-if, devtoolsDetector)
+dandanzan.cf,nunuyingyuan.com,ddys.buzz##+js(m3u-prune, /^http/, /^https:\/\/vip\.ffzy-(?:play|online)\d*\..+\.m3u8$/)
 dandanzan.com,dandanzan10.top,nunuyy5.org##+js(set,mozRTCPeerConnection,null)
 dandanzan.com,dandanzan10.top,nunuyy5.org##+js(set,RTCPeerConnection,null)
 dandanzan.com,dandanzan10.top,nunuyy5.org##+js(set,webkitRTCPeerConnection,null)
@@ -49,6 +49,7 @@ video.qq.com#@#+js(no-xhr-if,/trace\.|\/collect/)
 video.qq.com#@#+js(json-prune,ads adList.item)
 video.qq.com#@#+js(set,RTCPeerConnection,null)
 www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
+www.sbdm.net##.ads_all:remove()
 www.sbdm.net##.dplayer-web-fullscreen-fix .billhao-head-image, .dplayer-web-fullscreen-fix #topnav
 www.ted.com##.gm-fp-body .justify-center.tracking-tightest
 yatu.tv##.dplayer-web-fullscreen-fix #tburl,#loadtop,[id^=myas],#myds1,#daohang
