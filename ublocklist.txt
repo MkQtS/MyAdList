@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: tgaZnPZF5IMhEZbVxMV6DA
+! Checksum: 54gHs/VrUr5DULYLBahMaQ
 ! Expires: 2 days
-! Version: 202303061813
+! Version: 202303070611
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23841, sources at 2023/03/06 18:13 UTC+8
+! Total lines: 23847, sources at 2023/03/07 06:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -662,6 +662,7 @@ $3p,script,domain=zdnet.fr
 -google-analytics.$badfilter
 -google-analytics/$3p,domain=~wordpress.org
 -google-analytics/$badfilter,domain=~wordpress.org
+-telemetry.officeapps.live$ping,xhr
 ./M5q5.js$script
 .at/bilder/*.jpg|$1p,script
 .biz/sw/w1s.js|$3p,script
@@ -739,7 +740,7 @@ $3p,script,domain=zdnet.fr
 /?rb=*&zoneid=$3p,popup,xhr
 /?referral=sythe$all
 /?s1=*&click_id=$doc
-/?srv_id=@$doc
+/?srv_id=*#$doc
 /?track=*&key=$all
 /?type=*&button=2&clickid=$doc
 /?v=eyI*sImgiOiJodHRwczovL$1p,image
@@ -4010,6 +4011,7 @@ $3p,script,domain=zdnet.fr
 @@||safeloadfile.*^$ghide
 @@||safetxt.*^$ghide
 @@||sageadvice.eu^$ghide
+@@||sagicheck.jp/jp/check/$doc
 @@||samuraiscan.com^$ghide
 @@||sankakucomplex.com^$ghide
 @@||sapo-ams.gscontxt.net/main/channels-json.cgi?$xhr,domain=freemcserver.net
@@ -10947,6 +10949,7 @@ igg-games.com##+js(nostif, _0x)
 igg-games.com##+js(ra, srcdoc, iframe)
 igg-games.com##.uk-panel.widget-text:style(height: 0px !important; visibility: collapse;)
 igg-games.com##[href^="https://tm-offers"]
+igg-games.com##a[href^="https://stARtgAmINg.net/"] > img
 igg-games.com#@#.uk-panel.widget-text
 igirls.in##+js(nostif, ads)
 ign.com###king
@@ -18382,17 +18385,17 @@ ultrateenporn.com##+js(aopr, document.dispatchEvent)
 ultraten.net##+js(set, blurred, false)
 ultraten.net,uniqueten.net##+js(acis, document.querySelectorAll, popMagic)
 ultraten.net,uniqueten.net##+js(aopw, _pop)
+unblocked.name##+js(acis, adcashMacros)
 unblocked.name##+js(aopr, decodeURIComponent)
 unblocked.name##+js(aopr, GetWindowHeight)
 unblocked.name##+js(aost, Math.random, )
+unblocked.name##.cborz-bordered
+unblocked.name##.durs-bordered
 unblocked.name##[id^="cookie"]
-unblocked.name,unblockit.ltd##+js(acis, adcashMacros)
-unblocked.name,unblockit.ltd##.cborz-bordered
-unblocked.name,unblockit.ltd##.durs-bordered
-unblocked.name,unblockit.ltd##[style*="decoration"]:not([style^="width"])
-unblockit.name###ni-overlay
-unblockit.name##+js(acis, setTimeout, admc)
-unblockit.name##center
+unblocked.name##[style*="decoration"]:not([style^="width"])
+unblockit.*###ni-overlay
+unblockit.*##+js(acis, setTimeout, admc)
+unblockit.*##center
 unblocknow.*###cookieConsentVPN666
 unblocknow.*##+js(aopw, _pop)
 unblocknow.*##.adstg
@@ -20106,7 +20109,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 |https://$3p,badfilter,image,script,domain=damimage.com|imagedecode.com|imageteam.org
 |https://$3p,badfilter,script,domain=cloudvideo.tv|thepiratebay.org|universityherald.com|vcpost.com|youthhealthmag.com|zone-anime.net
 |https://$3p,badfilter,xhr,domain=cloudvideo.tv|imagefap.com|kimcartoon.to|putlocker.style|zippyshare.com
-||*-telemetry.officeapps.live.com
 ||*ontent.steamplay.*^$all
 ||01fmovies.com/mmmasdfl-asd$1p,xhr
 ||01net.com/telecharger/$doc
@@ -21193,6 +21195,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||enbdev.com/_main.js$1p,script
 ||encar.com/js/*/analytics.js$1p,redirect-rule=noop.js,script
 ||endingthefed.com^
+||enerab.com^
 ||eneverals.biz^$all
 ||engagingtheheart.com^$all
 ||eniedu.com^$doc
@@ -21898,6 +21901,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||kaguraserver.com/wp-content/uploads/*-Ad-300-
 ||kaguraserver.com/wp-content/uploads/*-Ad-728-
 ||kaminarisubs.net^$all
+||kangawabeank.com^$all
 ||karconsulting.us^$3p
 ||kataprius.com^
 ||katestube.com/jsb/js_script.js
@@ -22428,6 +22432,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||parsely.com^$badfilter
 ||partner.googleadservices.com/gampad/cookie.js?domain=$important,script,domain=anydebrid.com|hotdebrid.com
 ||partners2.das-onlinespiel.de^$3p
+||partnerstack.com^$3p
+||partnerstack.com^$badfilter
 ||pastemytxt.com/downloadad.jpg
 ||paypou.com/newbanner
 ||payskip.org/sw.js$1p,script
