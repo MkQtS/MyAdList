@@ -1,6 +1,6 @@
 ! 乘风视频规则 Modified
 ! See: https://github.com/xinggsf/Adblock-Plus-Rule/commits/master/mv.txt
-! LastCommit: d31e33303bd6991cc61d70be08bc3fa20042407c
+! LastCommit: 88f8b0980d424e96fbb0e527b23d8b9d14c56601
 */letv-gug/$media,object-subrequest,xhr
 */preroll/$media,domain=91porn.com
 *_ad_$media,third-party,domain=youtube.com
@@ -12,7 +12,7 @@
 1905.com##+js(json-prune,videolink)
 acfun.cn##.pause-display-container,#ad-comment,#ad-player-view
 age.tv,agemys.net##+js(noeval-if, devtoolsDetector)
-dandanzan.cf,nunuyingyuan.com,ddys.buzz##+js(m3u-prune, /^http/, /^https:\/\/vip\.ffzy-(?:play|online)\d*\..+\.m3u8$/)
+cctv.com,www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
 dandanzan.com,dandanzan10.top,nunuyy5.org##+js(set,mozRTCPeerConnection,null)
 dandanzan.com,dandanzan10.top,nunuyy5.org##+js(set,RTCPeerConnection,null)
 dandanzan.com,dandanzan10.top,nunuyy5.org##+js(set,webkitRTCPeerConnection,null)
@@ -42,13 +42,13 @@ qq.com##+js(set,RTCPeerConnection,null)
 qq.com#@#+js(nowebrtc)
 qq.com##.mod_ad, .txp_ad, div.l_qq_com, .txp-watermark, .txp_ad_link, .txp_zt_video, .adWrap, .iwan-wrapper
 tv.sohu.com##.x-dl-shake.x-download-panel, #playerBar > div.area ~a
-v.qq.com###player  .txp_zt_content
+v.qq.com##.quick_games.quick_item,div.card-wrap
+v.qq.com###player .txp_zt_content
 v.youku.com##.control-phonewatch,#right-title-ad-banner, .kui-watermark-0
 video.qq.com#@#+js(no-fetch-if,/trace\.|beacon\./)
 video.qq.com#@#+js(no-xhr-if,/trace\.|\/collect/)
 video.qq.com#@#+js(json-prune,ads adList.item)
 video.qq.com#@#+js(set,RTCPeerConnection,null)
-www.douyu.com##+js(aeld,/visibilitychange|pagehide/)
 www.sbdm.net##.ads_all:remove()
 www.sbdm.net##.dplayer-web-fullscreen-fix .billhao-head-image, .dplayer-web-fullscreen-fix #topnav
 www.ted.com##.gm-fp-body .justify-center.tracking-tightest
@@ -89,7 +89,6 @@ yy.com,le.com##+js(nowebrtc)
 ||go.sohu.com^
 ||gstatic.com/shopping?
 ||hdslb.com/bfs/sycp/creative_img/$image
-||imall.cctv.com^$subdocument
 ||imgcache.qq.com/qzone/biz/comm/js/qbs.js
 ||ipinyou.com^
 ||iqiyi.com/videos/other/202$xmlhttprequest
