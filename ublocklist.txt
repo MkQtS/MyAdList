@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 7z/oPQ0MYinmk9DP1+0WJg
+! Checksum: guYonzUjlBKvdj2rS2lsKA
 ! Expires: 2 days
-! Version: 202303110610
+! Version: 202303111811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23808, sources at 2023/03/11 06:10 UTC+8
+! Total lines: 23809, sources at 2023/03/11 18:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -2581,6 +2581,7 @@ $3p,script,domain=zdnet.fr
 @@||doubleclick.net^$image,domain=nbc.com
 @@||doubleclick.net^$script,xhr,domain=work.ink
 @@||doubleclick.net^$xhr,domain=comidoc.net|op.gg
+@@||doubleverify.com^$xhr,domain=work.ink
 @@||douploads.*^$ghide
 @@||dove-cameron.org^$ghide
 @@||down.fast-down.com^$ghide
@@ -4067,7 +4068,7 @@ $3p,script,domain=zdnet.fr
 @@||securepubads.g.doubleclick.net/pcs/view/*$xhr,domain=joyn.de
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule,script,domain=gamedeveloper.com|golf.com|honestjohn.co.uk
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$redirect-rule=googletagservices-gpt.js:5,script,domain=aibusiness.com|olx.pt
-@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dagelijksekost.een.be|dropgalaxy.com|epaper.eenadu.net|esgentside.com|factable.com|gala.fr|gentside.*|giga.de|jn.pt|meteoetradar.com|moviepilot.de|ohmirevista.com|ohmymag.*|ojogo.pt|paraphraser.io|plataformamedia.com|soranews24.com|spiegel.de|t-online.de
+@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=dagelijksekost.een.be|dropgalaxy.com|epaper.eenadu.net|esgentside.com|factable.com|gala.fr|gentside.*|giga.de|jn.pt|meteoetradar.com|moviepilot.de|ohmirevista.com|ohmymag.*|ojogo.pt|paraphraser.io|plataformamedia.com|soranews24.com|spiegel.de|t-online.de|voici.fr
 @@||securepubads.g.doubleclick.net^$script,domain=bearteach.com|mope.io
 @@||securepubads.g.doubleclick.net^$xhr,domain=krunker.io
 @@||seekingalpha.com/*/captcha/$1p,script
@@ -4433,7 +4434,7 @@ $3p,script,domain=zdnet.fr
 @@||tra.scds.pmdstatic.net/$xhr,domain=gala.fr
 @@||tra.scds.pmdstatic.net/advertising-core/$script,domain=businessinsider.fr|esgentside.com|gentside.*|gentside.co.uk|gentside.com|gentside.de|gentside.it|maxisciences.com|ohmirevista.com|ohmymag.co.uk|ohmymag.com|ohmymag.de
 @@||tra.scds.pmdstatic.net/advertising-core/$script,xhr,domain=femmeactuelle.fr
-@@||tra.scds.pmdstatic.net/pmd-browsertools/*$script,domain=gala.fr
+@@||tra.scds.pmdstatic.net/pmd-browsertools/$script,domain=gala.fr
 @@||tra.scds.pmdstatic.net/sourcepoint/$script,domain=programme-tv.net
 @@||track.adform.net/adfscript$script,xhr,domain=fcdn.lauta.media
 @@||track.rundschau-online.de/*/api/$1p,xhr
@@ -5849,7 +5850,7 @@ automotur.club##+js(set, blurred, false)
 automotur.club,link.rota.cc##+js(aopr, adssBlocked)
 automotur.club,link.rota.cc##+js(nowoif)
 autoroad.cz##+js(nostif, check)
-autosport.com,motorsport.com##+js(nostif, /\(!0\)|\[native code\]|gtm/)
+autosport.com,motorsport.com##+js(aeld, load, Object)
 autotrader.co.uk##.search-page__products > [data-is-promoted-listing]
 autotrader.com##svg:has([transform]):upward(span)
 autotrader.com##svg:has([transform]):upward(span) + div
@@ -6690,8 +6691,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -9649,6 +9650,7 @@ gal-dem.com##+js(aopr, dsanity_ad_block_vars)
 gala.fr##+js(no-xhr-if, doubleclick)
 gala.fr#@#[data-ads-core]
 gala.fr,gentside.com,geo.fr,hbrfrance.fr,nationalgeographic.fr,ohmymag.com,serengo.net,vsd.fr##+js(nostif, checkPub, 6000)
+gala.fr,voici.fr##+js(set, DD_RUM.addTiming, noopFunc)
 galaxy-link.space##+js(aopr, app_vars.force_disable_adblock)
 galaxy-link.space##+js(set, blurred, false)
 galaxy-link.space##.box-main > .blog-item
@@ -11047,12 +11049,12 @@ imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwe
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(nostif, 0x)
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(nowoif)
 imgbbd.buzz,imgizx.buzz,imgkoc.buzz,imgkorle.buzz,imglkju.buzz,imgqte.buzz,imgwer.buzz,imgxvd.buzz,imgyng.buzz,imgyvdw.buzz##+js(set, hold_click, false)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online##+js(aopr, console.clear)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online##+js(nano-sib, timer)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online##div[class][style="display: block;"]
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online##div[style="width:100%;height:110px"]
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online##+js(aopr, console.clear)
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online##+js(nano-sib, timer)
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online##div[class][style="display: block;"]
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online##div[style="width:100%;height:110px"]
 imgclick.net##+js(aopw, Fingerprint2)
 imgclick.net##+js(noeval)
 imgcloud.pw##+js(popads-dummy)
@@ -13165,8 +13167,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -13347,9 +13349,6 @@ motorantik.store##+js(acis, addEventListener, google_ad_client)
 motoroids.com##div.AM_SINGLE_STORY_BETWEEN_CONTENT_SECOND_PARAGRAPH_RESPONSIVE
 motoroids.com##ins.adsbygoogle
 motorradonline.de,zentralplus.ch##+js(nofab)
-motorsport.com##+js(aeld, gtmloaderror)
-motorsport.com##+js(nostif, /\(!0\)|\[native code\]/)
-motorsport.com##+js(nostif, gtmDataLayer)
 motphimtv.com##+js(set, console.clear, undefined)
 mousecity.com##.banner-box
 mousecity.com##.banner-box-squareb
@@ -19392,6 +19391,7 @@ wordgames.com###skyscraper-container
 wordgames.com###skyscrapper-container
 work.ink##+js(ra, href, [href*="jump"], stay)
 work.ink##.no-overlay
+work.ink##.waldo-display-unit
 work.ink#@#+js(nostif, waldo)
 workink.click##+js(no-fetch-if, cloudfront)
 world-sms.org##.promoBlock
@@ -19776,6 +19776,7 @@ yifysubtitles.vip##+js(acs, document.createElement, /l\.parentNode\.insertBefore
 yifytorrentme.com##+js(nowoif)
 yiv.com##+js(nostif, Adb)
 yiv.com#@##adsContainer
+ylilauta.org##iframe.a:style(mix-blend-mode: color-burn !important;)
 ylilauta.org#@#iframe.a
 ymovies.*###banner_publi
 ymp4.download###mp3button
@@ -21164,8 +21165,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||eroticity.net/clientscript/popcode_
 ||eroticity.net/clientscript/poptrigger_
 ||ersties.com^$3p
-||es.ylilauta.org/static/*/view.$1p,css,script
-||es.ylilauta.org^$image,redirect=1x1.gif,domain=ylilauta.org
+||es.ylilauta.org/static/css/view.css?$1p,css
+||es.ylilauta.org^$ping
 ||escatedint.work^$3p
 ||esputnik.com^$3p,badfilter
 ||estadao.com.br/*/estadao-prevent.js$script,domain=estadao.com.br
