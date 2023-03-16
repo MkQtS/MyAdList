@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: XeSgbZlqoJRGycBbktx6ng
+! Checksum: kbpT5HFin0b6O+f55K9Q5w
 ! Expires: 2 days
-! Version: 202303160611
+! Version: 202303161812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 23834, sources at 2023/03/16 06:11 UTC+8
+! Total lines: 23851, sources at 2023/03/16 18:12 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -858,6 +858,8 @@ $3p,script,domain=zdnet.fr
 /ab/thejsfile.js
 /acc/acctag.js
 /ad-ads.$badfilter
+/ad-cdn.$badfilter,domain=~ad-cdn.getro.com
+/ad-cdn.$domain=~ad-cdn.getro.com|~hrgame.com.cn
 /ad-m.js$1p,script
 /ad.xml$badfilter,xhr
 /adblock-detect.js$important,script,domain=allcryptoz.net|crewbase.net|crewus.net|shinbhu.net|shinchu.net|thumb8.net|thumb9.net|topcryptoz.net|ultraten.net|uniqueten.net
@@ -1215,6 +1217,8 @@ $3p,script,domain=zdnet.fr
 111.90.159.159##[href^="http://buaksib.in/"]
 123-movies.*##+js(aopw, _pop)
 123-watch.com##+js(aopw, puShown)
+123anime.*##+js(acs, setTimeout, popi)
+123anime.*##+js(nowoif)
 123anime.*,123animes.*##+js(aopr, glxopen)
 123animes.*##+js(aopr, AaDetector)
 123animes.*##div[id][style^="position: fixed; inset: 0px; z-index: 2147483647;"]
@@ -3030,7 +3034,9 @@ $3p,script,domain=zdnet.fr
 @@||gotceleb.com^$ghide
 @@||govbusi.info^$script,domain=satoshi-win.xyz
 @@||gplcanyon.com^$ghide
+@@||gplinks.in/track/*$xhr,domain=mynewsmedia.co|revadvert.com
 @@||gplinks.in/track/conversion.php$xhr
+@@||gplinks.in/track/js/main.js$script,domain=mynewsmedia.co|revadvert.com
 @@||gradown.com^$ghide
 @@||grafixfather.com^$ghide
 @@||grahaflasher.com^$ghide
@@ -5783,7 +5789,7 @@ aternos.org###placement-takeover
 aternos.org##.ad-dfp:style(min-height: 0.002px !important; height: 0.002px !important;)
 aternos.org##.header-ad
 aternos.org##.header-exaroton-link
-aternos.org##.header-link-exaroton-link:style(max-height: 0.007px !important; padding: 0.007px !important;)
+aternos.org##.header-link-exaroton-link:style(max-height: 0.017px !important; padding: 0.017px !important;)
 aternos.org##.header-link-exaroton-link:style(pointer-events: none !important;)
 aternos.org##.header-link-exaroton:style(filter: opacity(0) !important;)
 aternos.org##.sidebar:style(width: 0px !important;)
@@ -6712,8 +6718,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -10192,6 +10198,7 @@ govid.me##+js(aopr, open)
 gplcanyon.com##.elementor-shortcode
 gplinks.co###link-btn:style(display:block !important;)
 gplinks.co##+js(aopr, app_vars.force_disable_adblock)
+gplinks.co##+js(aopr, clickCount)
 gplinks.co##+js(disable-newtab-links)
 gplinks.co##+js(nosiif, href)
 gplinks.co##+js(set, blurred, false)
@@ -13189,8 +13196,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -13671,6 +13678,10 @@ mynewsmedia.co##+js(disable-newtab-links)
 mynewsmedia.co##+js(no-fetch-if, googlesyndication)
 mynewsmedia.co##+js(set, count, 0)
 mynewsmedia.co##[href^="https://mauchopt.net"]
+mynewsmedia.co,revadvert.com###VerifyBtn, #myNextInst, #NextBtn, #NextInfo:others()
+mynewsmedia.co,revadvert.com###VerifyBtn:style(display:block !important;)
+mynewsmedia.co,revadvert.com##+js(nano-sib, timer, *)
+mynewsmedia.co,revadvert.com##+js(set, AdBlockerDetected, noopFunc)
 mynewspost.in##.box-main > div[style]:not(:has(#wpsafe-snp))
 mypapercraft.net##+js(nofab)
 mypapercraft.net##.ezoic-ad
@@ -20901,6 +20912,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||cpuz.beerworldstore.com^$all
 ||cpx-research.com^$3p
 ||crackwesoft.com^$doc
+||crantscopart.com^
 ||crawlcoxed.com^
 ||crazyegg.com^$3p
 ||crazyegg.com^$badfilter
@@ -21056,6 +21068,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||displayoptoffers.com^$doc
 ||disproveknob.com^
 ||distributeclick.site^$all
+||disturbcesti.digital^
 ||djin.site^$all
 ||dl-protect.net/main.js?v=$1p,script
 ||dlscord*.$all
@@ -22074,6 +22087,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||mediafiire.com^$doc
 ||mediapass.com^$3p
 ||mediausamns-a.akamaihd.net^$media,domain=funimation.com
+||medium.ngtv.io/*/media/$removeparam=ssaiProfile,xhr,domain=ncaa.com
 ||medium.ngtv.io/v2/media/*&ssaiProfile=$badfilter,removeparam=ssaiProfile,xhr
 ||meetka1.name^$all
 ||meetka2.name^$all
@@ -22738,6 +22752,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||s3.amazonaws.com/callloop/banners/$3p,image
 ||s3.amazonaws.com/dmas-public/revcontent/bundle.js
 ||s3.amazonaws.com/dmas-public/rubicon/bundle.js$script,domain=dailymotion.com
+||s3.amazonaws.com/extpro/speed4.html$all
 ||s3.amazonaws.com/homad-global-configs.schneevonmorgen.com/hd-main.js$redirect=hd-main.js,script,domain=autobild.de|cdnapi.kaltura.com|cinema.de|computerbild.de|focus.de|spieleaffe.de|sueddeutsche.de
 ||s3blog.org^$3p
 ||s4f.net^$all
@@ -22900,6 +22915,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||socialnetwork-adblocker.com^$all
 ||soft-little.com^$all
 ||soft-pro.site^$all
+||soft-upd.com^$doc
 ||sohu.com/cityjson$important,redirect=noopjs,script,domain=netac.com
 ||solarmovie.to/sw.js$1p,script
 ||solarporn.net^$3p
@@ -23233,6 +23249,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tuleceti.com^
 ||tumblebit.org^$3p
 ||turboadblocker.com^$all
+||turner.com/ads/
 ||turnhub.net^$all
 ||tusfiles.com/sw.js$1p,script
 ||tutamail.net^$all
