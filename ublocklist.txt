@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: j8YOeJ2f9oWwuyRjH6jbOA
+! Checksum: 1RP64DUQ3mVsVKNGktPJfw
 ! Expires: 2 days
-! Version: 202303221811
+! Version: 202303230608
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 24194, sources at 2023/03/22 18:11 UTC+8
+! Total lines: 24204, sources at 2023/03/23 06:08 UTC+8
 !
 ###ad-top-slot:not(:empty)
 ###ad_300:not([style^="position: absolute; left: -5000px"])
@@ -4299,6 +4299,7 @@ $3p,script,domain=zdnet.fr
 @@||static1.dmcdn.net/playerv5/*$script,domain=laprovence.com
 @@||statics.estadao.com.br/*/portal/js/comscore/$script,domain=estadao.com.br
 @@||statics.estadao.com.br/*/utils/publicidade/dfp.min.js$script,domain=estadao.com.br
+@@||statics.itc.cn/spm/prod/js/1.0.5/spm.js
 @@||stats.g.doubleclick.net/dc.js$script,domain=ticketfly.com
 @@||stfly.me^$ghide
 @@||stgeorgeutah.com^$ghide
@@ -4467,6 +4468,7 @@ $3p,script,domain=zdnet.fr
 @@||tpc.googlesyndication.com/pagead/js/loader21.html?https://hgc-cf-cache-1.svonm.com/welect.js$frame,domain=imasdk.googleapis.com
 @@||tpc.googlesyndication.com/safeframe/*/container.html$other,domain=abola.pt
 @@||tpc.googlesyndication.com/simgad/$xhr,domain=soranews24.com
+@@||tpc.googlesyndication.com^$script,xhr,domain=next-episode.net
 @@||tra.scds.pmdstatic.net/$xhr,domain=gala.fr
 @@||tra.scds.pmdstatic.net/advertising-core/$script,domain=businessinsider.fr|esgentside.com|gentside.*|gentside.co.uk|gentside.com|gentside.de|gentside.it|maxisciences.com|ohmirevista.com|ohmymag.co.uk|ohmymag.com|ohmymag.de
 @@||tra.scds.pmdstatic.net/advertising-core/$script,xhr,domain=femmeactuelle.fr
@@ -6737,8 +6739,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -15623,7 +15625,7 @@ rainanime.*##.fake_player
 raincaptcha.com##._ad-block
 rajsayt.xyz##+js(set, blurred, false)
 rakuten.com#@#.google-ads
-rakuten.tv##+js(no-xhr-if, /youboranqs01|spotx/)
+rakuten.tv##+js(no-xhr-if, /youboranqs01|spotx|springserve/)
 raky.in##+js(nano-sib)
 raky.in##+js(no-fetch-if, googlesyndication)
 rancah.com##+js(nowoif)
@@ -19529,8 +19531,7 @@ www.wp.pl###app-content > div > div > div:not([class]):not([id]):has(> div > img
 www.wp.pl###app-content > div > div:not([class]):not([id]):has(> div > div > img[src^="https://v.wpimg.pl/"][role="presentation"])
 www.wp.pl###app-content > div > div[style="box-shadow: none;"]
 www.wp.pl###app-content > div > div[style="box-shadow: none;"] + div > div:has(> div > img[src^="https://v.wpimg.pl/"][role="presentation"])
-www.wp.pl###glonews > div[data-st-area] > div > aside > div > div:last-child
-www.wp.pl###glonews > div[data-st-area] > div > aside > div:first-child > div:first-child
+www.wp.pl###glonews > div[data-st-area] > div > aside > div:first-child > div:has(a[href^="https://www.wp.pl/"] > img[src^="https://v.wpimg.pl/"])
 www.wp.pl###site-header > div:first-child
 www.wp.pl###site-header:style(min-height: 0px !important;)
 www.wp.pl##div > div[class]:has(> img[src^="https://v.wpimg.pl/"][role="presentation"] + div > div + div:empty)
@@ -20131,6 +20132,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||2345.eyunsou.com^$all
 ||2adultflashgames.com/img/$1p
 ||2conv.com^$csp=script-src *
+||2dfjwa.com^$doc
 ||2go7v1nes8.com^$3p
 ||2mdn.net/instream/html5/ima3.js$important,redirect=noopjs,script,domain=playercdn.earthtv.com
 ||2mdn.net/instream/video/client.js$redirect=noopjs,script,domain=video.foxnews.com
@@ -20184,6 +20186,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||89coins.org^$3p,popup
 ||8ebtdbsjsu.click^$all
 ||8narwi309.click^$all
+||8ngpmu.com^$doc
 ||8s8.eu^*fa.js$redirect=fuckadblock.js-3.2.0,script
 ||8senjya.jp^$doc
 ||91.241.60.117^$all
@@ -20250,6 +20253,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||adconfigproxy.azurewebsites.net/Adurl$xhr
 ||adcryp.to^$3p
 ||add.pics^$3p,script
+||addicted-to-u.com^$doc
 ||addoge.cc^$3p
 ||addthis.com/*/addthis_widget.js$redirect=addthis.com/addthis-widget.js,script
 ||adf.ly^$badfilter
@@ -20328,6 +20332,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||advidates.com^$all
 ||adweek.com^$removeparam=traffic_source
 ||adxxx.com^$3p
+||af6frm.com^$doc
 ||aff2021.com^$all
 ||affforce.com^$doc,popup
 ||affilixxl.de^$3p
@@ -20437,6 +20442,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||appcdn01.xyz^$badfilter
 ||applaud-acclaim.com^$doc
 ||apple.com-*.live^
+||apple22cd.com^$doc
 ||appnext.hs.llnwd.net^
 ||apps.apple.com/*/app/*referrer$removeparam=referrer
 ||appsflyer.com^$3p
@@ -20519,6 +20525,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ba.afl.rakuten.co.jp^$3p
 ||ba.afl.rakuten.co.jp^$badfilter
 ||babestube.com/bt*/bt.js
+||back-rich.com^$doc
 ||backblazeb2.com/*.gif$image,domain=moviehdkh.com
 ||backend.dna-delivery.com^$domain=france.tv|rt.com
 ||badana.me^
@@ -20560,7 +20567,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||best-chat.net^$doc
 ||best-friendd.net^$doc
 ||best-friendd2022.net^$doc
-||best-prizes-house.life^$all
 ||best-winplace.life^$all
 ||best18porn.com/best18.js
 ||best2019-games-web4.com^$all
@@ -20762,7 +20768,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||cdn.streamroot.io/dna-client/$script,domain=prod-player.tf1.fr
 ||cdn.taboola.com/libtrc/*/loader.js$important,redirect=noopjs,script,domain=cnet.com
 ||cdn.wallpaperhub.app/$image,domain=pandarticles.com
-||cdn.wendycode.com/blogger/antiAdbDefer.js
+||cdn.wendycode.com/blogger/antiAdb
 ||cdn.witchhut.com^$script,domain=ejocuri.ro|gamesheep.com|girlg.com|girlsplay.com|jocurifete.ro|playpod.com
 ||cdn.yahoomedia.net/creatives/*/BlackFriday
 ||cdn.yopard.com/app.js
@@ -20804,6 +20810,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||checking-your-browser.com^
 ||checkisreal.com^
 ||checkup08.biz^
+||cherry.mermaid77c.com^$doc
 ||chevrontax.info^$all
 ||chichikurimanbo.com^$doc
 ||chintsressels.com^$all
@@ -21083,6 +21090,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||dezf3o8j9jdt6.cloudfront.net^$3p
 ||df80k0z3fi8zg.cloudfront.net^
 ||dfiles.*/sw.js$1p,script
+||dgduwb.com^$doc
 ||di-ana.jp^$doc
 ||di02.biz^$all
 ||di5.biz^$all
@@ -21092,7 +21100,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||digiseller.ru^$3p,domain=leechall.com
 ||dinglike.com^$all
 ||direct-link.net^$1p,xhr
-||direct.hirlogin.com^$all
 ||directpaper.name^
 ||dirp.me^$csp=default-src 'unsafe-inline' 'self' https://extraimage.net *.extraimage.info *.imgur.com *.wikimedia.org *.dyncdn.cc *.picturedent.org https://checkmy.pictures *.dirp.me *.googleapis.com *.gstatic.com
 ||dirtyindianporn.info/js/friends.sv.js
@@ -21178,7 +21185,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||downloads2020.com^$all
 ||downloads2021.com^$all
 ||dpipel.com^
-||dracenic-gravinyl.icu^$all
 ||dragonballzpolo.*^$csp=worker-src 'none'
 ||drct-match.com^$doc
 ||drct-match.net^$doc
@@ -21228,6 +21234,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||edugrampromo.com^$3p
 ||eecain7z.com^$3p
 ||eegookiz.com^
+||eeu5dt.com^$doc
 ||eevblog.com/images/*.gif$image
 ||egnatius-ear.com^$script,domain=ouo.*
 ||egyanime.com^$domain=vidia.tv
@@ -21339,6 +21346,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||fapp.work^$doc
 ||faptitans.com^*/rc/logo.jpg
 ||farnell.com/*tracking.js$1p,redirect=noopjs,script
+||faslhd.com^$all
 ||fast-date.site^$all
 ||fast-travel.org^$all
 ||fastandslut.com^$all
@@ -21770,7 +21778,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||hltv.org/img/static/egbranking$image
 ||hobbiesshame.online^
 ||hollaforums.com/if/rc/ecigs/$1p,frame
-||holofiber.xyz^$all
 ||home4ugoog10you.com^$doc
 ||homeseventen.com^$doc
 ||homuradu.com^$all
@@ -21998,6 +22005,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jewely-line.com^$doc
 ||jhoncj.com^$3p
 ||jinshanduba.org.cn^$all
+||jivo-ce.jp^$doc
 ||jizz.us/loco/$script
 ||jlydxj.com^$all
 ||jnkms0zfueh.click^$all
@@ -22228,7 +22236,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||malayalam.samayam.com/*/amazon_widget.cms?type=amazondeal$frame
 ||malaysianwireless.com/wp-content/banners/*$1p,image
 ||mamahd.*/hd.php$frame
-||mandljigeografija.xyz^$all
 ||manga18fx.com/bmo/*.php
 ||mangahere.onl/adsbygoogle.js$1p,redirect=noopjs,script
 ||mangauptocats.online/wp-content/uploads/*.gif
@@ -22263,6 +22270,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||mc.yandex.ru/metrika/tag.js|$important,script,domain=hotdebrid.com
 ||mcclick.online^$all
 ||md-nx.com^$redirect-rule=noopjs,script,domain=meteologix.com|weather.us
+||md47ez.com^$doc
 ||mdn.lol^$csp=style-src *
 ||me22se2255.com^$doc
 ||mealye.com^$3p
@@ -22274,10 +22282,10 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||mediafiire.com^$doc
 ||mediapass.com^$3p
 ||mediausamns-a.akamaihd.net^$media,domain=funimation.com
-||medium.ngtv.io/v2/media/*&ssaiProfile=$badfilter,removeparam=ssaiProfile,xhr
 ||meetingc5owe.jp^$doc
 ||meetka1.name^$all
 ||meetka2.name^$all
+||mega-share.pro^$doc
 ||megancroft.bond^$all
 ||megatube.xxx/atrm/*$1p,script
 ||megatube.xxx^$1p,frame
@@ -22440,7 +22448,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||namethatporn.com/assets/imgs/1x1.gif$frame,redirect=noopframe
 ||nanaprof.com^$doc
 ||nanime.biz^$3p
-||nanosterile.eu^$all
 ||naturalbd.com/sw.js$1p,script
 ||naturalnews.com^$script
 ||natureetdecouvertes.com^$1p,image,redirect-rule=2x2.png
@@ -22584,6 +22591,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||onenightfriend.com^$doc
 ||onetouch7.info^$all
 ||onhockey.tv/stopadblock80.jpg$image
+||online2022-shopping.com^$doc
 ||onlineplus.click^$all
 ||onlinepromotionsusa.com^$doc
 ||onlineproxy.eu^$csp=default-src 'self' 'unsafe-inline' *.googleapis.com *.google.com *.gstatic.com *.google-analytics.com
@@ -22683,7 +22691,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pelispedia.*/*sw.js$1p,script
 ||pentafaucet.com/ds/$1p,frame
 ||perfotrack.com^
-||pergames.fun^$all
 ||permanent.wwtrend.com^$doc
 ||permutive.com^$3p
 ||permutive.com^$badfilter
@@ -22860,6 +22867,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||psaiceex.net^
 ||psg.make9-salon.com^$doc
 ||psxcvb.com^$all
+||ptn9tf.com^$doc
 ||ptookaih.net^$all
 ||ptt3bzstch2.com^$doc
 ||ptwmemd.com^
@@ -22974,6 +22982,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||reverita-t.jp^$doc
 ||revive.3wayint.com^
 ||revpu.sh^$all
+||rewards4u2023.xyz^$doc
 ||rewardsgiantusa.com^$doc
 ||rgfftupf.
 ||rhopalium-convolve-mozettas.xyz^
@@ -23158,7 +23167,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||skyblockqolhub.com^$all
 ||skymods.net^$all
 ||slacker.com^*/getspot/?spotid=$media,redirect=noopmp3-0.1s
-||sladicagora.xyz^$all
 ||sledujserialy.*/theme/json/episode.ad.php^$frame
 ||slickdeals.net/scripts/*/js-campaign-tracking.js$1p,redirect=noop.js,script
 ||slickdeals.net/scripts/*/SD_Analytics.js$1p,redirect=noop.js,script
@@ -23178,7 +23186,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||smartsuppchat.com^$3p,badfilter
 ||smarttvnew.live^$all
 ||smartwall.swisspay.ch^$xhr,domain=letemps.ch
-||smc-vc.nl^$all
 ||smore91.net^$all
 ||smostafa.ir^$doc,popup,domain=soft98.ir
 ||smotret-anime-365.ru^$csp=script-src * 'unsafe-inline'
@@ -23194,7 +23201,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||socialnetwork-adblocker.com^$all
 ||soft-little.com^$all
 ||soft-pro.site^$all
-||soft-upd.com^$doc
+||soft-updt.com^$doc
 ||sohu.com/cityjson$important,redirect=noopjs,script,domain=netac.com
 ||solarmovie.to/sw.js$1p,script
 ||solarporn.net^$3p
@@ -23617,7 +23624,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||uniquemjbd9fu.jp^$doc
 ||united-infos.net^$domain=gmx.*|web.de
 ||unknowncheats.me/forum/images/*ban$image
-||unogames.site^$all
 ||uoutube.com^$all
 ||up-load.io/sw.js$1p,xhr
 ||upclips.online*^$csp=script-src 'self' 'unsafe-inline' blob: *.cloudflare.com *.google-analytics.com *.googleapis.com *.gstatic.com *.radiantmediatechs.com
@@ -23656,6 +23662,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||utorrent.it^$doc
 ||utubeworkers.com/Campaigns/$script,xhr,domain=vivud.com
 ||uu.universsee.com^$doc
+||uxzdx5.com^$doc
 ||v.embed-cdn.com/v8/player.js$script,domain=streamable.com
 ||v.wpimg.pl/*.html$frame
 ||v1asy4ncr.click^$all
@@ -23797,6 +23804,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||wgsxteihr.com^
 ||wheelwheel.space^$3p
 ||whentai.com/*.gif$image
+||whimsicalrain.com^$doc
 ||wholedailyfeed.com^$all
 ||wholenicefeed.com^$all
 ||wholewowblog.com^$all
@@ -23884,6 +23892,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||xhamsterpremium.com^$3p
 ||xiaobaixitong.com^$all
 ||xmorex.com^$3p
+||xmview.cn^$all
 ||xn--80affa3aj0al.xn--80asehdb^$all
 ||xnfmbejucgoldi.com^
 ||xnxx.com/cams/
@@ -24155,9 +24164,10 @@ washingtonpost.com###mobile-footer-ad-wrapper
 washingtonpost.com##div.mb-lg.mt-lg.pb-lg.pt-lg.bc-gray-lighter.bh.b.justify-center.items-center.flex.dn-hp-sm-to-mx
 www.google.*##:not(:matches-path(/^/search\?.*tbm=shop|^/shopping/)) a[href*="/aclk?"][data-al]:upward(2)
 www.google.com##:matches-path(/^/search\?.*tbm=shop/) html[itemtype$="/SearchResultsPage"] #cnt div[class^="_-L"][class*="sh-sr__"]
-www.wp.pl###celebrities > div:has(div[style^="left:"] > a[target="_blank"][href^="https://www.wp.pl/"] + a + a)
 www.wp.pl###glonews > div > div:has(> div > a[href^="https://www.wp.pl/"] > img[src^="https://v.wpimg.pl/"])
 www.wp.pl##.app-container > div:has(div + img[src^="https://v.wpimg.pl/"] + div:empty)
+www.wp.pl##div:has(> div > div > iframe[scrolling="no"][data-bunch][data-slot])
+www.wp.pl##div:has(> div:first-child:empty + div:empty)
 www.wp.pl##div[class*=" "]:has(> div > div:first-child > div:first-child > a[href^="https://www.wp.pl/"]:first-child):matches-css(max-width: 420px):remove()
 xnxx.com,xvideos.com###ad-header-mobile
 ||ads-v-darwin.hulustream.com^$media,3p
