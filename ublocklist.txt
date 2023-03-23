@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 1RP64DUQ3mVsVKNGktPJfw
+! Checksum: /wT4dSXJHQnpxxNyrQx0pg
 ! Expires: 2 days
-! Version: 202303230608
+! Version: 202303231812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 24204, sources at 2023/03/23 06:08 UTC+8
+! Total lines: 24223, sources at 2023/03/23 18:12 UTC+8
 !
 ###ad-top-slot:not(:empty)
 ###ad_300:not([style^="position: absolute; left: -5000px"])
@@ -1999,6 +1999,7 @@ $3p,script,domain=zdnet.fr
 @@||api.adinplay.com/libs/$script,domain=wowescape.com
 @@||api.adinplay.com/libs/aiptag/assets/adsbygoogle.js$xhr,domain=lordz.io
 @@||api.aws.parking.godaddy.com/v1/parking/landers/$xhr
+@@||api.calven.app/analytics/$xhr,domain=calven.app|calven.com
 @@||api.coinmarketcap.com/$xhr,domain=unblock.net
 @@||api.cxense.com/public/widget/data$xhr,domain=allgemeine-zeitung.de|buerstaedter-zeitung.de|echo-online.de|lampertheimer-zeitung.de|lauterbacher-anzeiger.de|main-spitze.de|oberhessische-zeitung.de|wiesbadener-kurier.de|wormser-zeitung.de
 @@||api.deep.bi/v3/init.js$script,domain=elconfidencial.com
@@ -5293,7 +5294,7 @@ alrincon.com##+js(aopr, open)
 alrincon.com##center:has-text(deal)
 alt-torrent.com##+js(aopr, popjs.init)
 altblogger.net##+js(nostif, nextFunction)
-altblogger.net,stfly.me##+js(acis, document.createElement, Adblock)
+altblogger.net,blogbux.net,stfly.me##+js(acis, document.createElement, Adblock)
 alternet.org##+js(aopr, googletag)
 alternet.org##+js(nostif, null)
 alueviesti.fi,kiuruvesilehti.fi,lempaala.ideapark.fi,olutposti.fi,urjalansanomat.fi##+js(aeld, scroll, innerHeight)
@@ -6220,7 +6221,6 @@ bibme.org,citationmachine.net,easybib.com##+js(aopr, canRunAds)
 bidouillesikea.com##+js(aopr, adbackDebug)
 bigbrothercanada.ca##.adWrapper
 bigbrothercanada.ca##.video-adTile
-bigbtc.win##+js(acs, document.getElementById, alert)
 bigbtc.win##div[style^="width:300px;height:250px"]
 bigclatterhomesguideservice.com,housecardsummerbutton.com,tinycat-voe-fashion.com,uptodatefinishconference.com,uptodatefinishconferenceroom.com,voe.sx##+js(acis, $, fadeIn)
 bigclatterhomesguideservice.com,housecardsummerbutton.com,tinycat-voe-fashion.com,uptodatefinishconference.com,uptodatefinishconferenceroom.com,voe.sx##+js(acis, EventTarget.prototype.addEventListener, /\^http|test/)
@@ -6427,9 +6427,13 @@ blog.aming.info##[href^="https://cdn.aming.info/"]
 blog.aming.info##[href^="https://warp.plus/"]
 blog.aming.info##body:style(visibility:visible !important)
 blog.coinscap.info,blog.cookinguide.net,blog.freeoseocheck.com##+js(acs, document.createElement, adsBlocked)
+blog.coinsvalue.net##+js(acs, document.createElement, adsBlocked)
+blog.coinsvalue.net,blog.cookinguide.net,blog.freeoseocheck.com##.fa-xmark
 blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##+js(acs, document.createElement, adsBlocked)
 blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##+js(ra, disabled, .btn-primary)
 blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##input[type="hidden"]:style(display: block !important;)
+blog.freeoseocheck.com##.floating-banner
+blog.freeoseocheck.com##a[href^="https://shortano.link"] ~ :not(center)
 blog.linksfire.co##+js(aopr, app_vars.force_disable_adblock)
 blog.linksfire.co##.banner
 blog.linksfire.co##.ex2
@@ -6739,8 +6743,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -6957,6 +6961,7 @@ cgchotbox.com###wpsafe-generate, #wpsafe-link:style(display: block !important;)
 cgchotbox.com##div[id^="wpsafe-wait"]
 cgtips.org##+js(nostif, css_class.show)
 cgtips.org##div[class*="better-ads-listitemad"]:remove()
+chamcuuhoc.com###wpsafe-link:style(display: block !important;)
 channel24.co.za,dailysun.co.za,fin24.com,health24.com,parent24.com,son.co.za,traveller24.com,w24.co.za,wheels24.co.za##+js(aopr, googletag)
 channel4.com##+js(no-xhr-if, /\/ad\/g\/1/)
 channel4.com##.advertsMpu
@@ -7011,6 +7016,7 @@ chimicamo.org##+js(no-xhr-if, ads)
 chimicamo.org##.widget:has-text(Adv)
 chineseanime.co.in###teaser3
 chineseanime.co.in##+js(acis, String.fromCharCode, ai_adb)
+chinhnhacoban.com,hynews.biz,tremamnon.com,vnpttelle.com##[id^="wpsafe-generate"], #continue:style(display: block !important;)
 chip.de###banner_top_table
 chip.de##+js(json-prune, enabled, force_disabled)
 chip.de##.DetailPage__Right-Column > .is-hidden-md:has(> div[style*="min-height:"])
@@ -7268,6 +7274,8 @@ coinsparty.com##form[action$="/links/popad"]:remove()
 coinsparty.com,mcrypto.club##+js(no-fetch-if, ad)
 coinsurl.com###frame
 coinsurl.com##+js(aopr, app_vars.force_disable_adblock)
+coinsvalue.net,cookinguide.net,freeoseocheck.com##+js(aeld, load, htmls)
+coinsvalue.net,cookinguide.net,freeoseocheck.com##^script:has-text(htmls)
 cointelegraph.com##[href^="javascript:void(0)"]
 cointelegraph.com##div[class*="componentAdbutler_"]
 coinunit.ashortstory.in,seowebnews.com##+js(nano-sib)
@@ -7333,6 +7341,7 @@ comtechies.com##+js(aopr, TL_Front)
 comunidadgzone.es##+js(nostif, nextFunction, 2000)
 concorsipubblici.net##ins.adsbygoogle
 configspc.com##+js(set, jsUnda, noopFunc)
+conghuongtu.net##+js(no-fetch-if, googlesyndication)
 conghuongtu.net##+js(noeval-if, deblocker)
 conservativebrief.com###main-box-3
 conservativebrief.com###main-box-5
@@ -12829,6 +12838,7 @@ marketbeat.com##+js(aeld, mouseleave, NativeDisplayAdID)
 marketbeat.com##[id*="pnlAd"]
 marketbeat.com##a[href*="NativeDisplayAdID"]
 marketmovers.it##+js(aeld, load, 2000)
+marketmovers.it##^script:has-text(google_ad_client)
 marketrealist.com###Track\.End + div[class]
 marketrealist.com##.ad-vertical:upward(1)
 marketrealist.com##.gXgoom > div
@@ -15456,7 +15466,7 @@ promo-visits.site,shorterall.com##.btn-primary:style(visibility: visible !import
 pronpic.org##+js(aopr, document.createEvent)
 pronpic.org##+js(aopw, ShowAdbblock)
 pronpic.org##+js(nostif, style)
-proplanta.de##+js(nostif, $)
+proplanta.de##+js(nostif, /$|adBlock/)
 prostoporno.*##+js(aopr, ExoLoader.serve)
 prostoporno.*##.spot
 protege-liens.com##+js(nowoif)
@@ -15623,6 +15633,9 @@ raider.io##.rio-zone--wrapper
 rainanime.*##+js(aopr, loadRunative)
 rainanime.*##.fake_player
 raincaptcha.com##._ad-block
+rainurl.com,snowurl.com##+js(nowoif)
+rainurl.com,snowurl.com##+js(set, blurred, false)
+rainurl.com,snowurl.com##+js(set, go_popup, {})
 rajsayt.xyz##+js(set, blurred, false)
 rakuten.com#@#.google-ads
 rakuten.tv##+js(no-xhr-if, /youboranqs01|spotx|springserve/)
@@ -17810,6 +17823,7 @@ thumpertalk.com##+js(nostif, location)
 thumpertalk.com##+js(ra, href|target|data-ipshover-target|data-ipshover|data-autolink|rel, a[href^="https://thumpertalk.com/link/click/"][target="_blank"])
 thumpertalk.com##.focus-ad
 thumpertalk.com##.ipsType_richText a:style(color:currentcolor !important)
+thuocdangian.net,tremamnon.com##+js(aeld, DOMContentLoaded, adsBlocked)
 thurrott.com##+js(acis, $, adblockDetected)
 thuthuatmoi.xyz###after-ad
 thuthuatmoi.xyz###before-ad
@@ -20637,7 +20651,10 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||blockadblock.com^$badfilter
 ||blockskipad.com^$all
 ||blocksly.org^$all
+||blog.coinsvalue.net/post/$csp=style-src *
+||blog.cookinguide.net/post/$csp=style-src *
 ||blog.dealsnbuy.com^$3p
+||blog.freeoseocheck.com/post/$csp=style-src *
 ||blogfoster.com^$3p
 ||blogspot.*/*.gif$image,domain=komikcast.*
 ||blogspot.com/*.gif$image,domain=uhuseries.com
@@ -23017,6 +23034,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||rule34.us/ad.html$frame
 ||rule34.xxx/images/clicker.png
 ||rule34hentai.net/*.php$1p,script
+||run.app/events$badfilter
+||run.app/events$domain=imgur.com
 ||ruokareseptit.online^$3p
 ||ruokareseptit.online^$badfilter
 ||rusexclips.com^$3p
