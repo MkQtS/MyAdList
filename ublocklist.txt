@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: XQDuLYLVy5/YMZbrBjreaQ
+! Checksum: 6kRA/UVzzC60maMsSpzcig
 ! Expires: 2 days
-! Version: 202303291812
+! Version: 202303300611
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 24301, sources at 2023/03/29 18:12 UTC+8
+! Total lines: 24326, sources at 2023/03/30 06:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -561,6 +561,7 @@ $3p,script,domain=zdnet.fr
 *$badfilter,xhr,domain=thepiratebay.org|unblocktheship.org|up-load.io
 *$csp=script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.cloudflare.com *.google.com *.addthis.com *.addthisedge.com *.facebook.net *.twitter.com *.jquery.com *.zencdn.net,domain=kinox.to|kinos.to|kinox.si|kinox.io|kinox.sx|kinox.am|kinox.nu|kinox.sg|kinox.gratis|kinox.mobi|kinox.sh|kinox.lol|kinox.wtf|kinox.fun|kinox.fyi|kinox.cloud|kinox.ai|kinox.club|kinox.digital|kinox.tube|kinox.direct|kinox.pub|kinox.express|kinox.party|kinox.space|kinoz.to,badfilter
 *$csp=script-src *,domain=isohunt.*|isohunters.*|isohunthydra.*|isohunting.*|isohunts.*|isohuntx.*|isohuntz.*|myisohunt.*|torrentproject2.*
+*$csp=style-src *,domain=blog.coinscap.info|blog.cryptowidgets.net|blog.greenenez.com|blog.insurancegold.in|blog.webfreetools.net|blog.wiki-topia.com
 *$csp=worker-src 'none',domain=123moviesgo.nl|bmovies123.me|flashx.pw|fmoviesgo.me|lewd.ninja|megapastes.com|milujivareni.cz|powvideo.net|skytorrents.me|subswiki.com|unblocktheship.org|vidoza.net
 *$denyallow=cloudflare.com|facebook.com|google.com|hcaptcha.com|youtube.com|jungleofferwall.com,frame,domain=dutchycorp.*
 *$denyallow=cloudflare.com|hwcdn.net|jquery.com,script,domain=piraproxy.app|theproxy.*|unblocksite.pw
@@ -637,6 +638,7 @@ $3p,script,domain=zdnet.fr
 */pwafeeds/amazon_$frame
 */rellect/AdblockDetector/handler.min.js$important,redirect=noopjs,script
 */script/clock.js$script
+*/script/formula.js|$script
 */script/pattern.js|$script
 */tegna-tracking.js$1p,important,redirect=noop.js,script
 */videoplayback?expire$media,redirect=noopmp3-0.1s,domain=webmd.com
@@ -663,6 +665,7 @@ $3p,script,domain=zdnet.fr
 .at/bilder/*.jpg|$1p,script
 .biz/sw/w1s.js|$3p,script
 .cfd/?h=*&user=$3p,script
+.click/*/?partner=*&pg=$3p,script
 .click/*?s=*&g=*&q=$3p,script
 .click/?h=*&user=$3p,script
 .com/1?z=$3p,script
@@ -1020,6 +1023,8 @@ $3p,script,domain=zdnet.fr
 /oo/*/l.js|$1p
 /oo/*/lsync.js$1p
 /oo/cl*.js?rd=$1p
+/outLoging.js
+/outLoging2.js
 /p13n/batch/action/*$image
 /performancetimer.js$badfilter
 /php_code.php?sid=$important,domain=promo-visits.site|satoshi-win.xyz|shorterall.com
@@ -1516,7 +1521,7 @@ $3p,script,domain=zdnet.fr
 4everproxy.com##+js(aost, foreverJQ, /document.createElement|stackDepth:2/)
 4horlover.com##+js(aopw, _pop)
 4horlover.com##^script[data-cfasync]:has-text(h=decodeURIComponent)
-4howcrack.com,abbaspc.net,activationkeys.co,allpcsoftcrack.co,autocracking.com,ayeshapc.com,bulletcracks.com,corecrack.com,crackbell.com,crackdownload.me,crackdownload.org,crackedfine.com,crackedhere.com,crackhomes.com,crackknow.com,crackpckey.com,crackpropc.com,crackserialkey.co,cracksmain.com,cracksoftwareguru.com,crackspro.co,crackswall.com,cracktube.net,crackzoom.com,cracxpro.com,download4mac.com,downloadpc.net,explorecrack.com,filepapa.com,free4pc.org,freeactivationkeys.org,getmacos.org,getprocrack.co,greencracks.com,hitproversion.com,idmcrackeys.com,idmfullversion.com,installcracks.com,keygenstore.com,keysfull.net,latestproductkey.co,licensekeys.org,licensekeysfree.org,maliksofts.com,newproductkey.com,okproductkey.com,organiccrack.com,osproductkey.com,patchcracks.com,pcactivationkey.co,pclicensekeys.com,procrackkey.co,procrackpc.co,productkeys.org,profullversion.com,rootcracks.org,serialkey.info,serialkey89.com,serialkeysfree.org,shanpc.com,softserialkey.com,softwarance.com,torrentfilefree.com,trycracksetup.com,trycracksoftware.com,up4pc.com,wareskey.com,windowsactivator.info##center > [class*="buttonPress-"]
+4howcrack.com,abbaspc.net,activationkeys.co,allpcsoftcrack.co,autocracking.com,ayeshapc.com,bulletcracks.com,corecrack.com,crackbell.com,crackdownload.me,crackdownload.org,crackedfine.com,crackedhere.com,crackedroot.com,crackedsoft.org,crackhomes.com,crackknow.com,crackpckey.com,crackpropc.com,crackserialkey.co,cracksmain.com,cracksoftwareguru.com,crackspro.co,crackswall.com,cracktube.net,crackzoom.com,cracxpro.com,download4mac.com,downloadpc.net,explorecrack.com,filepapa.com,free4pc.org,freeactivationkeys.org,getmacos.org,getprocrack.co,greencracks.com,hitproversion.com,idmcrackeys.com,idmfullversion.com,installcracks.com,keygenstore.com,keysfull.net,latestproductkey.co,licensekeys.org,licensekeysfree.org,maliksofts.com,newproductkey.com,okproductkey.com,organiccrack.com,osproductkey.com,patchcracks.com,pcactivationkey.co,pclicensekeys.com,procrackkey.co,procrackpc.co,productkeys.org,profullversion.com,rootcracks.org,serialkey.info,serialkey89.com,serialkeysfree.org,shanpc.com,softserialkey.com,softwarance.com,torrentfilefree.com,trycracksetup.com,trycracksoftware.com,up4pc.com,wareskey.com,windowsactivator.info##center > [class*="buttonPress-"]
 4j.com###bio_ep, #bio_ep_bg
 4j.com##+js(nostif, (), 2000)
 4j.com##body:style(overflow: auto !important;)
@@ -2794,6 +2799,7 @@ $3p,script,domain=zdnet.fr
 @@||flightradar24.com/static/*/statistics.js$1p,script
 @@||flightsim.to^$1p,script
 @@||flipboard.com/webu/*-contrib-ads*.bundle.js$1p,script
+@@||flixsyndication.net^$domain=fnac.com
 @@||fls.doubleclick.net^$frame,domain=billpay.suntrust.com
 @@||fluid.4strokemedia.com/www/delivery/asyncspc.php$1p,xhr
 @@||fluid.4strokemedia.com/www/delivery/asyncspc.php^$xhr,domain=formulapassion.it
@@ -5795,7 +5801,7 @@ aternos.org##.header-ad
 aternos.org##.header-link-exaroton-link:style(max-height: 0.017px !important; padding: 0.017px !important;)
 aternos.org##.header-link-exaroton:style(filter: opacity(0) !important;)
 aternos.org##.sidebar:style(width: 0px !important;)
-aternos.org##.sidebar:style(width: 18px !important;)
+aternos.org##.sidebar:style(width: 13px !important;)
 aternos.org##[style*="opacity:  0"]
 aternos.org#@##placement-takeover
 aternos.org#@#.header-exaroton-link
@@ -6414,12 +6420,6 @@ blog.aming.info##body:style(visibility:visible !important)
 blog.coinscap.info,blog.cookinguide.net,blog.freeoseocheck.com##+js(acs, document.createElement, adsBlocked)
 blog.coinsvalue.net##+js(acs, document.createElement, adsBlocked)
 blog.coinsvalue.net,blog.cookinguide.net,blog.freeoseocheck.com##.fa-xmark
-blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com###countdown ~ :not(center)
-blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##+js(acs, document.createElement, adsBlocked)
-blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##+js(ra, disabled, .btn-primary)
-blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##.fa-xmark
-blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##.row
-blog.cryptowidgets.net,blog.insurancegold.in,blog.wiki-topia.com##input[type="hidden"]:style(display: block !important;)
 blog.freeoseocheck.com##.floating-banner
 blog.freeoseocheck.com##a[href^="https://shortano.link"] ~ :not(center)
 blog.linksfire.co##+js(aopr, app_vars.force_disable_adblock)
@@ -6730,8 +6730,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -7246,6 +7246,15 @@ coinlyhub.com##.banner
 coinlyhub.com##[class^="bmadblock"]
 coinlyhub.com##div.highlight
 coinpayz.xyz##.ads
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com###countdown ~ :not(center)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##+js(acs, document.createElement, adsBlocked)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##+js(acs, document.getElementById, location.replace)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##+js(aeld, load, htmls)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##+js(ra, disabled, .btn-primary)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##.fa-xmark
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##^script:has-text(adsBlocked)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##^script:has-text(htmls)
+coinscap.info,cryptowidgets.net,greenenez.com,insurancegold.in,webfreetools.net,wiki-topia.com##input[type="hidden"]:style(display: block !important;)
 coinsearns.com###promo3
 coinsearns.com,coinsurl.com,luckydice.net##+js(nosiif, afStorage)
 coinsearns.com,luckydice.net##+js(acis, Math.imul, charCodeAt)
@@ -7521,9 +7530,6 @@ cryptonetos.ru##.popup
 cryptoon.xyz##+js(set, blurred, false)
 cryptopaid.net##+js(no-fetch-if, googlesyndication)
 cryptotop.ga##+js(nano-sib, wpsafe-time)
-cryptowidgets.net,insurancegold.in,wiki-topia.com##+js(acs, document.getElementById, location.replace)
-cryptowidgets.net,insurancegold.in,wiki-topia.com##+js(aeld, load, htmls)
-cryptowidgets.net,insurancegold.in,wiki-topia.com##^script:has-text(htmls)
 cryptowidgets.net,wiki-topia.com##.floating-banner
 cryptowin.io##+js(acis, document.getElementById, 'body')
 cryptowin.io##.hidden-xs
@@ -11258,8 +11264,7 @@ insidertracking.com##+js(acis, jQuery, length)
 inspirationde.com##ins.adsbygoogle
 instaanime.com##+js(nostif, length)
 instaanime.com##+js(nowoif)
-instagram.com#?#main > div > section div[style*="flex-direction: column;"] > article > div:has(span:has-text(/Sponsored|Gesponsert|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/))
-instagram.com#?#main > div > section div[style*="flex-direction: column;"] > article > div:has(span:has-text(/Sponsored|Gesponsert|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/)):style(visibility: hidden !important;)
+instagram.com#?#main > div > section div[style*="flex-direction: column;"] > article > div:has(span:has-text(/Anzeige|Gesponsert|Sponsored|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/):style(height: 1px !important; visibility: hidden !important;)
 instagram.com#@#div[style="max-height: inherit; max-width: inherit;"]:has(span:has-text(Paid partnership with ))
 instagram.com#@?#article[role="presentation"] > div[style]:-abp-has(span:-abp-contains(/Anzeige|Gesponsert|Sponsored|Geborg|Sponzorováno|Sponsoreret|Χορηγούμενη|Publicidad|Sponsoroitu|Sponsorisé|Bersponsor|Sponsorizzato|広告|광고|Ditaja|Sponset|Gesponsord|Sponsorowane|Patrocinado|Реклама|Sponsrad|ได้รับการสนับสนุน|May Sponsor|Sponsorlu|赞助内容|贊助|প্রযোজিত|પ્રાયોજિત|स्पॉन्सर्ड|Sponzorirano|ಪ್ರಾಯೋಜಿತ|സ്‌പോൺസർ ചെയ്‌തത്|पुरस्‍कृत|प्रायोजित|ਪ੍ਰਾਯੋਜਿਤ|මුදල් ගෙවා ප්‍රචාරය කරන ලදි|Sponzorované|விளம்பரதாரர்கள்|స్పాన్సర్ చేసింది|Được tài trợ|Спонсорирано|Commandité|Sponsorizat|Спонзорисано/))
 instapornvideos.com##.container-sts-bl
@@ -13195,8 +13200,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="banner"]
 mittelhessen.de##[class*="Banner"]
+mittelhessen.de##[class*="banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -13478,10 +13483,11 @@ mp3fiber.com##+js(aeld, load, nextFunction)
 mp3fiber.com##+js(set, _pop, noopFunc)
 mp3fy.com##+js(nostif, nextFunction, 2000)
 mp3guild.*,mp3clan.*##+js(aopw, Fingerprint2)
-mp3juices.cc##+js(aost, Math.random, computed)
-mp3juices.cc##+js(nowoif)
-mp3juices.cc##[class^="result_two__"][target="_blank"]
+mp3juices.*##+js(aost, Math.random, computed)
+mp3juices.*##+js(nowoif)
+mp3juices.*##[class^="result_two__"][target="_blank"]
 mp3juices.icu##+js(acis, $, open)
+mp3juices.icu##+js(nano-sib, temp)
 mp3juices.su##[href^="https://apkpure7.com/"]
 mp3juices.yt##+js(nowoif, !ytcutter.net)
 mp3snow.com##+js(nowoif)
@@ -17797,7 +17803,7 @@ tibiabr.com##div[id^="div-gpt-ad"]
 ticonsiglio.com##+js(aopr, jQuery.adblock)
 tieutietkiem.com##+js(set, detectAdBlock, noopFunc)
 tiki.vn##.brand-ad:upward(div)
-tiki.vn##[class^="ProductList__Wrapper"] > div
+tiki.vn#@#[class^="ProductList__Wrapper"] > div
 time4tv.stream##+js(acis, atob, decodeURIComponent)
 timeforbitco.in##+js(set, adBlock, false)
 timesnowhindi.com##.ad-panel-wrap
@@ -20276,6 +20282,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ads.youtube.com^$domain=~ads.youtube.com
 ||adsafeprotected.com/$redirect-rule=noopjs,script,domain=gamingbible.co.uk
 ||adsafeprotected.com/vans-adapter-google-ima.js^$redirect-rule=noopjs,script,domain=unilad.co.uk
+||adsblockersentinel.info^
 ||adsbtc.org^$all
 ||adsenseguard.com^$3p
 ||adserver*/?sdomain=$doc,popup
@@ -20361,6 +20368,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||alrincon.com/2022/varios/crazyshit.jpg
 ||alrincon.com/imagenes/stasyq/
 ||altadefinizone.*^$3p,popup
+||amante-love1.com^$doc
 ||amateurporn.net/*.gif$image
 ||amazing-date4u.com^$all
 ||amazon-adsystem.com/*/apstag.js$redirect-rule=amazon-apstag.js:5,script,xhr
@@ -20634,11 +20642,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||blocksly.org^$all
 ||blog.coinsvalue.net/post/$csp=style-src *
 ||blog.cookinguide.net/post/$csp=style-src *
-||blog.cryptowidgets.net/post/$csp=style-src *
 ||blog.dealsnbuy.com^$3p
 ||blog.freeoseocheck.com/post/$csp=style-src *
-||blog.insurancegold.in/post/$csp=style-src *
-||blog.wiki-topia.com/post/$csp=style-src *
 ||blogfoster.com^$3p
 ||blogspot.*/*.gif$image,domain=komikcast.*
 ||blogspot.com/*.gif$image,domain=uhuseries.com
@@ -20648,6 +20653,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||blowfood.website^$all
 ||bloxplay.com^
 ||blozoo.info/js/inouttool/
+||blozoo.info/js/ranktool/
 ||bluestacksdownloads.com^$doc
 ||bluew-web.com^$doc
 ||bluffyporn.com^$3p
@@ -21074,8 +21080,10 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||dcs-mcdn.mp.lura.live/prod/*$3p,xhr
 ||ddacn6pr5v0tl.cloudfront.net^
 ||ddns.net/*.php$frame
+||de2b8pzju0h.click^$all
 ||dealspakki.com^$frame,domain=eisamay.com|maharashtratimes.com|malayalam.samayam.com|navbharattimes.indiatimes.com|tamil.samayam.com|telugu.samayam.com|vijaykarnataka.com
 ||decemberpedalunfair.com^$all
+||decent-decision.jp^$doc
 ||decided-decision.com^$doc
 ||decknetwork.net^$3p
 ||decknetwork.net^$badfilter
@@ -21393,6 +21401,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||fifaultimateteam.it/*skin$image
 ||file-upload.*^$frame
 ||file-upload.com^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
+||file-uploud.site^$all
 ||filecrypt.*^$popunder
 ||filehippo.*/revamp.js$1p,script
 ||fileisready.com^$doc
@@ -21434,6 +21443,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||flexedfitt.com^$all
 ||flexytalk.net^
 ||flippingcharts.com^$all
+||flixsyndication.net/delivery/static/tracking/$important,script
 ||flixtor.movie/ajax/script.php$1p,script
 ||flk41.com^$doc
 ||flow.microsoft.com/providers/Internal.Telemetry
@@ -22063,6 +22073,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||junk-cleaner.org^$all
 ||just-upload.com^$doc,csp=default-src 'unsafe-inline' 'unsafe-eval' 'self' *.google.com *.gstatic.com *.googleapis.com *.googletagmanager.com *.jquery.com *.bootstrapcdn.com *.jsdelivr.net *.cloudflare.com
 ||jvembed.com/asset/bann.js
+||jyglassmachine.com^$all
 ||k-colorful.jp^$doc
 ||k-smilegallery.com^$doc
 ||k0fu9.jp^$doc
@@ -22193,6 +22204,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||liveflirt.net^$frame,domain=cambro.tv
 ||livesports.pw/adblock.js$1p,redirect=fuckadblock.js-3.2.0,script
 ||livewidget.net^
+||ll-m-work-2020.com^$doc
 ||lmgdmwyd.com^
 ||lnk.news^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
 ||lnk.parts^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
@@ -22411,6 +22423,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||moviezaddiction.icu/pop.js$1p,script
 ||mp3download.to/js/propellerads*.js$1p,script
 ||mp3hub.com^$doc
+||mp3juices.cc^$csp=default-src 'self' 'unsafe-inline' *.dropbox.com *.dropbox-dns.com *.gstatic.com *.googleapis.com *.google.com ytpp3.com *.youtube.com
 ||mp4hentai.com/holy-cell-feb3/
 ||mp4upload.com/1x1.html^$frame
 ||mp4upload.com/bd*.html$frame
@@ -22606,6 +22619,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||obsproicet.net^$all
 ||obstanceder.pro^
 ||ocwagmlizb.com^
+||odsyms15.com/impression?
 ||odulunual.sa.com^
 ||ofchildr.buzz^$all
 ||offer.alibaba.com^$frame,domain=adshrink.it
@@ -22631,7 +22645,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||onclicksuper.com^$all
 ||onclkds.com/apu.php$redirect=noopjs,script
 ||ondemandkorea.com/*/*sponsor*300x250.jpg$image,redirect=32x32.png
-||ondigitalocean.app/?*&phone=+1-$doc
+||ondigitalocean.app/*&phone=+1-$doc
 ||one-chan-love.love^$doc
 ||one-match01.com^$doc
 ||onega.jp^$doc
@@ -22734,6 +22748,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||paywall.folha.uol.com.br/wall.jsonp?callback=paywall.inicio$domain=blogfolha.uol.com.br|educacao.uol.com.br|folha.uol.com.br
 ||pcgamestorrents.com/sw.js$1p,script
 ||pctnew.*/sw.js$script
+||pcworldgetin.com^$doc
 ||pcworldgetin.net^$doc
 ||pdfsam.com^$doc
 ||peazip.com^$doc
@@ -22751,6 +22766,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pewgame.com/js/hre.js^
 ||pewgame.com/sw.js^
 ||pf0755.cn^$all
+||pgym2t8p25uf3gz.com^$doc
 ||pharmaceutical-technology.com/wp-content/*skin.jpg$image
 ||phone-analyzer.com^$doc
 ||phoneapplicationlabs.top^$all
@@ -22806,6 +22822,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||playporngames.com/fuck_dolls_online.jpg
 ||playwire.com^$domain=discordbots.org|readmng.com
 ||pleasetrack.com^$all
+||plesk.page/?phone=+1-$doc
 ||plibcdn.com/templates/base_master/js/jquery.shows.min.js
 ||pmdipads-a.akamaihd.net^$media,redirect=noopmp3-0.1s
 ||pmdstatic.net^$3p,badfilter
@@ -22991,6 +23008,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||r39-g003-h8ig0w-u8f0we8-fgw0rgf-0we880e-rhgth.obs.ap-southeast-2.myhuaweicloud.com^$all
 ||raedieshi.com^$all
 ||rafdnym.cn^$all
+||rakuten.co.jp/com/js/omniture/
 ||rasius.pro^
 ||rat.xxx/xdman/*
 ||ratexchange.net^
@@ -23066,6 +23084,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||royalclass.info^$doc
 ||royaljapan02.*^$all
 ||rsafrwdr.com^$all
+||rsurwhytjwbn.click^$all
 ||rte.ie/ads/*$media,redirect=noopmp4-1s,domain=rte.ie
 ||rtl.de/pf/resources/js/videotracking.min.js$1p,redirect=noopjs,script
 ||ru-torproject.ru^$all
@@ -23086,6 +23105,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||s.speedostream.*^$1p,script
 ||s0.2mdn.net/instream/video/client.js$redirect=noopjs,script,domain=player.performgroup.com
 ||s1.adform.net/banners/Elements/$important,domain=fcdn.lauta.media
+||s2dd1io1x.click^$all
 ||s3.amazonaws.com/callloop/banners/$3p,image
 ||s3.amazonaws.com/dmas-public/revcontent/bundle.js
 ||s3.amazonaws.com/dmas-public/rubicon/bundle.js$script,domain=dailymotion.com
@@ -23095,6 +23115,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||s4f.net^$all
 ||s4fk.destin0.jp^$doc
 ||s5dgy389z7.com^$doc
+||sa489zylbvg.click^$all
 ||saddlegirls.com/saddlegirls/ph/v/*_video.mp4$1p
 ||safelinkconverter.com^$3p,script
 ||safemessagesystems.com^$all
@@ -23235,6 +23256,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||skyonelendings.com^$all
 ||slacker.com^*/getspot/?spotid=$media,redirect=noopmp3-0.1s
 ||slapcleaner.com^$all
+||slb3cr9dx9.jp^$doc
 ||sldg02.com^$doc
 ||sledujserialy.*/theme/json/episode.ad.php^$frame
 ||slickdeals.net/scripts/*/js-campaign-tracking.js$1p,redirect=noop.js,script
@@ -23274,6 +23296,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||soft-pro.site^$all
 ||soft-updt.com^$doc
 ||sohu.com/cityjson$important,redirect=noopjs,script,domain=netac.com
+||soku-h.net^$doc
 ||solarmovie.to/sw.js$1p,script
 ||solarporn.net^$3p
 ||solutions.playernetca.top^
@@ -23399,6 +23422,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||sugulove.com^$doc
 ||sugulove69.net^$doc
 ||suite0-free0.com^$doc
+||sukui05.com^$doc
 ||sumfaucet.com/adblock.php$1p,redirect-rule=nooptext,xhr
 ||sumo.com^$3p,badfilter
 ||sumo.com^$3p,domain=~beewits.com|~dante-ri.hr
@@ -23415,6 +23439,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||surinenglish.com/adbd^
 ||survey2you.bid^
 ||survivalservers.com^$frame,domain=ads.bdcraft.net
+||surwhytjwbn.click^$all
 ||sutarnbbe.bond^$all
 ||svc.dynamics.com/f/m/
 ||svonm.com/hd-main.j$xhr,domain=spiegel.de
