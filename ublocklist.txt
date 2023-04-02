@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: tbMS46l7V1LdCtGA2j2cYw
+! Checksum: 8YrqrgINVzM3mCqqE+qrGg
 ! Expires: 2 days
-! Version: 202304021810
+! Version: 202304030609
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 24995, sources at 2023/04/02 18:10 UTC+8
+! Total lines: 25021, sources at 2023/04/03 06:09 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -52,6 +52,7 @@
 ##.__nat_link
 ##.aan_fake
 ##.aan_fake__video-units
+##.Ad-Container:not(div.adsbygoogle)
 ##.ad-link:not(.adsbox)
 ##.ad-placeholder:not(#filter_ads_by_classname):not(#detect_ad_empire):not(#detect):not(.adsbox)
 ##.ad-placement:not(.adsbox):not(.afs_ads):not(#ablockercheck)
@@ -98,6 +99,7 @@
 ##.rkads
 ##.rps_player_ads
 ##.samBannerUnit, .samCodeUnit
+##.sidebar-ad:not(div.adsbygoogle)
 ##.stream-item-widget
 ##.trafficjunky-float-right
 ##.vertbars
@@ -232,6 +234,7 @@
 #@##topBannerAd
 #@##weatherad
 #@#.ad-area
+#@#.Ad-Container
 #@#.ad-content
 #@#.ad-link
 #@#.ad-placeholder
@@ -244,6 +247,7 @@
 #@#.display_ad
 #@#.div-gpt-ad
 #@#.google-ad
+#@#.sidebar-ad
 #@#.wps-player-wrap
 #@#[class^="div-gpt-ad"]
 #@#[id^="div-gpt-ad"]
@@ -263,7 +267,6 @@ $3p,script,domain=zdnet.fr
 &tb=redirect&allb=redirect&ob=redirect&href=$doc
 *##.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 *##[class^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
-*##div.adsbygoogle.Ad-Container.sidebar-ad:style(display:block !important)
 *##div[id^="div-gpt-"]:not([id^="div-gpt-ad"]):style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 *#$image,redirect-rule=2x2.png,domain=freshstuff4you.com
 *#*/ad/$image,redirect-rule=1x1.gif
@@ -1804,7 +1807,6 @@ $3p,script,domain=zdnet.fr
 @@||9xbdlink.xyz^$ghide
 @@||a.4cdn.org/*.json$xhr,domain=4chan.org
 @@||a.bf-ad.net/makabo/ads_fol_init.js$script,domain=chip.de
-@@||a.exosrv.com/video-slider.js$script,domain=imguqkt.buzz|imgwelz.buzz|imgxhgh.buzz|pixnbvj.buzz
 @@||a.poki.com/prebid/$script,domain=poki-gdn.com|repuls.io
 @@||a.realsrv.com/video-slider.js$script,domain=verhentai.top
 @@||a.trk-imps.com/loader?$frame,domain=lewdninja.com|new.lewd.ninja
@@ -5810,7 +5812,7 @@ aternos.org##.header-ad
 aternos.org##.header-link-exaroton-link:style(max-height: 0.017px !important; padding: 0.017px !important;)
 aternos.org##.header-link-exaroton:style(filter: opacity(0) !important;)
 aternos.org##.sidebar:style(width: 0px !important;)
-aternos.org##.sidebar:style(width: 14px !important;)
+aternos.org##.sidebar:style(width: 14.1px !important;)
 aternos.org##[style*="opacity:  0"]
 aternos.org#@#.sidebar:style(width: 0px !important;)
 atgearn.xyz##+js(aopr, app_vars.force_disable_adblock)
@@ -6737,8 +6739,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -10991,11 +10993,10 @@ igfap.com##+js(aopr, decodeURI)
 igfap.com##+js(aopw, _pop)
 igg-games.com##+js(acs, navigator, FingerprintJS)
 igg-games.com##+js(aopw, btoa)
-igg-games.com##+js(nostif, _0x)
 igg-games.com##+js(ra, srcdoc, iframe)
 igg-games.com##.uk-panel.widget-text:style(height: 0px !important; visibility: collapse;)
+igg-games.com##[href*="premium/"]
 igg-games.com##[href^="https://tm-offers"]
-igg-games.com##a[href^="https://stARtgAmINg.net/"] > img
 igg-games.com#@#.uk-panel.widget-text
 igirls.in##+js(nostif, ads)
 ign.com###king
@@ -11100,12 +11101,6 @@ imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixl
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##+js(set, hold_click, false)
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store##+js(aopr, console.clear)
-imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store##+js(nano-sib, timer)
-imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store##div[class][style="display: block;"]
-imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store##div[style="width:100%;height:110px"]
 imgbaron.com###fadeinbox
 imgbaron.com##+js(aopr, absda)
 imgbaron.com##+js(aopr, loadTool)
@@ -11810,6 +11805,7 @@ kekolink.com##+js(set, blurred, false)
 kelasexcel.id##.secret-share
 kelasexcel.id##div.secret:style(display:block !important)
 kendam.com##+js(set, canRunAds, true)
+kenkou-maintenance.com##+js(aopr, adsBlocked)
 kenshi.fandom.com##+js(set, ads, null)
 kentonline.co.uk#@#.mpu
 kenzato.uk##+js(acis, document.querySelectorAll, popMagic)
@@ -14848,6 +14844,12 @@ pixiv.net##iframe[name][width="500"][height="520"]:upward(1)
 pixiv.net##section > div[class^="sc-"]:last-child > div[style*="width: 728px;"]:only-child > iframe[name="footer"][width="728"][height="90"]:upward(2):matches-css(margin-bottom: -16px)
 pixlr.com###right-space
 pixlr.com###workspace:style(right: 0px !important;)
+pixmex.store##+js(aopr, console.clear)
+pixmex.store##+js(nano-sib, timer)
+pixmex.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+pixmex.store##div[class][style="display: block;"]
+pixmex.store##div[id][style^="position: fixed; display: block; width: 100%;"]
+pixmex.store##div[style="width:100%;height:110px"]
 pixroute.com##+js(nowoif)
 pixroute.com##+js(set, proclayer, noopFunc)
 pkpics.club###countdown
@@ -14969,7 +14971,6 @@ pobre.tv##a[href^="https://btt-pt.toldmeroc.com"]
 pocketnow.com##+js(aopr, InstallTrigger)
 pockettactics.com##+js(acis, Math.floor, iframeTestTimeMS)
 podu.me##.adv-contanier
-poebuilds.net##+js(nostif, [native code], 0)
 poedb.tw###bottombanner970
 poedb.tw###topbanner970
 poedb.tw##+js(aopr, importFAB)
@@ -16809,6 +16810,23 @@ socientifica.com.br##+js(nobab)
 socks24.org##+js(aeld, load, onload)
 socks24.org##[href^="http://www.linkev.com/"]
 soft112.com##+js(nano-sib)
+soft98.ir###fti-SMostafaMoosavi
+soft98.ir##a[data-href][rel="nofollow"][target="_self"]
+soft98.ir##aside > div[class] header:has-text(/آسیاتک|ﺗﺒﻠﻴﻐﺎﺕ/):upward(div[class])
+soft98.ir##aside > section > div > ul[id]:style(height: 100% !important;)
+soft98.ir##aside > section > footer
+soft98.ir##aside > section:style(order: 1 !important;)
+soft98.ir##body > header + div > div > div:last-child:has(a[href^="https://linkdoni.soft98.ir/"]):remove()
+soft98.ir##div[class] > div[id][role="tabpanel"][aria-labelledby]:nth-of-type(1)
+soft98.ir##div[class] > div[id][role="tabpanel"][aria-labelledby]:style(display: block !important; opacity: 1 !important;)
+soft98.ir##div[id$="android"]:style(display: block !important; opacity: 1 !important;)
+soft98.ir##main > article > aside:has([class*="text-danger"])
+soft98.ir##main > article:style(display: table-header-group !important;)
+soft98.ir##main > div[class]:has(> div[id^="kaprila"])
+soft98.ir##main > section:style(display: table-footer-group !important;)
+soft98.ir##main > span[class][data-target]:has(a[href*="dl"]):style(overflow: auto !important; max-height: revert !important;)
+soft98.ir##main:style(display: table !important;)
+soft98.ir##ul[role="tablist"] > li > a[class*="active"]:remove-class(active)
 softairbay.com##+js(aopw, _pop)
 softairbay.com##+js(nosiif, visibility, 1000)
 softairbay.com##.brave
@@ -20657,6 +20675,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||beeg.surf/blood.asp?
 ||beinsports.com/*/adbw/
 ||belbenback.live^$all
+||belittlepads.com^$all
 ||benaughty.com^$all
 ||benaughty.fun^$all
 ||benbbs.net^$doc
@@ -20807,6 +20826,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||buddygays.com^$all
 ||budhump.com^$doc
 ||bulletprofit.com^$3p
+||bulochka.xyz^
 ||busisma1.com^$doc
 ||bustyporn.com/*.php?src=$3p,frame
 ||buynewrvsbuyonline.com^$all
@@ -21585,6 +21605,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||fictiongroin.com^$all
 ||fiddle.jshell.net^$csp=worker-src 'none';
 ||fifaultimateteam.it/*skin$image
+||fiiletosend.com^$all
 ||file-upload.*^$frame
 ||file-upload.com^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
 ||file-uploud.site^$all
@@ -21836,6 +21857,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||goducks.com/components/js/analytics.js$1p,redirect=noopjs,script
 ||gofun.jp^$doc
 ||gogoanime.*/api/pop.php$1p,xhr
+||gogoanime.me/*.gif$image
 ||gogonews.club^$doc
 ||gokinjolove.jp^$all
 ||gokinjolove.net^$all
@@ -22170,6 +22192,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||iframe.chefkoch.de/amp/online-food-trade/rewe/$frame
 ||igaming-service.io^
 ||igetnaughty.com^$doc
+||igg-games.com/*.gif$image
 ||igg-games.com/sw.js$1p,important,script
 ||ihub.live/sw.js$1p,script
 ||ii-earth.com^$doc
@@ -22199,6 +22222,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||imasdk.googleapis.com^$frame,important,domain=kotaku.com
 ||imasdk.googleapis.com^$redirect-rule=noopjs,script,domain=mynorthwest.com|panhandle.newschannelnebraska.com
 ||imdb.com/tr/*pageHit$redirect=noopjs,xhr,domain=imdb.com
+||img.soft98.ir/*.gif^$1p,image
 ||img.stomp.com.sg/sites/all/themes/stompst/images/placeholder.jpg$image
 ||img.topddl.net^$image,domain=nanimex.com
 ||imgair.net^$3p
@@ -23826,6 +23850,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||soft-little.com^$all
 ||soft-pro.site^$all
 ||soft-updt.com^$doc
+||soft98.ir/templates/*/js/jquery.min.packed.js^$1p,script
 ||soha.jp^$doc
 ||sohu.com/cityjson$important,redirect=noopjs,script,domain=netac.com
 ||sok8.net^$doc
@@ -24705,6 +24730,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||y2mate.com/themes/js/pn.js
 ||y3tkz53rz.com^$doc
 ||yahoo-news.co^$doc
+||yanrefael.com^$all
 ||yceleb.com^$doc
 ||yeptube.*/templates/base_master/js/jquery.shows.min.js
 ||yespornclips.com/sw.js$1p,script
