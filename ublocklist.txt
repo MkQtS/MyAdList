@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 8YrqrgINVzM3mCqqE+qrGg
+! Checksum: H+v18M6VAzYbuEsojHyzXA
 ! Expires: 2 days
-! Version: 202304030609
+! Version: 202304031811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 25021, sources at 2023/04/03 06:09 UTC+8
+! Total lines: 25023, sources at 2023/04/03 18:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -3792,6 +3792,7 @@ $3p,script,domain=zdnet.fr
 @@||pga.com^$ghide
 @@||pharmacyreviewer.co/forum/js/$1p,script
 @@||pharmacyreviewer.co^$ghide
+@@||phoenixkiller.com/assets/js/ad-provider.js|$script
 @@||photobucket.com/resources/common/*$1p,script
 @@||photopea.com/promo/no_ads.png$1p,xhr
 @@||photoshop-kopona.com^$ghide
@@ -10311,6 +10312,8 @@ h-flash.com##+js(set, ads_updated, 0)
 h-flash.com##.pagebody:style(height: auto !important;)
 h-flash.com##[href^="https://chaturbate.com/in/"]
 h-flash.com##[href^="https://t.aagm.link/"]
+h-flash.com##[onclick*="ADCLICK"]:upward(1)
+h-flash.com##[style*="url"]
 h-flash.com##a[style*="/data/image/mcs/chat"]
 h-flash.com#@#.google-ads
 h5.fotor.com###main:style(right: 0 !important;)
@@ -13205,8 +13208,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="banner"]
 mittelhessen.de##[class*="Banner"]
+mittelhessen.de##[class*="banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -17232,6 +17235,7 @@ sturls.com###timer
 sturls.com##+js(acs, decodeURI, decodeURIComponent)
 sturls.com##+js(set, blurred, false)
 stvid.com##+js(noeval)
+stylist.co.uk##+js(set, Object.prototype.isInitialLoadDisabled, noopFunc)
 suanoticia.online##+js(nano-sib)
 sub1s.com##+js(nano-stb, fa-unlock, 3000)
 sub1s.com##+js(ra, href, .unlock-step-link)
@@ -18497,7 +18501,6 @@ uploadbuzz.*##+js(aopw, _pop)
 uploadcloud.pro##+js(nano-stb, show, 4000)
 uploadedpremiumlink.xyz##+js(nobab)
 uploader.*,uploadingsite.com,uploadraja.com##+js(acis, onload)
-uploader.trade##+js(nowoif)
 uploadev.*##+js(nowoif)
 uploadev.*##+js(set, openInNewTab, noopFunc)
 uploadever.com##+js(nano-stb)
@@ -20810,7 +20813,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||brave.com/static-assets/js/analysis.js
 ||brazz-girls.com/chaturbate/
 ||brazz-girls.com/scripts/yall.*.js
-||breadcat.cc^$all
 ||bridgetrack.com^$3p
 ||bridgetrack.com^$badfilter
 ||brightadnetwork.com^
@@ -21140,6 +21142,8 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||cryptocoinsad.com/ads/show.php$frame,redirect-rule=noop.html
 ||cryptocreed.com^$3p
 ||cryweb.github.io^
+||cs2-esports.com^$all
+||cs2-twitchs.com^$all
 ||cse.google.com/adsense/search/async-ads.js$redirect-rule=noop.txt,xhr,domain=asiaon.top
 ||csgo.xyz^$doc
 ||cshort.org/themes/cshort_theme/assets/js/vanta.birds.min.js$1p,script
@@ -21335,6 +21339,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||doctor-groups.com^$3p
 ||doem.jp^$doc
 ||dogannet.tv/*/third_party/comscore/*$redirect=noopjs,script,domain=netd.com
+||dogehype.com^$all
 ||dogemate.com^$3p
 ||dokondigit.quest^$all
 ||domnovrek.com^$3p
@@ -21605,7 +21610,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||fictiongroin.com^$all
 ||fiddle.jshell.net^$csp=worker-src 'none';
 ||fifaultimateteam.it/*skin$image
-||fiiletosend.com^$all
 ||file-upload.*^$frame
 ||file-upload.com^$csp=sandbox allow-forms allow-same-origin allow-scripts allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation
 ||file-uploud.site^$all
@@ -22127,7 +22131,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||hpjav.tv/a720.html
 ||hprofits.com^$domain=gogaytube.tv|shemaleporntube.tv
 ||hqq.*/cdn-cgi/trace$1p,important,xhr
-||hrkbs.com^$all
 ||hrtya.com^
 ||hsrvu.com^$all
 ||ht5d4g4r.com^$doc
@@ -24270,7 +24273,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||trust-provider.com^*/trustlogo.js$3p,badfilter
 ||trust-tarade.net^$doc
 ||trustedform.com^$3p,badfilter
-||trustwallett.rest^$all
 ||trwl1.com^$all
 ||tryvaga.com/wp-content/themes/retrotube/assets/img/banners$image
 ||ts-group.com^$all
