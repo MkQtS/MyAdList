@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: IeiwrSRdZqsN2cg/uShcMw
+! Checksum: ddrBqyiPhmU+ST8PqPakow
 ! Expires: 2 days
-! Version: 202304041811
+! Version: 202304050609
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 25013, sources at 2023/04/04 18:11 UTC+8
+! Total lines: 25047, sources at 2023/04/05 06:09 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -109,6 +109,11 @@
 ##.ytd-j
 ##.yxd-j
 ##[class^="DisplayAd"]
+##[data-ad-manager-id]:not([style$="left: -10000px !important; top: -1000px !important;"])
+##[data-ad-module]:not([style$="left: -10000px !important; top: -1000px !important;"])
+##[data-ad-width]:not([style$="left: -10000px !important; top: -1000px !important;"])
+##[data-adblockkey]:not([style$="left: -10000px !important; top: -1000px !important;"])
+##[data-advadstrackid]:not([style$="left: -10000px !important; top: -1000px !important;"])
 ##[data-lnguri*="vipbox"]
 ##[data-lnguri^="https://s3.amazonaws.com"]
 ##[data-uri^="https://s3.amazonaws.com"]
@@ -250,6 +255,11 @@
 #@#.sidebar-ad
 #@#.wps-player-wrap
 #@#[class^="div-gpt-ad"]
+#@#[data-ad-manager-id]
+#@#[data-ad-module]
+#@#[data-ad-width]
+#@#[data-adblockkey]
+#@#[data-advadstrackid]
 #@#[id^="div-gpt-ad"]
 #@#[id^="etarget"]
 #@#a[href^="https://badoinkvr.com/"]
@@ -265,6 +275,7 @@ $3p,script,domain=zdnet.fr
 &key=*&adb=y$3p,popup
 &t=main9|$doc,domain=live
 &tb=redirect&allb=redirect&ob=redirect&href=$doc
+)*.js?ver=6.2$1p,script,domain=audiodoceo.com|audiotools.pro|magesy.blog|magesypro.pro
 *##.div-gpt-ad:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 *##[class^="div-gpt-ad"]:style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
 *##div[id^="div-gpt-"]:not([id^="div-gpt-ad"]):style(width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important)
@@ -359,7 +370,7 @@ $3p,script,domain=zdnet.fr
 *$3p,denyallow=chatbro.com|cloudflare.com|google.com|googleapis.com|gstatic.com|hwcdn.net|jquery.com|jsdelivr.net|recaptcha.net|topchort.tk,script,domain=ashort1a.xyz
 *$3p,denyallow=cleanpng.com|kisspng.com|disqus.com|disquscdn.com|jsdelivr.net|jwpcdn.com|fastly.net|fastlylb.net|jquery.com|hwcdn.net|hcaptcha.com|recaptcha.net|cloudflare.com|cloudflare.net|google.com|googleapis.com|gstatic.com|facebook.net,script,domain=pngio.com
 *$3p,denyallow=clickfam.com|cloudflare.com|google.com|gstatic.com|recaptcha.net,script,domain=clk.ink
-*$3p,denyallow=cloudflare.com,script,domain=allporncomic.com|jav.fm|jav.la|jav.sh|jav.vin|javmec.*|mangameta.com|myadultanimes.com|pornhail.com|reddit.tube|storieswatch.com|tubeqd.tv|ytmp3eu.net
+*$3p,denyallow=cloudflare.com,script,domain=allporncomic.com|jav.fm|jav.la|jav.sh|jav.vin|javmec.*|mangameta.com|myadultanimes.com|pornhail.com|rawmanga.top|reddit.tube|storieswatch.com|tubeqd.tv|ytmp3eu.net
 *$3p,denyallow=cloudflare.com,script,xhr,domain=adslink.pw|jpopsingles.eu
 *$3p,denyallow=cloudflare.com|bootstrapcdn.com|fluidplayer.com|twitter.com|hwcdn.net|platform.twitter.map.fastly.net,script,domain=babesxworld.com
 *$3p,denyallow=cloudflare.com|cloudflare.net|cloudfront.net|disqus.com|disquscdn.com|facebook.net|fastly.net|fastlylb.net|fbcdn.net|google.com|googleapis.com|gstatic.com|hcaptcha.com|hwcdn.net|jquery.com|jsdelivr.net|mega.nz|recaptcha.net,script,domain=animeflv.*
@@ -557,7 +568,7 @@ $3p,script,domain=zdnet.fr
 *$3p,redirect-rule=noopjs,script,domain=cbs.com|freecourseweb.com|gsmturkey.net|leechall.com|leechall.download|paramountplus.com|simkl.com|staples.ca
 *$3p,redirect-rule=nooptext,xhr,domain=podu.me|promo-visits.site|simkl.com
 *$3p,redirect=noopjs,script,domain=lolalytics.com|pch.com
-*$3p,script,domain=adbull.org|amateurblog.tv|classicpornbest.com|dvdplay.*|elsfile.org|fashionblog.tv|gaybeeg.info|hitomi.la|imgsen.com|imgstar.eu|imgsto.*|javdoe.to|javsun.*|javtc.*|kiwiexploits.com|latinblog.tv|mangaraw.org|mangovideo.*|masaporn.xyz|maxsport.one|moviezcrush.com|picdollar.com|pics4upload.com|pics4you.net|pornxp.com|rawmanga.top|senmanga.com|silverblog.tv|silverpic.com|sportz.football|streamgo.to|streamgoto.*|suicidepics.com|sznlink.xyz|tanix.net|titsbox.com|tokyoblog.tv|topwwnews.com|ukrainesmodels.com|uproxy2.biz|webmusic.*|xblog.tv
+*$3p,script,domain=adbull.org|amateurblog.tv|classicpornbest.com|dvdplay.*|elsfile.org|fashionblog.tv|gaybeeg.info|hitomi.la|imgsen.com|imgstar.eu|imgsto.*|javdoe.to|javsun.*|javtc.*|kiwiexploits.com|latinblog.tv|mangaraw.org|mangovideo.*|masaporn.xyz|maxsport.one|moviezcrush.com|picdollar.com|pics4upload.com|pics4you.net|pornxp.com|senmanga.com|silverblog.tv|silverpic.com|sportz.football|streamgo.to|streamgoto.*|suicidepics.com|sznlink.xyz|tanix.net|titsbox.com|tokyoblog.tv|topwwnews.com|ukrainesmodels.com|uproxy2.biz|webmusic.*|xblog.tv
 *$3p,script,xhr,domain=lovelynudez.com
 *$3p,xhr,domain=ceesty.com|corneey.com|destyy.com|festyy.com|gayforit.eu|gestyy.com|hd-easyporn.com|kiwiexploits.com|movieston.com|nsfwyoutube.com|torrentvhd.biz
 *$badfilter,popup,domain=mail.ru|uptobox.com
@@ -709,6 +720,7 @@ $3p,script,domain=zdnet.fr
 .wasm|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
 .wa|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
 .wsm|$websocket,xhr,domain=reactor.cc|sickrage.ca|sorteosrd.com|streamplay.to
+.xyz/*/?partner=*&pg=$3p,script
 .xyz/*?s=*&g=*&q=$3p,script
 .xyz/ddos/1tn.html?clickid=$doc
 .xyz/event|$3p,xhr
@@ -787,15 +799,14 @@ $3p,script,domain=zdnet.fr
 /^http:\/\/img[a-z]+\.(?:buzz|site|store|xyz)\/(?!shrinker).*/$1p,script,domain=buzz|site|store|xyz
 /^https:\/\/(?:cdn77\.)?aj[0-9a-z]{2}\d{2}\.bid\/[0-9a-z]{8}\.js$/$3p,script
 /^https:\/\/(?:cdn77\.)?aj[0-9a-z]{2}\d{2}\.online\/[0-9a-z]{8}\.js$/$3p,script
-/^https:\/\/(?:www\d\.)?[-a-z]{6,}\.(?:com|info|net|org)\/(?=[-_a-zA-Z]{0,42}\d)(?=[-_0-9a-z]{0,42}[A-Z])[-_0-9a-zA-Z]{43}\/\?cid=[-_0-9a-zA-Z]{10,36}(?:&qs\d=\S+)?&sid=[_0-9a-f]{1,32}(?:&s=0\.\d+)?(?:#\S+)?$/$doc,match-case,domain=com|info|net|org
-/^https:\/\/(?:www\d\.)?[-a-z]{6,}\.(?:com|info|net|org)\/(?=[-_a-zA-Z]{0,42}\d)(?=[-_0-9a-z]{0,42}[A-Z])[-_0-9a-zA-Z]{43}\/\?sid=[_0-9a-f]{1,32}(?:&qs\d=\S+)?&cid=[-_0-9a-zA-Z]{10,36}(?:&s=0\.\d+)?(?:#\S+)?$/$doc,match-case,domain=com|info|net|org
+/^https:\/\/(?:www\d\.)?[-a-z]{6,}\.(?:com|info|net|org)\/(?=[-_a-zA-Z]{0,42}\d)(?=[-_0-9a-z]{0,42}[A-Z])[-_0-9a-zA-Z]{43}\/\?cid=[-_0-9a-zA-Z]{10,36}(?:&qs\d=\S+)?&sid=[_0-9a-z{}]{1,32}(?:&s=0\.\d+)?(?:#\S+)?$/$doc,match-case,domain=com|info|net|org
+/^https:\/\/(?:www\d\.)?[-a-z]{6,}\.(?:com|info|net|org)\/(?=[-_a-zA-Z]{0,42}\d)(?=[-_0-9a-z]{0,42}[A-Z])[-_0-9a-zA-Z]{43}\/\?sid=[_0-9a-z{}]{1,32}(?:&qs\d=\S+)?&cid=[-_0-9a-zA-Z]{10,36}(?:&s=0\.\d+)?(?:#\S+)?$/$doc,match-case,domain=com|info|net|org
 /^https:\/\/([a-z]+\.)?sythe\.org\/[\w\W]{30,}/$image
 /^https:\/\/[-a-z]{8,15}\.(?:com|net)\/400\/\d{7}$/$3p,script
 /^https:\/\/[-a-z]{8,15}\.(?:com|net)\/401\/\d{7}$/$3p,script
 /^https:\/\/[-a-z]{8,15}\.(?:com|net)\/500\/\d{7}\?/$3p,xhr
 /^https:\/\/[0-9a-f]{10}\.[0-9a-f]{10}\.com\/[0-9a-f]{32}\.js$/$3p,script
 /^https:\/\/[0-9a-z]{3,}\.[-a-z]{10,}\.(?:li[fv]e|top|xyz)\/[a-z]{8}\/\?utm_campaign=\w{40,}/$doc,match-case,domain=life|live|top|xyz
-/^https:\/\/[0-9a-z]{3,}\.[-a-z]{10,}\.top\/[a-z]{8}\/\?(?:cid=[0-9a-z]+&)?u=[0-9a-z]+&/$doc,domain=top
 /^https:\/\/[0-9a-z]{7,25}\.com\/v2(?:\/0\/)?(?=[-_0-9a-z]{0,84}[A-Z])(?=[-_a-zA-Z]{0,84}[0-9])[-_0-9a-zA-Z]{54,85}(#\?v=[0-9a-f]{32})?$/$3p,match-case,script,xhr
 /^https:\/\/[a-z]+\.com\/away\.php\?url=[%0-9A-z]{100,}$/$doc
 /^https:\/\/[a-z]{2,14}\.wp\.pl\/[a-zA-Z0-9_-]{200,915}$/$script,domain=nowy.tlen.pl|poczta.o2.pl|profil.wp.pl
@@ -960,6 +971,7 @@ $3p,script,domain=zdnet.fr
 /fret/meow4/*$3p,script
 /frtd_ldr_$1p,script
 /g12.js$domain=siteunblocked.info|theproxy.app
+/g?visitorid=*&extra_data2=|$doc
 /ga_setup.js$3p
 /ga_setup.js$badfilter
 /get/*.js#$script,domain=gload.to
@@ -3077,7 +3089,6 @@ $3p,script,domain=zdnet.fr
 @@||hackinformer.com^$ghide
 @@||hacknetfl1x.net^$ghide
 @@||hacoscripts.com^$ghide
-@@||hancinema.net^$ghide
 @@||handelsblatt.com^$ghide
 @@||hanime.tv^$ghide
 @@||hanimesubth.com/assets/js/ads.core.js$1p,script
@@ -5811,7 +5822,7 @@ aternos.org##.header-ad
 aternos.org##.header-link-exaroton-link:style(max-height: 0.017px !important; padding: 0.017px !important;)
 aternos.org##.header-link-exaroton:style(filter: opacity(0) !important;)
 aternos.org##.sidebar:style(width: 0px !important;)
-aternos.org##.sidebar:style(width: 14.6px !important;)
+aternos.org##.sidebar:style(width: 14.5px !important;)
 aternos.org##[style*="opacity:  0"]
 aternos.org#@#.sidebar:style(width: 0px !important;)
 atgearn.xyz##+js(aopr, app_vars.force_disable_adblock)
@@ -10341,9 +10352,6 @@ hakie.net##+js(nosiif, visibility, 1000)
 hakie.net##+js(nowoif)
 hamakei.com###topBnr, #recBanner, .partner
 hancinema.net##+js(acis, document.createElement, admiral)
-hancinema.net##+js(set, dable, {})
-hancinema.net##ad-shield-inventory
-hancinema.net##div[style$="px; display: flex; margin-right: auto; justify-content: center; max-width: 100%;"] > div[id]:style(pointer-events: none !important; user-select: none !important;)
 handelsblatt.com##+js(no-xhr-if, request=adb)
 hanime.tv##+js(set, ABLK, false)
 hanime.tv##a[href^="https://a.adtng.com/"]
@@ -11058,7 +11066,7 @@ ilprimatonazionale.it##body:style(background-image: none !important;)
 ilprimatonazionale.it#@#.td-ad-background-link
 ilpuntotecnico.com##[style^="text-align:center; height:"][style$="px;"]
 ilsole24ore.com##+js(nostif, refresh)
-im1.buzz,imagent.buzz,imagepuitr.buzz,imgbeaw.buzz,imghhr.online,imgjtuq.buzz,imgkixx.buzz,imgkux.buzz,imglaiw.store,imglekw.site,imgmgh.site,imgmilu.store,imgnefl.site,imgneor.store,imgnfg.buzz,imgotw.store,imgpai.online,imgpiluka.website,imgpukrr.site,imgpukxxr.site,imgpuloki.online,imgqyrew.store,imgsdi.site,imgsdi.store,imgsdi.website,imgsxo.site,imguqkt.buzz,imgutkr.online,imgutkr.store,imgvue.online,imgwelz.buzz,imgxabb.buzz,imgxann.buzz,imgxgf.store,imgxhgh.buzz,imgxhtue.website,imgxkhm.buzz,imgxto.store,imgxza.buzz,mrlzqoe.buzz,optiye.buzz,picliume.store,picuekr.site,pixmela.online,pixmtke.buzz,pixnbvj.buzz,pixotor.cfd,pyotinle.buzz,utinwpqqui.buzz,velnibug.buzz##div[class][style="display: block;"]
+im1.buzz,imagent.buzz,imagepuitr.buzz,imgbak.store,imgbeaw.buzz,imgbek.store,imgbibam.online,imghhr.online,imgjtuq.buzz,imgkixx.buzz,imgkux.buzz,imglaiw.store,imglekw.site,imgmgh.site,imgmilu.store,imgnefl.site,imgneor.store,imgnfg.buzz,imgngf.online,imgotw.store,imgpai.online,imgpiluka.website,imgpukrr.site,imgpukxxr.site,imgpuloki.online,imgqaz.online,imgqyrew.store,imgsdi.site,imgsdi.store,imgsdi.website,imgsxo.site,imgulur.online,imguqkt.buzz,imgurj.online,imgurt.online,imgutkr.online,imgutkr.store,imgvue.online,imgwelz.buzz,imgwtz.online,imgwxr.online,imgwzr.online,imgxabb.buzz,imgxann.buzz,imgxgf.store,imgxhgh.buzz,imgxhtue.website,imgxkhm.buzz,imgxqy.online,imgxto.store,imgxza.buzz,imgyre.online,mrlzqoe.buzz,optiye.buzz,picler.store,piclerx.store,piclerz.store,picliume.store,picuekr.site,pixlev.store,pixmax.store,pixmela.online,pixmex.store,pixmtke.buzz,pixnbvj.buzz,pixotor.cfd,pyotinle.buzz,utinwpqqui.buzz,velnibug.buzz##div[class][style="display: block;"]
 imag-r.com##+js(aopr, adBlockerDetected)
 imagecolorpicker.com##[class^="leftAds-"]
 imagecolorpicker.com##[class^="rightAds-"]
@@ -11101,6 +11109,12 @@ imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixl
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##+js(set, hold_click, false)
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##+js(aopr, console.clear)
+imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##+js(nano-sib, timer)
+imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##div[class][style="display: block;"]
+imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgbak.store,imgbek.store,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgxqy.online,imgyre.online,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##div[style="width:100%;height:110px"]
 imgbaron.com###fadeinbox
 imgbaron.com##+js(aopr, absda)
 imgbaron.com##+js(aopr, loadTool)
@@ -11129,11 +11143,11 @@ imgdew.*,imgoutlet.*,imgsen.*,imgsto.*,imgtown.*,imgview.*##+js(aopr, CustomEven
 imgdone.com##+js(acis, ExoLoader)
 imgdrive.net,imgwallet.com##+js(acis, jQuery, TestAdBlock)
 imgflare.com##+js(acis, document.querySelectorAll, popMagic)
-imgkaka.xyz,imgkia.*,imgowk.buzz,imgokr.buzz,imgoiu.buzz,imgiut.buzz,imgizw.buzz,imgux.buzz,imgewe.buzz,imguebr.buzz,imgqew.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store##+js(aopr, console.clear)
-imgkaka.xyz,imgkia.*,imgowk.buzz,imgokr.buzz,imgoiu.buzz,imgiut.buzz,imgizw.buzz,imgux.buzz,imgewe.buzz,imguebr.buzz,imgqew.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store##+js(nano-sib, timer)
-imgkia.*,imgowk.buzz,imgokr.buzz,imgoiu.buzz,imgiut.buzz,imgizw.buzz,imgux.buzz,imgewe.buzz,imguebr.buzz,imgqew.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgkia.*,imgowk.buzz,imgokr.buzz,imgoiu.buzz,imgiut.buzz,imgizw.buzz,imgux.buzz,imgewe.buzz,imguebr.buzz,imgqew.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgkia.*,imgowk.buzz,imgokr.buzz,imgoiu.buzz,imgiut.buzz,imgizw.buzz,imgux.buzz,imgewe.buzz,imguebr.buzz,imgqew.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store##div[style="width:100%;height:110px"]
+imgkaka.xyz,imgkia.*,imgux.buzz,imgewe.buzz,imguebr.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store,imgxqy.online,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgyre.online,imgbak.store,imgbek.store,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##+js(aopr, console.clear)
+imgkaka.xyz,imgkia.*,imgux.buzz,imgewe.buzz,imguebr.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store,imgxqy.online,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgyre.online,imgbak.store,imgbek.store,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##+js(nano-sib, timer)
+imgkia.*,imgux.buzz,imgewe.buzz,imguebr.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store,imgxqy.online,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgyre.online,imgbak.store,imgbek.store,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgkia.*,imgux.buzz,imgewe.buzz,imguebr.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store,imgxqy.online,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgyre.online,imgbak.store,imgbek.store,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgkia.*,imgux.buzz,imgewe.buzz,imguebr.buzz,imgbew.buzz,imguo.buzz,imgxxxx.buzz,imgeza.buzz,imgzzzz.buzz,imgkuz.buzz,imgxhfr.buzz,imgqwt.buzz,imgtwq.buzz,imgbjryy.buzz,imgjetr.buzz,imgxelz.buzz,imgytreq.buzz,hfneiott.buzz,mrlzqoe.buzz,utinwpqqui.buzz,pyotinle.buzz,velnibug.buzz,optiye.buzz,imgbeaw.buzz,imgnfg.buzz,imguqkt.buzz,imgxhgh.buzz,imgwelz.buzz,pixnbvj.buzz,imgxkhm.buzz,imagepuitr.buzz,imagent.buzz,imgjtuq.buzz,imgxabb.buzz,imgxann.buzz,imgkixx.buzz,im1.buzz,imgkux.buzz,imgpiluka.website,imgxhtue.website,imgpuloki.online,imgmilu.store,picliume.store,pixmela.online,imgpukrr.site,picuekr.site,pixotor.cfd,imgmgh.site,imgnefl.site,imglekw.site,imgsdi.site,imgneor.store,imgsdi.store,imgpukxxr.site,imgsdi.website,imgsxo.site,imgxto.store,imgutkr.store,imghhr.online,imglaiw.store,imgotw.store,imgpai.online,imgqyrew.store,imgutkr.online,imgvue.online,imgxgf.store,imgxqy.online,imgbibam.online,imgngf.online,imgqaz.online,imgulur.online,imgurj.online,imgurt.online,imgwtz.online,imgwxr.online,imgwzr.online,imgyre.online,imgbak.store,imgbek.store,picler.store,piclerx.store,piclerz.store,pixlev.store,pixmax.store,pixmex.store##div[style="width:100%;height:110px"]
 imgking.co,imgkings.com,imgprime.com##+js(aopr, document.createElement)
 imgkings.com##+js(acis, __htapop)
 imgkings.com##+js(aopr, ExoLoader)
@@ -11805,7 +11819,6 @@ kekolink.com##+js(set, blurred, false)
 kelasexcel.id##.secret-share
 kelasexcel.id##div.secret:style(display:block !important)
 kendam.com##+js(set, canRunAds, true)
-kenkou-maintenance.com##+js(aopr, adsBlocked)
 kenshi.fandom.com##+js(set, ads, null)
 kentonline.co.uk#@#.mpu
 kenzato.uk##+js(acis, document.querySelectorAll, popMagic)
@@ -13204,8 +13217,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -14413,7 +14426,8 @@ out.underhentai.net##+js(adfly-defuser)
 outlook.live.com##.customScrollBar > div[class] > div[class]:empty
 outlook.live.com##div[data-app-section="MessageList"] > div.customScrollBar div.full:has(div:not([class]) .fbAdLink)
 outlook.live.com##div[tabindex="-1"][role][data-app-section="MessageList"] > div.customScrollBar > div div.full:first-child:has(i[data-icon-name="Delete"] + div + button)
-outlook.live.com##span.fbAdCallToAction:upward([role="listbox"] > div > div > div)
+outlook.live.com#@#span.fbAdCallToAction:upward([role="listbox"] > div > div > div)
+outlook.live.com#@?#div.customScrollBar > div > div > div > div > div > div:-abp-has(div[class] > div[class] > div[class] > div[class] > i[data-icon-name="Delete"] + div[class])
 ovagames.com###adter:upward(3)
 ovagames.com##+js(acis, JSON, _0x)
 ovagames.com##+js(aopw, _pop)
@@ -14842,12 +14856,6 @@ pixiv.net##iframe[name][width="500"][height="520"]:upward(1)
 pixiv.net##section > div[class^="sc-"]:last-child > div[style*="width: 728px;"]:only-child > iframe[name="footer"][width="728"][height="90"]:upward(2):matches-css(margin-bottom: -16px)
 pixlr.com###right-space
 pixlr.com###workspace:style(right: 0px !important;)
-pixmex.store##+js(aopr, console.clear)
-pixmex.store##+js(nano-sib, timer)
-pixmex.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-pixmex.store##div[class][style="display: block;"]
-pixmex.store##div[id][style^="position: fixed; display: block; width: 100%;"]
-pixmex.store##div[style="width:100%;height:110px"]
 pixroute.com##+js(nowoif)
 pixroute.com##+js(set, proclayer, noopFunc)
 pkpics.club###countdown
@@ -16775,6 +16783,7 @@ smsget.net##+js(nostif, disable, 200)
 smsonline.cloud#@#.googlead
 smtebooks.*##+js(nobab)
 smutr.com##+js(popads-dummy)
+smutr.com##+js(set, flashvars.adv_pre_vast, '')
 smutr.com##+js(set, flashvars.popunder_url, undefined)
 smutty.com##+js(nowoif)
 smwebs.xyz##+js(aopr, app_vars.force_disable_adblock)
@@ -17196,6 +17205,7 @@ streamservicehd.click##^script:has-text(admc)
 streamsport.*##+js(aeld, , _0x)
 streamsport.*##+js(aopw, _pop)
 streamsport.*##+js(nowoif)
+streamtape.*##^script:has-text(/0x|\\x/)
 streamty.com##+js(aopr, open)
 streanplay.*##+js(nowebrtc)
 streanplay.*##+js(set, console.clear, noopFunc)
@@ -20262,6 +20272,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||aamraai.cloud^$all
 ||aawulszemel.com^
 ||ab5sa.com^$doc
+||abacus-prefix.com^$doc
 ||abc.lemon2023.com^$doc
 ||abc.qnjgipohki59.com^$doc
 ||abc.sns-5987.com^$doc
@@ -20421,6 +20432,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ais-akamai.rtl.de/autoimg/*$1p,frame
 ||aitai.biz^$doc
 ||aitolk.com^$doc
+||aj5sa87e.com^$doc
 ||akamaihd.net/*&affid
 ||akamaihd.net/vod/*$media,redirect=noopmp3-0.1s,domain=7tv.de
 ||akamaized.net/audio/*$media,redirect=noop-0.5s.mp3,domain=open.spotify.com
@@ -20920,6 +20932,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||celebri.jp^$doc
 ||celestia.es^$doc
 ||celestia.fr^$doc
+||celezma.net^$doc
 ||celxkpdir.com^$all
 ||ces-ent.biz^$doc
 ||ces-free.biz^$doc
@@ -21311,6 +21324,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||discordxnitro.$all
 ||discount.s3blog.org^
 ||discrodnitro.$all
+||dismay-sacred.com^$doc
 ||disordgift.$all
 ||display-baptism.net^$doc
 ||displayoptoffers.com^$doc
@@ -21739,6 +21753,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||g-a-y.jp^$doc
 ||g.doubleclick.net/gampad/ads?$removeparam=/^(cookie|ga_|u_)/,xhr,domain=soranews24.com
 ||g.jwpsrv.com/g/gcid-*?notrack$frame
+||g5h3pt.shop^$doc
 ||g5u.pw/sw.js$1p,script
 ||g6-gonight.org^$doc
 ||g9g.eu^*fa.js$redirect=fuckadblock.js-3.2.0,script
@@ -21974,6 +21989,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||gspo.jp^$doc
 ||gstatic.com/adx/doubleclick.ico$3p,image,redirect-rule=32x32.png
 ||gstatic.com/firebasejs/*/firebase.js$script,domain=uploadbox.cc
+||gswwichggroup.top^$doc
 ||gt92n2rtg-aw.com^$doc
 ||gtir5die6sutngr.jpn.com^$doc
 ||guegnoswarwestpol.ga^
@@ -21992,6 +22008,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||h093.net^$doc
 ||hachijo0120.com^$doc
 ||hallway.netnaija.app/deliver.1.5.js$3p,script
+||hamfqppcycjiskc.com^$doc
 ||handbrake.es^$doc
 ||handbrake.it^$doc
 ||handelsblatt.com/*/empty.js$1p,script
@@ -22313,6 +22330,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jamaretana.shop^$all
 ||jameeltips.us^$3p
 ||jamjamjam.biz^$doc
+||jampamn.online^$doc
 ||japanclothing.in^$all
 ||japanhotties.jp^$doc
 ||japanporn.tv/rg3y/*$script
@@ -22394,6 +22412,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jyk.jp^$doc
 ||k-colorful.jp^$doc
 ||k-smilegallery.com^$doc
+||k.buybagnow.com^$doc
 ||k0fu9.jp^$doc
 ||k1nk.co/videos/*/_.pagespeed.$1p,script
 ||k1wa.jp^$doc
@@ -22605,6 +22624,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||lover-date.com^$all
 ||lover-stream.com^$doc
 ||loverfuck.com^$all
+||loveru.jp^$doc
 ||lovesingle.xyz^$all
 ||lovewish.jp^$doc
 ||lovyy.date^$doc
@@ -22680,6 +22700,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||married-court.com^$doc
 ||mass-calc-read.com^$doc
 ||masteranime.es/api/pop.php$1p,xhr
+||match-1match.jp^$doc
 ||match-mate.jp^$doc
 ||match-mate.net^$doc
 ||match1ng.com^$doc
@@ -22810,8 +22831,10 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||moon-1light.com^$doc
 ||moon1234moom.com^$doc
 ||moonsupermoon.moonmoonsunmoon.com^$doc
+||mopo.vv-pb1salon.com^$doc
 ||mopub.com^$3p
 ||mopub.com^$badfilter
+||morale-yellow.com^$doc
 ||moremoney.io^$3p
 ||motika.com.mk/reklam$image
 ||mous9.biz^$all
@@ -23048,6 +23071,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||obitube.com^$1p,frame
 ||obsproicet.net^$all
 ||obstanceder.pro^
+||octopus-warriors.com^$all
 ||ocwagmlizb.com^
 ||odsyms15.com/impression?
 ||odulunual.sa.com^
@@ -23125,6 +23149,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||optimizely.com^$3p
 ||optimizely.com^$badfilter
 ||or-nl.jp^$doc
+||orfon.site^$all
 ||orgyxxxhub.com/js/arjlk.js
 ||originatepour.com^$doc
 ||osubstancenasubstitute.com^$doc
@@ -23236,6 +23261,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pewgame.com/js/hre.js^
 ||pewgame.com/sw.js^
 ||pf0755.cn^$all
+||pffawtchpoffical.buzz^$doc
 ||pfunding-01.com^$doc
 ||pgym2t8p25uf3gz.com^$doc
 ||pharmaceutical-technology.com/wp-content/*skin.jpg$image
@@ -23484,6 +23510,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||qq789.com.cn^$all
 ||qqfzn.com^$all
 ||qro.r2g5-ch4t.com^$doc
+||qswwichqhood.top^$doc
 ||qualityhealth.com^$doc
 ||quantcast.com^$badfilter
 ||quebecormedia.com/infojdem/lib/cheezwhiz/$script
@@ -23496,6 +23523,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||quiziizz.github.io/cdnjs.js
 ||quizlookup.com^
 ||quiztoolbox.com^
+||quq.ygdd7ssl.com^$doc
 ||r18hub.com/assets/vast/videos/*$1p,xhr
 ||r30address.com^$doc
 ||r30deai.com^$doc
@@ -23750,7 +23778,9 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||shiawase-tobira.com^$doc
 ||shidurlive.com/adz*.html$frame
 ||shihukumichibiki.jp^$doc
+||shining.relief-lives.net^$doc
 ||shon.xyz^$csp=script-src 'self' 'unsafe-inline' *.gstatic.com *.google.com *.googletagmanager.com *.googleapis.com;frame-src 'self' *.google.com;connect-src 'self'
+||shop.gsawichgcenter.top^$doc
 ||short.es/adv/*$1p,frame
 ||short.freeltc.top/info.html
 ||short.freeltc.top/news.html
@@ -23844,6 +23874,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||soft-pro.site^$all
 ||soft-updt.com^$doc
 ||soft98.ir/templates/*/js/jquery.min.packed.js^$1p,script
+||softforall.art^$doc
 ||soha.jp^$doc
 ||sohu.com/cityjson$important,redirect=noopjs,script,domain=netac.com
 ||sok8.net^$doc
@@ -24044,6 +24075,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||t.simply-hentai.com^
 ||t0p0ff3rs.com^$3p
 ||t1a.jp^$doc
+||t1amo.jp^$doc
 ||taboola.com^$3p
 ||taboola.com^$badfilter
 ||tabooporn.tv^$3p
@@ -24267,6 +24299,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tryvaga.com/wp-content/themes/retrotube/assets/img/banners$image
 ||ts-group.com^$all
 ||tsumalabo.jp^$doc
+||tswwichtband.top^$doc
 ||tsyndolls.com^$3p
 ||tttt.star095.com^$doc
 ||tubakinohimitsu.amebaownd.com^$doc
@@ -24283,7 +24316,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tumanavi22.com^$doc
 ||tumblebit.org^$3p
 ||turboadblocker.com^$all
-||turner.com/ads/
 ||turnhub.net^$all
 ||tusfiles.com/sw.js$1p,script
 ||tutamail.net^$all
@@ -24306,6 +24338,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tyotto.jp^$doc
 ||tyotyo.biz^$doc
 ||typiccor.com^$all
+||tzfritt.shop^$doc
 ||u-nit-ed.com^$doc
 ||u2bmco.com^$3p
 ||u3ig.com^$doc
@@ -24315,6 +24348,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ucationin.club^
 ||uerqelim91ut.click^$all
 ||ugdturner.com/xd.sjs$redirect-rule=noopjs,script,domain=nba.com
+||uggstore.online^$doc
 ||uhuseries.com/banner/$image
 ||ui7aud5ei4uhx7.com^$doc
 ||uii.io^$3p
