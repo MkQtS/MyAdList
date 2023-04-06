@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 1h1stgknB45gsX0eASN0uw
+! Checksum: qfhJ5t7t/3B7s89l9NefOg
 ! Expires: 2 days
-! Version: 202304060609
+! Version: 202304061810
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 25064, sources at 2023/04/06 06:09 UTC+8
+! Total lines: 25060, sources at 2023/04/06 18:10 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -3752,6 +3752,7 @@ $3p,script,domain=zdnet.fr
 @@||p.jwpcdn.com/player/plugins/vast/$xhr,domain=doramasmp4.com
 @@||p04a.hs.eloqua.com^$frame,domain=agilent.com
 @@||p2xfxd.com^$ghide
+@@||pagead2.googlesyndication.com/getconfig/sodar$xhr,domain=filecr.com
 @@||pagead2.googlesyndication.com/pagead/$script,domain=forum.release-apk.com|safelinkunited.blogspot.com
 @@||pagead2.googlesyndication.com/pagead/js/*/show_ads_impl$script,domain=pasty.*
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=downloads.descendant.me|skmedix.pl|tamrieltradecentre.com
@@ -4090,7 +4091,6 @@ $3p,script,domain=zdnet.fr
 @@||science-et-vie.com^$cname
 @@||scooter-chinois-4t.com^$ghide
 @@||scrapbox.io^$1p,xhr
-@@||scribble.website/sources/$xhr,domain=scribble.ninja
 @@||script.4dex.io/adagio.js$xhr,domain=dropgalaxy.com
 @@||script.4dex.io/localstore.js$script,domain=dropgalaxy.com
 @@||script.ioam.de/iam.js$script,domain=joyn.de|tagesspiegel.de
@@ -4421,7 +4421,6 @@ $3p,script,domain=zdnet.fr
 @@||the-race.com^$ghide
 @@||thebookee.net^$ghide
 @@||thedelimagazine.com^$ghide
-@@||thefamouspeople.com^$ghide
 @@||thehacktoday.com^$ghide
 @@||thehouseofportable.com^$1p,script
 @@||thehouseofportable.com^$ghide
@@ -11409,7 +11408,8 @@ itdplus.ru##+js(nosiif, visibility, 1000)
 itechfever.com##+js(nobab)
 itespresso.fr##+js(set, can_i_run_ads, 1)
 itmedia.co.jp###ulCommentWidget[style*="display"]:style(display: block !important;)
-itopmusic.com,itopmusicx.com##+js(aopr, absda)
+itopmusic.com,itopmusicx.com##+js(aopr, chp_adblock_browser)
+itopmusic.com,itopmusicx.com##^script:has-text(chp_adblock)
 itopmusic.org##+js(aopw, _pop)
 its.porn##+js(set, plugins.preroll, noopFunc)
 its.porn##+js(set, POPUNDER_ENABLED, false)
@@ -13228,8 +13228,8 @@ mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mitsubishiclub.cz##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -17684,10 +17684,6 @@ thedigitalfix.com###nn_astro_wrapper
 thedigitalfix.com###nn_bfa_wrapper:remove()
 thedigitalfix.com##+js(nosiif, debug)
 thedigitalfix.com##.sticky_rail600:remove()
-thefamouspeople.com###content10 > .topmenu-cls
-thefamouspeople.com###left_sticky_ad
-thefamouspeople.com##.adsbygoogle
-thefamouspeople.com##.tfp_master_left_ad
 thefastlaneforum.com##+js(nostif, .show, 1000)
 thefmovies.*##+js(aost, Math, inlineScript)
 thefmovies.*##+js(nostif, '0x)
