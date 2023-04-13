@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: tAXwGpvoOk6y4g7mLWGw/A
+! Checksum: PzQDwHNW05ektPNrPJL5sg
 ! Expires: 2 days
-! Version: 202304131811
+! Version: 202304140609
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 25332, sources at 2023/04/13 18:11 UTC+8
+! Total lines: 25340, sources at 2023/04/14 06:09 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -561,7 +561,7 @@ $3p,script,domain=zdnet.fr
 *$3p,frame,xhr,domain=pcgamez-download.com|pomvideo.cc|steampiay.cc
 *$3p,image,domain=fc-lc.com|shortlink.prz.pw
 *$3p,image,redirect-rule=1x1.gif,domain=world4.eu
-*$3p,image,redirect=1x1.gif,domain=rmdown.com
+*$3p,image,redirect=1x1.gif,domain=rmdown.com|thecubexguide.com
 *$3p,media,redirect-rule=noop-0.1s.mp3,domain=gmx.*|web.de
 *$3p,media,redirect=noopmp3-0.1s,domain=hdd.moviefun24.com|imdb.com
 *$3p,popunder,domain=alemannia-aachen.de|bs.to|burningseries.*|convert2mp3.tv|imgrock.pw|imgtorrnt.in|m.pornoxo.com|mp4porn.space|multiup.*|r18hub.com|smutr.com|tubepornclassic.com|txxx.*|xfreehd.com|xhamster.*
@@ -4155,6 +4155,10 @@ $3p,script,domain=zdnet.fr
 @@||services.vlitag.com/obj/$xhr,domain=colonist.io
 @@||serviceyock.me/api/advertise/$xhr,domain=yock.games
 @@||sexwebvideo.*^$ghide
+@@||sf.ezoiccdn.com/ezoimgfmt/$image,domain=kosmofoto.com
+@@||sf.ezoiccdn.com/ezossp/https/kosmofoto.com/_static/$script,domain=kosmofoto.com
+@@||sf.ezoiccdn.com/ezossp/https/kosmofoto.com/wp-content/$script,domain=kosmofoto.com
+@@||sf.ezoiccdn.com/ezossp/https/kosmofoto.com/wp-includes/$script,domain=kosmofoto.com
 @@||sfirmware.com^$ghide
 @@||sh.st^$ghide
 @@||shahid.mbc.net^$cname
@@ -6744,8 +6748,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -8178,7 +8182,7 @@ dronedj.com##.adsense, a[target="_blank"][rel="noopener noreferrer"]
 drop.download##+js(acis, document.addEventListener, google_ad_client)
 drop.download##.row > .col-md-8
 dropgalaxy.*##+js(no-fetch-if, /adtrue\.com|eningspon\.com|freychang\.fun|orquideassp\.com|popunder/)
-dropgalaxy.*##+js(no-xhr-if, /a-mo\.net|adnxs\.com|bidder\.criteo\.com|creativecdn\.com|e-planning\.net|quantumdex\.io/)
+dropgalaxy.*##+js(no-xhr-if, /a-mo\.net|adnxs\.com|prebid|creativecdn\.com|e-planning\.net|quantumdex\.io/)
 dropgalaxy.*,financemonk.net###modalpop
 dropgalaxy.*,financemonk.net###operadata + br + [href][target="_blank"]
 dropgalaxy.*,financemonk.net##+js(nowoif)
@@ -10783,7 +10787,7 @@ homemoviestube.com##+js(aopr, decodeURI)
 homemoviestube.com##+js(popads-dummy)
 homemoviestube.com##.film-aside-ads
 homeworklib.com##.title:has-text(/^Ads$/):upward(1)
-honeyhunterworld.com##[class^="ad-wrap"]
+honeyhunterworld.com##div[class*="ad_"]
 hoodsite.com##+js(aopw, _pop)
 hopto.org##+js(acis, document.getElementById, undefined)
 hornoxe.com##.ivycat-post:has(a[href^="https://www.amazon.de/"])
@@ -11260,6 +11264,7 @@ inkapelis.*##+js(aopw, smrtSP)
 inmanga.com##+js(acis, setTimeout, manageAntiBlock)
 inoreader.com##+js(aopr, max_raids)
 inoreader.com##.ad_title
+inoreader.com##.leaderboard_ad
 inporn.com###in_v
 inporn.com##.btn-close
 inporn.com##.video-info > section
@@ -13221,9 +13226,9 @@ mittelhessen.de##.adSlot
 mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
 mitula.com.br#@#.adsList
+miuiflash.com###featuredimage
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
-miuiflash.com,thecubexguide.com###featuredimage
 miuiflash.com,thecubexguide.com##[href^="https://bit.ly/"]
 miuiku.com##+js(acis, eval, ignielAdBlock)
 miuiku.com##+js(nowoif)
@@ -17679,7 +17684,7 @@ thebookee.net##ins.adsbygoogle
 thecartoonporntube.com###advertising [href]
 thecartoonporntube.com##[href="/go/tube.php"]
 thecrazytourist.com##+js(acis, document.getElementsByTagName, appendChild)
-thecubexguide.com###featuredimage
+thecubexguide.com###featuredimage:style(pointer-events: none !important)
 thecubexguide.com##[href^="https://bit.ly/"]
 thecubexguide.com##iframe
 thecustomrom.com##+js(acis, decodeURIComponent, ai_)
@@ -20879,6 +20884,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||burmesterone.jp^$doc
 ||busisma1.com^$doc
 ||bustyporn.com/*.php?src=$3p,frame
+||buyadvupfor24.com^$all
 ||buynewrvsbuyonline.com^$all
 ||buyqpfire.xyz^$all
 ||buzzadnetwork.com^$all
@@ -21574,6 +21580,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||equation-of-happiness.com^$doc
 ||eraberu.jp^$doc
 ||eraltradiansid.com^
+||erdeallyighab.com^$all
 ||erocm.com^$doc
 ||eromatchi.jp^$doc
 ||eroprofile.com/js/fp-interstitial.js
@@ -24275,6 +24282,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||supervisionwyorf4.jp^$doc
 ||supforums.com/if/rc/ecigs/$1p,frame
 ||supp0.jp^$doc
+||supreme-ad-blocker.info^$all
 ||suptrkdisplay.com^
 ||surfe.be^$important
 ||surfe.pro/js/net.js$redirect-rule=noop.js,script,xhr
