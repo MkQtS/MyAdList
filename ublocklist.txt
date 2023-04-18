@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: oX6251DbOtanMT6YMWDKAQ
+! Checksum: ef/UgtzBk+eNUjaQfvBeBA
 ! Expires: 2 days
-! Version: 202304180610
+! Version: 202304181811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 25318, sources at 2023/04/18 06:10 UTC+8
+! Total lines: 25324, sources at 2023/04/18 18:11 UTC+8
 !
 ###ad_300:not([style^="position: absolute; left: -5000px"])
 ###ad_728:not([style^="position: absolute; left: -5000px"])
@@ -3208,6 +3208,7 @@ $3p,script,domain=zdnet.fr
 @@||imasdk.googleapis.com/pal/sdkloader/pal.js$script,domain=20min.ch|watch.motortrend.com
 @@||imasdk.googleapis.com^$script,domain=4j.com|pch.com|uptostream.com|veedi.com
 @@||imedikament.de^$ghide
+@@||img.connatix.com/*.jpg$3p,image,domain=accuweather.com
 @@||img.connatix.com/pid-$3p,image
 @@||img.ebay-kleinanzeigen.de/api/$1p,image
 @@||img.echosting.cafe24.com/design$image,domain=jolse.com
@@ -3910,6 +3911,7 @@ $3p,script,domain=zdnet.fr
 @@||promo.com/shopify-backend/*/user-videos/public/video-urls$xhr
 @@||promo.com/shopify/shopify-store-script.js$script
 @@||promo.local/shopify/shopify-store-script.js$script
+@@||promodarceky.sk/kategorie/reklamne*$1p,xhr
 @@||promods.net/kampyle.js$1p,script
 @@||promods.net^$ghide
 @@||promote.telegram.org^$ghide
@@ -5833,6 +5835,8 @@ atomohd.*##+js(nowoif, !atomtt)
 atomohd.*##.ads
 atomtt.com##+js(acs, setTimeout, admc)
 atozmath.com###vi-smartbanner
+atozmath.com##+js(set, google_unique_id, 1)
+atozmath.com##+js(set, googletag._loadStarted_, true)
 atozmath.com##+js(set, googletag._vars_, {})
 atozmath.com##.adsbyvli:style(opacity: 0 !important; pointer-events: none !important;)
 atozmath.com##.videoDiscovery
@@ -6735,8 +6739,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acis, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -11099,12 +11103,12 @@ imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixl
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##+js(set, hold_click, false)
 imgair.net,imgblaze.net,imgfrost.net,pixsera.net,vestimage.site,imgwia.buzz,pixlev.*##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbaex.store,imgbah.online,imgbaie.online,imgbango.store##+js(aopr, console.clear)
-imgbaex.store,imgbah.online,imgbaie.online,imgbango.store##+js(nano-sib, timer)
-imgbaex.store,imgbah.online,imgbaie.online,imgbango.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
-imgbaex.store,imgbah.online,imgbaie.online,imgbango.store##div[class][style="display: block;"]
-imgbaex.store,imgbah.online,imgbaie.online,imgbango.store##div[id][style^="position: fixed; display: block; width: 100%;"]
-imgbaex.store,imgbah.online,imgbaie.online,imgbango.store##div[style="width:100%;height:110px"]
+imgbaex.store,imgbah.online,imgbaie.online,imgbango.store,imgbier.store##+js(aopr, console.clear)
+imgbaex.store,imgbah.online,imgbaie.online,imgbango.store,imgbier.store##+js(nano-sib, timer)
+imgbaex.store,imgbah.online,imgbaie.online,imgbango.store,imgbier.store##+js(nowoif, !/prcf.fiyar|themes|pixsense|.jpg/)
+imgbaex.store,imgbah.online,imgbaie.online,imgbango.store,imgbier.store##div[class][style="display: block;"]
+imgbaex.store,imgbah.online,imgbaie.online,imgbango.store,imgbier.store##div[id][style^="position: fixed; display: block; width: 100%;"]
+imgbaex.store,imgbah.online,imgbaie.online,imgbango.store,imgbier.store##div[style="width:100%;height:110px"]
 imgbaron.com###fadeinbox
 imgbaron.com##+js(aopr, absda)
 imgbaron.com##+js(aopr, loadTool)
@@ -13013,7 +13017,7 @@ megaplayer.bokracdn.run##.blockingAd, .popBannerTeaser
 megapornfreehd.com##+js(aopr, V4ss)
 megatube.xxx##+js(aopr, BetterJsPop)
 megaup.net##body .metaRedirectWrapperBottomAds > div:style(pointer-events: none !important)
-megaup.net##body .metaRedirectWrapperBottomAds a:style(pointer-events: none !important; padding-left: 10000px !important;)
+megaup.net##body .metaRedirectWrapperBottomAds > div:style(pointer-events: none !important; padding-left: 10000px !important;)
 megaup.net##body:style(overflow-x: hidden !important;)
 megaupto.com##+js(nano-stb, seconds)
 megaurl.*##+js(aopr, app_vars.force_disable_adblock)
@@ -14209,6 +14213,7 @@ oko.sh##+js(nowebrtc)
 oko.sh##+js(set, blurred, false)
 oko.sh##[href="https://tipsalert.xyz"]
 oko.sh##[src^="https://i.imgur.com/"]
+oko.sh##^script:has-text(adb_detected)
 oko.sh##a[href^="https://href.li/"]
 oko.sh##a[href^="https://taghaugh.com/"]
 okrzone.com##+js(aeld, click, _blank)
@@ -20118,6 +20123,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||12.beautifulero.com^
 ||123link.*/push/
 ||123movie.*/sw.js$script
+||123moviesgo.ga^$all
 ||123short.*/sw.js
 ||1337x.*/sw.js^
 ||146.190.12.4^
@@ -24859,7 +24865,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||wicket.pw/embeds/icc-cwc.png$image
 ||widget.educationdynamics.com^
 ||widgets.outbrain.com/outbrain.js$redirect=noopjs,script,domain=bongino.com|newsbreak.com
-||widgets.outbrain.com/outbrain.js$redirect=outbrain-widget.js:5,script,domain=~mainichi.jp|~vice.com
+||widgets.outbrain.com/outbrain.js$redirect=outbrain-widget.js:5,script,domain=~vice.com
 ||widgets.skyprivate.com/promo/$frame
 ||wifi4games.com/sw.js$1p,script
 ||wignewsee.club^$all
