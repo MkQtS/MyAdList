@@ -289,7 +289,7 @@ jobs:
           cat opttitle.txt optrules.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
           cat minititle.txt minirules.txt > ${{ env.MAIN_PATH }}/checksum/minilist.txt
           cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
-          cat ubotitle.txt uborules.txt > ${{ env.MAIN_PATH }}/checksum/ublocklist.txt
+          cat ubotitle.txt uborules.txt > ${{ env.MAIN_PATH }}/checksum/ubolist.txt
           cd ${{ env.MAIN_PATH }}
           for list in ./checksum/*.txt; do
             perl ./material/addChecksum.pl ${list}
@@ -301,7 +301,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add biglist.txt optlist.txt minilist.txt dnsblock.txt ublocklist.txt
+          git add biglist.txt optlist.txt minilist.txt dnsblock.txt ubolist.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
           [ $(date -d "8 hour" -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
