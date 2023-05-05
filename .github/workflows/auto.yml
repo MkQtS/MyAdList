@@ -43,11 +43,12 @@ jobs:
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
           UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
+          UBLOCK_2023: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt
           UBLOCK_BADWARE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt
           UBLOCK_PRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
+          UBLOCK_QUICK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
           UBLOCK_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
           UBLOCK_UNBREAK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
-          UBLOCK_QUICK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
         run: |
           cp ${{ env.MAIN_PATH }}/material/Titles.txt ${{ env.MAIN_PATH }}/title/title.txt
           #wget -q -O ${{ env.MAIN_PATH }}/fop/FOP.py ${EASY_FOP_SCRIPT}
@@ -77,16 +78,17 @@ jobs:
           wget -qO- "${{ env.PETER_LOWE }}" | sed '$G' >> ./rawdns.txt
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' ./rawdns.txt | sort -u > ./dnscombined.txt
           cd ${{ env.MAIN_PATH }}/ubo
-          wget -qO- ${{ env.UBLOCK_FILTERS }} | sed -e '/^!#include/d' -e '$G' > ./rawubo.txt
+          wget -qO- ${{ env.UBLOCK_FILTERS }} | sed '$G' > ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2020 }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2021 }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2022 }} | sed '$G' >> ./rawubo.txt
+          wget -qO- ${{ env.UBLOCK_2023 }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_BADWARE }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_PRIVACY }} | sed '$G' >> ./rawubo.txt
+          wget -qO- ${{ env.UBLOCK_QUICK }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_ABUSE }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_UNBREAK }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_QUICK }} | sed '$G' >> ./rawubo.txt
-          sed -e '/^![^#]/d' -e '/^!$/d' -e 's/\r//g' ./rawubo.txt > ./ubocombined.txt
+          sed -e '/^![^#]/d' -e '/^!$/d' -e '/^!#include/d' -e 's/\r//g' ./rawubo.txt > ./ubocombined.txt
 
       - name: Combine big lists
         run: |
