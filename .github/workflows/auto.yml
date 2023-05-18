@@ -172,11 +172,11 @@ jobs:
           sed -n '/^! Title: Mini/,/^# Mini/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' mini_done.txt)/" -e '/^#/d' > ./minititle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > ./dnstitle.txt
           sed -n '/^! Title: uBlock/,/^# uBlock/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' ubo_done.txt)/" -e '/^#/d' > ./ubotitle.txt
-          cat easytitle.txt easycombined.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
-          cat opttitle.txt optcombined.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
-          cat minititle.txt minicombined.txt > ${{ env.MAIN_PATH }}/checksum/minilist.txt
+          cat easytitle.txt easy_done.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
+          cat opttitle.txt opt_done.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
+          cat minititle.txt mini_done.txt > ${{ env.MAIN_PATH }}/checksum/minilist.txt
           cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
-          cat ubotitle.txt ubo_fop.txt uboif.txt > ${{ env.MAIN_PATH }}/checksum/uborules.txt
+          cat ubotitle.txt ubo_done.txt > ${{ env.MAIN_PATH }}/checksum/uborules.txt
           cd ${{ env.MAIN_PATH }}
           for list in ./checksum/*.txt; do
             perl ./material/addChecksum.pl ${list}
