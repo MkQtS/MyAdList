@@ -16,7 +16,7 @@ jobs:
 
       - name: Init environment
         run: |
-          mkdir down dns ubo fop title checksum
+          mkdir down dns ubo fop nofop title checksum
           echo "MAIN_PATH=$(pwd)" >> $GITHUB_ENV
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y/%m/%d %H:%M UTC+8")" >> $GITHUB_ENV
@@ -122,7 +122,7 @@ jobs:
           cat level2.txt level3.txt level4.txt level5.txt level6.txt level7.txt level8.txt | sed '/\*/d' > common_plain.txt
           sed -e 's/\./\\\./g' -e 's/\*/\.\*/g' common_wildcards.txt > wild_check.txt
           while read wild_rule; do
-            sed -i -E '/(^|\.)'"$wild_rule"'$/d' common_plain.txt
+            sed -Ei '/(^|\.)'"$wild_rule"'$/d' common_plain.txt
           done < wild_check.txt
           cat common_wildcards.txt common_plain.txt | sed -E 's#^(\S+)$#\|\|\1\^#' | sort > common_checked.txt
           sed 's/@@//g' except.txt > except_check.txt
@@ -143,24 +143,35 @@ jobs:
           | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
           sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' \
           -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' rawuboif.txt > uboifleft.txt
-          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt | sed '/^$/d' > ../title/uboif.txt
+          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
           sed '/^!#if/,/^!#endif/d' ubocombined.txt > ../fop/ubo_fop.txt
 
-      - name: FOP lists
+      - name: FOP rules
         run: |
           cd ${{ env.MAIN_PATH }}/fop
+          sed -n '/^##/p' easycombined.txt | sort -u > ../nofop/easy_ghide.txt
+          sed -n '/^##/p' optcombined.txt | sort -u > ../nofop/opt_ghide.txt
+          sed -n '/^##/p' minicombined.txt | sort -u > ../nofop/mini_ghide.txt
+          sed -n '/^##/p' ubo_fop.txt | sort -u > ../nofop/ubo_ghide.txt
+          sed -i '/^##/d' easycombined.txt
+          sed -i '/^##/d' optcombined.txt
+          sed -i '/^##/d' minicombined.txt
+          sed -i '/^##/d' ubo_fop.txt
           python ./FOP.py
-          mv ./*.txt ../title/
+          cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
+          cat ../nofop/opt_ghide.txt ./optcombined.txt | sed '/^$/d' > ../title/opt_done.txt
+          cat ../nofop/mini_ghide.txt ./minicombined.txt | sed '/^$/d' > ../title/mini_done.txt
+          cat ../nofop/ubo_ghide.txt ./ubo_fop.txt ../nofop/uboif.txt | sed '/^$/d' > ../title/ubo_done.txt
 
       - name: Create final lists
         run: |
           cd ${{ env.MAIN_PATH }}/title
           sed -i -e "s/BLANKVER/${{ env.VERSION_CODE }}/" -e "s#BLANKTIME#${{ env.MODIFY_TIME }}#" ./title.txt
-          sed -n '/^! Title: Easy/,/^# Easy/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' easycombined.txt)/" -e '/^#/d' > ./easytitle.txt
-          sed -n '/^! Title: Optimized/,/^# Optimized/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' optcombined.txt)/" -e '/^#/d' > ./opttitle.txt
-          sed -n '/^! Title: Mini/,/^# Mini/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' minicombined.txt)/" -e '/^#/d' > ./minititle.txt
+          sed -n '/^! Title: Easy/,/^# Easy/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' easy_done.txt)/" -e '/^#/d' > ./easytitle.txt
+          sed -n '/^! Title: Optimized/,/^# Optimized/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' opt_done.txt)/" -e '/^#/d' > ./opttitle.txt
+          sed -n '/^! Title: Mini/,/^# Mini/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' mini_done.txt)/" -e '/^#/d' > ./minititle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > ./dnstitle.txt
-          sed -n '/^! Title: uBlock/,/^# uBlock/p' title.txt | sed -e "s/NUMCOUNT/$(expr $(sed -n '$=' ubo_fop.txt) + $(sed -n '$=' uboif.txt))/" -e '/^#/d' > ./ubotitle.txt
+          sed -n '/^! Title: uBlock/,/^# uBlock/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' ubo_done.txt)/" -e '/^#/d' > ./ubotitle.txt
           cat easytitle.txt easycombined.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
           cat opttitle.txt optcombined.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
           cat minititle.txt minicombined.txt > ${{ env.MAIN_PATH }}/checksum/minilist.txt
@@ -188,4 +199,3 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 3
           keep_minimum_runs: 1
-
