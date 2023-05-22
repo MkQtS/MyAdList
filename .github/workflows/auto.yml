@@ -133,30 +133,34 @@ jobs:
         run: |
           cd ${{ env.MAIN_PATH }}/ubo
           sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > rawuboif.txt
+          sed '/^!#if/,/^!#endif/d' ubocombined.txt > ../fop/ubo_fop.txt
           sed -n '/^!#if env_chromium/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
           | sed -e '1i !#if env_chromium' -e '$a !#endif\n' > uboifchrome.txt
           sed -n '/^!#if env_firefox/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
           | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
+          sed -n '/^!#if !env_firefox/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
+          | sed -e '1i !#if !env_firefox' -e '$a !#endif\n' > uboifnofire.txt
           sed -n '/^!#if env_mobile/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
           | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
           sed -n '/^!#if !env_mobile/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
           | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
-          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' \
-          -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' rawuboif.txt > uboifleft.txt
-          cat uboifchrome.txt uboiffire.txt uboifmob.txt uboifnomob.txt uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
-          sed '/^!#if/,/^!#endif/d' ubocombined.txt > ../fop/ubo_fop.txt
+          sed -n '/^!#if !cap_html_filtering/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
+          | sed -e '1i !#if !cap_html_filtering' -e '$a !#endif\n' > uboifnocap.txt
+          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if !env_firefox/,/^!#endif/d' \
+          -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' -e '/^!#if !cap_html_filtering/,/^!#endif/d' rawuboif.txt > uboifleft.txt
+          cat uboifchrome.txt uboiffire.txt uboifnofire.txt uboifmob.txt uboifnomob.txt uboifnocap.txt uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
 
       - name: FOP rules
         run: |
           cd ${{ env.MAIN_PATH }}/fop
-          sed -n '/^##/p' easycombined.txt | sort -u > ../nofop/easy_ghide.txt
-          sed -n '/^##/p' optcombined.txt | sort -u > ../nofop/opt_ghide.txt
-          sed -n '/^##/p' minicombined.txt | sort -u > ../nofop/mini_ghide.txt
-          sed -n '/^##/p' ubo_fop.txt | sort -u > ../nofop/ubo_ghide.txt
-          sed -i '/^##/d' easycombined.txt
-          sed -i '/^##/d' optcombined.txt
-          sed -i '/^##/d' minicombined.txt
-          sed -i '/^##/d' ubo_fop.txt
+          sed -En '/^#@?#/p' easycombined.txt | sort -u > ../nofop/easy_ghide.txt
+          sed -En '/^#@?#/p' optcombined.txt | sort -u > ../nofop/opt_ghide.txt
+          sed -En '/^#@?#/p' minicombined.txt | sort -u > ../nofop/mini_ghide.txt
+          sed -En '/^#@?#/p' ubo_fop.txt | sort -u > ../nofop/ubo_ghide.txt
+          sed -Ei '/^#@?#/d' easycombined.txt
+          sed -Ei '/^#@?#/d' optcombined.txt
+          sed -Ei '/^#@?#/d' minicombined.txt
+          sed -Ei '/^#@?#/d' ubo_fop.txt
           python ./FOP.py
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
           cat ../nofop/opt_ghide.txt ./optcombined.txt | sed '/^$/d' > ../title/opt_done.txt
@@ -190,7 +194,7 @@ jobs:
           git add easyrules.txt optlist.txt minilist.txt dnsblock.txt uborules.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          [ $(date -d "8 hour" -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
+          [ $(date -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
