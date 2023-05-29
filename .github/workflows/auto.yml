@@ -144,11 +144,13 @@ jobs:
           | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
           sed -n '/^!#if !env_mobile/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
           | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
+          sed -n '/^!#if ext_devbuild/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
+          | sed -e '1i !#if ext_devbuild' -e '$a !#endif\n' > uboifdev.txt
           sed -n '/^!#if !cap_html_filtering/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
           | sed -e '1i !#if !cap_html_filtering' -e '$a !#endif\n' > uboifnocap.txt
-          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if !env_firefox/,/^!#endif/d' \
-          -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' -e '/^!#if !cap_html_filtering/,/^!#endif/d' rawuboif.txt > uboifleft.txt
-          cat uboifchrome.txt uboiffire.txt uboifnofire.txt uboifmob.txt uboifnomob.txt uboifnocap.txt uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
+          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if !env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' \
+          -e '/^!#if !env_mobile/,/^!#endif/d' -e '/^!#if ext_devbuild/,/^!#endif/d' -e '/^!#if !cap_html_filtering/,/^!#endif/d' rawuboif.txt > uboifleft.txt
+          cat uboifchrome.txt uboiffire.txt uboifnofire.txt uboifmob.txt uboifnomob.txt uboifdev.txt uboifnocap.txt uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
 
       - name: FOP rules
         run: |
@@ -161,6 +163,7 @@ jobs:
           sed -Ei '/^#@?#/d' optcombined.txt
           sed -Ei '/^#@?#/d' minicombined.txt
           sed -Ei '/^#@?#/d' ubo_fop.txt
+          python ./FOP.py
           python ./FOP.py
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
           cat ../nofop/opt_ghide.txt ./optcombined.txt | sed '/^$/d' > ../title/opt_done.txt
