@@ -39,6 +39,7 @@ jobs:
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
           ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
           PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
+          AWAVENUE_LIST: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Adblock-Rule/main/AWAvenue-Adblock-Rule.txt
           UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
@@ -67,6 +68,7 @@ jobs:
           wget -qO- ${{ env.ADGUARD_DNS }} | sed '$G' > ./rawdns.txt
           wget -qO- ${{ env.ANTI_AD_ADGUARD }} | sed '$G' >> ./rawdns.txt
           wget -qO- "${{ env.PETER_LOWE }}" | sed '$G' >> ./rawdns.txt
+          wget -qO- "${{ env.AWAVENUE_LIST }}" | sed '$G' >> ./rawdns.txt
           wget -qO- ${{ env.UBLOCK_FILTERS }} | sed '$G' > ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2020 }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2021 }} | sed '$G' >> ./rawubo.txt
