@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Init environment
         run: |
@@ -39,7 +39,6 @@ jobs:
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
           ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
           PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
-          AWAVENUE_LIST: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Adblock-Rule/main/AWAvenue-Adblock-Rule.txt
           UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
           UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
           UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
@@ -68,7 +67,6 @@ jobs:
           wget -qO- ${{ env.ADGUARD_DNS }} | sed '$G' > ./rawdns.txt
           wget -qO- ${{ env.ANTI_AD_ADGUARD }} | sed '$G' >> ./rawdns.txt
           wget -qO- "${{ env.PETER_LOWE }}" | sed '$G' >> ./rawdns.txt
-          wget -qO- "${{ env.AWAVENUE_LIST }}" | sed '$G' >> ./rawdns.txt
           wget -qO- ${{ env.UBLOCK_FILTERS }} | sed '$G' > ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2020 }} | sed '$G' >> ./rawubo.txt
           wget -qO- ${{ env.UBLOCK_2021 }} | sed '$G' >> ./rawubo.txt
@@ -86,11 +84,11 @@ jobs:
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' ./rawdns.txt | sort -u > ../dns/dnscombined.txt
           sed -e '/^![^#]/d' -e '/^!$/d' -e '/^!#include/d' -e 's/\r//g' ./rawubo.txt > ../ubo/ubocombined.txt
           cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt ../material/Additions.txt \
-          | sed -e '/^||a\.cnki\.net\//d' -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > ../fop/easycombined.txt
+          | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > ../fop/easycombined.txt
           cat ./opt-easylist.txt ./opt-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt ../material/Additions.txt \
-          | sed -e '/^||a\.cnki\.net\//d' -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > ../fop/optcombined.txt
+          | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > ../fop/optcombined.txt
           cat ./mini-easylist.txt ./mini-easyprivacy.txt ./mini-easylistchina.txt ./opt-cjx-annoyance.txt ../material/Additions.txt \
-          | sed -e '/^||a\.cnki\.net\//d' -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > ../fop/minicombined.txt
+          | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sort -u > ../fop/minicombined.txt
 
       - name: Combine DNS list
         run: |
