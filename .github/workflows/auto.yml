@@ -163,7 +163,9 @@ jobs:
           sed -Ei '/^#@?#/d' optcombined.txt
           sed -Ei '/^#@?#/d' minicombined.txt
           sed -Ei '/^#@?#/d' ubo_fop.txt
-          python ./FOP.py
+          for list in ./*.txt; do
+            python ./material/MDR.py ./${list}
+          done
           python ./FOP.py
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
           cat ../nofop/opt_ghide.txt ./optcombined.txt | sed '/^$/d' > ../title/opt_done.txt
