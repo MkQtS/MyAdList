@@ -164,7 +164,7 @@ jobs:
           sed -Ei '/^#@?#/d' minicombined.txt
           sed -Ei '/^#@?#/d' ubo_fop.txt
           for list in ./*.txt; do
-            python ./material/MDR.py ./${list}
+            python ${{ env.MAIN_PATH }}/material/MDR.py ./${list}
           done
           python ./FOP.py
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
