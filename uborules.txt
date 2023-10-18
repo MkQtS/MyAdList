@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: HBkLU7/NBv/KEav9fml9/A
+! Checksum: qBG0l6H2wU+CKTEs9VxCPg
 ! Expires: 2 days
-! Version: 202310180609
+! Version: 202310181811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27376, sources at 2023/10/18 06:09 UTC+8
+! Total lines: 27371, sources at 2023/10/18 18:11 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -3187,6 +3187,7 @@ $removeparam=ysclid
 @@||cdn.dynamicyield.com/api/$script,domain=washingtonexaminer.com
 @@||cdn.ekcdn.me/video.mp4$media,domain=doo4k.com
 @@||cdn.frvr.com/fran/pubads_$script,domain=krunker.io
+@@||cdn.fuseplatform.net/publift/$3p,script,xhr,domain=quackr.io
 @@||cdn.gotraffic.net^$domain=bloomberg.*
 @@||cdn.intergi.com/hera/*$xhr,domain=duellinksmeta.com
 @@||cdn.intergi.com/hera/tyche.js$script,domain=raider.io
@@ -3697,7 +3698,7 @@ $removeparam=ysclid
 @@||freegeoip.app/json/*$xhr,domain=hamwaves.com
 @@||freemcserver.net^$1p,script
 @@||freemcserver.net^$ghide
-@@||freereceivesms.com/ados.js$1p,script
+@@||freereceivesms.com^$1p,script
 @@||freetempsms.com^$ghide
 @@||freetutorialsus.com^$ghide
 @@||freetutsdownload.net^$ghide
@@ -5711,6 +5712,7 @@ $removeparam=ysclid
 @@||www.pussyspace.net/upload/no_img.jpg|
 @@||wwwjuwanshe.pp8.com^$3p,domain=juwanshe.com
 @@||x.kinja-static.com/assets/packaged-js/trackers$script
+@@||xenvn.com^$ghide
 @@||xozilla.com^$cname
 @@||xtremestream.co^$ghide
 @@||xweb.instagram.com/ads/preferences/ad_topics/$1p,frame
@@ -7698,8 +7700,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acs, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -14373,8 +14375,8 @@ mitly.us##+js(set, blurred, false)
 mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiflash.com##+js(acs, document.createElement, adb)
 miuiflash.com##+js(acs, eval, replace)
@@ -19760,7 +19762,6 @@ unrealengine.com##+js(no-xhr-if, /api/analytics)
 unsplash.com##div[data-affiliates-grid-container]:upward(1)
 unsplash.com##div[data-test="SearchInFeedAd-AffiliateFallback-Container"]
 unsplash.com##div[style^="--row-gutter"] > div a[href="/brands"]:upward(div[style^="--row-gutter"] > div)
-unsplash.com#@#div[style^="--row-gutter"] > div a[href="/brands"]:upward(div[style^="--row-gutter"] > div):remove()
 unsurcoenlasombra.com##+js(aopr, google_jobrunner)
 uol.com.br##+js(set, UOLPD, {})
 uol.com.br##+js(set, UOLPD.dataLayer, {})
@@ -20831,6 +20832,7 @@ www.amazon.co.jp,www.amazon.com##+js(json-prune, cuepointPlaylist)
 www.amazon.co.jp,www.amazon.com##+js(xml-prune, xpath(//*[name()="Period"][.//*[@value="Ad"]] | //*[name()="Period"]/@start), [value="Ad"], .mpd)
 www.google.*##+js(set, rwt, noopFunc)
 www.google.com##div[aria-label="Why this ad?"]:upward([data-pla="1"])
+www.lenovo.com##+js(aost, history.replaceState, injectedScript)
 www.mindbodygreen.com##aside:style(background: transparent !important;)
 www.mindbodygreen.com##div > section > .network-ad:upward(2)
 www.nj.com##^html > head > :is(meta[name="subscriber_only"][content="false"], meta[property="og:url"]:not([content*=".html"])):upward(html) script:has-text(/googletagmanager|window\.sophi/)
@@ -20911,6 +20913,7 @@ xemales.com##+js(aopr, document.dispatchEvent)
 xemales.com##[href="https://myteenwebcam.com/"]
 xemphimgi.net##+js(nowoif)
 xenvn.com##+js(nostif, ads)
+xenvn.com##.ad_block:style(visibility: hidden !important;)
 xerifetech.com##+js(nostif, 0x)
 xero.porn###popad
 xero.porn##div[onclick^="$\(\"#videoAd"]
@@ -21225,8 +21228,6 @@ youtube.com##.masthead-ad-control,.ad-div,.pyv-afc-ads-container
 youtube.com##.ytlr-horizontal-list-renderer__items > .yt-virtual-list__container > .yt-virtual-list__item--visible.yt-virtual-list__item--selected.yt-virtual-list__item:has-text(Ad)
 youtube.com##ytd-video-masthead-ad-advertiser-info-renderer,ytm-promoted-sparkles-web-renderer
 youtube.com#@#+js(json-prune, playerResponse.adPlacements playerResponse.playerAds playerResponse.adSlots adPlacements playerAds adSlots)
-youtube.com#@#+js(json-prune-fetch-response, [].playerResponse.adPlacements [].playerResponse.playerAds [].playerResponse.adSlots playerResponse.adPlacements playerResponse.playerAds playerResponse.adSlots adPlacements playerAds adSlots, , propsToMatch, url:player?key= method:/post/i bodyUsed:true)
-youtube.com#@#+js(json-prune-fetch-response, [].playerResponse.adPlacements [].playerResponse.playerAds [].playerResponse.adSlots playerResponse.adPlacements playerResponse.playerAds playerResponse.adSlots adPlacements playerAds adSlots, , propsToMatch, url:player?key= method:/post/i)
 youtube.com#@#+js(trusted-replace-fetch-response, /"adPlacements.*?AD_PLACEMENT_KIND_END.*?\"\}\}\}\]\,/, , url:player?key=)
 youtube.com#@#+js(trusted-replace-fetch-response, /"adSlots.*?SLOT_TRIGGER_EVENT_BEFORE_CONTENT.*?\}\]\}\}\]\,/, , url:player?key=)
 youtube.com#@#+js(trusted-replace-fetch-response, /"playerAds.*?gutParams":\{"tag":"\\.*?\}\}\]\,/, , url:player?key=)
@@ -21242,16 +21243,10 @@ youtube.com#@#+js(trusted-replace-fetch-response, /(videoplayback.*?)"playerAds.
 youtube.com#@#+js(trusted-replace-fetch-response, /(youtubei.*?)"adPlacements.*?"\}\}\}\]\,/, $1, url:player?key=)
 youtube.com#@#+js(trusted-replace-fetch-response, /(youtubei.*?)"adSlots.*?\}\]\}\}\]\,/, $1, url:player?key=)
 youtube.com#@#+js(trusted-replace-fetch-response, /(youtubei.*?)"playerAds.*?\}\}\]\,/, $1, url:player?key=)
-youtube.com#@#+js(trusted-replace-fetch-response, /\"adPlacements.*?\"\}\}\}\]\,/, , url:player?key= method:/post/i bodyUsed:true)
-youtube.com#@#+js(trusted-replace-fetch-response, /\"adPlacements.*?\"\}\}\}\]\,/, , url:player?key= method:/post/i)
 youtube.com#@#+js(trusted-replace-fetch-response, /\"adPlacements.*?true.*?\"\}\}\}\]\,/, , url:player?key= method:/post/i)
 youtube.com#@#+js(trusted-replace-fetch-response, /\"adPlacements.*?ytimg.*?\"\}\}\}\]\,/, , url:player?key=)
-youtube.com#@#+js(trusted-replace-fetch-response, /\"adSlots.*?\}\]\}\}\]\,/, , url:player?key= method:/post/i bodyUsed:true)
-youtube.com#@#+js(trusted-replace-fetch-response, /\"adSlots.*?\}\]\}\}\]\,/, , url:player?key= method:/post/i)
 youtube.com#@#+js(trusted-replace-fetch-response, /\"adSlots.*?true.*?\}\]\}\}\]\,/, , url:player?key= method:/post/i)
 youtube.com#@#+js(trusted-replace-fetch-response, /\"playerAds.*?\"enabledEngageTypes\":\"\d.*?\}\}\]\,/, , url:player?key=)
-youtube.com#@#+js(trusted-replace-fetch-response, /\"playerAds.*?\}\}\]\,/, , url:player?key= method:/post/i bodyUsed:true)
-youtube.com#@#+js(trusted-replace-fetch-response, /\"playerAds.*?\}\}\]\,/, , url:player?key= method:/post/i)
 youtube.com#@#+js(trusted-replace-fetch-response, /\"playerAds.*?true.*?\}\}\]\,/, , url:player?key= method:/post/i)
 youtubedownloader.*##+js(nowoif)
 youtubemp3.us##+js(nowoif)
