@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: cUW/6mV5meC1CNPW3CE5QA
+! Checksum: WyETU1oeZOLTEn8HGCM1Sw
 ! Expires: 2 days
-! Version: 202311080609
+! Version: 202311081811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27485, sources at 2023/11/08 06:09 UTC+8
+! Total lines: 27491, sources at 2023/11/08 18:11 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -2798,7 +2798,7 @@ $removeparam=ysclid
 @@||ads.adthrive.com/builds/core/*/js/adthrive.min.js$script,domain=pimylifeup.com
 @@||ads.adthrive.com/sites/*/ads.min.js$script,domain=pimylifeup.com
 @@||ads.bdcraft.net/js/interstitial.js$1p,script
-@@||ads.hausbau-forum.de/adb.js$1p,script
+@@||ads.hausbau-forum.de/openad.js$1p,script
 @@||ads.host-cdn.net/*.js|$script,domain=maxstream.video
 @@||ads.host-cdn.net/ads2.js$script,domain=maxstream.video|uprot.net
 @@||ads.imprezzer.com/js/imprezzer2.min.js$script,domain=mgronline.com
@@ -4030,7 +4030,6 @@ $removeparam=ysclid
 @@||hanime.tv^$ghide
 @@||hanimesubth.com/assets/js/ads.core.js$1p,script
 @@||hastingsobserver.co.uk^$ghide
-@@||hausbau-forum.de/js/siropu/am/ads.min.js$1p,script
 @@||hb.improvedigital.com/pbw/headerlift.min.js$script,domain=html5.gamedistribution.com
 @@||hb.improvedigital.com/pbw/prebid/*$script,domain=html5.gamedistribution.com
 @@||hb.vntsm.com/v2/live/$xhr,domain=aternos.org
@@ -4728,6 +4727,7 @@ $removeparam=ysclid
 @@||pagead2.googlesyndication.com^$script,domain=chromeactions.com|mixesoft.com|mycinema.pro
 @@||pagead2.googlesyndication.com^$script,domain=linkneverdie.net
 @@||pagead2.googlesyndication.com^$xhr,domain=acorta-enlace.com|finanzasdomesticas.com
+@@||pagead2.googlesyndication.com^$xhr,domain=blog24.me
 @@||pagead2.googlesyndication.com^$xhr,domain=krunker.io
 @@||pagead2.googlesyndication.com^$xhr,domain=op.gg
 @@||pagead2.googlesyndication.com^*/show_ads_impl.js$script,domain=extremereportbot.com
@@ -6132,7 +6132,7 @@ allmomsex.com,allnewindianporn.com,analxxxvideo.com,animalextremesex.com,anime3d
 allmonitors24.com##+js(nostif, (), 2000)
 allmusic.com##+js(no-fetch-if, ads)
 allmusic.com##.advertising
-allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com##^script:has-text(/typeof [a-z]\.cmd\.unshift/)
+allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,qiwi.gg,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com##^script:has-text(/typeof [a-z]\.cmd\.unshift/)
 allotech-dz.com##+js(acs, eval, replace)
 allplayer.tk##+js(aopw, _pop)
 allporncomic.com##+js(aopr, exoJsPop101)
@@ -6755,6 +6755,7 @@ ausfile.com##+js(aopw, SubmitDownload1)
 ausfile.com##+js(nano-stb)
 ausfile.com##ins.adsbygoogle
 austiblox.net##+js(aopr, document.body.innerHTML)
+austiblox.net##+js(rmnt, script, /adblock|location\.replace/)
 austiblox.net##+js(set, detectAdBlock, noopFunc)
 austin.culturemap.com##+js(aopr, CatapultTools)
 australianfrequentflyer.com.au##+js(nostif, prompt)
@@ -7351,14 +7352,16 @@ blog.onroid.com##.countdown, .get-link:others()
 blog.onroid.com,m.bloggingguidance.com##+js(set, blurred, false)
 blog.panytourism.online###link1s-snp:style(display: block !important;)
 blog.receivefreesms.co.uk##+js(nostif, show)
+blog.skk.moe##+js(no-fetch-if, /\/post\/.*\.json/)
 blog.skk.moe##+js(no-fetch-if, body:/[\w\W]{700}/)
-blog.skk.moe##+js(no-fetch-if, url:/post/)
 blog.textpage.xyz##+js(aopr, eazy_ad_unblocker)
 blog24.me##+js(aeld, DOMContentLoaded, adsBlocked)
 blog24.me##+js(aeld, load, htmls)
 blog24.me##+js(aopr, Swal.fire)
 blog24.me##+js(nostif, alert)
+blog24.me##.adb-overlay
 blog24.me##^script:has-text(htmls)
+blog24.me##form > [id]:style(display: block !important;)
 blogbux.net###overlay
 blogdatecnologia.net,diariodecasamento.com,eusaudavel.net,modaestiloeafins.com,portalmundocurioso.com,receitasabores.com,turismoeviagem.com##+js(ra, class, div#player)
 bloggertheme.xyz###getlink, #pop-button:style(display: block !important;)
@@ -7679,8 +7682,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acs, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -10454,6 +10457,8 @@ fox.com,foxsports.com##+js(m3u-prune, /\,ad\n.+?(?=#UPLYNK-SEGMENT)/gm, .m3u8)
 fox.com,foxsports.com#@#+js(m3u-prune, /is_ad|ohash=\w{300}/, .m3u8)
 fox.com.tr##+js(set, adblockDetector, trueFunc)
 foxella.com##ins.adsbygoogle
+foxnews.com##.site-header:style(min-height: 90px !important)
+foxnews.com##.sticky-pre-header
 foxseotools.com##+js(nowoif, !?safelink_redirect=)
 foxseotools.com##+js(set, blurred, false)
 foxseotools.com##.iframe-overlay
@@ -11415,9 +11420,9 @@ h-flash.com#@#.google-ads
 h-game18.xyz##+js(aeld, DOMContentLoaded, adlinkfly_url)
 h5.fotor.com###main:style(right: 0 !important;)
 haafedk2.com##+js(rmnt, script, ad blocker)
-haaretz.com##+js(acs, $, AdBlockUtil)
-haaretz.com##+js(aeld, load, hblocked)
-haaretz.com##+js(set, showAds, true)
+haaretz.co.il,haaretz.com##+js(acs, $, AdBlockUtil)
+haaretz.co.il,haaretz.com##+js(aeld, load, hblocked)
+haaretz.co.il,haaretz.com##+js(set, showAds, true)
 habbokritik.de##+js(acs, $, adBlockDetected)
 haber.eskisehirde.net##+js(acs, eval, replace)
 hackedgames.com,jeux.*,kissinggames.com,pintgames.com,playhub.com,playpink.com,prehackshub.com##.ad-title-megaban
@@ -12544,6 +12549,7 @@ isplus.com##div[class="box banner"]
 isplus.com##div[id^="div-gpt-ad-"]
 ispunlock.*,tpb.*##+js(aopr, pace)
 isthereanydeal.com##+js(href-sanitizer, a[href^="http://www.jdoqocy.com/click-"][href*="?URL=http"], ?URL)
+isthereanydeal.com##+js(href-sanitizer, a[href^="https://track.adtraction.com/t/t?"][href*="&url=http"], ?url)
 italianoxxx.com##+js(aopr, document.dispatchEvent)
 italpress.com##+js(set, td_ad_background_click_link, undefined)
 italpress.com##body.td-background-link:style(cursor:default !important;)
@@ -13622,7 +13628,7 @@ lite.qwant.com##.ad:upward(article.result.web)
 litecoin.host##+js(no-xhr-if, adsbygoogle)
 litecoinads.com##+js(set, blockAdBlock, trueFunc)
 litecoinads.com##[class^="bmadblock"]
-live-streamfootball.*,rbtv77.com,superabbit77.*##+js(no-xhr-if, googlesyndication)
+live-streamfootball.*,rbtv77.*,superabbit77.*##+js(no-xhr-if, googlesyndication)
 live-tv-channels.org##+js(aopr, adBlockDetected)
 live-tv-channels.org##+js(nostif, adBlocked)
 live-tv-channels.org##.adsense-player
@@ -26957,7 +26963,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||wpfc.ml/b.gif$image,redirect-rule=1x1.gif,domain=satcesc.com
 ||wpfc.ml^$image,redirect-rule=1x1.gif,domain=thestoryexchange.org
 ||wpnrtnmrewunrtok.xyz^$badfilter
-||wsj.com^$removeparam=mod
+||wsj.com^$badfilter,removeparam=mod
 ||wsws1234.net^$all
 ||wswsnews.net^$all
 ||wurfl.io/wurfl.js$3p,script
@@ -27375,7 +27381,7 @@ citytv.com#@#+js(json-prune, *, ad_unit_path)
 !#endif
 !#if !cap_html_filtering
 actvid.*##+js(rmnt, script, HTMLAllCollection)
-allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com##+js(rmnt, script, /typeof [a-z]\.cmd\.unshift/, condition, cmd.unshift)
+allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,qiwi.gg,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com##+js(rmnt, script, /typeof [a-z]\.cmd\.unshift/, condition, cmd.unshift)
 androjungle.com,bookszone.in,drakescans.com,shortix.co##+js(rmnt, script, onerror)
 apkmirror.com##+js(rmnt, script, /style:last-of-type|:empty|APKM\..+?\.innerHTML/)
 beatsnoop.com,fetchpik.com##+js(rmnt, script, googlesyndication)
