@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: 8jrLjo3xcGMFo+D8in0XhQ
+! Checksum: VAi1FggZz7H/W3k6VHHTFw
 ! Expires: 2 days
-! Version: 202311111810
+! Version: 202311120609
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27548, sources at 2023/11/11 18:10 UTC+8
+! Total lines: 27553, sources at 2023/11/12 06:09 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -463,7 +463,7 @@ $removeparam=ysclid
 *$3p,frame,domain=mwpaste.com
 *$3p,frame,domain=pingit.im|pngit.live
 *$3p,frame,domain=pouvideo.*|povvideo.*|povvldeo.*|povw1deo.*|povwideo.*|powv1deo.*|powvibeo.*|powvideo.*|powvldeo.*,denyallow=google.com
-*$3p,frame,domain=shrinkearn.com
+*$3p,frame,domain=shrinkearn.com,denyallow=cloudflare.com
 *$3p,frame,domain=tubepornclassic.com
 *$3p,frame,domain=txxx.*,denyallow=google.com|gstatic.com
 *$3p,frame,domain=vev.red|vidop.icu|vidup.io
@@ -2517,6 +2517,7 @@ $removeparam=ysclid
 93.115.24.210,semprot.com##a[href^="/yum.php"]
 98zero.com##+js(aopr, adBlockDetected)
 9908ww.com,adelaidepawnbroker.com,bztube.com,hotovs.com,insuredhome.org,nudegista.com,pornluck.com,vidd.se##+js(set, page_params.holiday_promo, true)
+9animetv.to##[href^="//keefeezo.net/"]
 9gag.com##[id^="sidebar-stream-"] > h4:has-text(Advertisement)
 9hentai.*###ads
 9hentai.*##+js(aeld, click, saveLastEvent)
@@ -3563,7 +3564,6 @@ $removeparam=ysclid
 @@||egydead.*^$ghide
 @@||eimusics.com^$popunder,domain=ouo.io
 @@||einthusan.*/prebid.js$1p,script
-@@||ekstat.com/js/ek$script,domain=eksisozluk.com
 @@||ekstrabladet.dk^$ghide
 @@||elahmad.com/tv/videojs/packages/blockadblock.min.js$1p,script
 @@||elahmad.com/tv/videojs/packages/videojs-analytics/videojs-analytics.min.js$1p,script
@@ -5129,6 +5129,7 @@ $removeparam=ysclid
 @@||sharing.wtf^$ghide
 @@||shirainime.com^$ghide
 @@||shoop.de^$ghide
+@@||shoot-yalla.to^$ghide
 @@||shop.bbc.com/skin/$1p,script
 @@||shortearn.*^$ghide
 @@||shortenbuddy.com^$1p,script
@@ -5267,6 +5268,7 @@ $removeparam=ysclid
 @@||static.doubleclick.net/instream/ad_status.js$xhr,domain=wooseotools.com
 @@||static.goolive.de/media/static/images/smileys/ad.gif$image
 @@||static.iqiyi.com/js/player_v1/sdk/*$1p,script
+@@||static.knowledgehub.com/global/images/ping.gif?$1p,xhr
 @@||static.lci.fr/assets/scripts/common/xiti.js$1p,script
 @@||static.motortrader.com.my/advert/$image,domain=motortrader.com.my
 @@||static.parsely.com/p.js$script,domain=nfl.com
@@ -6282,7 +6284,7 @@ androidcentral.com,gamesradar.com,livescience.com,pcgamer.com,space.com,techrada
 androidcure.com,bodytr.com,kasvekuvvet.net##+js(aopr, googletag)
 androidgreek.com##+js(aopr, adBlockDetected)
 androidonepro.com##+js(aopr, downloadJSAtOnload)
-androidpolice.com,makeuseof.com,xda-developers.com##+js(cookie-remover, articlesRead)
+androidpolice.com,makeuseof.com,movieweb.com,xda-developers.com##+js(cookie-remover, articlesRead)
 androidrepublic.org##+js(acs, $, samInitDetection)
 androidtunado.com.br##+js(nosiif, visibility, 1000)
 androidweblog.com##.stream-item
@@ -7707,8 +7709,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acs, onload)
-camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aeld, , Pop)
+camclips.tv##+js(aeld, , pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -9169,8 +9171,8 @@ dota2freaks.com##+js(nosiif, visibility, 1000)
 dotabuff.com##+js(no-fetch-if, ads)
 dotabuff.com##.retaliate.mana-void
 dotadostube.com##.happy-player-beside
-dotadostube.com,dvdgayonline.com,dvdgayporn.com,hotxfans.com,taradinhos.com##+js(aeld, DOMContentLoaded, adsBlocked)
-dotadostube.com,hotxfans.com,taradinhos.com##.video-block-happy:upward(1)
+dotadostube.com,taradinhos.com##+js(noeval-if, ads)
+dotadostube.com,taradinhos.com##.video-block-happy:upward(1)
 dottech.org###Azadify
 doujinblog.org##.wppopups-whole
 doujindesu.*##+js(acs, document.querySelectorAll, popMagic)
@@ -9392,9 +9394,11 @@ dutchycorp.*##div[class][style="width:468px;height:60px;display: inline-block;ma
 dutchycorp.*##ins.adsbygoogle
 dutrag.com,embedsito.com,fembed.*,feurl.com,films5k.com,gaobook.review,javcl.me,javip.pro,javlove.club,luxubu.review,mavlecteur.com,mavplay.*,mavplayer.xyz,mrdhan.com,openplayer.net,playdoe.xyz,playfinder.xyz,playvid.host,rubicstreaming.com,smartshare.tv,ujav.me,videobb.*,videogreen.xyz,watchgayporn.online,xstreamcdn.com,youtnbe.xyz##+js(nowoif)
 dutrag.com,embedsito.com,fembed.com,feurl.com,films5k.com,gaobook.review,javcl.me,javideo.pw,javip.pro,javjav.top,javlove.club,luxubu.review,mavplay.*,mavplayer.xyz,mrdhan.com,openplayer.net,playfinder.xyz,playdoe.xyz,playvid.host,rubicstreaming.com,smartshare.tv,ujav.me,videobb.*,videogreen.xyz,watchgayporn.online,xstreamcdn.com,youtnbe.xyz##+js(aopr, jwplayer.utils.Timer)
+dvdgayonline.com##+js(aost, setTimeout, ads)
 dvdgayonline.com##+js(nano-stb, countdown, 1000, 0.02)
 dvdgayonline.com##+js(ra, href, #clickfakeplayer)
 dvdgayonline.com##.aligncenter
+dvdgayporn.com##+js(aeld, DOMContentLoaded, adsBlocked)
 dvdgayporn.com##+js(ra, href, #clickfakeplayer)
 dvdgayporn.com,taradinhos.com##.widget_custom_html
 dvdplay.*##+js(aopw, _pop)
@@ -11321,7 +11325,7 @@ gosexpod.com##.im_outer_x:upward(2)
 gosexpod.com##.natsc
 gosexpod.com##.video-headline
 gosexpod.com##.zzz-ddnotice
-gosexpod.com##^script:has-text(/myreadCookie|my_inter/)
+gosexpod.com##^script:has-text(myreadCookie/)
 gosexpod.com##center
 goshow.tv##+js(acs, document.querySelectorAll, popMagic)
 goshow.tv##+js(aopr, ExoLoader)
@@ -13816,6 +13820,7 @@ lowendbox.com##[href="https://vpsdime.com/"]
 lowendbox.com##a[href][rel=noreferrer] > img[height="250"][width="300"]
 lowendbox.com##div.block:has([id^="bsa"])
 lowendbox.com##iframe
+lscomic.com##+js(noeval-if, ads)
 ltc25.in##+js(aeld, , adsBlocked)
 ltc25.in##+js(aeld, load, /abb|htmls|nextFunction/)
 luciferdonghua.in###overplay
@@ -16596,7 +16601,6 @@ port.hu##+js(nostif, offsetHeight)
 portable4pc.com##+js(aost, document.getElementById, adsBlocked)
 portable4pc.com##+js(nosiif, visibility, 1000)
 portaliz.site##+js(no-xhr-if, adsbygoogle)
-portalizpro.com##+js(aost, setTimeout, adsBlocked)
 portevergladeswebcam.com###partnerad1div
 poscitech.*##+js(acs, setTimeout, admc)
 poscitech.*##+js(nowoif)
@@ -23042,6 +23046,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||edfringe.com/*.php$all
 ||edfzh.sbs^$all
 ||edge-campaign-japan.com^$doc
+||edge.api.brightcove.com/playback/v1/accounts/6415718365001/$3p,removeparam=ad_config_id,xhr,domain=brightcove.net
 ||edge.api.brightcove.com^$removeparam=ad_config_id,xhr,domain=9now.com.au|mech-plus.com|threenow.co.nz
 ||edgecast-vod.yimg.com/$media,redirect=noopmp3-0.1s,domain=yahoo.com
 ||edluv.sbs^$all
@@ -23957,7 +23962,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||hotscope.tv^$csp=script-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://disqus.com *.disqus.com *.google-analytics.com *.disquscdn.com
 ||hotsimulator.com^$all
 ||hottracker.biz^
-||hotxfans.com^$3p
 ||house.comikey.com/unw.gif?$1p,image
 ||hp-dy.net^$doc
 ||hpav.tv/a720.html
@@ -26370,6 +26374,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||tb.fuckandcdn.com/tbstatic*/tryboobs/compiled/script.
 ||tds.pornvideotop.com/general/exoclick-
 ||tds.pornvideotop.com^
+||teads.tv^$3p,redirect-rule=noop.js,script,from=tf1info.fr
 ||tealium.com^$3p
 ||tealium.com^$badfilter
 ||teamwork-project.com^$doc
@@ -27289,7 +27294,7 @@ comohoy.com##+js(aopr, navigator.brave)
 djxmaza.in,miuiflash.com,thecubexguide.com###featuredimage:style(transform: translateX(10000px) !important;)
 djxmaza.in,miuiflash.com,thecubexguide.com###featuredimage:style(visibility: hidden !important;)
 djxmaza.in,miuiflash.com,thecubexguide.com##+js(spoof-css, #featuredimage, visibility, visible)
-gosexpod.com##+js(rmnt, script, /myreadCookie|my_inter/)
+gosexpod.com##+js(rmnt, script, myreadCookie)
 ignboards.com##+js(acs, JSON.stringify)
 lablue.*##+js(nostif, push, 500)
 leak.sx,pornleaks.in##+js(rmnt, script, navigator.brave)
