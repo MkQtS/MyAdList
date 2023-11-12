@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: VAi1FggZz7H/W3k6VHHTFw
+! Checksum: LaMc81BEvnM0d+M571Vqbw
 ! Expires: 2 days
-! Version: 202311120609
+! Version: 202311121810
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27553, sources at 2023/11/12 06:09 UTC+8
+! Total lines: 27555, sources at 2023/11/12 18:10 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -1534,6 +1534,7 @@ $removeparam=ysclid
 /^https:\/\/(?:www\d\.)?[-a-z]{6,}\.(?:com|info|net|org)\/(?=[-_a-zA-Z]{0,42}\d)(?=[-_0-9a-z]{0,42}[A-Z])[-_0-9a-zA-Z]{43}\/\?(?:pub|s)id=[-_0-9a-z{}]{1,32}(?:&qs\d=\S+)?&cid=[-_0-9a-zA-Z]{10,36}(?:&s=0\.\d+)?(?:#\S+)?$/$doc,match-case,domain=com|info|net|org
 /^https:\/\/(?:www\d\.)?[-a-z]{6,}\.(?:com|info|net|org)\/(?=[-_a-zA-Z]{0,42}\d)(?=[-_0-9a-z]{0,42}[A-Z])[-_0-9a-zA-Z]{43}\/\?cid=[-_0-9a-zA-Z]{10,36}(?:&qs\d=\S+)?&(?:s|pub)id=[-_0-9a-z{}]{1,32}(?:&s=0\.\d+)?(?:#\S+)?$/$doc,match-case,domain=com|info|net|org
 /^https:\/\/([a-z]+\.)?sythe\.org\/[\w\W]{30,}/$image
+/^https:\/\/[-\w]+\.googlevideo\.com\/videoplayback\?expire=([02-9]|1[0-589]|16[0-8]|169[0-8]|1699[0-5])/$3p,xhr,domain=www.youtube.com,method=get
 /^https:\/\/[-a-z]{12,20}\.[a-z]{3,7}\/[-0-9A-Za-z]{60,}\d{4}\/001\//$doc,domain=site|top|website
 /^https:\/\/[-a-z]{12,20}\.[a-z]{3,7}\/[-0-9A-Za-z]{60,}\d{4}\/004\//$doc,domain=site|top|website
 /^https:\/\/[-a-z]{8,15}\.(?:com|net)\/400\/\d{7}$/$3p,script
@@ -6284,7 +6285,7 @@ androidcentral.com,gamesradar.com,livescience.com,pcgamer.com,space.com,techrada
 androidcure.com,bodytr.com,kasvekuvvet.net##+js(aopr, googletag)
 androidgreek.com##+js(aopr, adBlockDetected)
 androidonepro.com##+js(aopr, downloadJSAtOnload)
-androidpolice.com,makeuseof.com,movieweb.com,xda-developers.com##+js(cookie-remover, articlesRead)
+androidpolice.com,makeuseof.com,movieweb.com,xda-developers.com##+js(cookie-remover, /articlesRead|previousPage/)
 androidrepublic.org##+js(acs, $, samInitDetection)
 androidtunado.com.br##+js(nosiif, visibility, 1000)
 androidweblog.com##.stream-item
@@ -7709,8 +7710,8 @@ camclips.cc##+js(aeld, canplay)
 camclips.cc##.videobanner
 camclips.cc##[href="/upgrade"]:upward(1)
 camclips.tv##+js(acs, onload)
-camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aeld, , pop)
+camclips.tv##+js(aeld, , Pop)
 camclips.tv##+js(aopr, console.clear)
 camclips.tv##+js(set, flashvars.adv_pause_html, '')
 camclips.tv##+js(set, flashvars.popunder_url, undefined)
@@ -20963,6 +20964,7 @@ www.wp.pl##iframe[scrolling="no"][src^="https://v.wpimg.pl/"][frameborder="0"]:u
 www.wp.pl#@#+js(aopr, __headpayload)
 www.wp.pl#@#+js(aost, WP, r https)
 www.wp.pl#@#+js(set, WP.gaf.loadBunch, noopFunc)
+www.youtube.com##+js(trusted-replace-fetch-response, /((?:&|%26)id(?:=|%3D)o-A[A-Z].*?)"adPlacements.*?"\}\}\}\]\,/, $1, player?key=)
 www.youtube.com##+js(trusted-replace-fetch-response, /(contextParams":"Q0F[A-Z]U.*?)"adPlacements.*?"\}\}\}\]\,/, $1, player?key=)
 www.youtube.com##+js(trusted-replace-xhr-response, /"adPlacements.*?\"\}\}\}\]\,/, , /player\?key=|watch\?v=|youtubei\/v1\/player/)
 www.youtube.com#@#+js(trusted-replace-fetch-response, /"adPlacements.*?"\}\}\}\]\,(.*?hqdefault\.jpg(?:\?|%3F)sqp(?:=|%3D)-oaym)/, $1, player?key=)
