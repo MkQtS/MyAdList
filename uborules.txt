@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: oYSAZ2Vsxe5xGJgm42AXZg
+! Checksum: IE1VtQtfg5W2fSA9IcCH8w
 ! Expires: 2 days
-! Version: 202311210610
+! Version: 202311211817
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27572, sources at 2023/11/21 06:10 UTC+8
+! Total lines: 27548, sources at 2023/11/21 18:17 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -907,8 +907,9 @@ $removeparam=ysclid
 *$image,redirect-rule=1x1.gif,domain=algumon.com|economist.co.kr|edaily.co.kr|enetnews.co.kr|etoday.co.kr|hancinema.net|hankyung.com|hometownstation.com|inven.co.kr|isplus.com|kagit.kr|loawa.com|sportalkorea.com|ygosu.com
 *$image,redirect-rule=1x1.gif,domain=allcryptoz.net|batmanfactor.com|crewbase.net|crewus.net|shinbhu.net|shinchu.net|talkforfitness.com|thumb8.net|thumb9.net|topcryptoz.net|ultraten.net|uniqueten.net
 *$image,redirect-rule=1x1.gif,domain=animesanka.*
-*$image,redirect-rule=1x1.gif,domain=app.trangchu.news|azmath.info|scratch247.info
+*$image,redirect-rule=1x1.gif,domain=app.trangchu.news|azmath.info
 *$image,redirect-rule=1x1.gif,domain=asfan.as.com
+*$image,redirect-rule=1x1.gif,domain=audiotag.info
 *$image,redirect-rule=1x1.gif,domain=audiotools.blog
 *$image,redirect-rule=1x1.gif,domain=banaraswap.in|kiktu.com|techcyan.com|trangchu.news|upshrink.com
 *$image,redirect-rule=1x1.gif,domain=cinemakottaga.*
@@ -1095,7 +1096,6 @@ $removeparam=ysclid
 *$redirect-rule=noopjs,script,domain=hhkungfu.tv
 *$redirect-rule=noopjs,script,domain=homeairquality.org
 *$redirect-rule=noopjs,script,domain=hopkinssports.com
-*$redirect-rule=noopjs,script,domain=hpjav.tv
 *$redirect-rule=noopjs,script,domain=ignboards.com
 *$redirect-rule=noopjs,script,domain=insurancegold.in
 *$redirect-rule=noopjs,script,domain=jnckmedia.com
@@ -1537,7 +1537,7 @@ $removeparam=ysclid
 /^https:\/\/[-a-z]{8,15}\.(?:com|net)\/500\/\d{7}\?/$3p,xhr
 /^https:\/\/[.\w]+\.[a-z]{2,3}\/z-[5-7]\d{6}$/$1p,match-case,script,strict1p
 /^https:\/\/[0-9a-f]{10}\.[0-9a-f]{10}\.com\/[0-9a-f]{32}\.js$/$3p,script
-/^https:\/\/[0-9a-z]+\.cloudfront\.net\/[a-z]\/[-0-9a-f]+\.js$/$3p,match-case,script,from=marketwatch.com|wsj.com,to=cloudfront.net
+/^https:\/\/[0-9a-z]+\.cloudfront\.net\/([a-z]\/)?[0-9a-f]{6,}-[-0-9a-f]+\.js$/$3p,match-case,script,from=marketwatch.com|wsj.com,to=cloudfront.net
 /^https:\/\/[0-9a-z]{14,16}\.azureedge\.net\/\d{4}\//$doc
 /^https:\/\/[0-9a-z]{3,}\.[-a-z]{10,}\.(?:li[fv]e|top|xyz)\/[a-z]{8}\/\?utm_campaign=\w{40,}/$doc,match-case,domain=life|live|top|xyz
 /^https:\/\/[0-9a-z]{7,25}\.com\/v2(?:\/0\/)?(?=[-_0-9a-z]{0,84}[A-Z])(?=[-_a-zA-Z]{0,84}[0-9])[-_0-9a-zA-Z]{54,85}(#\?v=[0-9a-f]{32})?$/$3p,match-case,script,xhr
@@ -1988,7 +1988,6 @@ $removeparam=ysclid
 /vast-im.js$script
 /vast-new/src/videojs-preroll.js$script
 /vast/?zid=$3p,xhr
-/vast4.js$domain=hpav.tv|hpjav.tv
 /vhdpoppingmodels/*$script
 /videojs.ads.$redirect=noopjs,script,domain=news18.com
 /visilabs.min.js
@@ -3239,7 +3238,6 @@ $removeparam=ysclid
 @@||cdn.thisiswaldo.com/static/js/$script,domain=work.ink
 @@||cdn.trackjs.com/agent/v*/latest/t.js$script,domain=adshrink.it
 @@||cdn.trafficdok.com/libs/e.js$script,domain=tvmd.info
-@@||cdn.tsyndicate.com/sdk/$script,domain=hpav.tv|hpjav.tv
 @@||cdn.turner.com/cnn/van/resources/*/scripts/vendor/loggly.tracker.js$xhr,domain=trentonian.com
 @@||cdn.viglink.com/api/$script,domain=9to5google.com
 @@||cdn.vox-cdn.com/packs/js/concert_ads-*.js$script,domain=theverge.com
@@ -5778,7 +5776,7 @@ abczdrowie.pl,autocentrum.pl,autokult.pl,benchmark.pl,dobreprogramy.pl,fotoblogi
 abczdrowie.pl,autocentrum.pl,genialne.pl,horoskop.wp.pl,jastrzabpost.pl,o2.pl,pysznosci.pl,www.wp.pl##div[class]:has(> img[src] + div > div:first-child:empty):matches-css(z-index: 0):matches-css(position: relative)
 abczdrowie.pl,autocentrum.pl,genialne.pl,horoskop.wp.pl,jastrzabpost.pl,o2.pl,pysznosci.pl,www.wp.pl##div[class]:has(> img[src] + div:empty):matches-css(z-index: 0):matches-css(position: relative)
 abczdrowie.pl,autocentrum.pl,genialne.pl,kafeteria.pl,o2.pl,parenting.pl,polygamia.pl#@#+js()
-abczdrowie.pl,autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,o2.pl,polygamia.pl,pudelek.pl,pysznosci.pl,wp.pl##div[class] > img[src] + div > style:has-text(flex: 0 0 100%):upward(2)
+abczdrowie.pl,autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,genialne.pl,komorkomania.pl,money.pl,o2.pl,polygamia.pl,pudelek.pl,pysznosci.pl,wp.pl##div[class] > img[src] + div > style:has-text(flex: 0 0 100%):upward(2)
 abellalist.com,didilist.com,erotichdworld.com,sharkyporn.com##+js(acs, loadTool, popping)
 abendzeitung-muenchen.de##.wtc-wg-plugilo-connector
 ableitungsrechner.net##+js(nostif, ag_adBlockerDetected)
@@ -6661,7 +6659,6 @@ asianclub.*##+js(nowoif)
 asianclub.*##+js(set, clientSide.adbDetect, noopFunc)
 asianclub.*,javmost.*##+js(aopw, _pop)
 asianclub.tv###player_ad
-asianclub.tv##+js(aeld, click, open)
 asianclub.tv##div[style^="position: fixed; overflow: hidden; right: 0px; bottom: 0px; transform: translate(0px, 0px)"]
 asianembed.io##+js(aeld, click, 0x)
 asianmilfhub.com###custom_html-2
@@ -6741,8 +6738,7 @@ audiobooks4soul.com##+js(nostif, show)
 audiobooks4soul.com##[href^="https://ezaudiobooks.com/"]
 audiofanzine.com##+js(set, Math.pow, noopFunc)
 audiostereo.pl##div[style="margin-bottom: 10px;"] > a[href][target="_blank"], [href^="https://salony.nautilus.net.pl/"]
-audiotag.info##+js(nostif, xclaim)
-audiotag.info##+js(set, Global.adv, undefined)
+audiotag.info##+js(nostif, /offsetHeight|google|Global/)
 audiotools.*##ins.adsbygoogle
 audiotools.pro,audioztools.com,magesy.blog,magesypro.pro##+js(noeval-if, blocker)
 audiotools.pro,audioztools.com,magesy.blog,magesypro.pro##+js(nostif, Blocked)
@@ -6773,14 +6769,14 @@ autofaucet.dutchycorp.space##[href*="banner"]
 autofaucet.dutchycorp.space##[href^="https://enicyvys.xyz/"]
 autofaucet.dutchycorp.space##[src^="blob:https://autofaucet.dutchycorp.space/"]:remove()
 autojournal.fr,autoplus.fr,sportauto.fr##+js(nostif, (), 1)
-autokult.pl##body > div > div[style^="height: "] > a:upward(1)
-autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,pudelek.pl,pysznosci.pl,wp.pl,~www.wp.pl##+js(trusted-set-cookie, WPdp, lqqF1M2OyFTVgpTDxpTVkNdThICHBgVTktTN0BdWV1HQEldVV1AXCxTQFMcHlNLXV1TAQVTVkJdTgUCTktAWkhFVUdGVEdHVEBGEV1TOCFTVgpTDxpTVkBdThICHBgVTktTNyxTQFMcHlNLXV1TAQVTVkJdTgUCTktAWkhFVUdGVEdHVEBGEV1TOyE8TksKThIaTktDQFMSHwEYCFNLTipAQERdWl1JQEhdXUEsTl1TAQNTVkBdThwFTktCQFMFH1NLXUdIWEhHW0lHWklAW11TGRBTVkAMEQ==)
-autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,pudelek.pl,pysznosci.pl,wp.pl,~www.wp.pl##+js(trusted-set-cookie, WPtcs2, CPyPo8APyPo8ABIACCPLDPCgAAAAAH_AAB5YAAATFAJMNS4gC7AgZCbQMIoUQIwrCAigUAAAAkDRAQAuDAp2RgE-sBkAKEUARwQAhgBRkACAAACAJCIAJAiwQAAQCAQAAgAQCAQAEDAAKACwEAgABAdAxTCgAUCwgSICIhTAhKgSCAlsqEEoLpBXCAIssAKARGwUACIAARWAAICxcAwRICVCQQJdQbQAAEACAUSoViCT00ACgkbLUAAA.YAAAAAAAAAAA)
+autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,pudelek.pl,pysznosci.pl,wp.pl,~www.wp.pl##+js(trusted-set-cookie, WPdp, gqcHFMkMCFBXQpBBBpBXUNPRRIQARgHRUtBPCxBS1MAFAEKA1NZRSpSOlNPRRcTRUtSS1MOFVNZVl1BCgVBXUJPRQUQRUtSUEFTUkBUUkJVUUVSGl1BMyFBXQpBBBpBXUBPRRIQARgHRUtBPCxBS1MAFAEKA1NZRSo+RV1BAQFBXUBPRRwRRUtSS1MOE1NZVF1BEwJBXUBUV0FWVkZWVEdVU0AeS1M0NzxBXQpBBBpBXUNPRRIQARgHRUtBPCxBS1MAFAEKA1NZRSpSOlNPRRcTRUtSS1MOFVNZVl1BCgVBXUJPRQUQRUtSUEFTUkBUUkJVUUVSS1MWBlNZVgwe)
+autokult.pl,dobreprogramy.pl,fotoblogia.pl,gadzetomania.pl,komorkomania.pl,money.pl,pudelek.pl,pysznosci.pl,wp.pl,~www.wp.pl##+js(trusted-set-cookie, WPtcs2, CP1ik8AP1ik8ABIACDPLAbEgAAAAAEPgAB5YAABBqhmgAIgAUABcADgAPgAoACoAFwAOQAeACAAEgALoAYABlADQANQAeAA_ACIAEcAJgAUIApACmAFWALgAugBiADMAGgAN4AegA_ACEAENAIgAiQBHACWAE0AJwAUYAwABhwDKAMsAZoA0QBsgDkAHPAO4A7wB7AD4gH2AfsA_wEAgIOAhABEQCKQEWARgAjUBHAEdAJEASUAlIBOwCfgFBgKgAqIBVwCxAFzALrAXkBegC-gGKANEAa8A2gBuADiAHHAOkAdQA7YB7QD7AH_ARMAi8BHsCRAJFASoAlYBMUCZAJlATaAnYBQ8CjwKRAUnApoCmwFPgKhgVIBUoCqgFWAK5AV2AsKBYgFigLKAWiAtQBbEC3ALdAXAAuQBdAC7QF3wLyAvMBfQC_wGCAMGAYaAxABiwDHgGQwMjAySBkwGTgMqAZYAzMBnIDPAGiANGAaaA1MBqsDVwNZAa8A2iBtwG3wN0A3UBwADggHFgOPAcnA5YDlwHPgOsAeKA8eB5IHlAPigfIB8oD6QH1wPtA-6B-wH7gQBAgIBAwCB4EEQIJgQYAg2BCECFAEK4IWghcBDECGcEOQQ6gh4CHoEPwIpgRgAjSBGsCN4EcQI6AR2Aj2BH0CP4EhAJFASNgkgCScEmASZglQCVIEsAJZwS3BLiCXQJdgS-gmACYIEwwJiwTMBM4CagE2IJtgm5BN4E3wJwhBqAAAA.YAAAAAAAAAAA)
 autokult.pl,dobreprogramy.pl,fotoblogia.pl,komorkomania.pl,pysznosci.pl##div[class] > style:first-child:has-text(flex: 0 0 100%) + div > div > style:first-child:has-text(flex: 0 0 100%) + div:upward(3)
 autokult.pl,dom.wp.pl,facet.wp.pl,film.wp.pl,finanse.wp.pl,fotoblogia.pl,gadzetomania.pl,gry.wp.pl,gwiazdy.wp.pl,kobieta.wp.pl,komorkomania.pl,ksiazki.wp.pl,kuchnia.wp.pl,money.pl,moto.wp.pl,opinie.wp.pl,pogoda.wp.pl,tech.wp.pl,teleshow.wp.pl,turystyka.wp.pl,wawalove.wp.pl,wiadomosci.wp.pl,wideo.wp.pl#@#+js(nostif, detected, 300)
 autokult.pl,film.wp.pl,fitness.wp.pl,fotoblogia.pl,gadzetomania.pl,gry.wp.pl,gwiazdy.wp.pl,horoskop.wp.pl,kobieta.wp.pl,komorkomania.pl,money.pl,pogoda.wp.pl,sportowefakty.wp.pl,tech.wp.pl,teleshow.wp.pl,tv.wp.pl,twojeip.wp.pl,wawalove.wp.pl,wiadomosci.wp.pl,wideo.wp.pl,wp.pl#@#+js(aost, WP.prebid, onLoad)
 autokult.pl,fotoblogia.pl,komorkomania.pl##div[class] > div[class]:empty + img[src^="https://i.wpimg.pl/"]:upward(1)
 autokult.pl,komorkomania.pl,money.pl,wp.pl#@#body [class]:style(filter: none !important;)
+autokult.pl,money.pl##body > div > div[style^="height: "] > a:upward(1)
 automobiledimension.com##.avisdiv
 automodeler.com##.banner
 automodeler.com##ins.adsbygoogle
@@ -6857,9 +6853,9 @@ azel.info,clip-sex.biz,justpicsplease.com,klmanga.*,lucagrassetti.com,manga1001.
 azhar-c.info,concienciaradio.com,kontasas.gr##.stream-item
 azlink.xyz##+js(nano-sib)
 azm.to##+js(aopr, mm)
-azmath.info,azsoft.*,downfile.site,downphanmem.com,expertvn.com,memangbau.com,scratch247.info,trangchu.news##+js(aopr, SMart1)
-azmath.info,azsoft.*,downfile.site,downphanmem.com,expertvn.com,memangbau.com,scratch247.info,trangchu.news##+js(noeval-if, chp_ad)
-azmath.info,azsoft.*,downfile.site,downphanmem.com,expertvn.com,memangbau.com,scratch247.info,trangchu.news##+js(set, count, 0)
+azmath.info,azsoft.*,downfile.site,downphanmem.com,expertvn.com,memangbau.com,trangchu.news##+js(aopr, SMart1)
+azmath.info,azsoft.*,downfile.site,downphanmem.com,expertvn.com,memangbau.com,trangchu.news##+js(noeval-if, chp_ad)
+azmath.info,azsoft.*,downfile.site,downphanmem.com,expertvn.com,memangbau.com,trangchu.news##+js(set, count, 0)
 azoraworld.com##+js(acs, String.fromCharCode, ai_adb)
 azrom.net##+js(aeld, , show)
 azrom.net##+js(href-sanitizer, a[href^="https://azrom.net/"][href*="?url="], ?url)
@@ -8737,6 +8733,7 @@ danc.uk##[href^="https://inidekil.com"]
 danet.vn###adsButton
 dansmovies.com##+js(aopr, popunder)
 daotranslate.com##+js(acs, eval, replace)
+daotranslate.com##+js(aost, setTimeout, ads)
 daporn.com###close-aff
 daporn.com###mediaOverlay
 daporn.com##.bottom-promo
@@ -9059,8 +9056,8 @@ dmcdn.xyz,dmcdn2.xyz##+js(nowoif)
 dmzj.com##body:style(overflow: auto !important;)
 dndsearch.in##+js(acs, $, height)
 dobrapogoda24.pl##+js(nostif, , 1)
+dobreprogramy.pl,money.pl,pudelek.pl,pysznosci.pl,wp.pl##+js(trusted-set-cookie, WPcbadcp, $now$)
 dobreprogramy.pl,pysznosci.pl##div[class] > div:not([class], [id]):only-child > div[class]:only-child > div[class]:first-child > a > img[src^="https://v.wpimg.pl/"]:upward(5)
-dobreprogramy.pl,pysznosci.pl,wp.pl##+js(trusted-set-cookie, WPcbadcp, $now$)
 docer.*##+js(set, ads_unblocked, true)
 docer.pl#@##ad
 docer.pl#@#[class^="ad-"]
@@ -9874,6 +9871,7 @@ exey.io##+js(acs, disableItToContinue)
 exey.io##+js(acs, encodeURIComponent, XMLHttpRequest)
 exey.io##+js(set, blurred, false)
 expertplay.net##+js(acis, ips.controller.register)
+expertvn.com##+js(rmnt, script, mdp)
 explorecams.com##+js(aeld, np.detect)
 explorecams.com##+js(no-fetch-if, ad-delivery)
 explosivemenu.com##ins.adsbygoogle
@@ -10572,6 +10570,7 @@ freejav.guru##+js(nostif, disableDeveloperTools)
 freelistenonline.com##+js(set, fuckAdBlock._options.baitClass, null)
 freelitecoin.top,freetron.top##+js(no-xhr-if, adx)
 freelitecoin.top,freetron.top##.ads
+freeltc.online##+js(noeval-if, ads)
 freemagazines.top###fixedbanner
 freemagazines.top##+js(acs, eval, replace)
 freemagazines.top##+js(aopr, b2a)
@@ -11288,12 +11287,9 @@ gomo.to##+js(aopr, glxopen)
 gomo.to##+js(aopw, _pop)
 gomo.to##+js(nowoif)
 gomoviefree.*##.mobile-btn
-gomovies.*,123movie.cc##+js(aopr, mm)
+gomovies.*##+js(aopr, mm)
 gomovies.*,gomoviesc.*##+js(nowoif)
 gomoviesfree.*##+js(aopr, glxopen)
-gomovieshub.io##+js(acs, document.createElement, 'script')
-gomovieshub.io##[href="https://gogoanimehub.com/"]
-gomovieshub.io##[target="_blank"]
 gomoviz.*##.mobile-btn
 gomoviz.*##.mvic-btn
 gomoviz.*##div.content-kuss
@@ -11967,6 +11963,7 @@ hoodsite.com##+js(aopw, _pop)
 hopto.org##+js(acs, document.getElementById, undefined)
 hornoxe.com##.ivycat-post:has(a[href^="https://www.amazon.de/"])
 hornoxe.com#@#div.post:has(a[href^="https://www.amazon.de/"])
+horoskop.wp.pl##div[class*="reklama_"]
 horriblesubs.info##[class*="sponsor"]
 hortonanderfarom.blogspot.com##+js(nostif, pop)
 host-cdn.net^$image,redirect-rule=32x32.png,domain=maxstream.video
@@ -12030,19 +12027,6 @@ hoxiin.com##+js(set, blurred, false)
 hpaudiobooks.*##+js(acs, String.fromCharCode, 'shift')
 hpaudiobooks.*##^script:has-text('shift')
 hpaudiobooks.*##^script:has-text(\'shift\')
-hpav.tv,hpjav.tv###preroll
-hpav.tv,hpjav.tv##+js(acs, document.querySelectorAll, popMagic)
-hpav.tv,hpjav.tv##+js(aopr, AaDetector)
-hpav.tv,hpjav.tv##+js(aopr, VAST)
-hpav.tv,hpjav.tv##+js(nostif, debugger)
-hpav.tv,hpjav.tv##+js(nowoif)
-hpav.tv,hpjav.tv##+js(set, checkdom, 0)
-hpav.tv,hpjav.tv##.home-featured-ad
-hpav.tv,hpjav.tv##.poplayer
-hpav.tv,hpjav.tv##.video-boxad
-hpav.tv,hpjav.tv##[href^="http://wct.link/click"]
-hpav.tv,hpjav.tv##[id*="_ad_"]
-hpav.tv,hpjav.tv##body > div:has-text(Close AD)
 hq-links.com##+js(nostif, show)
 hqbang.com###list_videos_related_videos > center
 hqbang.com##+js(aeld, getexoloader)
@@ -13003,8 +12987,8 @@ kachelmannwetter.com##[href="https://pflotsh.com"]
 kachelmannwetter.com,meteologix.com##.dkpw-billboard-margin
 kachelmannwetter.com,meteologix.com,weather.us##.dkpw-billboard-margin-fixed
 kachelmannwetter.com,meteologix.com,weather.us##.kw-ad-right
+kafeteria.pl,sportowefakty.wp.pl##div[class*=" "]:has(> div:empty):matches-css(z-index: 0):matches-css(position: relative)
 kafeteria.pl,sportowefakty.wp.pl##div[class*=" "]:has(> div:first-child > div:first-child:empty):matches-css(z-index: 0):matches-css(position: relative)
-kafeteria.pl,sportowefakty.wp.pl##div[class*=" "]:has(> div:first-child:empty):matches-css(z-index: 0):matches-css(position: relative)
 kamerabudaya.com##+js(acs, addEventListener, adblock)
 kamerabudaya.com##.ads, div.adsadsense, #HTML1
 kangkimin.com##+js(nano-sib)
@@ -13213,6 +13197,7 @@ knights-table.net##+js(nostif, test.remove, 100)
 knowyourmeme.com##+js(nosiif, blogherads)
 knowyourmeme.com##.bodycopy > div[style]:not([class])
 kobe-np.co.jp##section.sec:has(> #piano_recs_inline_title)
+kobieta.wp.pl,money.pl##div[class] > div > a > img[src^="https://v.wpimg.pl/"]:upward(3)
 kobieta.wp.pl,pysznosci.pl,wiadomosci.wp.pl##div > div:first-child > iframe[src^="https://v.wpimg.pl/"][frameborder="0"][scrolling="no"]:first-child:upward(2)
 kochamjp.pl##+js(set, blockAdBlock._options.baitClass, null)
 kochbar.de##.admanager
@@ -14465,8 +14450,8 @@ mitly.us##+js(set, blurred, false)
 mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiku.com##+js(acs, eval, ignielAdBlock)
 miuiku.com##+js(nowoif)
@@ -14581,12 +14566,8 @@ mondainai.moe##+js(nosiif, visibility, 1000)
 money.cnn.com##section.column:has(> #moneySponsors)
 money.it##.gptslot
 money.pl###app > div:first-child > div:not([class], [id]) > div:not([class^="sc-"]):upward(1)
-money.pl##aside + div[class] > div > div > div > div > a[href^="https://www.money.pl/"] > img[src^="https://v.wpimg.pl/"]:upward(6)
-money.pl##body > div > div[style^="height:"]
 money.pl##div:not([class], [id]) > div:not([class], [id]) > div:first-child > div:first-child > iframe[scrolling="no"][frameborder="0"]:upward(4)
-money.pl##div[class] > div > a[href^="https://money.wp.pl/"] > img[src^="https://v.wpimg.pl/"]:upward(3)
 money.pl##div[data-breakpoint] > div > div > main > div:first-child:has(a[href="/sekcja/kongres-590/"])
-money.pl##div[data-breakpoint] > div:first-child > div > div:first-child:has(a[href^="https://www.money.pl"] > img[src^="https://v.wpimg.pl/"])
 money.pl##iframe[src*="promoted"]
 money.pl##section + div > iframe[src*="promoted"]:upward(1)
 money.pl#@##app > div[class^="sc-"] > div[class]:not([class*=" "]):has(:scope > div[class*=" "]:only-child > img[src^="https://v.wpimg.pl/"][src$="=="][alt])
@@ -15521,7 +15502,6 @@ olympusscanlation.com##+js(aopw, _pop)
 olympusscanlation.com##.sticky_ad_beta
 olympusscanlation.com##ins.adsbygoogle
 omgexploits.com##+js(nosiif, visibility, 1000)
-on9.net##+js(aopr, open)
 onbatch.my.id##[id*="ScriptRoot"]
 onbox.me##+js(nowoif)
 oncam.me##+js(acs, document.querySelectorAll, popMagic)
@@ -16766,6 +16746,7 @@ pt.potwm.com##.shown.visible.onlineIndicator
 publicflashing.me##+js(aost, console, onload)
 publish0x.com###registerModal, .show.fade.modal-backdrop
 publish0x.com##body:style(overflow: auto !important;)
+pudelek.pl,www.wp.pl##body > div[class] > div + div + div > .spinner:upward(2)
 pugam.com##+js(acs, jQuery, ai_adb)
 puhutv.com##+js(aopw, adblockCheck)
 punisoku.blogo.jp##+js(acs, url, Math.random)
@@ -17542,8 +17523,6 @@ sexmadeathome.com###dclm_modal_content
 sexmadeathome.com###dclm_modal_screen
 sexmadeathome.com##*:style(filter: none !important)
 sexmadeathome.com##+js(aopr, document.dispatchEvent)
-sexmo.org##.item2
-sexmo.org,vidmo.org##^script:has-text(script_0)
 sexo5k.com##+js(rmnt, script, ExoLoader)
 sexodi.com###video_reklamy
 sexodi.com##+js(set, ads_unblocked, true)
@@ -19690,6 +19669,7 @@ tweakers.net##+js(aost, btoa, send)
 twistedporn.com##+js(nowoif)
 twister.porn##+js(aopr, open)
 twitch.tv##+js(nowoif, amazon-adsystem)
+twitter.com##[data-testid="primaryColumn"] [data-testid="cellInnerDiv"]:has([data-testid="top-impression-pixel"])
 twitter.com#@#article[role="article"]:has-text(Promoted)
 twitter.com,twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid.onion##[data-testid="trend"]:has-text(/Promoted|Gesponsert|Promocionado|Patrocinat|Sponsorisé|Sponsorizzato|Promowane|Promovido|Реклама|Uitgelicht|Sponsorlu|Promotert|Promoveret|Sponsrad|Mainostettu|Sponzorováno|Promovat|Ajánlott|Προωθημένο|Dipromosikan|Được quảng bá|推廣|推广|推薦|推荐|プロモーション|프로모션|ประชาสัมพันธ์|प्रचारित|বিজ্ঞাপিত|تشہیر شدہ|مُروَّج|تبلیغی|מקודם/):upward(1)
 twitter.com,twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid.onion##div[style^="transform"] h2 > div[style^="-webkit-line-clamp"] > span:has-text(/^(?:Promoted Post|Promowany Post|Post promovat|プロモポスト)$/):upward(3)
@@ -20193,7 +20173,6 @@ vidlox.*##+js(set, tRds, true)
 vidlox.*##+js(set, xRds, false)
 vidlox.*##A[href$=".html"][rel="nofollow norefferer noopener"]
 vidmedia.top##+js(aopr, __Y)
-vidmo.org###afrt
 vidmoly.*###adsblock
 vidmoly.*###dos_vlock
 vidmoly.*###mg_vd
@@ -20941,7 +20920,6 @@ www.wp.pl###glonews > div[data-st-area] > div > aside > div:first-child > div:ha
 www.wp.pl###site-header > div:first-child
 www.wp.pl###site-header:style(min-height: 0px !important;)
 www.wp.pl###undefined-0:not([data-testid="magazineTeaserGoTo"])
-www.wp.pl##body > div[class] > div:first-child:empty + div + div > .spinner:upward(2)
 www.wp.pl##div > div[class] > img[src^="https://v.wpimg.pl/"][role="presentation"] + div > div + div:empty:upward(1)
 www.wp.pl##div[class][style="margin-bottom: 20px;"] > div > img[src^="https://v.wpimg.pl/"][role="presentation"]:upward(2)
 www.wp.pl##div[data-cover="true"] + div > div:first-child > div:first-child > div:first-child > img[src^="https://v.wpimg.pl/"][role="presentation"]:upward(2)
@@ -22777,6 +22755,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||d1q4kshf6f0axi.cloudfront.net/main/prebid-$script
 ||d1t4ekjh9ps4ob.cloudfront.net^
 ||d1z2jf7jlzjs58.cloudfront.net/p.js$redirect=noopjs,script,domain=voici.fr
+||d1z2jf7jlzjs58.cloudfront.net^
 ||d26b395fwzu5fz.cloudfront.net/keen-tracking-$redirect=noopjs,script,domain=campaign.stickr.co
 ||d2cmedia.ca^$badfilter
 ||d2cmedia.ca^$~font,~image
@@ -23965,9 +23944,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||hottracker.biz^
 ||house.comikey.com/unw.gif?$1p,image
 ||hp-dy.net^$doc
-||hpav.tv/a720.html
 ||hphp-dy.net^$doc
-||hpjav.tv/a720.html
 ||hprofits.com^$domain=gogaytube.tv|shemaleporntube.tv
 ||hqbang.com/n/
 ||hqbang.com/neverb/
@@ -26857,7 +26834,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||vidia.tv^$csp=frame-src
 ||vidible.tv^$badfilter
 ||vidlii.com/js/main.js^$1p,script
-||vidmo.org/sw.js$1p,script
 ||vidmoly.to/static/vastAD.js$script
 ||vidomo.xyz/assets/js/devtools-detector.js$important
 ||vidop.*/sw.js$1p,script
@@ -27523,10 +27499,10 @@ linkdoni.soft98.ir##^body,title
 7xm.xyz##+js(rmnt, script, AdBlocker)
 !#endif
 !#if cap_html_filtering
-allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,gfinityesports.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com,chaptercheats.com##^script:has-text(/typeof [a-z]\.cmd\.unshift/)
+allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,gfinityesports.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,nypost.com,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com,chaptercheats.com##^script:has-text(/typeof [a-z]\.cmd\.unshift/)
 cheatsheet.com,gamerant.com,cbr.com##^script:has-text(admiral)
 !#else
-allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,gfinityesports.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com,chaptercheats.com##+js(rmnt, script, /typeof [a-z]\.cmd\.unshift/, condition, cmd.unshift)
+allmusic.com,androidpolice.com,calculator-online.net,cattime.com,collider.com,comingsoon.net,dogtime.com,dualshockers.com,freeconvert.com,gfinityesports.com,givemesport.com,howtogeek.com,insider-gaming.com,liveandletsfly.com,makeuseof.com,milestomemories.com,momtastic.com,nordot.app,nypost.com,qtoptens.com,screenrant.com,sherdog.com,superherohype.com,thefashionspot.com,timesnews.net,xda-developers.com,chaptercheats.com##+js(rmnt, script, /typeof [a-z]\.cmd\.unshift/, condition, cmd.unshift)
 cheatsheet.com,gamerant.com,cbr.com##+js(rmnt, script, admiral)
 !#endif
 !#if cap_html_filtering
