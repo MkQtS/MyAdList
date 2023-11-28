@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: FQChl/ZyFll/DCKthax7Qw
+! Checksum: mD7VNeicCV3vdBuKtnYCFA
 ! Expires: 2 days
-! Version: 202311280608
+! Version: 202311281812
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27696, sources at 2023/11/28 06:08 UTC+8
+! Total lines: 27682, sources at 2023/11/28 18:12 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -2617,7 +2617,6 @@ $removeparam=ysclid
 @@*$ghide,domain=brainly.*|eodev.com
 @@*$ghide,domain=btc25.org|doge25.in
 @@*$ghide,domain=deinesexfilme.com|einfachtitten.com|halloporno.com|herzporno.com|lesbenhd.com|milffabrik.com|porn-monkey.com|porndrake.com|pornhubdeutsch.net|pornoaffe.com|pornodavid.com|pornoente.tv|pornofelix.com|pornofisch.com|pornohammer.com|pornohelm.com|pornoklinge.com|pornotom.com|pornotommy.com|pornovideos-hd.com|pornozebra.com|xhamsterdeutsch.xyz|xnxx-sexfilme.com
-@@*$ghide,domain=dev.miuiflash.com|djxmaza.in|thecubexguide.com
 @@*$ghide,domain=drivelinks.me|hackshort.me|pelislinks.me
 @@*$ghide,domain=dropcoins.xyz|fastcoin.ga|faucetbr.tk|is2btc.com
 @@*$ghide,domain=duplichecker.com|plagiarismchecker.co|searchenginereports.net|smallseotools.com
@@ -8927,10 +8926,9 @@ deusasporno.com.br,sambaporno2.com,sexoamador.blog.br,videosexoquente.com,videos
 deutschekanale.com##+js(no-fetch-if, imasdk)
 deutschekanale.com##.banner
 deutschsex.mobi##.default__interest-block
-dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(no-fetch-if, /adtrue\.com|eningspon\.com|freychang\.fun|orquideassp\.com|popunder/)
-dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(no-xhr-if, /a-mo\.net|adnxs\.com|prebid|creativecdn\.com|e-planning\.net|quantumdex\.io/)
-dev.miuiflash.com,djxmaza.in,thecubexguide.com##[id*="-gpt-ad"]:style(height:250px !important;left:-3000px !important;position:absolute !important)
-dev.miuiflash.com,djxmaza.in,thecubexguide.com##iframe:upward(div)
+dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(rpnt, script, /gtag/js|tag/js|js'|doubleclick|adsby|src="/)
+dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(rpnt, script, /none'|hidden'|undefined/)
+dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(rpnt, script, iframe., form.)
 dev2qa.com##+js(acs, decodeURIComponent, ai_)
 devast.io###advert
 devcourseweb.com##+js(nosiif, visibility, 1000)
@@ -9077,9 +9075,10 @@ djs.sk##+js(aopr, miner)
 djxmaza.in###wait1button:upward(center) ~ *:not(center)
 djxmaza.in,miuiflash.com,thecubexguide.com###featuredimage
 djxmaza.in,miuiflash.com,thecubexguide.com##+js(rmnt, script, checkifscript)
+djxmaza.in,miuiflash.com,thecubexguide.com##+js(rpnt, script, /.offsetHeight|.offsetWidth|offset|height:|width:/)
 djxmaza.in,miuiflash.com,thecubexguide.com##+js(rpnt, script, /error|onerror|gpt-ad|HEAD'/i)
 djxmaza.in,miuiflash.com,thecubexguide.com##+js(rpnt, script, featuredimage', container', condition, getComputedStyle)
-djxmaza.in,miuiflash.com,thecubexguide.com##+js(rpnt, script, IFRAME", container")
+djxmaza.in,miuiflash.com,thecubexguide.com##+js(rpnt, script, IFRAME", CONTAINER")
 djxmaza.in,proviralhost.com###wait1
 djxmaza.in,proviralhost.com###wait1button.disabled, #wait2button.disabled:remove-class(disabled)
 dktechnicalmate.com###myModal:has(iframe.in-page-iframe):style(display: block !important;)
@@ -9311,8 +9310,10 @@ dropgalaxy.*##+js(acis, document.createElement, /break;case \$\.|popunder|iframe
 dropgalaxy.*##+js(aeld, , loadScripts)
 dropgalaxy.*##+js(no-fetch-if, /adtrue\.com|eningspon\.com|freychang\.fun|orquideassp\.com|popunder|mobileoffers|googlesyndication|histats|creativecdn|crwdcntrl|prebid|sync|cloudflareinsights|vlitag|inklinkor|popmonetizer|ads|dubzenom|rsc|adoto/)
 dropgalaxy.*##+js(no-xhr-if, /a-mo\.net|adnxs\.com|prebid|creativecdn\.com|e-planning\.net|quantumdex\.io|mobileoffers|googlesyndication|histats|creativecdn|crwdcntrl|prebid|sync|cloudflareinsights|vlitag|inklinkor|popmonetizer|ads|dubzeno|rsc|adoto/)
-dropgalaxy.*##+js(rmnt, script, /\.onerror|document\.write|Error|sbmt|isMobileBrowser|navigator\.userAgent|InstallTrigger|userTimezoneOffset=userDate|div-gpt-ad-dropgalaxycom/)
+dropgalaxy.*##+js(rmnt, script, /\.onerror|document\.write|Error|InstallTrigger|userTimezoneOffset=userDate|div-gpt-ad-dropgalaxycom/)
+dropgalaxy.*##+js(rpnt, script, 'iframe, 'div)
 dropgalaxy.*##+js(rpnt, script, .offsetParent)
+dropgalaxy.*##+js(rpnt, script, /none|hidden/, 0, condition, getComputedStyle)
 dropgalaxy.*##+js(rpnt, script, /script1.src|script2.src/, lol.noop)
 dropgalaxy.*##+js(rpnt, script, iframe", div")
 dropgalaxy.*##+js(rpnt, script, iframe', div')
@@ -9506,6 +9507,7 @@ easymp3converter.com##+js(nowoif, !yt2api)
 easymp3converter.com##body > div[style$="z-index: 300000;"]
 easymp3converter.com##div[id^="waldo-tag"]
 easysky.in,veganab.co##+js(set, blurred, false)
+easytech24.com###verifying-source:others()
 easytech24.com###verifying-source:style(margin-top: 430px !important;)
 easyworldbusiness.com,recipese.com###yuidea-snp:style(display: block !important;)
 easyworldbusiness.com,recipese.com##+js(nano-sib, timer, *, 0.02)
@@ -10703,6 +10705,7 @@ freesoftpdfdownload.blogspot.com##+js(aeld, load, 2000)
 freesolana.top##+js(no-xhr-if, /coinzillatag|czilladx/)
 freethemesy.com,tech24us.com###download, #download-button, #main-download, .button:others()
 freethemesy.com,tech24us.com##+js(nano-sib, counter, *, 0.02)
+freethemesy.com,tech24us.com##+js(rmnt, #text, AD:)
 freethemesy.com,tech24us.com##+js(rpnt, script, inline', block')
 freethemesy.com,tech24us.com##.cf.main-content.col-8:style(margin-top: 400px !important;)
 freethemesy.com,tech24us.com##form[id]:style(display: block !important;)
@@ -12482,6 +12485,8 @@ inews.co.uk##.thanks-3xsWr
 inextmovies.*##+js(nowoif)
 infinitehentai.com##+js(nowoif)
 infinityblogger.in##+js(acs, eval, replace)
+infinityscans.xyz##+js(acs, String.prototype.charAt, .join)
+infinityscans.xyz##+js(aost, getElementsByTagName, handler)
 infinityscans.xyz##+js(nostif, stop)
 infinityscans.xyz##+js(nowoif)
 infinityscans.xyz##+js(rmnt, script, /await\fetch|navigator\.userAgent/)
@@ -12492,6 +12497,7 @@ infinityscans.xyz##+js(rpnt, script, error";, success";)
 infinityscans.xyz##+js(trusted-set, res.result.adblocker, false)
 infinityscans.xyz##+js(trusted-set, result_status, success)
 infinityscans.xyz##+js(trusted-set, xhr.status, 200)
+infinityscans.xyz##^script:has-text(setTimeout)
 infinityscans.xyz##^script:has-text(throw Error)
 influencersgonewild.com##+js(aost, Math.round, onload)
 influencersgonewild.com##.g1-advertisement-inside-grid:upward(li)
@@ -14526,8 +14532,8 @@ mitly.us##+js(set, blurred, false)
 mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiku.com##+js(acs, eval, ignielAdBlock)
 miuiku.com##+js(nowoif)
@@ -19979,6 +19985,7 @@ uploadrar.com##div.download0page:not(:has(.mngez-free-download))
 uploadroot.com##+js(aopr, open)
 uploadroot.com##.buttonDownload
 uploadsea.com##+js(no-fetch-if, ads)
+uploadsea.com##+js(nowoif)
 uploadshare.net##.advert-wrapper
 uploadshare.net##ins.adsbygoogle
 uploadsoon.com,viralxns.com,wp.uploadfiles.in###tp-snp2, #timeout:style(display:block !important; margin-top: 520px !important; height: 100px !important; width: 100px !important)
@@ -20134,7 +20141,6 @@ vectorizer.io##+js(nostif, modal)
 vectorizer.io##[href^="https://track.fiverr.com/"]
 veedi.com##+js(set, adBlocker, false)
 veekyforums.com##+js(nowoif)
-vegamovies.*##+js(aopr, matchMedia)
 venge.io##+js(nofab)
 venge.io##+js(set, adsProvider.init, noopFunc)
 venge.io##+js(set, SDKLoaded, true)
@@ -22098,7 +22104,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||arthyredir.com^$all
 ||artofxxx.net^$image,domain=watchjavonline.com
 ||aruble.net^$3p
-||arvbjqavenjba.top^
 ||asadcdn.com/adlib/*$redirect=noopjs,script,domain=sport1.de
 ||asdmcm.com^$all
 ||asetpun.com^$doc
@@ -22131,7 +22136,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ataru-loto.com^$doc
 ||atchao.jp^$doc
 ||atchm.net^$doc
-||atentherel.org^
 ||aternos.org/ajax/account/report-detection$1p,xhr
 ||aternos.org/panel/ajax/reportDetection.php?$1p,xhr
 ||aterroppop.com^
@@ -22166,7 +22170,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||awapp.store^$doc
 ||awapps.cfd^$all
 ||awkljjaawerba.top^$3p
-||awtqbjylk.com^
 ||axd.jp^$doc
 ||axdsz.pro^$all
 ||axis073236.com^$doc
@@ -22411,7 +22414,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||btpnav.com^$all
 ||buddygays.com^$all
 ||budhump.com^$doc
-||bulbofficial.com^
 ||bulletprofit.com^$3p
 ||bundaxsandi.com^
 ||bunkr.la/build/lv.js$1p,script
@@ -22589,6 +22591,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||chatntr.com/widget?affiliate$3p,frame
 ||chaturbate.com^$frame,domain=naughtymachinima.com
 ||cheat-world.site^$doc
+||cheater-pro.com^$doc
 ||cheaterboss.com^$all
 ||cheats.ink^$doc
 ||check-host.net/rimages/$1p,image
@@ -22743,7 +22746,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||contentads.click^
 ||contextbar.ru^$3p
 ||contributor.google.com/scripts/*/loader.js$script,domain=citationmachine.net
-||convsweeps.com^
 ||coolcast2.com/z-$script
 ||coolmoviez.*^$csp=default-src 'self'
 ||cooperationmoth.com^
@@ -22970,12 +22972,10 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||dezf3o8j9jdt6.cloudfront.net^$3p
 ||dfiles.*/sw.js$1p,script
 ||dgduwb.com^$doc
-||dgkajwnbrazepe.com^
 ||dhotelzao.com^$all
 ||di-ana.jp^$doc
 ||di02.biz^$all
 ||dia-lover.com^$doc
-||dialling-abutory.com^
 ||diamantedonorte.pr.gov.br/slot/addressrjz-xtipv9qew.html$doc
 ||diamond-line.net^$doc
 ||difficultba2cjeh.jp^$doc
@@ -23191,7 +23191,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||eraberu.jp^$doc
 ||erdeallyighab.com^$all
 ||erdfkhxrnanm.top^$all
-||eriawea.com^
 ||erocm.com^$doc
 ||eromatchi.jp^$doc
 ||eroprofile.com/js/nvbla.js
@@ -23214,7 +23213,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ev-upstart.com^$doc
 ||ev.every-every-happy.com^$doc
 ||ev4ev.biz^$doc
-||eveald.com^
 ||events-csgo.com^$all
 ||events.paramount.tech^$redirect=nooptext,domain=nickjr.com
 ||evergage.com^$badfilter
@@ -23367,7 +23365,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||ff-dai.net^$doc
 ||fflink.net^$3p
 ||ffr548tyfhe.jp^$doc
-||fftagtden.com^
 ||fichub.com/plugins/adobe/lib/$important,xhr,domain=natgeotv.com
 ||fictiongroin.com^$all
 ||fifa.com/api/v*/ad-manager/$redirect=nooptext
@@ -23526,7 +23523,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||funker530-ads.azurewebsites.net^
 ||funroundy.click^$all
 ||funroundy.online^$all
-||funsoups.com^
 ||funtwitter.games^$all
 ||funuf.fun^$all
 ||funuzai.ru^$popup
@@ -23634,7 +23630,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||giftcardhero.net^$doc
 ||gifyu.com/*.gif$image,domain=masahub.net
 ||gigaleecher.com/templates/plugmod/giga.js$1p,script
-||giggedguddle.com^
 ||gimp.es^$doc
 ||girhub.com^$all
 ||girls.a-makeup.com^$doc
@@ -23861,7 +23856,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||grea-fd12dr.com^$doc
 ||greedseed.world/vpaid/YtVpaid.php
 ||green-resultsbid.com^
-||green4762.com^
 ||greenadblocker.com^$doc
 ||greengoplatform.com^$all
 ||greenshot.fr^$doc
@@ -23926,7 +23920,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||harmlessmessage.com^$all
 ||harzfriends.de^$all
 ||hathyneglu.com^
-||hatwasallokmv.info^$3p
 ||haupsoti.net^
 ||havenworks.com^$doc
 ||hawaktv.com/sw.js$script
@@ -24303,6 +24296,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||induedabusive.casa^$all
 ||inference.api.useinsider.com^$important,domain=akbank.com
 ||infinitehentai.com/uploads/banners/
+||infinityscans.xyz/sw.js$1p,script
 ||info.neg.co.jp^$badfilter
 ||infoemphasiseleventh.com^$doc
 ||infolinks.com/|$3p,redirect-rule=noop.txt,xhr
@@ -24941,7 +24935,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||milkygoodness.xyz/js/optscript/
 ||milkygoodness.xyz^$badfilter
 ||mindbodygreen.com/js/optimizely-$1p,script
-||mindlessslogan.com^
 ||miniurl.*/sw.js$1p,script
 ||miniusa.com/etc/designs/mini/js/vendor/tracking/*$1p,redirect=noopjs,script
 ||mintiia.com^$doc
@@ -25444,6 +25437,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pejik.com^$all
 ||pelispedia.*/*sw.js$1p,script
 ||pengwincheat.fun^$doc
+||pengwincheat.space^$doc
 ||peoplemanmanpeople.com^$doc
 ||peppaping.xyz^
 ||perfotrack.com^
@@ -25488,7 +25482,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||pineapplecake-yummy.com^$doc
 ||pingit.*/sw.js$1p,script,domain=~pingit.com|~pingit.me
 ||pingleflavor.xyz^
-||pinkleo.pro^
 ||pinkredwhitereef.greenreef.net^$doc
 ||pinponpaipan.com^$doc
 ||pinskscope.life^$doc
@@ -25565,7 +25558,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||popads.net/pop.js$redirect=popads.net.js,script
 ||popcashjs.b-cdn.net^
 ||popcent.org^$3p
-||popmansion.com^
 ||popsads.link^$all
 ||poptival.com^
 ||popts.site^$all
@@ -25682,7 +25674,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||proviralhost.com^$3p
 ||proxy.cdend.com/*.mp4.m3u8$xhr,domain=aplayer.xyz
 ||prplads.com^$3p
-||prulruyaoq.com^
 ||ps-sns0girls.com^$doc
 ||psaiceex.net^
 ||psfmi.com^$all
@@ -26156,7 +26147,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||skyonelendings.com^$all
 ||skytils.net^$all
 ||slacker.com^*/getspot/?spotid=$media,redirect=noopmp3-0.1s
-||slanderpe.com^
 ||slapcleaner.com^$all
 ||slb3cr9dx9.jp^$doc
 ||sldg02.com^$doc
@@ -26569,7 +26559,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||thepcworld.net^$all
 ||thepcworlds.com^$doc
 ||thepiratebay.$badfilter,script,domain=pirateproxy.live|thehiddenbay.com|thepiratebay.org
-||theprizesenses.life^
 ||theshoparound.com^$all
 ||thestreameast.*/*.gif$image
 ||theswagsports.com/can/*.htm$1p,script
@@ -26583,7 +26572,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||thostco.club^$all
 ||thothd.com^$1p,image,redirect-rule=1x1.gif
 ||thotvids.com/player/html.php$frame
-||thtpxwnqfx.com^
 ||ti.com/assets/js/headerfooter/$badfilter,script
 ||tibiabr.com/$1p,frame
 ||tiffanyandtoke.com^$all
@@ -27015,7 +27003,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||vroom24365.com^$doc
 ||vrsmash.com/assets/script$badfilter
 ||vuwomoby.pro^
-||vvtadblk.online^
 ||vvtplayer.online/cdn-cgi/trace
 ||vy8monlf1t.com^$doc
 ||w-dbl.com^$doc
@@ -27164,6 +27151,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||www.uspertest.vip^$all
 ||www.youtube.com/@Download-lin/$doc
 ||www.youtube.com/@download-link/$doc
+||www.youtube.com/@download-midnight/$doc
 ||www.youtube.com/@download_here/$doc
 ||www3.doubleclick.net^$redirect-rule=noop.txt,xhr,domain=lineups.fun
 ||www3secure.com^$all
@@ -27264,7 +27252,6 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||xy-z6x.com^$doc
 ||xyg.application-sns.com^$doc
 ||xypthe.com^
-||xznqolfzwdwini.com^
 ||xzo.jp^$doc
 ||y-tradie.com^$doc
 ||y2mate.com/themes/js/pn.js
@@ -27469,7 +27456,6 @@ novinky.cz##+js(aost, HTMLIFrameElement, inlineScript)
 ||thaudray.com^$script,xhr,redirect-rule=noop.js,domain=streamingcommunity.*
 !#endif
 !#if env_mobile
-@@*$script,xhr,domain=infinityscans.xyz
 @@||bwb101.goo.ne.jp/b.js$domain=news.goo.ne.jp
 @@||doubleclick.net^$script,xhr,domain=viz.com
 @@||googletagservices.com/tag/js/gpt.js$script,domain=viz.com
