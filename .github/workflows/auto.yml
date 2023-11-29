@@ -83,12 +83,12 @@ jobs:
           cd ${{ env.MAIN_PATH }}/down
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' ./rawdns.txt | sort -u > ../dns/dnscombined.txt
           sed -e '/^![^#]/d' -e '/^!$/d' -e '/^!#include/d' -e 's/\r//g' ./rawubo.txt > ../ubo/ubocombined.txt
-          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt \
-          | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sed -E 's/#\?#(.*):-abp-has/##\1:has/g' | sort -u > ../fop/easycombined.txt
-          cat ./opt-easylist.txt ./opt-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt \
-          | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sed -E 's/#\?#(.*):-abp-has/##\1:has/g' | sort -u > ../fop/optcombined.txt
-          cat ./mini-easylist.txt ./mini-easyprivacy.txt ./mini-easylistchina.txt ./opt-cjx-annoyance.txt \
-          | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' | sed -E 's/#\?#(.*):-abp-has/##\1:has/g' | sort -u > ../fop/minicombined.txt
+          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
+          | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/easycombined.txt
+          cat ./opt-easylist.txt ./opt-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
+          | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/optcombined.txt
+          cat ./mini-easylist.txt ./mini-easyprivacy.txt ./mini-easylistchina.txt ./opt-cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
+          | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/minicombined.txt
 
       - name: Combine DNS list
         run: |
