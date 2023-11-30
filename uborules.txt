@@ -1,10 +1,10 @@
 ! Title: uBlock Filters
-! Checksum: qbNr/xyEeI0CcuYenoAljQ
+! Checksum: r33tWE5qoYa8iSjCDS5HnQ
 ! Expires: 2 days
-! Version: 202311300610
+! Version: 202311301811
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! A combination of uBlock official filters
-! Total lines: 27710, sources at 2023/11/30 06:10 UTC+8
+! Total lines: 27726, sources at 2023/11/30 18:11 UTC+8
 !
 ###adContext:not(:empty)
 ###adMid1:not(:empty)
@@ -974,6 +974,7 @@ $removeparam=ysclid
 *$image,redirect-rule=32x32.png,domain=dropgalaxy.*
 *$image,redirect-rule=32x32.png,domain=freeplayervideo.com|nazarickol.com|player-cdn.com
 *$image,redirect-rule=32x32.png,domain=streameast.*|thestreameast.*
+*$image,redirect-rule=32x32.png:5,domain=dev.miuiflash.com|djxmaza.in|thecubexguide.com
 *$media,redirect-rule=noopmp3-0.1s,domain=149.56.24.226
 *$media,redirect-rule=noopmp3-0.1s,domain=eroasmr.com
 *$media,redirect=noopmp3-0.1s,domain=037-hd.com
@@ -2809,6 +2810,7 @@ $removeparam=ysclid
 @@||adobedtm.com^*/satellitelib-$script,domain=skysportaustria.at
 @@||adobedtm.com^*/satellitelib-$script,domain=virginmobile.ca
 @@||adoto.net/dashboard/common/js/common.js$3p,script,domain=dev.miuiflash.com|djxmaza.in|thecubexguide.com
+@@||adoto.net/dashboard/common/js/common.js$script,xhr,domain=dropgalaxy.*
 @@||adpass.atresmedia.com/*/adjs.js$xhr,domain=atresplayer.com
 @@||adproceed.com^$ghide
 @@||ads-api.twitter.com^$xhr,domain=analytics.twitter.com
@@ -3746,9 +3748,9 @@ $removeparam=ysclid
 @@||fundingchoicesmessages.google.com/f/$script,domain=soranews24.com
 @@||fundingchoicesmessages.google.com/i/pub-$script,domain=adshnk.com
 @@||fundingchoicesmessages.google.com/i/pub-*$script,domain=soranews24.com
+@@||fundingchoicesmessages.google.com^$3p,script,domain=fplstatistics.co.uk
 @@||fundingchoicesmessages.google.com^$3p,script,xhr,domain=ganohr.net
 @@||fundingchoicesmessages.google.com^$script,domain=bbc.com
-@@||fundingchoicesmessages.google.com^$script,domain=fplstatistics.co.uk
 @@||fundingchoicesmessages.google.com^$script,domain=stooq.com|stooq.pl
 @@||fusion.ddmcdn.com/app/*/comscore.streaming.$script,domain=motortrend.com|velocity.com
 @@||fusion.ddmcdn.com^$script,domain=ahctv.com|animalplanet.com|cookingchanneltv.com|destinationamerica.com|discovery.com|discoverylife.com|diynetwork.com|foodnetwork.com|hgtv.com|investigationdiscovery.com|motortrend.com|sciencechannel.com|tlc.com|travelchannel.com
@@ -4566,6 +4568,7 @@ $removeparam=ysclid
 @@||mpsnare.iesnare.com/snare.js$script,domain=elgiganten.dk|elgiganten.se|elkjop.no|gigantti.fi|power.fi
 @@||mpsnare.iesnare.com/snare.js$script,domain=lenovo.com
 @@||mpsnare.iesnare.com/snare.js$script,domain=rossmann.de
+@@||mrfreemium.blogspot.com^$ghide
 @@||mrsbrownsb.blogspot.com^$ghide
 @@||ms-mt--api-web.*/ads/*$xhr,domain=coches.net
 @@||msecnd.net/scripts/a/ai.0.js$script,domain=msropendata.com
@@ -4805,6 +4808,7 @@ $removeparam=ysclid
 @@||pixel.adsafeprotected.com^$xhr,domain=teleboy.ch
 @@||planhub.ca^$ghide
 @@||plantuml.com^$cname
+@@||platform.bidgear.com/pubbidgear-ad.js$xhr,domain=infinityscans.xyz
 @@||play.history.com^$ghide
 @@||play.nova.bg^$1p,script
 @@||play.tv3.ee^$1p,script
@@ -5425,6 +5429,7 @@ $removeparam=ysclid
 @@||tm-offers.gamingadult.com/?offer=$frame,domain=69games.xxx|gamcore.com
 @@||tmohentai.com^$ghide
 @@||tmp.a2zapk.*/js/advertisement/$frame,domain=a2zapk.*|educatiocenter.online
+@@||tmp.a2zapk.com/adbdata.php$xhr,domain=dropgalaxy.*
 @@||tn.voyeurhit.com/contents/$image,domain=voyeurhit.tube
 @@||tonanmedia.my.id^$ghide
 @@||toolbaz.com/tardisrocinante/screx.js$1p,script
@@ -8938,6 +8943,7 @@ deutschsex.mobi##.default__interest-block
 dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(rpnt, script, /gtag/js|tag/js|js'|doubleclick|adsby|src="/)
 dev.miuiflash.com,djxmaza.in,thecubexguide.com##+js(rpnt, script, iframe., form.)
 dev.miuiflash.com,djxmaza.in,thecubexguide.com##[id*="-gpt-ad"]:style(height:250px !important;left:-3000px !important;position:absolute !important)
+dev.miuiflash.com,djxmaza.in,thecubexguide.com##iframe:upward(div)
 dev2qa.com##+js(acs, decodeURIComponent, ai_)
 devast.io###advert
 devcourseweb.com##+js(nosiif, visibility, 1000)
@@ -9327,9 +9333,10 @@ dropgalaxy.*##+js(rpnt, script, iframe), div))
 dropgalaxy.*##+js(rpnt, script, true;, false;)
 dropgalaxy.*##+js(set, isAdblockActive, false)
 dropgalaxy.*##+js(trusted-set, document.visibilityState, visible)
-dropgalaxy.*##^script:has-text(navigator.userAgent)
 dropgalaxy.*##^script:has-text(throw new Error)
 dropgalaxy.*,financemonk.net##+js(nowoif)
+dropgalaxy.com##+js(aeld, DOMContentLoaded, handler)
+dropgalaxy.com##+js(rpnt, script, /s.src =|s.src/i)
 droplink.co##+js(aopr, app_vars.force_disable_adblock)
 droplink.co##+js(set, blurred, false)
 dropmms.com##+js(acs, document.onkeydown)
@@ -14537,8 +14544,8 @@ mitly.us##+js(set, blurred, false)
 mitly.us##[href^="http://deloplen.com/"]
 mitly.us##ins.adsbygoogle
 mittelhessen.de##.adSlot
-mittelhessen.de##[class*="Banner"]
 mittelhessen.de##[class*="banner"]
+mittelhessen.de##[class*="Banner"]
 mitula.com.br#@#.adsList
 miuiku.com##+js(acs, eval, ignielAdBlock)
 miuiku.com##+js(nowoif)
@@ -17765,6 +17772,7 @@ sheshaft.com##[class*="banner"]
 shinchu.*##.g-recaptcha:upward(form > div):style(display: block !important;)
 shinden.pl##+js(acs, document.createElement, shift)
 shinden.pl##+js(aopw, _pop)
+shineads.*##+js(acs, document.readyState, adsBlocked)
 shineads.*##+js(no-xhr-if, ads)
 shineads.*##+js(nostif, ai_adb)
 shineads.*##.entry-header
@@ -20008,6 +20016,7 @@ uporn.icu##+js(acs, decodeURI, decodeURIComponent)
 uporn.icu##+js(acs, document.querySelectorAll, popMagic)
 upornia.*##+js(acs, adver)
 upornia.*##.aa_label + div:not([class])
+upornia.*##.intwo__img
 upornia.*##.video-ad-videos + div.aa_label
 upornia.*##.video-content > div[class] > div.text > a[href="#"]:upward(2)
 upornia.*##.video-videos-slider
@@ -20015,6 +20024,11 @@ upornia.*##.video-videos-slider + .aa_label
 upornia.*##.videoplayer-wrapper + div > div[class]:only-child
 upornia.*##div[class$="related"] + div.aa_label
 upornia.*##div[style="display:flex !important"] > div
+upornia.com##+js(rmnt, script, /popunder|isAdBlock|admvn.src/i)
+upornia.com##.underplayer:style(min-height: initial !important;)
+upornia.com##.video-page__content > .right
+upornia.com##h5:has-text(Advertisement)
+upornia.com##section:not(:empty)
 uporno.xxx##+js(aopr, document.dispatchEvent)
 uporno.xxx##.banner
 uprafa.com###stickyFooterBoxColseBtn
@@ -21410,6 +21424,7 @@ youtube.com###promotion-shelf
 youtube.com##.masthead-ad-control,.ad-div,.pyv-afc-ads-container
 youtube.com##.ytlr-horizontal-list-renderer__items > .yt-virtual-list__container > .yt-virtual-list__item--visible.yt-virtual-list__item--selected.yt-virtual-list__item:has-text(Ad)
 youtube.com##ytd-video-masthead-ad-advertiser-info-renderer,ytm-promoted-sparkles-web-renderer
+youtube.com#@##merch-shelf
 youtubedownloader.*##+js(nowoif)
 youtubemp3.us##+js(nowoif)
 youtubemp3donusturucu.net##+js(aeld, click, t(a))
@@ -23583,6 +23598,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||gamefz.com/c.asp$frame
 ||gamehacks.xyz^$doc
 ||gamerch.com/s3-assets/library/js/fingerprint2.min.js$important,redirect=fingerprint2.js,script
+||gamerplay50.space^$domain=fansonlinehub.com|hotmediahub.com|terabox.fun
 ||gamesfuny.space^$all
 ||gamezhero.com/promo$1p,frame
 ||gamingaffiliation.com^$3p
@@ -24445,6 +24461,7 @@ zwergenstadt.com##+js(aeld, load, onload)
 ||jpzone.vip^$all
 ||js.eventbr.xyz/vip/crazy.js
 ||js.helltraffic.com/fluidplayer/scripts/webvtt.min.js$important,script,domain=tubewolf.com
+||js.mobileoffers-ep-download.com^$domain=dropgalaxy.com
 ||js.wpadmngr.com/static/adManager.js$redirect-rule=noopjs,script
 ||jsbetzh.com^$all
 ||jsdelivr.net/*/adb-analytics$3p,script
@@ -27570,7 +27587,6 @@ web.bale.ai##+js(trusted-set, navigator.userAgent, Mozilla/5.0 (Windows NT 10.0;
 citytv.com##+js(no-xhr-if, wp-json/rsm-adutil, true)
 citytv.com#@#+js(json-prune, *, ad_unit_path)
 infinityscans.xyz##+js(no-fetch-if, pagead2.googlesyndication.com/pagead/js/adsbygoogle.js, war:googlesyndication_adsbygoogle.js)
-infinityscans.xyz##+js(rpnt, script, /\(async function\(\).*\(\)\;\}/)
 soft98.ir,~forum.soft98.ir##+js(aeld, click, [native code])
 soft98.ir,~forum.soft98.ir##+js(aeld, click, open)
 soft98.ir,~forum.soft98.ir##+js(aeld, contextmenu, preventDefault)
