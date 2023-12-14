@@ -16,7 +16,7 @@ jobs:
 
       - name: Init environment
         run: |
-          mkdir down dns ubo fop nofop title checksum
+          mkdir down dns fop nofop title checksum
           echo "MAIN_PATH=$(pwd)" >> $GITHUB_ENV
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y/%m/%d %H:%M UTC+8")" >> $GITHUB_ENV
@@ -39,16 +39,6 @@ jobs:
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
           ANTI_AD_ADGUARD: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-adguard.txt
           PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
-          UBLOCK_FILTERS: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
-          UBLOCK_2020: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
-          UBLOCK_2021: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
-          UBLOCK_2022: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
-          UBLOCK_2023: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt
-          UBLOCK_BADWARE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt
-          UBLOCK_PRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
-          UBLOCK_QUICK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
-          UBLOCK_ABUSE: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
-          UBLOCK_UNBREAK: https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
         run: |
           cp ${{ env.MAIN_PATH }}/material/Titles.txt ${{ env.MAIN_PATH }}/title/title.txt
           wget -qO ${{ env.MAIN_PATH }}/fop/FOP.py ${MOD_FOP_SCRIPT}
@@ -67,22 +57,11 @@ jobs:
           wget -qO- ${{ env.ADGUARD_DNS }} | sed '$G' > ./rawdns.txt
           wget -qO- ${{ env.ANTI_AD_ADGUARD }} | sed '$G' >> ./rawdns.txt
           wget -qO- "${{ env.PETER_LOWE }}" | sed '$G' >> ./rawdns.txt
-          wget -qO- ${{ env.UBLOCK_FILTERS }} | sed '$G' > ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_2020 }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_2021 }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_2022 }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_2023 }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_BADWARE }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_PRIVACY }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_QUICK }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_ABUSE }} | sed '$G' >> ./rawubo.txt
-          wget -qO- ${{ env.UBLOCK_UNBREAK }} | sed '$G' >> ./rawubo.txt
 
       - name: Preprocess
         run: |
           cd ${{ env.MAIN_PATH }}/down
           sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' ./rawdns.txt | sort -u > ../dns/dnscombined.txt
-          sed -e '/^!$/d' -e '/^!#include/d' -e 's/\r//g' ./rawubo.txt > ../ubo/ubocombined.txt
           cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
           | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/easycombined.txt
           cat ./opt-easylist.txt ./opt-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
@@ -129,43 +108,15 @@ jobs:
           comm -13 except_check.txt common_checked.txt > common.txt
           cat except.txt common.txt | sed '/^$/d' > ${{ env.MAIN_PATH }}/title/dnsrules.txt
 
-      - name: Separate uBlock if rules
-        run: |
-          cd ${{ env.MAIN_PATH }}/ubo
-          sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > ./rawuboif.txt
-          sed -e '/^!#if/,/^!#endif/d' -e '/^!/d' ubocombined.txt > ../fop/ubo_fop.txt
-          for ii in 'cap_html_filtering' 'env_chromium' 'env_edge' 'env_safari' 'env_firefox' 'env_mobile' 'ext_devbuild'
-          do
-            sed -n "/^!#if ${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/d" | sed '/^!/d' | sort -u > ./if${ii}_main.txt
-            sed -n "/^!#if ${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/p" | sed '/^!/d' | sort -u > ./if${ii}_else.txt
-            sed -n "/^!#if !${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/d" | sed '/^!/d' | sort -u >> ./if${ii}_else.txt
-            sed -n "/^!#if !${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/p" | sed '/^!/d' | sort -u >> ./if${ii}_main.txt
-            echo "!#if ${ii}" >> ./uboifmg.txt
-            cat "./if${ii}_main.txt" >> ./uboifmg.txt
-            if [ "$(du -b "./if${ii}_else.txt" | cut -f 1)" -gt 2 ]; then
-              echo '!#else' >> ./uboifmg.txt
-              cat "./if${ii}_else.txt" >> ./uboifmg.txt
-            fi
-            echo '!#endif' >> ./uboifmg.txt
-            rm -f "./if${ii}_main.txt" "./if${ii}_else.txt"
-          done
-          sed -e '/^!#if cap_html_filtering/,/^!#endif/d' -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_edge/,/^!#endif/d' -e '/^!#if env_safari/,/^!#endif/d' \
-          -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if ext_devbuild/,/^!#endif/d' \
-          -e '/^!#if !cap_html_filtering/,/^!#endif/d' -e '/^!#if !env_chromium/,/^!#endif/d' -e '/^!#if !env_edge/,/^!#endif/d' -e '/^!#if !env_safari/,/^!#endif/d' \
-          -e '/^!#if !env_firefox/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' -e '/^!#if !ext_devbuild/,/^!#endif/d' rawuboif.txt > ./uboifleft.txt
-          cat ./uboifmg.txt ./uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
-
       - name: FOP rules
         run: |
           cd ${{ env.MAIN_PATH }}/fop
           sed -En '/^#@?#/p' easycombined.txt | sort -u > ../nofop/easy_ghide.txt
           sed -En '/^#@?#/p' optcombined.txt | sort -u > ../nofop/opt_ghide.txt
           sed -En '/^#@?#/p' minicombined.txt | sort -u > ../nofop/mini_ghide.txt
-          sed -En '/^#@?#/p' ubo_fop.txt | sort -u > ../nofop/ubo_ghide.txt
           sed -Ei '/^#@?#/d' easycombined.txt
           sed -Ei '/^#@?#/d' optcombined.txt
           sed -Ei '/^#@?#/d' minicombined.txt
-          sed -Ei '/^#@?#/d' ubo_fop.txt
           for list in ./*.txt; do
             python ${{ env.MAIN_PATH }}/material/MDR.py ./${list}
           done
@@ -173,7 +124,6 @@ jobs:
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
           cat ../nofop/opt_ghide.txt ./optcombined.txt | sed '/^$/d' > ../title/opt_done.txt
           cat ../nofop/mini_ghide.txt ./minicombined.txt | sed '/^$/d' > ../title/mini_done.txt
-          cat ../nofop/ubo_ghide.txt ./ubo_fop.txt ../nofop/uboif.txt | sed '/^$/d' > ../title/ubo_done.txt
 
       - name: Create final lists
         run: |
@@ -183,12 +133,10 @@ jobs:
           sed -n '/^! Title: Optimized/,/^# Optimized/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' opt_done.txt)/" -e '/^#/d' > ./opttitle.txt
           sed -n '/^! Title: Mini/,/^# Mini/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' mini_done.txt)/" -e '/^#/d' > ./minititle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > ./dnstitle.txt
-          sed -n '/^! Title: uBlock/,/^# uBlock/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' ubo_done.txt)/" -e '/^#/d' > ./ubotitle.txt
           cat easytitle.txt easy_done.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
           cat opttitle.txt opt_done.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
           cat minititle.txt mini_done.txt > ${{ env.MAIN_PATH }}/checksum/minilist.txt
           cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
-          cat ubotitle.txt ubo_done.txt > ${{ env.MAIN_PATH }}/checksum/uborules.txt
           cd ${{ env.MAIN_PATH }}
           for list in ./checksum/*.txt; do
             perl ./material/addChecksum.pl ${list}
@@ -199,7 +147,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add easyrules.txt optlist.txt minilist.txt dnsblock.txt uborules.txt
+          git add easyrules.txt optlist.txt minilist.txt dnsblock.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
           [ $(date -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
