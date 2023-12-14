@@ -132,27 +132,28 @@ jobs:
       - name: Separate uBlock if rules
         run: |
           cd ${{ env.MAIN_PATH }}/ubo
-          sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > rawuboif.txt
+          sed -n '/^!#if/,/^!#endif/p' ubocombined.txt > ./rawuboif.txt
           sed '/^!#if/,/^!#endif/d' ubocombined.txt > ../fop/ubo_fop.txt
-          sed -n '/^!#if env_chromium/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if env_chromium' -e '$a !#endif\n' > uboifchrome.txt
-          sed -n '/^!#if env_firefox/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if env_firefox' -e '$a !#endif\n' > uboiffire.txt
-          sed -n '/^!#if !env_firefox/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if !env_firefox' -e '$a !#endif\n' > uboifnofire.txt
-          sed -n '/^!#if env_mobile/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if env_mobile' -e '$a !#endif\n' > uboifmob.txt
-          sed -n '/^!#if !env_mobile/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if !env_mobile' -e '$a !#endif\n' > uboifnomob.txt
-          sed -n '/^!#if ext_devbuild/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if ext_devbuild' -e '$a !#endif\n' > uboifdev.txt
-          sed -n '/^!#if cap_html_filtering/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if cap_html_filtering' -e '$a !#endif\n' > uboifcap.txt
-          sed -n '/^!#if !cap_html_filtering/,/^!#endif/p' rawuboif.txt | sed '/^!/d' | sort -u \
-          | sed -e '1i !#if !cap_html_filtering' -e '$a !#endif\n' > uboifnocap.txt
-          sed -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if !env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' \
-          -e '/^!#if !env_mobile/,/^!#endif/d' -e '/^!#if ext_devbuild/,/^!#endif/d' -e '/^!#if cap_html_filtering/,/^!#endif/d' -e '/^!#if !cap_html_filtering/,/^!#endif/d' rawuboif.txt > uboifleft.txt
-          cat uboifchrome.txt uboiffire.txt uboifnofire.txt uboifmob.txt uboifnomob.txt uboifdev.txt uboifcap.txt uboifnocap.txt uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
+          for ii in 'cap_html_filtering' 'env_chromium' 'env_edge' 'env_safari' 'env_firefox' 'env_mobile' 'ext_devbuild'
+          do
+            sed -n "/^!#if ${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/d" | sed '/^!/d' | sort -u > ./if${ii}_main.txt
+            sed -n "/^!#if ${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/p" | sed '/^!/d' | sort -u > ./if${ii}_else.txt
+            sed -n "/^!#if !${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/d" | sed '/^!/d' | sort -u >> ./if${ii}_else.txt
+            sed -n "/^!#if !${ii}/,/^!#endif/p" ./rawuboif.txt | sed "/^!#else/,/^!#endif/p" | sed '/^!/d' | sort -u >> ./if${ii}_main.txt
+            echo "!#if ${ii}" >> ./uboifmg.txt
+            cat "./if${ii}_main.txt" >> ./uboifmg.txt
+            if [ "$(du -b "./if${ii}_else.txt" | cut -f 1)" -gt 2 ]; then
+              echo '!#else' >> ./uboifmg.txt
+              cat "./if${ii}_else.txt" >> ./uboifmg.txt
+            fi
+            echo '!#endif' >> ./uboifmg.txt
+            rm -f "./if${ii}_main.txt" "./if${ii}_else.txt"
+          done
+          sed -e '/^!#if cap_html_filtering/,/^!#endif/d' -e '/^!#if env_chromium/,/^!#endif/d' -e '/^!#if env_edge/,/^!#endif/d' -e '/^!#if env_safari/,/^!#endif/d' \
+          -e '/^!#if env_firefox/,/^!#endif/d' -e '/^!#if env_mobile/,/^!#endif/d' -e '/^!#if ext_devbuild/,/^!#endif/d' \
+          -e '/^!#if !cap_html_filtering/,/^!#endif/d' -e '/^!#if !env_chromium/,/^!#endif/d' -e '/^!#if !env_edge/,/^!#endif/d' -e '/^!#if !env_safari/,/^!#endif/d' \
+          -e '/^!#if !env_firefox/,/^!#endif/d' -e '/^!#if !env_mobile/,/^!#endif/d' -e '/^!#if !ext_devbuild/,/^!#endif/d' rawuboif.txt > ./uboifleft.txt
+          cat ./uboifmg.txt ./uboifleft.txt | sed '/^$/d' > ../nofop/uboif.txt
 
       - name: FOP rules
         run: |
