@@ -21,7 +21,7 @@ jobs:
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "MODIFY_TIME=$(date -d "8 hour" -u "+%Y/%m/%d %H:%M UTC+8")" >> $GITHUB_ENV
 
-      - name: Prepare source files
+      - name: Download source lists
         env:
           EASY_FOP_SCRIPT: https://raw.githubusercontent.com/easylist/easylist/master/FOP.py
           MOD_FOP_SCRIPT: https://raw.githubusercontent.com/FiltersHeroes/ScriptsPlayground/master/scripts/FOP_FH.py
@@ -30,10 +30,10 @@ jobs:
           EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy.txt
           EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
           CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
-          OPTIMIZED_EASYLIST: https://filters.adtidy.org/windows/filters/101_optimized.txt
-          OPTIMIZED_EASYPRIVACY: https://filters.adtidy.org/windows/filters/118_optimized.txt
-          OPTIMIZED_EASYLISTCHINA: https://filters.adtidy.org/windows/filters/104_optimized.txt
-          OPTIMIZED_CJX_ANNOYANCE: https://filters.adtidy.org/windows/filters/220_optimized.txt
+          UBO_EASYLIST: https://raw.githubusercontent.com/uBlockOrigin/uAssetsCDN/main/thirdparties/easylist.txt
+          UBO_EASYPRIVACY: https://raw.githubusercontent.com/uBlockOrigin/uAssetsCDN/main/thirdparties/easyprivacy.txt
+          UBO_EASYLISTCHINA: https://filters.adtidy.org/extension/ublock/filters/224.txt
+          UBO_CJX_ANNOYANCE: https://filters.adtidy.org/extension/ublock/filters/220.txt
           MINI_EASYLIST: https://easylist-downloads.adblockplus.org/easylist-minified.txt
           MINI_EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy-minified.txt
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
@@ -43,31 +43,31 @@ jobs:
           cp ${{ env.MAIN_PATH }}/material/Titles.txt ${{ env.MAIN_PATH }}/title/title.txt
           wget -qO ${{ env.MAIN_PATH }}/fop/FOP.py ${MOD_FOP_SCRIPT}
           cd ${{ env.MAIN_PATH }}/down
-          wget -qO- ${{ env.EASYLIST }} | sed '$G' > ./easylist.txt
-          wget -qO- ${{ env.EASYPRIVACY }} | sed '$G' > ./easyprivacy.txt
-          wget -qO- ${{ env.EASYLISTCHINA }} | sed '$G' > ./easylistchina.txt
-          wget -qO- ${{ env.CJX_ANNOYANCE }} | sed '$G' > ./cjx-annoyance.txt
-          wget -qO- ${{ env.OPTIMIZED_EASYLIST }} | sed '$G' > ./opt-easylist.txt
-          wget -qO- ${{ env.OPTIMIZED_EASYPRIVACY }} | sed '$G' > ./opt-easyprivacy.txt
-          wget -qO- ${{ env.OPTIMIZED_EASYLISTCHINA }} | sed '$G' > ./opt-easylistchina.txt
-          wget -qO- ${{ env.OPTIMIZED_CJX_ANNOYANCE }} | sed '$G' > ./opt-cjx-annoyance.txt
-          wget -qO- ${{ env.EASYLIST_NOHIDE }} | sed '$G' > ./nohide-easylist.txt
-          wget -qO- ${{ env.MINI_EASYLIST }} | sed '$G' > ./mini-easylist.txt
-          wget -qO- ${{ env.MINI_EASYPRIVACY }} | sed '$G' > ./mini-easyprivacy.txt
-          wget -qO- ${{ env.ADGUARD_DNS }} | sed '$G' > ./rawdns.txt
-          wget -qO- ${{ env.ANTI_AD_ADGUARD }} | sed '$G' >> ./rawdns.txt
-          wget -qO- "${{ env.PETER_LOWE }}" | sed '$G' >> ./rawdns.txt
+          wget -qO ./easylist.txt ${{ env.EASYLIST }}
+          wget -qO ./easyprivacy.txt ${{ env.EASYPRIVACY }}
+          wget -qO ./easylistchina.txt ${{ env.EASYLISTCHINA }}
+          wget -qO ./cjx-annoyance.txt ${{ env.CJX_ANNOYANCE }}
+          wget -qO ./ubo-easylist.txt ${{ env.UBO_EASYLIST }}
+          wget -qO ./ubo-easyprivacy.txt ${{ env.UBO_EASYPRIVACY }}
+          wget -qO ./ubo-easylistchina.txt ${{ env.UBO_EASYLISTCHINA }}
+          wget -qO ./ubo-cjx-annoyance.txt ${{ env.UBO_CJX_ANNOYANCE }}
+          wget -qO ./nohide-easylist.txt ${{ env.EASYLIST_NOHIDE }}
+          wget -qO ./mini-easylist.txt ${{ env.MINI_EASYLIST }}
+          wget -qO ./mini-easyprivacy.txt ${{ env.MINI_EASYPRIVACY }}
+          wget -qO ./adgdns.txt ${{ env.ADGUARD_DNS }}
+          wget -qO ./anti-ad.txt ${{ env.ANTI_AD_ADGUARD }}
+          wget -qO ./peter-lowe.txt "${{ env.PETER_LOWE }}"
 
       - name: Preprocess
         run: |
           cd ${{ env.MAIN_PATH }}/down
-          sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' -e 's/\r//g' ./rawdns.txt | sort -u > ../dns/dnscombined.txt
-          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
-          | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/easycombined.txt
-          cat ./opt-easylist.txt ./opt-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
-          | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/optcombined.txt
-          cat ./nohide-easylist.txt ./mini-easylist.txt ./mini-easyprivacy.txt ./opt-easylistchina.txt ./opt-cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' -e 's/\r//g' \
-          | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/mobcombined.txt
+          for list in ./*.txt; do
+            dos2unix -e ./"${list}"
+          done
+          cat ./adgdns.txt ./anti-ad.txt ./peter-lowe.txt | sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' | sort -u > ../dns/dnscombined.txt
+          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/easycombined.txt
+          cat ./ubo-easylist.txt ./ubo-easyprivacy.txt ./ubo-easylistchina.txt ./ubo-cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/ubocombined.txt
+          cat ./nohide-easylist.txt ./mini-easylist.txt ./mini-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/mobcombined.txt
 
       - name: Combine DNS list
         run: |
@@ -112,17 +112,17 @@ jobs:
         run: |
           cd ${{ env.MAIN_PATH }}/fop
           sed -En '/^#@?#/p' easycombined.txt | sort -u > ../nofop/easy_ghide.txt
-          sed -En '/^#@?#/p' optcombined.txt | sort -u > ../nofop/opt_ghide.txt
+          sed -En '/^#@?#/p' ubocombined.txt | sort -u > ../nofop/ubo_ghide.txt
           sed -En '/^#@?#/p' mobcombined.txt | sort -u > ../nofop/mob_ghide.txt
           sed -Ei '/^#@?#/d' easycombined.txt
-          sed -Ei '/^#@?#/d' optcombined.txt
+          sed -Ei '/^#@?#/d' ubocombined.txt
           sed -Ei '/^#@?#/d' mobcombined.txt
           for list in ./*.txt; do
             python ${{ env.MAIN_PATH }}/material/MDR.py ./${list}
           done
           python ./FOP.py
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
-          cat ../nofop/opt_ghide.txt ./optcombined.txt | sed '/^$/d' > ../title/opt_done.txt
+          cat ../nofop/ubo_ghide.txt ./ubocombined.txt | sed '/^$/d' > ../title/ubo_done.txt
           cat ../nofop/mob_ghide.txt ./mobcombined.txt | sed '/^$/d' > ../title/mob_done.txt
 
       - name: Create final lists
@@ -130,11 +130,11 @@ jobs:
           cd ${{ env.MAIN_PATH }}/title
           sed -i -e "s/BLANKVER/${{ env.VERSION_CODE }}/" -e "s#BLANKTIME#${{ env.MODIFY_TIME }}#" ./title.txt
           sed -n '/^! Title: Easy/,/^# Easy/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' easy_done.txt)/" -e '/^#/d' > ./easytitle.txt
-          sed -n '/^! Title: Optimized/,/^# Optimized/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' opt_done.txt)/" -e '/^#/d' > ./opttitle.txt
+          sed -n '/^! Title: uBo Easy/,/^# uBo Easy/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' ubo_done.txt)/" -e '/^#/d' > ./ubotitle.txt
           sed -n '/^! Title: Mobile/,/^# Mobile/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' mob_done.txt)/" -e '/^#/d' > ./mobtitle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > ./dnstitle.txt
           cat easytitle.txt easy_done.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
-          cat opttitle.txt opt_done.txt > ${{ env.MAIN_PATH }}/checksum/optlist.txt
+          cat ubottitle.txt ubo_done.txt > ${{ env.MAIN_PATH }}/checksum/ubolist.txt
           cat mobtitle.txt mob_done.txt > ${{ env.MAIN_PATH }}/checksum/moblist.txt
           cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
           cd ${{ env.MAIN_PATH }}
@@ -145,9 +145,9 @@ jobs:
 
       - name: Update
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add easyrules.txt optlist.txt moblist.txt dnsblock.txt
+          git config user.name "Github Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add easyrules.txt ubolist.txt moblist.txt dnsblock.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
           [ $(date -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
