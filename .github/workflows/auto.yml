@@ -140,7 +140,7 @@ jobs:
           sed -n '/^! Title: Mobile/,/^# Mobile/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' mob_done.txt)/" -e '/^#/d' > ./mobtitle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > ./dnstitle.txt
           cat easytitle.txt easy_done.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
-          cat ubottitle.txt ubo_done.txt > ${{ env.MAIN_PATH }}/checksum/ubolist.txt
+          cat ubotitle.txt ubo_done.txt > ${{ env.MAIN_PATH }}/checksum/ubolist.txt
           cat mobtitle.txt mob_done.txt > ${{ env.MAIN_PATH }}/checksum/moblist.txt
           cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
           cd ${{ env.MAIN_PATH }}
