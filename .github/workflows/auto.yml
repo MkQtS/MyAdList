@@ -15,7 +15,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Init environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
+          sudo apt-get -y update
+          sudo apt-get -y install dos2unix
+          sudo apt-get -y clean
           mkdir down dns fop nofop title checksum
           echo "MAIN_PATH=$(pwd)" >> $GITHUB_ENV
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
