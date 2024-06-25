@@ -1,10 +1,10 @@
 ! Title: uBo Easy AdList
-! Checksum: kJ/Zyg7eIgOm0yF9OkmoEA
+! Checksum: t5YRwqkzDSMmNKOdkqikpQ
 ! Expires: 2 days
-! Version: 202406251813
+! Version: 202406260611
 ! Homepage: https://github.com/MkQtS/MyAdList
 ! Sources: EasyList, EasyPrivacy, EasyList China, CJX's Annoyance List (Optimized, for uBlock Origin)
-! Total lines: 65797, sources at 2024/06/25 18:13 UTC+8
+! Total lines: 65796, sources at 2024/06/26 06:11 UTC+8
 !
 ###AD_G
 ###AD_L
@@ -9006,7 +9006,6 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 /ads/square-$image,domain=~spoolimports.com
 /ads/square.
 /ads/ta_wppas/*$third-party
-/ads/top-
 /ads/top.
 /ads/view.php
 /ads/xtcore.
@@ -9479,7 +9478,7 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 /ceshi127722.
 /cf.aspx?action=cycadget&
 /cfformprotect/js/cffp.js
-/cgi-bin/ad/*
+/cgi-bin/ad/*$~xmlhttprequest
 /cgi-bin/cnt/*
 /cgi-bin/count.cgi?
 /cgi-bin/count/*
@@ -10581,7 +10580,7 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 /p?zoneId=
 /page-ads.
 /page-links-to/dist/new-tab.js
-/page-peel
+/page-peel$~xmlhttprequest
 /page.bsigroup.com/*
 /page/?s=$third-party
 /page/index.php?s=$third-party
@@ -10726,6 +10725,7 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 /plugins/nsmg-tracking/*
 /plugins/prebidjs/*$script
 /plugins/pup-comscore/*
+/plugins/thirstyaffiliates/*$script,stylesheet
 /plugins/ultimate-popunder/*$~stylesheet
 /plugins/vdz-google-analytics/*
 /plugins/visitors-traffic-
@@ -11575,7 +11575,6 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 /wp-content/plugins/platinumpopup/*$script,stylesheet
 /wp-content/plugins/popad/*$script,stylesheet
 /wp-content/plugins/the-moneytizer/*$script
-/wp-content/plugins/thirstyaffiliates/*
 /wp-content/plugins/upprev/*
 /wp-content/plugins/useful-banner-manager/*
 /wp-content/plugins/wp-ad-guru/*$script,stylesheet
@@ -14302,8 +14301,6 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 @@||manageengine.com/images/logo/$image,~third-party
 @@||manageengine.com/products/ad-manager/$~third-party
 @@||manhua.weibo.com/adv/
-@@||manwa.fun/static/upload/ads/*.gif?$image,~third-party
-@@||manwa.me/static/custom/files/300X250.gif
 @@||maptiles.ping-admin.ru^$image,domain=ping-admin.com
 @@||martech.condenastdigital.com/lib/martech.js$script,domain=wired.com
 @@||masterkong.com.cn/adimages/
@@ -18285,8 +18282,8 @@ ettoday.net##.top-sky
 ettoday.net##amp-embed[type="dable"]
 ettoday.net##div[id^="abp"]
 ettoday.net#@#.iframe-ad
-ettoday.net#@#AMP-AD
 ettoday.net#@#amp-ad
+ettoday.net#@#AMP-AD
 etxt.biz##.mod-cabinet__sidebar-adv
 etxt.biz##.mod-cabinet__sidebar-info
 etymonline.com##.adContainer--6CVz1
@@ -21534,8 +21531,10 @@ mansurfer.com##a[href*="/out/"]
 manualslib.com##.abp_adv_s-title
 manutd.com##.home-content-panel__sponsor
 manutd.com##.primary-header-sponsors
+manwa.fun###detail > div:has(> div.ad-area-close)
+manwa.fun##+js(no-setTimeout-if, /alert\('请关闭.*Chrome/)
+manwa.fun##+js(remove-attr, style, .two-ad-area)
 manwa.me##.ad-area > a
-manwa.me#$#.ad-area { position: absolute !important; left: -3000px !important; }
 manwa.me#@#.ad-area
 maoken.com###siderAd01
 maolihui.com##.con-ad
@@ -22818,8 +22817,8 @@ pixnet.net##div[class*="-Ad-"]
 pixnet.net##div[class*="-ad-"]
 pixnet.net##div[class*="article-ad"]
 pixnet.net##div[id*="-AD-"]
-pixnet.net##div[id*="-Ad-"]
 pixnet.net##div[id*="-aD-"]
+pixnet.net##div[id*="-Ad-"]
 pixnet.net##div[style="width: 620px; height: 250px; padding-bottom: 10px;"]
 pixnet.net##div[style^="width: 630px;"][style*="height: 250px"]
 pixnet.net#?##main > div.header-fixed-area:has(> div#header-ad-fixed)
@@ -24434,6 +24433,7 @@ tempostorm.com##side-banners
 tempr.email##.awrapper
 tencent.com##.cdc-commercial-swiper
 tennesseestar.com,themichiganstar.com,theminnesotasun.com,theohiostar.com##.AdvancedText
+tennis.com##.oc-c-article__adv
 tennis.com##.tc-video-player-iframe
 terraria.wiki.gg##[href^="https://store.steampowered.com/app/"]
 teslaoracle.com##figure.aligncenter
@@ -28161,6 +28161,7 @@ zzzyk.com###Tinfo
 ||ad-mapps.com^
 ||ad-maven.com^
 ||ad-nex.com^
+||ad-platform.jmty.jp^
 ||ad-recommend.com^
 ||ad-score.com^
 ||ad-serve.b-cdn.net^
@@ -46908,9 +46909,7 @@ zzzyk.com###Tinfo
 ||manua.ls/gtag
 ||manufacturerscenery.com^
 ||manureoddly.com^
-||manwa.fun/static/upload/ads/$image,important,redirect=1x1.gif
 ||manwa.me/static/custom/files/300X250.$image,redirect=1x1.gif,~third-party
-||manwa.me/static/custom/files/300X250.gif$image,important,redirect=1x1.gif
 ||manymgsgn.com^
 ||manzosui.xyz^
 ||maodh.com/admin/up/*.gif
@@ -59692,6 +59691,7 @@ zzzyk.com###Tinfo
 ||tengfun.com/attachment/*/w_1200
 ||tengzhihh.com/image/*-950x277.
 ||tenmax.io^$third-party
+||tennis.com/assets/js/libraries/render-adv.js
 ||tenping.kr^$third-party
 ||tensagesic.com^
 ||tenseapprobation.com^
@@ -61369,7 +61369,6 @@ zzzyk.com###Tinfo
 ||twcount.com^$third-party
 ||twcouponcenter.com^$third-party
 ||twddsnvl.com^
-||tweakers.net/ajax/$ping
 ||tweakers.nl/track/
 ||tweezesmalanga.com^
 ||twelfthdistasteful.com^
