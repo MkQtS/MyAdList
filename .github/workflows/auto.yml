@@ -71,9 +71,9 @@ jobs:
             echo >> ./"${list}"
           done
           cat ./adgdns.txt ./anti-ad.txt ./peter-lowe.txt | sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' | sort -u > ../dns/dnscombined.txt
-          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/easycombined.txt
-          cat ./ubo-easylist.txt ./ubo-easyprivacy.txt ./ubo-easylistchina.txt ./ubo-cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/ubocombined.txt
-          cat ./nohide-easylist.txt ./mini-easylist.txt ./mini-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#(.*):-abp-has(.+):-abp-contains/##\1:has\2:contains/g' -e 's/#\?#(.*):-abp-has/##\1:has/g' -e 's/#\?#(.*):-abp-contains/##\1:contains/g' | sort -u > ../fop/mobcombined.txt
+          cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/easycombined.txt
+          cat ./ubo-easylist.txt ./ubo-easyprivacy.txt ./ubo-easylistchina.txt ./ubo-cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/ubocombined.txt
+          cat ./nohide-easylist.txt ./mini-easylist.txt ./mini-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/mobcombined.txt
 
       - name: Combine DNS list
         run: |
