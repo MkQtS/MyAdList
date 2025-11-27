@@ -38,10 +38,6 @@ jobs:
           EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy.txt
           EASYLISTCHINA: https://raw.githubusercontent.com/easylist/easylistchina/master/easylistchina.txt
           CJX_ANNOYANCE: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
-          UBO_EASYLIST: https://filters.adtidy.org/extension/ublock/filters/101_optimized.txt
-          UBO_EASYPRIVACY: https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt
-          UBO_EASYLISTCHINA: https://filters.adtidy.org/extension/ublock/filters/224_optimized.txt
-          UBO_CJX_ANNOYANCE: https://filters.adtidy.org/extension/ublock/filters/220_optimized.txt
           MINI_EASYLIST: https://easylist-downloads.adblockplus.org/easylist-minified.txt
           MINI_EASYPRIVACY: https://easylist-downloads.adblockplus.org/easyprivacy-minified.txt
           ADGUARD_DNS: https://filters.adtidy.org/windows/filters/15_optimized.txt
@@ -55,10 +51,6 @@ jobs:
           wget -qO ./easyprivacy.txt ${{ env.EASYPRIVACY }}
           wget -qO ./easylistchina.txt ${{ env.EASYLISTCHINA }}
           wget -qO ./cjx-annoyance.txt ${{ env.CJX_ANNOYANCE }}
-          wget -qO ./ubo-easylist.txt ${{ env.UBO_EASYLIST }}
-          wget -qO ./ubo-easyprivacy.txt ${{ env.UBO_EASYPRIVACY }}
-          wget -qO ./ubo-easylistchina.txt ${{ env.UBO_EASYLISTCHINA }}
-          wget -qO ./ubo-cjx-annoyance.txt ${{ env.UBO_CJX_ANNOYANCE }}
           wget -qO ./nohide-easylist.txt ${{ env.EASYLIST_NOHIDE }}
           wget -qO ./mini-easylist.txt ${{ env.MINI_EASYLIST }}
           wget -qO ./mini-easyprivacy.txt ${{ env.MINI_EASYPRIVACY }}
@@ -75,7 +67,6 @@ jobs:
           done
           cat ./adgdns.txt ./anti-ad.txt ./peter-lowe.txt | sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' | sort -u > ../dns/dnscombined.txt
           cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/easycombined.txt
-          cat ./ubo-easylist.txt ./ubo-easyprivacy.txt ./ubo-easylistchina.txt ./ubo-cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/ubocombined.txt
           cat ./nohide-easylist.txt ./mini-easylist.txt ./mini-easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/mobcombined.txt
 
       - name: Combine DNS list
@@ -121,17 +112,14 @@ jobs:
         run: |
           cd ${{ env.MAIN_PATH }}/fop
           sed -En '/^#@?#/p' easycombined.txt | sort -u > ../nofop/easy_ghide.txt
-          sed -En '/^#@?#/p' ubocombined.txt | sort -u > ../nofop/ubo_ghide.txt
           sed -En '/^#@?#/p' mobcombined.txt | sort -u > ../nofop/mob_ghide.txt
           sed -Ei '/^#@?#/d' easycombined.txt
-          sed -Ei '/^#@?#/d' ubocombined.txt
           sed -Ei '/^#@?#/d' mobcombined.txt
           for list in ./*.txt; do
             python ${{ env.MAIN_PATH }}/material/MDR.py ./${list}
           done
           python ./FOP.py
           cat ../nofop/easy_ghide.txt ./easycombined.txt | sed '/^$/d' > ../title/easy_done.txt
-          cat ../nofop/ubo_ghide.txt ./ubocombined.txt | sed '/^$/d' > ../title/ubo_done.txt
           cat ../nofop/mob_ghide.txt ./mobcombined.txt | sed '/^$/d' > ../title/mob_done.txt
 
       - name: Create final lists
@@ -139,11 +127,9 @@ jobs:
           cd ${{ env.MAIN_PATH }}/title
           sed -i -e "s/BLANKVER/${{ env.VERSION_CODE }}/" -e "s#BLANKTIME#${{ env.MODIFY_TIME }}#" ./title.txt
           sed -n '/^! Title: Easy/,/^# Easy/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' easy_done.txt)/" -e '/^#/d' > ./easytitle.txt
-          sed -n '/^! Title: uBo Easy/,/^# uBo Easy/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' ubo_done.txt)/" -e '/^#/d' > ./ubotitle.txt
           sed -n '/^! Title: Mobile/,/^# Mobile/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' mob_done.txt)/" -e '/^#/d' > ./mobtitle.txt
           sed -n '/^! Title: DNS/,/^# DNS/p' title.txt | sed -e "s/NUMCOUNT/$(sed -n '$=' dnsrules.txt)/" -e '/^#/d' > ./dnstitle.txt
           cat easytitle.txt easy_done.txt > ${{ env.MAIN_PATH }}/checksum/easyrules.txt
-          cat ubotitle.txt ubo_done.txt > ${{ env.MAIN_PATH }}/checksum/ubolist.txt
           cat mobtitle.txt mob_done.txt > ${{ env.MAIN_PATH }}/checksum/moblist.txt
           cat dnstitle.txt dnsrules.txt > ${{ env.MAIN_PATH }}/checksum/dnsblock.txt
           cd ${{ env.MAIN_PATH }}
@@ -156,7 +142,7 @@ jobs:
         run: |
           git config user.name "Github Actions"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add easyrules.txt ubolist.txt moblist.txt dnsblock.txt
+          git add easyrules.txt moblist.txt dnsblock.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
           [ $(date -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
