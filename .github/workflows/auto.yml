@@ -2,7 +2,7 @@ name: Generate my adlists
 
 on:
   schedule:
-    - cron: 0 10,22 * * *
+    - cron: 0 10 * * *
   workflow_dispatch:
 
 env:
@@ -21,9 +21,6 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo apt-get -y update
-          sudo apt-get -y install dos2unix
-          sudo apt-get -y clean
           mkdir down dns fop nofop title checksum
           echo "MAIN_PATH=$(pwd)" >> $GITHUB_ENV
           echo "VERSION_CODE=$(date -d "8 hour" -u +%Y%m%d%H%M)" >> $GITHUB_ENV
@@ -62,8 +59,8 @@ jobs:
         run: |
           cd ${{ env.MAIN_PATH }}/down
           for list in ./*.txt; do
-            dos2unix ./"${list}"
-            echo >> ./"${list}"
+            sed -i 's/\r$//' ./${list}
+            echo >> ./${list}
           done
           cat ./adgdns.txt ./anti-ad.txt ./peter-lowe.txt | sed -e 's/\^|/\^/g' -e 's/\$important//g' -e '/^[^|@]/d' | sort -u > ../dns/dnscombined.txt
           cat ./easylist.txt ./easyprivacy.txt ./easylistchina.txt ./cjx-annoyance.txt | sed -e '/^\[Adblock/d' -e '/^!/d' | sed -E -e 's/#\?#/##/g' -e 's/:-abp-has/:has/g' -e 's/:-abp-contains/:contains/g' | sort -u > ../fop/easycombined.txt
@@ -145,7 +142,7 @@ jobs:
           git add easyrules.txt moblist.txt dnsblock.txt
           git commit -m "Updated on ${{ env.MODIFY_TIME }}"
           git push origin main
-          [ $(date -u +%H) -gt 12 ] || curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
+          curl -s https://purge.jsdelivr.net/gh/MkQtS/MyAdList@main/
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
