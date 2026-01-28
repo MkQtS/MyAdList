@@ -42,18 +42,18 @@ jobs:
           PETER_LOWE: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext
         run: |
           cp ${{ env.MAIN_PATH }}/material/Titles.txt ${{ env.MAIN_PATH }}/title/title.txt
-          wget -qO ${{ env.MAIN_PATH }}/fop/FOP.py ${MOD_FOP_SCRIPT}
+          wget --tries=5 -O ${{ env.MAIN_PATH }}/fop/FOP.py ${MOD_FOP_SCRIPT}
           cd ${{ env.MAIN_PATH }}/down
-          wget -qO ./easylist.txt ${{ env.EASYLIST }}
-          wget -qO ./easyprivacy.txt ${{ env.EASYPRIVACY }}
-          wget -qO ./easylistchina.txt ${{ env.EASYLISTCHINA }}
-          wget -qO ./cjx-annoyance.txt ${{ env.CJX_ANNOYANCE }}
-          wget -qO ./nohide-easylist.txt ${{ env.EASYLIST_NOHIDE }}
-          wget -qO ./mini-easylist.txt ${{ env.MINI_EASYLIST }}
-          wget -qO ./mini-easyprivacy.txt ${{ env.MINI_EASYPRIVACY }}
-          wget -qO ./adgdns.txt ${{ env.ADGUARD_DNS }}
-          wget -qO ./anti-ad.txt ${{ env.ANTI_AD_ADGUARD }}
-          wget -qO ./peter-lowe.txt "${{ env.PETER_LOWE }}"
+          wget --tries=5 -O ./easylist.txt ${{ env.EASYLIST }}
+          wget --tries=5 -O ./easyprivacy.txt ${{ env.EASYPRIVACY }}
+          wget --tries=5 -O ./easylistchina.txt ${{ env.EASYLISTCHINA }}
+          wget --tries=5 -O ./cjx-annoyance.txt ${{ env.CJX_ANNOYANCE }}
+          wget --tries=5 -O ./nohide-easylist.txt ${{ env.EASYLIST_NOHIDE }}
+          wget --tries=5 -O ./mini-easylist.txt ${{ env.MINI_EASYLIST }}
+          wget --tries=5 -O ./mini-easyprivacy.txt ${{ env.MINI_EASYPRIVACY }}
+          wget --tries=5 -O ./adgdns.txt ${{ env.ADGUARD_DNS }}
+          wget --tries=5 -O ./anti-ad.txt ${{ env.ANTI_AD_ADGUARD }}
+          wget --tries=5 -O ./peter-lowe.txt "${{ env.PETER_LOWE }}"
 
       - name: Preprocess
         run: |
